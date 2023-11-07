@@ -1,0 +1,69 @@
+﻿namespace Utility.Validation;
+
+public class ValidationMessage
+{
+    public const string Vacant = "مقداری در بانک یافت نشد";
+    public const string SuccessCreate = "عملیات ثبت با موفقیت انجام شد";
+    public const string SuccessDelete = "عملیات حذف با موفقیت انجام شد";
+    public const string SuccessUpdate = "عملیات ویرایش با موفقیت انجام شد";
+    public const string NoFoundGet = "فیلدی با این مشخصه یافت نشد";
+    public const string RecordNotFound = "رکورد با اطلاعات درخواست شده یافت نشد.";
+    public const string SuccessGet = "فیلدی با کد منحصر به فرد یافت شد";
+    public const string SuccessGetAll = "تمامی مقادیر به خوبی واکشی شدند";
+    public const string DuplicatedRecord = "امکان ثبت رکورد تکراری وجود ندارد";
+    public const string SuccessActive = "فیلد فعال شد";
+    public const string SuccessActiveFile = "از این پس این فایل قابل نمایش است";
+    public const string SuccessDeActiveFile = "از این پس این فایل قابل نمایش نیست";
+    public const string SuccessDeActive = "فیلد با موفقیت غیر فعال شد";
+    public const string IsRequired = "مقادیر برخی از فیلد ها خالی است.";
+    public const string InvalidFileFormat = "فرمت فایل مجاز نیست";
+    public const string SuccessActivePhone = "شماره تلفن فعال شد";
+    public const string PasswordLenght = "طول کلمه عبور انتخابی کمتر از 5 کاراکتر می باشد";
+    public const string SuccessUpdatePassword = "رمز عبور شما با موفقیت تغییر کرد";
+    public const string NoConfirmPassword = "تکرار رمز عبور با رمز عبور جدید مشابه نیست";
+    public const string WrongPassword = "رمز عبور اشتباه است";
+    public const string SuccessLogin = "شما با موفقیت به حساب کاربری وارد شدید";
+    public const string AccountIsBlock = "حساب کاربری شما غیر فعال است";
+    public const string SuccessRegister = "حساب کاربری با موفقیت ساخته شد";
+    public const string PasswordsNotMatch = "پسورد و تکرار آن با هم مطابقت ندارند";
+    public const string ActivePhone = "شماره موبایل شما اعتبار سنجی نشده";
+
+    public const string Blocked = "کاربر بلاک شد";
+    public const string OnBlocked = "حساب فعال شد";
+
+
+    public static string SuccessGetAllSearch(int count)
+    {
+        return $"تعداد {count} عدد فیلد با این اطلاعات یافت شد";
+    }
+
+    public static string ErrorCreate(string e)
+    {
+        return $"مشکلی در افزودن این فیلد روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorUpdate(string e)
+    {
+        return $"مشکلی در ویرایش این فیلد روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorDelete(string e)
+    {
+        return $"مشکلی در حذف این فیلد روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorGetAll(string e)
+    {
+        return $"مشکلی در واکشی فیلد ها روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorGet(string e)
+    {
+        return $"مشکلی در واکشی فیلد روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorLogin(string e)
+    {
+        return $"مشکلی در وارد شدن به حساب کاربری روخ داده. متن اررور:({e})";
+    }
+}

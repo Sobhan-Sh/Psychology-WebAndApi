@@ -1,0 +1,664 @@
+/*
+   Version: 1.0
+*/
+/** import font sahel */
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel.eot");
+    src: url("../fonts/Sahel.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel.woff2") format("woff2"), url("../fonts/Sahel.woff") format("woff"), url("../fonts/Sahel.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Bold.eot");
+    src: url("../fonts/Sahel-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Bold.woff2") format("woff2"), url("../fonts/Sahel-Bold.woff") format("woff"), url("../fonts/Sahel-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Light.eot");
+    src: url("../fonts/Sahel-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Light.woff2") format("woff2"), url("../fonts/Sahel-Light.woff") format("woff"), url("../fonts/Sahel-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-SemiBold.eot");
+    src: url("../fonts/Sahel-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-SemiBold.woff2") format("woff2"), url("../fonts/Sahel-SemiBold.woff") format("woff"), url("../fonts/Sahel-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Black.eot");
+    src: url("../fonts/Sahel-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Black.woff2") format("woff2"), url("../fonts/Sahel-Black.woff") format("woff"), url("../fonts/Sahel-Black.ttf") format("truetype");
+    font-weight: 900;
+}
+/** import font sahel */
+:root {
+    --darkMode-background: #090e34;
+    --darkMode-primary: #4a6cf7;
+    --darkMode-onPrimary: #fff;
+    --darkMode-onSecondary: #a3b5ff;
+    --darkMode-background-input: rgb(36 43 81);
+    --darkMode-light-background: rgb(149 156 177);
+    --darkMode-hover-primary: 0.9;
+    --darkMode-font-size-defualt: 18px;
+    --darkMode-back-card: rgb(74 108 247 / 0.1);
+    --darkMode-back-card-active: #4a6cf79c;
+    --darkMode-back-card-hover: #4a6cf76b;
+    --darkMode-notValid: rgb(222, 5, 5);
+    --darkMode-valid: #03df03;
+}
+
+* {
+    color: var(--darkMode-onPrimary);
+    font-size: var(--darkMode-font-size-defualt);
+    line-height: 28px;
+    font-family: "Sahel" !important;
+    font-weight: 500;
+}
+
+body {
+    background-color: var(--darkMode-background);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+    body::before {
+        position: absolute;
+        content: "";
+        top: 0px;
+        right: 0px;
+        background-image: url(../imageTemplate/ui-cirlcle.svg);
+        width: 450px;
+        height: 556px;
+    }
+
+a {
+    text-decoration: none;
+}
+
+.table > :not(caption) > * > * {
+    backdrop-filter: blur(8px);
+}
+
+
+header nav div div div ul.navbar-nav li.nav-item a.nav-link span,
+header nav div div div ul.navbar-nav li.nav-item a.nav-link {
+    display: flex;
+    align-items: center;
+    --bs-nav-link-color: var(--darkMode-onPrimary);
+}
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link:not(.active):hover {
+        text-shadow: 0 0 5px white, 0 0 10px white,0 0 15px white;
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link.active span {
+        color: var(--darkMode-onSecondary);
+        font-weight: bold;
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link svg {
+        width: 22px;
+        margin-left: 5px;
+        fill: var(--darkMode-onPrimary);
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link.active svg {
+        fill: var(--darkMode-primary);
+    }
+
+.btn-custom {
+    background-color: var(--darkMode-primary);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: var(--darkMode-onPrimary);
+    transition: 0.3s;
+    font-weight: 700;
+}
+
+    .btn-custom:hover {
+        opacity: var(--darkMode-hover-primary);
+        --bs-btn-hover-bg: var(--darkMode-primary);
+    }
+
+.btn-login-header {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn-login-header .svg-icon {
+        width: 26px;
+        margin-left: 4px;
+        fill: var(--darkMode-onPrimary);
+    }
+
+.btn-register-header svg {
+    width: 22px;
+}
+
+    .btn-register-header svg.svg-icon {
+        fill: var(--darkMode-onPrimary);
+    }
+
+.ui-image-user {
+    position: absolute;
+    top: 15vh;
+    right: 16%;
+    width: 303px;
+    height: 342px;
+    z-index: 10;
+}
+
+.card-profile-form,
+.card-test-form .card,
+.card-register-form .card,
+.card-login-form .card,
+.card-visit-form .card {
+    background-color: var(--darkMode-back-card);
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--darkMode-primary);
+    box-shadow: inset 0 0 5px 1px var(--darkMode-primary), 0 0 5px 1px var(--darkMode-primary);
+}
+
+.card-login-form .card,
+.card-visit-form .card {
+    max-width: 500px;
+}
+
+.select2-search--dropdown .select2-search__field,
+.card-question-form .card {
+    background-color: var(--darkMode-background);
+    z-index: 10;
+    border: 2px solid var(--darkMode-primary);
+    box-shadow: inset 0 0 5px 1px var(--darkMode-primary), 0 0 5px 1px var(--darkMode-primary);
+}
+
+    .card-question-form .card .card-title {
+        padding: 0 32px;
+    }
+
+.card-visit-form .card {
+    width: 100%;
+}
+
+.card-test-form .card,
+.card-register-form .card {
+    max-width: 800px;
+}
+
+.card-question-form .card {
+    width: 100%;
+}
+
+    .card-profile-form h3,
+    .card-question-form .card h3,
+    .card-test-form .card h3,
+    .card-register-form .card h3,
+    .card-login-form .card h3,
+    .card-visit-form .card h3 {
+        font-size: 1.7rem;
+        line-height: 38px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--darkMode-primary);
+    }
+
+    .card-profile-form h6,
+    .card-question-form .card h6,
+    .card-test-form .card h6,
+    .card-register-form .card h6,
+    .card-login-form .card h6,
+    .card-visit-form .card h6 {
+        line-height: 21px;
+        color: var(--darkMode-onSecondary);
+        text-align: center;
+        font-weight: 800;
+    }
+
+.card-profile-form .card-title h3 svg {
+    width: 40px;
+    margin-left: 10px;
+    stroke: var(--darkMode-onSecondary);
+}
+
+.select2-search--dropdown .select2-search__field,
+.card-profile-form .cusotm-form-controle,
+.card-register-form .card .cusotm-form-controle,
+.card-login-form .card .cusotm-form-controle,
+.card-visit-form .card .cusotm-form-controle {
+    background-color: var(--darkMode-background-input);
+    width: 100%;
+    margin: 8px 0;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    outline: 0;
+}
+
+    .card-profile-form .cusotm-form-controle::placeholder,
+    .card-register-form .card .cusotm-form-controle::placeholder,
+    .card-login-form .card .cusotm-form-controle::placeholder,
+    .card-visit-form .card .cusotm-form-controle::placeholder {
+        color: var(--darkMode-light-background);
+        text-align: center;
+    }
+
+    .card-profile-form .cusotm-form-controle:focus,
+    .card-register-form .card .cusotm-form-controle:focus,
+    .card-login-form .card .cusotm-form-controle:focus,
+    .card-visit-form .card .cusotm-form-controle:focus {
+        border-color: var(--darkMode-primary);
+    }
+
+.card-profile-form hr,
+.card-question-form .card hr,
+.card-test-form .card hr,
+.card-register-form .card hr,
+.card-login-form .card hr,
+.card-visit-form .card hr {
+    background: var(--darkMode-primary);
+    border: 1px solid var(--darkMode-primary);
+    border-radius: 7px;
+    box-shadow: 0 0 5px 1px var(--darkMode-primary);
+}
+
+.card-question-form .card .card-body ol li,
+.card-test-form .card .card-body ol li {
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
+
+    .card-test-form .card .card-body ol li *:not(.badge) {
+        color: var(--bs-list-group-color);
+    }
+
+.card-question-form .next svg,
+.card-question-form .prev svg {
+    width: 60px;
+    transition: 0.1s;
+}
+
+.card-question-form .next svg {
+    transform: rotate(-90deg);
+}
+
+.card-question-form .prev svg {
+    transform: rotate(90deg);
+}
+
+.card-question-form .next:hover svg {
+    margin-left: 5px;
+}
+
+.card-question-form .prev:hover svg {
+    margin-right: 5px;
+}
+
+.prev.swiper-button-disabled,
+.next.swiper-button-disabled {
+    visibility: hidden;
+}
+
+.swiper-cards .swiper-slide {
+    max-width: 700px;
+}
+
+.swiper {
+    margin-right: auto;
+    margin-left: auto;
+    width: 950px;
+    height: calc(100% + 5px);
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.swiper-slide {
+    padding-bottom: 15px;
+}
+
+/*******************************? My CheckBox */
+/** Hide the default checkbox */
+.cntr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    height: 62px;
+    width: 100%;
+    z-index: 10;
+}
+
+.cntr {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/** Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    border: 2px solid #414141;
+    border-radius: 5px;
+    -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cntr input:hover ~ .checkmark {
+    border: 2px solid #0974f1;
+}
+
+/** When the checkbox is checked */
+.cntr input:checked ~ .checkmark {
+    -webkit-box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+    box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+    border: 2px solid #0974f1;
+}
+
+/** Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/** Show the checkmark when checked */
+.cntr input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/** Style the checkmark/indicator */
+.cntr .checkmark:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.cntr input[type="checkbox"] ~ .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+}
+
+.cntr input[type="radio"] ~ .checkmark:after {
+    left: 0.35em;
+    top: 0.35em;
+    width: 0.4em;
+    height: 0.4em;
+    border: 0.15em solid white;
+    border-radius: 0.05em;
+}
+/*******************************? end My CheckBox */
+
+@media (max-width: 992px) {
+    .bg-parent {
+        background-color: var(--darkMode-background);
+        box-shadow: 0 0 0px 1px var(--darkMode-primary);
+    }
+
+        .bg-parent ul li a {
+            display: block;
+            padding: 11px 10px;
+            position: relative;
+            transition: padding-right 0.3s;
+        }
+
+            .bg-parent ul li a::after {
+                position: absolute;
+                content: "";
+                right: 0;
+                bottom: 0;
+                height: 1px;
+                width: 0;
+                background-color: var(--darkMode-primary);
+                box-shadow: 0 0 5px var(--darkMode-primary);
+                transition: 0.5s;
+                border-radius: 7px;
+            }
+
+            .bg-parent ul li a:hover {
+                color: var(--darkMode-onPrimary);
+                padding-right: 17px;
+            }
+
+                .bg-parent ul li a:hover:after {
+                    width: 50%;
+                }
+
+            .bg-parent ul li a.active {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+                .bg-parent ul li a.active svg {
+                    height: 30px;
+                }
+
+    .swiper {
+        max-width: 700px;
+        width: 100%;
+    }
+
+    .btn-login-header {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+        font-weight: 500;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 576px) {
+    body::before {
+        top: -54px;
+    }
+
+    .swiper {
+        max-width: 400px;
+        width: 423px !important;
+    }
+
+    body::before {
+        width: 265px;
+        height: 450px;
+        display: none;
+    }
+
+    .card-visit-form .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-visit-form .card h6 {
+        font-size: 0.8rem;
+    }
+}
+
+.bg-parent ul li a {
+    cursor: pointer;
+}
+
+.list-group-item {
+    box-shadow: 0 0 5px var(--darkMode-primary), inset 0 0 5px var(--darkMode-primary);
+    backdrop-filter: blur(7px);
+    --bs-list-group-border-color: var(--darkMode-primary);
+    --bs-list-group-active-border-color: var(--darkMode-primary);
+    background-color: var(--darkMode-back-card);
+    --bs-list-group-color: var(--darkMode-onSecondary);
+    --bs-list-group-active-bg: var(--darkMode-back-card-active);
+    --bs-list-group-action-hover-bg: var(--darkMode-back-card-hover);
+}
+
+.dashbord-switcher ul li a {
+    font-size: 20px;
+    padding: 10px 10px;
+    display: block;
+    transition: font-size 0.3s;
+}
+
+    .dashbord-switcher ul li a svg {
+        width: 30px;
+        margin-left: 5px;
+        transition: 0.2s;
+    }
+
+    .dashbord-switcher ul li a:hover {
+        color: var(--darkMode-onSecondary);
+    }
+
+        .dashbord-switcher ul li a:hover svg {
+            margin-left: 13px;
+        }
+
+    .dashbord-switcher ul li a.exit:hover svg {
+        stroke: red;
+    }
+
+/** input type file */
+.input-div {
+    position: relative;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+    .input-div span {
+        background-color: var(--darkMode-background-input);
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        height: 57px;
+        display: block;
+        color: var(--darkMode-light-background);
+        text-align: center;
+        cursor: pointer;
+    }
+
+        .input-div span.notEmpty {
+            text-align: right;
+            color: var(--darkMode-onPrimary);
+        }
+
+    .input-div input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+.select2 {
+    background-color: var(--darkMode-background-input);
+    width: 100%;
+    margin: 8px 0;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: var(--darkMode-background-input);
+    border: 0;
+}
+
+.select2 .select2-selection__rendered {
+    background-color: var(--darkMode-background-input);
+    color: var(--darkMode-onPrimary) !important;
+}
+
+.select2 .select2-selection__arrow {
+    top: 13px !important;
+    left: 12px !important;
+}
+
+.select2-container--default.select2-container--open
+.select2-selection--single
+.select2-selection__arrow
+b {
+    border-width: 0 6px 7px 6px;
+}
+
+.select2-container--default
+.select2-selection--single
+.select2-selection__arrow
+b {
+    border-width: 7px 6px 0 6px;
+}
+
+.select2-dropdown {
+    background-color: var(--darkMode-background);
+    border: 2px solid var(--darkMode-primary);
+}
+
+    .select2-dropdown.select2-dropdown--below {
+        border-radius: 0 0 7px 7px;
+    }
+
+    .select2-dropdown.select2-dropdown--above {
+        border-radius: 7px 7px 0 0;
+    }
+
+.select2-search--dropdown .select2-search__field {
+    padding: 0.45rem 1.3rem;
+}
+
+.select2-container--default .select2-results__option--selected {
+    background-color: var(--darkMode-background);
+    color: var(--darkMode-primary);
+    box-shadow: inset 0 0 7px 1px var(--darkMode-primary);
+    border-radius: 7px;
+}
+
+.select2-container--default
+.select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--darkMode-primary);
+}
+
+.select2-results__option.select2-results__message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    text-shadow: 0 0 5px, 0 0 10px, 0 0 15px;
+}
+
+.field-validation-error *{
+    font-size: 15px;
+}
+
+span.text-warning.field-validation-error * {
+    color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity));
+}
+
+span.text-danger.field-validation-error * {
+    color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
+}
+
+span.text-info.field-validation-error * {
+    color: rgba(var(--bs-info-rgb), var(--bs-text-opacity));
+}

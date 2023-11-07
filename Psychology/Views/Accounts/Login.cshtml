@@ -1,0 +1,53 @@
+﻿@model Dto.account.Login
+@{
+    ViewData["Title"] = "ورود به حساب کاربری";
+}
+<div class="container">
+    @if (ViewBag.MessageError != null)
+    {
+        <section class="alert alert-danger">
+            <h4>@ViewBag.MessageError</h4>
+        </section>
+    }
+    <!--* card -->
+    <section class="mx-auto mt-5 mt-lg-4 pt-5 pt-lg-0 card-login-form">
+        <section class="card mx-auto p-5">
+            <!--* title card -->
+            <section class="card-title">
+                <h3> ورود به حساب کاربری </h3>
+                <h6> لطفا در کامل کردن اطلاعات خود دقت فرماید </h6>
+            </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body">
+                <div asp-validation-summary="All"></div>
+                <form asp-action="Login" asp-controller="Accounts" method="post">
+                    @if (ViewBag.ReturnUrl != null)
+                    {
+                        <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+                    }
+                    @Html.AntiForgeryToken()
+                    <!-- Phone -->
+                    <input class="cusotm-form-controle" type="text" asp-for="CellPhone" placeholder="شماره تماس">
+                    <span class="text-info" asp-validation-for="CellPhone"></span>
+                    <!-- Password -->
+                    <input class="cusotm-form-controle" type="password" asp-for="Password" placeholder="رمز عبور">
+                    <span class="text-info" asp-validation-for="Password"></span>
+                    <!-- Remember My -->
+                    <section class="cntr d-flex align-items-center py-2">
+                        <label for="rememberMe" class="me-4"> مرا به خاطر بسپار </label>
+                        <input class="cusotm-form-controle" type="checkbox" asp-for="RemomberMe">
+                        <div class="checkmark"></div>
+                    </section>
+                    <button class="btn btn-custom w-100 mt-3" type="submit">
+                        ورود
+                    </button>
+                </form>
+            </section>
+        </section>
+    </section>
+</div>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

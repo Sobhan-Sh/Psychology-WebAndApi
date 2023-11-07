@@ -1,0 +1,70 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Utility.Domain;
+
+namespace Entity.User
+{
+    public class User : BaseEntity
+    {
+        public string FName { get; set; }
+
+        public string LName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string? Address { get; set; }
+
+        public string Password { get; set; }
+
+        public bool MobailActiveStatus { get; set; }
+
+        public string ActivationCode { get; set; }
+
+        public string? Avatar { get; set; }
+
+        public string? Gender { get; set; }
+
+        public int RoleID { get; set; }
+
+        [ForeignKey("RoleID")]
+        public Role.Role Role { get; set; }
+
+        public List<Patient.Patient> Patient { get; set; }
+
+        public string? Token { get; set; }
+
+        public void Edit(string fName, string lName, string? address, string? avatar, int roleId, string? gender)
+        {
+            FName = fName;
+            LName = lName;
+            Address = address;
+            Avatar = avatar;
+            RoleID = roleId;
+            Gender = gender;
+        }
+
+        public void ActiveMobail()
+        {
+            MobailActiveStatus = true;
+        }
+
+        public void Active()
+        {
+            IsActive = true;
+        }
+
+        public void DeActive()
+        {
+            IsActive = false;
+        }
+
+        public void SetToken(string token)
+        {
+            Token = token;
+        }
+
+        public string FullName()
+        {
+            return FName + LName;
+        }
+    }
+}

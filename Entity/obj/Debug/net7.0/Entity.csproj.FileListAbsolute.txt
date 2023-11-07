@@ -1,0 +1,15 @@
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\bin\Debug\net7.0\Entity.deps.json
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\bin\Debug\net7.0\Entity.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\bin\Debug\net7.0\Entity.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\bin\Debug\net7.0\Utility.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\bin\Debug\net7.0\Utility.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.csproj.AssemblyReference.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.AssemblyInfoInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.AssemblyInfo.cs
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.csproj.CopyComplete
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\refint\Entity.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\ref\Entity.dll
