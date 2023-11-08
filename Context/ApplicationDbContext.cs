@@ -38,13 +38,21 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        base.OnModelCreating(modelBuilder);
+        foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
+        {
+            relation.DeleteBehavior = DeleteBehavior.Restrict;
+        }
+
         passwordHasher = new();
 
         modelBuilder.Entity<Role>().HasData(new List<Role>
         {
-            new Role() { Id = 1, Name = RoleName.Admin, IsActive = true, CreatedAt = DateTime.Now },
-            new Role() { Id = 2, Name = RoleName.Customer, IsActive = true, CreatedAt = DateTime.Now },
-            new Role() { Id = 3, Name = RoleName.Patient, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = RoleName.Admin_Id, Name = RoleName.Admin, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = RoleName.Customer_Id, Name = RoleName.Customer, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = RoleName.Patient_Id, Name = RoleName.Patient, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = RoleName.Psychologist_Id, Name = RoleName.Psychologist, IsActive = true, CreatedAt = DateTime.Now },
         });
 
         modelBuilder.Entity<User>().HasData(new User()

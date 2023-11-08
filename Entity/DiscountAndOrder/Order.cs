@@ -24,7 +24,7 @@ public class Order : BaseEntity
 
     public bool IsPaid { get; set; }
 
-    public int RefId { get; set; }
+    public int? RefId { get; set; }
 
     // مبلغ کل با تخفیف
     public int PayAmount { get; set; }
@@ -36,4 +36,19 @@ public class Order : BaseEntity
     public int TotalAmount { get; set; }
 
     public string? Description { get; set; }
+
+    public void Edit(int? payAmount, int? discountAmount, int? totalAmount, string? description, bool isPaid)
+    {
+        TotalAmount = (int)totalAmount;
+        PayAmount = (int)payAmount;
+        DiscountAmount = (int)discountAmount;
+        IsPaid = isPaid;
+        UpdatedAt = DateTime.Now;
+    }
+
+    public void PaymentSuccess(int refId)
+    {
+        IsPaid = true;
+        RefId = refId;
+    }
 }

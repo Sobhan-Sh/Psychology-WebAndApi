@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using Dto.Patient.PatientTurn;
+using Entity.Psychologist;
 using Service.IRepository.Patient;
+using Service.IRepository.Psychologist;
 using Service.IService.Patient;
 using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
 using Utility.Validation;
 
 namespace Service.Service.Patient;
@@ -11,11 +12,13 @@ namespace Service.Service.Patient;
 public class PatientTurnService : IPatientTurnService
 {
     private readonly IPatientTurnRepository _patientTurnRepository;
+    private readonly ITypeOfConsultationRepository _typeOfConsultationRepository;
     private IMapper _mapper;
 
-    public PatientTurnService(IPatientTurnRepository patientTurnRepository, IMapper mapper)
+    public PatientTurnService(IPatientTurnRepository patientTurnRepository, ITypeOfConsultationRepository typeOfConsultationRepository, IMapper mapper)
     {
         _patientTurnRepository = patientTurnRepository;
+        _typeOfConsultationRepository = typeOfConsultationRepository;
         _mapper = mapper;
     }
 
@@ -144,31 +147,10 @@ public class PatientTurnService : IPatientTurnService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            if (await _patientTurnRepository.IsExistAsync(x => x.NationalCode == command.NationalCode))
-                return new BaseResult
-                {
-                    IsSuccess = false,
-                    Message = ValidationMessage.DuplicatedRecord,
-                    StatusCode = ValidationCode.BadRequest
-                };
-
-            if (await _patientTurnRepository.IsExistAsync(x => x.MedicalLicennseCode == command.MedicalLicennseCode))
-                return new BaseResult
-                {
-                    IsSuccess = false,
-                    Message = ValidationMessage.DuplicatedRecordLicennseCode,
-                    StatusCode = ValidationCode.BadRequest
-                };
-
-            if (command.ImageLicennse != null)
-                if (command.ImageLicennse.IsCheckFile())
-                {
-                    string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(imageName, PathExtention.PathImageLicennsePsychologist, null, null, null, null);
-                    command.EvidencePath = imageName;
-                }
-
-            await _patientTurnRepository.CreateAsync(_mapper.Map<Entity.Psychologist.Psychologist>(command));
+            //TODO : ما اینجا باید محاسبه کنیم قیمت مشاوره رو بر اساس ساعت
+            TypeOfConsultation typeOfConsultation = await _typeOfConsultationRepository.GetAsync(x => x.Id == command.TypeOfConsultationId);
+            command.Price = 120000 + typeOfConsultation.Price;
+            await _patientTurnRepository.CreateAsync(_mapper.Map<Entity.Patient.PatientTurn>(command));
             await _patientTurnRepository.SaveAsync();
             return new BaseResult()
             {

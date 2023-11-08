@@ -25,9 +25,9 @@ public class PatientTurn : BaseEntity
 
     public int Price { get; set; }
 
-    public void Edit(int price, DateTime consultationDay, int typeOfConsultationId, int psychologistWorkingDateAndTimeId)
+    public void Edit(int? price, DateTime consultationDay, int typeOfConsultationId, int psychologistWorkingDateAndTimeId)
     {
-        Price = price;
+        Price = (int)price;
         ConsultationDay = consultationDay;
         TypeOfConsultationId = typeOfConsultationId;
         PsychologistWorkingDateAndTimeId = psychologistWorkingDateAndTimeId;

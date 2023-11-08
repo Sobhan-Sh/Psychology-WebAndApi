@@ -179,7 +179,7 @@ public class TestService : ITestService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            query.Edit(command.Title, command.Description);
+            query.Edit(command.Title, command.Description, command.Price);
             await _repository.SaveAsync();
             return new BaseResult()
             {

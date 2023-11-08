@@ -1,6 +1,5 @@
 ﻿namespace Dto.Order;
 
-public class EditOrder
+public class EditOrder : CreateOrder
 {
-    
 }

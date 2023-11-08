@@ -24,6 +24,7 @@ public static class PatientBootstrapper
         services.AddTransient(typeof(IPatientService), typeof(PatientService));
         services.AddTransient(typeof(IPatientFileService), typeof(PatientFileService));
         services.AddTransient(typeof(IPatientResponsesService), typeof(PatientResponsesService));
+        services.AddTransient(typeof(IPatientTurnService), typeof(PatientTurnService));
 
         return services;
     }

@@ -1,6 +1,8 @@
-﻿namespace Dto.Discount;
+﻿using Utility.Dto;
 
-public class CreateDiscount
+namespace Dto.Discount;
+
+public class CreateDiscount : BaseDto
 {
     public int PatientId { get; set; }
 

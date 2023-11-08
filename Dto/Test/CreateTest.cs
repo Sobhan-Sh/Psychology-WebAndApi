@@ -9,4 +9,7 @@ public class CreateTest : BaseDto
     public string Title { get; set; }
 
     public string? Description { get; set; }
+
+    [Required]
+    public int Price { get; set; }
 }

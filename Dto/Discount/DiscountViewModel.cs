@@ -1,9 +1,10 @@
 ﻿using Dto.Patient;
 using Dto.Psychologist;
+using Utility.Dto;
 
 namespace Dto.Discount;
 
-public class DiscountViewModel
+public class DiscountViewModel : BaseDto
 {
     public PatientViewModel Patient { get; set; }
 

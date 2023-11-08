@@ -12,5 +12,5 @@ public class CreatePatientTurn : BaseDto
 
     public DateTime ConsultationDay { get; set; }
 
-    public int Price { get; set; }
+    public int? Price { get; set; }
 }

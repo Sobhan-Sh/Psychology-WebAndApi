@@ -185,15 +185,7 @@ public class DiscountService : IDiscountService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            if (command.ImageLicennse != null)
-                if (command.ImageLicennse.IsCheckFile())
-                {
-                    var fileName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, null, null);
-                    command.EvidencePath = fileName;
-                }
-
-            query.Edit(command.Age, command.NationalCode, command.EvidencePath, command.DateOfBirth, command.MedicalLicennseCode);
+            query.Edit(command.DiscountWithMoney, command.DiscountWithPercentage);
             await _discountRepository.SaveAsync();
             return new BaseResult()
             {

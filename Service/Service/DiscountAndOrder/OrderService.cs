@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Dto.Order;
-using Dto.Psychologist;
+using Entity.DiscountAndOrder;
+using Entity.Patient;
 using Service.IRepository.DiscountAndOrder;
+using Service.IRepository.Patient;
+using Service.IRepository.Test;
 using Service.IService.DiscountAndOrder;
 using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
 using Utility.Validation;
 
 namespace Service.Service.DiscountAndOrder;
@@ -13,12 +15,16 @@ public class OrderService : IOrderService
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IDiscountRepository _discountRepository;
+    private readonly ITestRepository _testRepository;
+    private readonly IPatientTurnRepository _patientTurnRepository;
     private IMapper _mapper;
 
-    public OrderService(IOrderRepository orderRepository, IDiscountRepository discountRepository, IMapper mapper)
+    public OrderService(IOrderRepository orderRepository, IDiscountRepository discountRepository, ITestRepository testRepository, IPatientTurnRepository patientTurnRepository, IMapper mapper)
     {
         _orderRepository = orderRepository;
         _discountRepository = discountRepository;
+        _testRepository = testRepository;
+        _patientTurnRepository = patientTurnRepository;
         _mapper = mapper;
     }
 
@@ -26,10 +32,10 @@ public class OrderService : IOrderService
     {
         try
         {
-            IEnumerable<Entity.DiscountAndOrder.Order> query = await _orderRepository.GetAllAsync(include: "Patient,Psychologist,Test,PatientTurn");
+            IEnumerable<Order> query = await _orderRepository.GetAllAsync(include: "Patient,Psychologist,Test,PatientTurn");
             if (!query.Any())
             {
-                return new BaseResult<List<PsychologistViewModel>>
+                return new BaseResult<List<OrderViewModel>>
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.Vacant,
@@ -37,17 +43,17 @@ public class OrderService : IOrderService
                 };
             }
 
-            return new BaseResult<List<PsychologistViewModel>>
+            return new BaseResult<List<OrderViewModel>>
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGetAll,
-                Data = _mapper.Map<List<PsychologistViewModel>>(query),
+                Data = _mapper.Map<List<OrderViewModel>>(query),
                 StatusCode = ValidationCode.Success
             };
         }
         catch (Exception e)
         {
-            return new BaseResult<List<PsychologistViewModel>>()
+            return new BaseResult<List<OrderViewModel>>()
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorGetAll(e.Message),
@@ -60,48 +66,42 @@ public class OrderService : IOrderService
     {
         try
         {
-            List<Entity.DiscountAndOrder.Order> query = new List<Entity.DiscountAndOrder.Order>();
-            if (string.IsNullOrWhiteSpace(f.MedicalLicennseCode) && string.IsNullOrWhiteSpace(f.NationalCode) && f.DateOfBirth == null && f.Age! > 0 && f.Commission! > 0)
+            List<Order> query = new List<Order>();
+            if (f.IsPaid == null && f.DiscountAmount <= 1 && f.PayAmount <= 1 && f.TotalAmount < 1)
             {
-                query.AddRange(await _orderRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order"));
+                query.AddRange(await _orderRepository.GetAllAsync(include: "Patient,Psychologist,Test,PatientTurn"));
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(f.MedicalLicennseCode))
-                    query.AddRange(await _orderRepository.GetAllAsync(x => x.MedicalLicennseCode.Contains(f.MedicalLicennseCode), include: "PsychologistWorkingDateAndTime,Discount,Order"));
-
-                if (!string.IsNullOrWhiteSpace(f.NationalCode))
-                    query.AddRange(await _orderRepository.GetAllAsync(x => x.NationalCode.Contains(f.NationalCode), include: "PsychologistWorkingDateAndTime,Discount,Order"));
-
-                if (f.DateOfBirth != null)
-                    query.AddRange(await _orderRepository.GetAllAsync(x => x.DateOfBirth <= f.DateOfBirth, include: "PsychologistWorkingDateAndTime,Discount,Order"));
-
-                if (f.Age > 0)
-                    query.AddRange(await _orderRepository.GetAllAsync(x => x.Age <= f.Age, include: "PsychologistWorkingDateAndTime,Discount,Order"));
-
-                if (f.Commission > 0)
-                    query.AddRange(await _orderRepository.GetAllAsync(x => x.Commission <= f.Commission, include: "PsychologistWorkingDateAndTime,Discount,Order"));
+                if (f.TotalAmount > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
+                if (f.IsPaid == null)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.IsPaid == f.IsPaid, include: "Patient,Psychologist,Test,PatientTurn"));
+                if (f.PayAmount > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.PayAmount >= f.PayAmount, include: "Patient,Psychologist,Test,PatientTurn"));
+                if (f.TotalAmount > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
             }
 
             if (!query.Any())
-                return new BaseResult<List<PsychologistViewModel>>
+                return new BaseResult<List<OrderViewModel>>
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.Vacant,
                     StatusCode = ValidationCode.Success
                 };
 
-            return new BaseResult<List<PsychologistViewModel>>
+            return new BaseResult<List<OrderViewModel>>
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGetAllSearch(query.Distinct().Count()),
-                Data = _mapper.Map<List<PsychologistViewModel>>(query.Distinct()),
+                Data = _mapper.Map<List<OrderViewModel>>(query.Distinct()),
                 StatusCode = ValidationCode.Success
             };
         }
         catch (Exception e)
         {
-            return new BaseResult<List<PsychologistViewModel>>()
+            return new BaseResult<List<OrderViewModel>>()
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorGetAll(e.Message),
@@ -114,10 +114,10 @@ public class OrderService : IOrderService
     {
         try
         {
-            Entity.DiscountAndOrder.Order query = await _orderRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime,Discount,Order");
+            Order query = await _orderRepository.GetAsync(x => x.Id == Id, include: "Patient,Psychologist,Test,PatientTurn");
             if (query == null)
             {
-                return new BaseResult<EditPsychologist>
+                return new BaseResult<EditOrder>
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.NoFoundGet,
@@ -125,17 +125,17 @@ public class OrderService : IOrderService
                 };
             }
 
-            return new BaseResult<EditPsychologist>
+            return new BaseResult<EditOrder>
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGet,
-                Data = _mapper.Map<EditPsychologist>(query),
+                Data = _mapper.Map<EditOrder>(query),
                 StatusCode = ValidationCode.Success
             };
         }
         catch (Exception e)
         {
-            return new BaseResult<EditPsychologist>
+            return new BaseResult<EditOrder>
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorGet(e.Message),
@@ -156,31 +156,43 @@ public class OrderService : IOrderService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            if (await _orderRepository.IsExistAsync(x => x.NationalCode == command.NationalCode))
-                return new BaseResult
-                {
-                    IsSuccess = false,
-                    Message = ValidationMessage.DuplicatedRecord,
-                    StatusCode = ValidationCode.BadRequest
-                };
+            int totalPrice = 0;
+            command.TotalAmount = 0;
+            command.DiscountAmount = 0;
+            command.RefId = 0;
+            if (command.TestId != null)
+            {
+                Entity.Test.Test test = await _testRepository.GetAsync(x => x.Id == command.TestId);
+                totalPrice += test.Price;
+            }
 
-            if (await _orderRepository.IsExistAsync(x => x.MedicalLicennseCode == command.MedicalLicennseCode))
-                return new BaseResult
-                {
-                    IsSuccess = false,
-                    Message = ValidationMessage.DuplicatedRecordLicennseCode,
-                    StatusCode = ValidationCode.BadRequest
-                };
+            if (command.PatientTurnId != null)
+            {
+                PatientTurn patientTurn = await _patientTurnRepository.GetAsync(x => x.Id == command.PatientTurnId);
+                totalPrice += patientTurn.Price;
+            }
 
-            if (command.ImageLicennse != null)
-                if (command.ImageLicennse.IsCheckFile())
+            command.TotalAmount = totalPrice;
+            if (await _discountRepository.IsExistAsync(x => x.PatientId == command.PatientId))
+            {
+                Discount discount = await _discountRepository.GetAsync(x => x.PatientId == command.PatientId);
+                if (discount.DiscountWithMoney != null)
                 {
-                    string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(imageName, PathExtention.PathImageLicennsePsychologist, null, null, null, null);
-                    command.EvidencePath = imageName;
+                    command.DiscountAmount = discount.DiscountWithMoney;
+                    totalPrice = (int)(totalPrice - command.DiscountAmount);
                 }
 
-            await _orderRepository.CreateAsync(_mapper.Map<Entity.DiscountAndOrder.Order>(command));
+                if (discount.DiscountWithPercentage != null)
+                {
+                    command.DiscountAmount = (100 / discount.DiscountWithPercentage) * totalPrice;
+                    totalPrice = (int)(totalPrice - command.DiscountAmount);
+                }
+            }
+
+            command.IsPaid = false;
+            command.PayAmount = totalPrice;
+            command.CreatedAt = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+            await _orderRepository.CreateAsync(_mapper.Map<Order>(command));
             await _orderRepository.SaveAsync();
             return new BaseResult()
             {
@@ -204,7 +216,7 @@ public class OrderService : IOrderService
     {
         try
         {
-            Entity.DiscountAndOrder.Order query = await _orderRepository.GetAsync(x => x.Id == command.Id);
+            Order query = await _orderRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -213,15 +225,7 @@ public class OrderService : IOrderService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            if (command.ImageLicennse != null)
-                if (command.ImageLicennse.IsCheckFile())
-                {
-                    var fileName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, null, null);
-                    command.EvidencePath = fileName;
-                }
-
-            query.Edit(command.Age, command.NationalCode, command.EvidencePath, command.DateOfBirth, command.MedicalLicennseCode);
+            query.Edit(command.PayAmount, command.DiscountAmount, command.TotalAmount, command.Description, command.IsPaid);
             await _orderRepository.SaveAsync();
             return new BaseResult()
             {
@@ -245,7 +249,7 @@ public class OrderService : IOrderService
     {
         try
         {
-            Entity.DiscountAndOrder.Order query = await _orderRepository.GetAsync(x => x.Id == Id);
+            Order query = await _orderRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -253,12 +257,6 @@ public class OrderService : IOrderService
                     Message = ValidationMessage.RecordNotFound,
                     StatusCode = ValidationCode.NotFound
                 };
-
-            if (!string.IsNullOrWhiteSpace(query.EvidencePath))
-            {
-                if (File.Exists(PathExtention.PathImageLicennsePsychologist + query.EvidencePath))
-                    File.Delete(PathExtention.PathImageLicennsePsychologist + query.EvidencePath);
-            }
 
             await _orderRepository.DeleteAsync(query);
             await _orderRepository.SaveAsync();
@@ -278,5 +276,27 @@ public class OrderService : IOrderService
                 StatusCode = ValidationCode.BadRequest
             };
         }
+    }
+
+    public async Task<BaseResult> PaymentSuccessAsync(PaymentSuccess command)
+    {
+        Order order = await _orderRepository.GetAsync(x => x.Id == command.OrderId);
+        if (order == null)
+            return new BaseResult
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.RecordNotFound,
+                StatusCode = ValidationCode.NotFound
+            };
+
+        order.PaymentSuccess(command.RefId);
+        order.Description = $"پرداخت شما در تاریخ {order.CreatedAt} با موفقیت انجام شد شماره فاکتور شما {order.Id}";
+        await _orderRepository.SaveAsync();
+        return new BaseResult
+        {
+            IsSuccess = true,
+            Message = ValidationMessage.SuccessActive,
+            StatusCode = ValidationCode.Success
+        };
     }
 }

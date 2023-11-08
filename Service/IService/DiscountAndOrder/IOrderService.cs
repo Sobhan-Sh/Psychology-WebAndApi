@@ -19,4 +19,6 @@ public interface IOrderService
     public Task<BaseResult> DeleteAsync(int Id);
 
     #endregion
+
+    public Task<BaseResult> PaymentSuccessAsync(PaymentSuccess command);
 }

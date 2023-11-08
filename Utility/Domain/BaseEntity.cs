@@ -4,7 +4,7 @@ namespace Utility.Domain;
 
 public class BaseEntity
 {
-    [Required]
+    [Key]
     public int Id { get; set; }
 
     [Required]
@@ -22,7 +22,7 @@ public class BaseEntity
 }
 public class BaseEntity<TKey>
 {
-    [Required]
+    [Key]
     public TKey Id { get; set; }
 
     [Required]
