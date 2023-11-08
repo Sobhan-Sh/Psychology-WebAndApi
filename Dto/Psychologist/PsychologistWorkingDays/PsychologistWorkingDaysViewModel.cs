@@ -1,6 +1,8 @@
-﻿namespace Dto.Psychologist.PsychologistWorkingDays;
+﻿using Dto.Psychologist.PsychologistWorkingDateAndTime;
 
-public class PsychologistWorkingDaysViewModel
+namespace Dto.Psychologist.PsychologistWorkingDays;
+
+public class PsychologistWorkingDaysViewModel : CreatePsychologistWorkingDays
 {
-    
+    public List<PsychologistWorkingDateAndTimeViewModel> PsychologistWorkingDateAndTimes { get; set; }
 }

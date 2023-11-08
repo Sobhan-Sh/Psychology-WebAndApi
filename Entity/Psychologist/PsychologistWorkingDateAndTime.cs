@@ -19,4 +19,10 @@ public class PsychologistWorkingDateAndTime : BaseEntity
     public PsychologistWorkingHours PsychologistWorkingHours { get; set; }
 
     public List<PatientTurn> PatientTurns { get; set; }
+
+    public void Edit(int psychologistWorkingHoursId, int psychologistWorkingDaysId)
+    {
+        PsychologistWorkingDaysId = psychologistWorkingDaysId;
+        PsychologistWorkingHoursId = psychologistWorkingHoursId;
+    }
 }

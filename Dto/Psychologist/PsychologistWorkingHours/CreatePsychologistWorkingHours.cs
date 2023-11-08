@@ -1,6 +1,10 @@
-﻿namespace Dto.Psychologist.PsychologistWorkingHours;
+﻿using Utility.Dto;
 
-public class CreatePsychologistWorkingHours
+namespace Dto.Psychologist.PsychologistWorkingHours;
+
+public class CreatePsychologistWorkingHours : BaseDto
 {
-    
+    public DateTime StartTime { get; set; }
+
+    public DateTime EndTime { get; set; }
 }

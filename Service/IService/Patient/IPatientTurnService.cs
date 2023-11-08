@@ -5,8 +5,8 @@ namespace Service.IService.Patient;
 
 public interface IPatientTurnService
 {
-    public Task<BaseResult<PatientTurnViewModel>> GetAllAsync();
-    public Task<BaseResult<PatientTurnViewModel>> GetAllAsync(SearchPatientTurn f);
+    public Task<BaseResult<List<PatientTurnViewModel>>> GetAllAsync();
+    public Task<BaseResult<List<PatientTurnViewModel>>> GetAllAsync(SearchPatientTurn f);
 
     #region CRUD
 

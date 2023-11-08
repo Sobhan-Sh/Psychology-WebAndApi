@@ -1,6 +1,5 @@
 ﻿namespace Dto.Psychologist;
 
-public class PsychologistViewModel
+public class PsychologistViewModel : CreatePsychologist
 {
-    
 }

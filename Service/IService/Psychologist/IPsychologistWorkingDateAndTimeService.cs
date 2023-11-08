@@ -5,7 +5,7 @@ namespace Service.IService.Psychologist;
 
 public interface IPsychologistWorkingDateAndTimeService
 {
-    public Task<BaseResult<PsychologistWorkingDateAndTimeViewModel>> GetAllAsync();
+    public Task<BaseResult<List<PsychologistWorkingDateAndTimeViewModel>>> GetAllAsync();
 
     #region CRUD
 

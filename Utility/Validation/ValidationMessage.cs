@@ -27,6 +27,8 @@ public class ValidationMessage
     public const string SuccessRegister = "حساب کاربری با موفقیت ساخته شد";
     public const string PasswordsNotMatch = "پسورد و تکرار آن با هم مطابقت ندارند";
     public const string ActivePhone = "شماره موبایل شما اعتبار سنجی نشده";
+    public const string DuplicatedRecordLicennseCode = "کد پروانه پزشکی تکراری است";
+    public const string DuplicatedRecordDiscountPatient = "نمی توان برای یک بیمار از دوتا تخفیف استفاده کرد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

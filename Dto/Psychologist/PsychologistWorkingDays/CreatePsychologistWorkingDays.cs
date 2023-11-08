@@ -1,6 +1,8 @@
-﻿namespace Dto.Psychologist.PsychologistWorkingDays;
+﻿using Utility.Dto;
 
-public class CreatePsychologistWorkingDays
+namespace Dto.Psychologist.PsychologistWorkingDays;
+
+public class CreatePsychologistWorkingDays : BaseDto
 {
-    
+    public string Day { get; set; }
 }

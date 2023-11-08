@@ -3,7 +3,6 @@ using Utility.Data;
 
 namespace Service.IRepository.DiscountAndOrder;
 
-public interface IDiscountRepository:IGenericRepository<Discount>
+public interface IDiscountRepository : IGenericRepository<Discount>
 {
-    
 }

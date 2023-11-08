@@ -7,8 +7,8 @@ public interface IPsychologistService
 {
     #region Get All
 
-    public Task<BaseResult<PsychologistViewModel>> GetAllAsync();
-    public Task<BaseResult<PsychologistViewModel>> GetAllAsync(SearchPsychologist f);
+    public Task<BaseResult<List<PsychologistViewModel>>> GetAllAsync();
+    public Task<BaseResult<List<PsychologistViewModel>>> GetAllAsync(SearchPsychologist f);
 
     #endregion
 

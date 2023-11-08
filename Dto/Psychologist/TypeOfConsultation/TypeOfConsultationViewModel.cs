@@ -1,6 +1,8 @@
-﻿namespace Dto.Psychologist.TypeOfConsultation;
+﻿using Dto.Patient.PatientTurn;
 
-public class TypeOfConsultationViewModel
+namespace Dto.Psychologist.TypeOfConsultation;
+
+public class TypeOfConsultationViewModel : CreateTypeOfConsultation
 {
-    
+    public List<PatientTurnViewModel> PatientTurns { get; set; }
 }

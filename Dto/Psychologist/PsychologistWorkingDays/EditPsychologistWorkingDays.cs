@@ -1,6 +1,5 @@
 ﻿namespace Dto.Psychologist.PsychologistWorkingDays;
 
-public class EditPsychologistWorkingDays
+public class EditPsychologistWorkingDays : CreatePsychologistWorkingDays
 {
-    
 }

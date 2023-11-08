@@ -30,6 +30,8 @@ namespace Entity.User
 
         public List<Patient.Patient> Patient { get; set; }
 
+        public List<Psychologist.Psychologist> Psychologists { get; set; }
+
         public string? Token { get; set; }
 
         public void Edit(string fName, string lName, string? address, string? avatar, int roleId, string? gender)

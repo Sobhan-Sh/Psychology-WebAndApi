@@ -1,6 +1,5 @@
 ﻿namespace Dto.Discount;
 
-public class EditDiscount
+public class EditDiscount : CreateDiscount
 {
-    
 }

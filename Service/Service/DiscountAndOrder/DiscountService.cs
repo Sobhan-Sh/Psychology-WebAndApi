@@ -1,46 +1,248 @@
-﻿using Dto.Discount;
+﻿using AutoMapper;
+using Dto.Discount;
 using Service.IRepository.DiscountAndOrder;
 using Service.IService.DiscountAndOrder;
 using Utility.ReturnFuncResult;
+using Utility.UploadFileTools;
+using Utility.Validation;
 
 namespace Service.Service.DiscountAndOrder;
 
 public class DiscountService : IDiscountService
 {
     private readonly IDiscountRepository _discountRepository;
+    private IMapper _mapper;
 
-    public DiscountService(IDiscountRepository discountRepository)
+    public DiscountService(IDiscountRepository discountRepository, IMapper mapper)
     {
         _discountRepository = discountRepository;
+        _mapper = mapper;
     }
 
-    public async Task<BaseResult<DiscountViewModel>> GetAllAsync()
+    public async Task<BaseResult<List<DiscountViewModel>>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            IEnumerable<Entity.DiscountAndOrder.Discount> query = await _discountRepository.GetAllAsync(include: "Patient,Psychologist");
+            if (!query.Any())
+            {
+                return new BaseResult<List<DiscountViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+            }
+
+            return new BaseResult<List<DiscountViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAll,
+                Data = _mapper.Map<List<DiscountViewModel>>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<DiscountViewModel>>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 
-    public async Task<BaseResult<DiscountViewModel>> GetAllAsync(SearchDiscount f)
+    public async Task<BaseResult<List<DiscountViewModel>>> GetAllAsync(SearchDiscount f)
     {
-        throw new NotImplementedException();
+        try
+        {
+            List<Entity.DiscountAndOrder.Discount> query = new List<Entity.DiscountAndOrder.Discount>();
+            if (f.DiscountWithMoney == 0 && f.DiscountWithPercentage == 0)
+            {
+                query.AddRange(await _discountRepository.GetAllAsync(include: "Patient,Psychologist"));
+            }
+            else
+            {
+                if (f.DiscountWithPercentage > 0)
+                    query.AddRange(await _discountRepository.GetAllAsync(x => x.DiscountWithPercentage >= f.DiscountWithPercentage, include: "Patient,Psychologist"));
+
+                if (f.DiscountWithMoney > 0)
+                    query.AddRange(await _discountRepository.GetAllAsync(x => x.DiscountWithMoney >= f.DiscountWithMoney, include: "Patient,Psychologist"));
+            }
+
+            if (!query.Any())
+                return new BaseResult<List<DiscountViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+
+            return new BaseResult<List<DiscountViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAllSearch(query.Distinct().Count()),
+                Data = _mapper.Map<List<DiscountViewModel>>(query.Distinct()),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<DiscountViewModel>>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 
     public async Task<BaseResult<EditDiscount>> GetAsync(int Id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == Id, include: "Patient,Psychologist");
+            if (query == null)
+            {
+                return new BaseResult<EditDiscount>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            return new BaseResult<EditDiscount>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<EditDiscount>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<EditDiscount>
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 
     public async Task<BaseResult> CreateAsync(CreateDiscount command)
     {
-        throw new NotImplementedException();
+        try
+        {
+            if (command == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.IsRequired,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            if (await _discountRepository.IsExistAsync(x => x.PatientId == command.PatientId))
+                return new BaseResult
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.DuplicatedRecordDiscountPatient,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            await _discountRepository.CreateAsync(_mapper.Map<Entity.DiscountAndOrder.Discount>(command));
+            await _discountRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCreate,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 
     public async Task<BaseResult> UpdateAsync(EditDiscount command)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == command.Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            if (command.ImageLicennse != null)
+                if (command.ImageLicennse.IsCheckFile())
+                {
+                    var fileName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
+                    command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, null, null);
+                    command.EvidencePath = fileName;
+                }
+
+            query.Edit(command.Age, command.NationalCode, command.EvidencePath, command.DateOfBirth, command.MedicalLicennseCode);
+            await _discountRepository.SaveAsync();
+            return new BaseResult()
+            {
+                Message = ValidationMessage.SuccessUpdate,
+                StatusCode = ValidationCode.Success,
+                IsSuccess = true
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorUpdate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 
     public async Task<BaseResult> DeleteAsync(int Id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            await _discountRepository.DeleteAsync(query);
+            await _discountRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessDelete,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 }

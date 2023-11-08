@@ -1,6 +1,5 @@
 ﻿namespace Dto.Patient.PatientTurn;
 
-public class EditPatientTurn
+public class EditPatientTurn : CreatePatientTurn
 {
-    
 }

@@ -1,6 +1,5 @@
 ﻿namespace Dto.Psychologist;
 
-public class EditPsychologist
+public class EditPsychologist : CreatePsychologist
 {
-    
 }

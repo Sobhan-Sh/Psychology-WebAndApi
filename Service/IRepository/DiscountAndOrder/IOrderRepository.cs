@@ -1,6 +1,8 @@
-﻿namespace Service.IRepository.DiscountAndOrder;
+﻿using Entity.DiscountAndOrder;
+using Utility.Data;
 
-public interface IOrderRepository
+namespace Service.IRepository.DiscountAndOrder;
+
+public interface IOrderRepository : IGenericRepository<Order>
 {
-    
 }

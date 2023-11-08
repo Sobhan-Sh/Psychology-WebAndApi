@@ -5,8 +5,8 @@ namespace Service.IService.DiscountAndOrder;
 
 public interface IDiscountService
 {
-    public Task<BaseResult<DiscountViewModel>> GetAllAsync();
-    public Task<BaseResult<DiscountViewModel>> GetAllAsync(SearchDiscount f);
+    public Task<BaseResult<List<DiscountViewModel>>> GetAllAsync();
+    public Task<BaseResult<List<DiscountViewModel>>> GetAllAsync(SearchDiscount f);
 
     #region CRUD
 

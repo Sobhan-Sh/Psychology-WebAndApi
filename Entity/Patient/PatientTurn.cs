@@ -24,4 +24,12 @@ public class PatientTurn : BaseEntity
     public DateTime ConsultationDay { get; set; }
 
     public int Price { get; set; }
+
+    public void Edit(int price, DateTime consultationDay, int typeOfConsultationId, int psychologistWorkingDateAndTimeId)
+    {
+        Price = price;
+        ConsultationDay = consultationDay;
+        TypeOfConsultationId = typeOfConsultationId;
+        PsychologistWorkingDateAndTimeId = psychologistWorkingDateAndTimeId;
+    }
 }

@@ -165,7 +165,7 @@ public class UserService : IUserService
             {
                 if (command.ImageUser.IsCheckFile())
                 {
-                    var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
+                    string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
                     command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, null, null, null, null);
                     command.Avatar = imageName;
                 }
@@ -213,7 +213,7 @@ public class UserService : IUserService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            query.Edit(command.FName, command.LName, command.Address, command.Avatar, command.RoleID,command.Gender);
+            query.Edit(command.FName, command.LName, command.Address, command.Avatar, command.RoleID, command.Gender);
             await _userRepository.SaveAsync();
             return new BaseResult()
             {
