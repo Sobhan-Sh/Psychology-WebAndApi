@@ -19,6 +19,13 @@ namespace Psychology.Controllers.Api
             _questionService = questionService;
         }
 
+        /// <summary>
+        /// Get All Search
+        /// </summary>
+        /// <param name="SearchQustionViewModel"></param>
+        /// <returns> BaseResult(List(QuestionViewModel)) </returns>
+        #region Search
+
         [HttpGet("get-all-search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -29,6 +36,14 @@ namespace Psychology.Controllers.Api
             return await _questionService.GetAllAsync(search);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(QuestionViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,6 +53,15 @@ namespace Psychology.Controllers.Api
         {
             return await _questionService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(EditQuestion) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +74,15 @@ namespace Psychology.Controllers.Api
             return await _questionService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreateQuestion"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -60,6 +93,15 @@ namespace Psychology.Controllers.Api
         {
             return await _questionService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="EditQuestion"></param>
+        /// <returns> BaseResult </returns>
+        #region Edit
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -73,6 +115,15 @@ namespace Psychology.Controllers.Api
             return await _questionService.UpdateAsync(command);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
+
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,5 +134,7 @@ namespace Psychology.Controllers.Api
         {
             return await _questionService.DeleteAsync(id);
         }
+
+        #endregion
     }
 }

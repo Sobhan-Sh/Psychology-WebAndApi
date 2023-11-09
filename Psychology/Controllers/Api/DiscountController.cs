@@ -1,4 +1,6 @@
 ﻿using Dto.Discount;
+using Framework.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IService.DiscountAndOrder;
 using Utility.ReturnFuncResult;
@@ -7,6 +9,7 @@ namespace Psychology.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{RoleHelper.Admin}")]
     public class DiscountController : ControllerBase
     {
         private readonly IDiscountService _discountService;
@@ -15,6 +18,13 @@ namespace Psychology.Controllers.Api
         {
             _discountService = discountService;
         }
+
+        /// <summary>
+        /// Get All Search
+        /// </summary>
+        /// <param name="SearchDiscount"></param>
+        /// <returns> BaseResult(List(DiscountViewModel)) </returns>
+        #region Search
 
         [HttpGet("get-all-search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -26,6 +36,14 @@ namespace Psychology.Controllers.Api
             return await _discountService.GetAllAsync(model);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(DiscountViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -35,6 +53,15 @@ namespace Psychology.Controllers.Api
         {
             return await _discountService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(EditDiscount) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -47,6 +74,15 @@ namespace Psychology.Controllers.Api
             return await _discountService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreateDiscount"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -57,6 +93,15 @@ namespace Psychology.Controllers.Api
         {
             return await _discountService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="EditDiscount"></param>
+        /// <returns> BaseResult </returns>
+        #region Edit
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -70,6 +115,15 @@ namespace Psychology.Controllers.Api
             return await _discountService.UpdateAsync(command);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
+
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -80,5 +134,7 @@ namespace Psychology.Controllers.Api
         {
             return await _discountService.DeleteAsync(id);
         }
+
+        #endregion
     }
 }

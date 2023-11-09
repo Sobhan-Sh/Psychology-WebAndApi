@@ -19,6 +19,12 @@ namespace Psychology.Controllers.Api
             _patientFileService = patientFileService;
         }
 
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(PatientFileViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -28,6 +34,15 @@ namespace Psychology.Controllers.Api
         {
             return await _patientFileService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(PatientFileViewModel) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -40,6 +55,15 @@ namespace Psychology.Controllers.Api
             return await _patientFileService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreatePatientFile"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -50,6 +74,15 @@ namespace Psychology.Controllers.Api
         {
             return await _patientFileService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
 
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -62,6 +95,15 @@ namespace Psychology.Controllers.Api
             return await _patientFileService.DeleteAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Active
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Active
+
         [HttpPut("active/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -73,6 +115,15 @@ namespace Psychology.Controllers.Api
             return await _patientFileService.ActiveAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// DeActive
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region DeActive
+
         [HttpPut("de-active/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,5 +134,7 @@ namespace Psychology.Controllers.Api
         {
             return await _patientFileService.DeActiveAsync(id);
         }
+
+        #endregion
     }
 }

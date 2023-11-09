@@ -22,6 +22,8 @@ public class CreatePsychologist : BaseDto
 
     public string? EvidencePath { get; set; }
 
+    public int UserId { get; set; }
+
     public List<CreatePsychologistWorkingDateAndTime> PsychologistWorkingDateAndTime { get; set; }
 
     public List<CreateDiscount> Discount { get; set; }

@@ -19,6 +19,12 @@ namespace Psychology.Controllers.Api
             _timingService = patientService;
         }
 
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(PatientViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -28,6 +34,15 @@ namespace Psychology.Controllers.Api
         {
             return await _timingService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(PatientViewModel) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -40,6 +55,15 @@ namespace Psychology.Controllers.Api
             return await _timingService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreatePatient"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -50,6 +74,15 @@ namespace Psychology.Controllers.Api
         {
             return await _timingService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="EditPatient"></param>
+        /// <returns> BaseResult </returns>
+        #region Edit
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -63,6 +96,15 @@ namespace Psychology.Controllers.Api
             return await _timingService.UpdateAsync(command);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
+
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -73,5 +115,7 @@ namespace Psychology.Controllers.Api
         {
             return await _timingService.DeleteAsync(id);
         }
+
+        #endregion
     }
 }

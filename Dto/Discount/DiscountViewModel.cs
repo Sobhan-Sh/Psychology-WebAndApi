@@ -6,9 +6,9 @@ namespace Dto.Discount;
 
 public class DiscountViewModel : BaseDto
 {
-    public PatientViewModel Patient { get; set; }
+    public PatientViewModel PatientViewModel { get; set; }
 
-    public PsychologistViewModel Psychologist { get; set; }
+    public PsychologistViewModel PsychologistViewModel { get; set; }
 
     public int? DiscountWithMoney { get; set; }
 

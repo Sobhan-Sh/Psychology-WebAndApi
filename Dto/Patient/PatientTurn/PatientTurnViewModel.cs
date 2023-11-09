@@ -1,16 +1,21 @@
 ﻿using Dto.Order;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.TypeOfConsultation;
+using Utility.Dto;
 
 namespace Dto.Patient.PatientTurn;
 
-public class PatientTurnViewModel : CreatePatientTurn
+public class PatientTurnViewModel : BaseDto
 {
-    public List<OrderViewModel> Order { get; set; }
+    public DateTime ConsultationDay { get; set; }
 
-    public PsychologistWorkingDateAndTimeViewModel PsychologistWorkingDateAndTime { get; set; }
+    public int Price { get; set; }
 
-    public TypeOfConsultationViewModel TypeOfConsultation { get; set; }
+    public List<OrderViewModel> OrderViewModels { get; set; }
 
-    public PatientViewModel Patient { get; set; }
+    public PsychologistWorkingDateAndTimeViewModel PsychologistWorkingDateAndTimeViewModel { get; set; }
+
+    public TypeOfConsultationViewModel TypeOfConsultationViewModel { get; set; }
+
+    public PatientViewModel PatientViewModel { get; set; }
 }

@@ -4,5 +4,5 @@ namespace Dto.Psychologist.PsychologistWorkingDays;
 
 public class PsychologistWorkingDaysViewModel : CreatePsychologistWorkingDays
 {
-    public List<PsychologistWorkingDateAndTimeViewModel> PsychologistWorkingDateAndTimes { get; set; }
+    public List<PsychologistWorkingDateAndTimeViewModel> PsychologistWorkingDateAndTimeViewModels { get; set; }
 }

@@ -8,13 +8,13 @@ namespace Dto.Order;
 
 public class OrderViewModel : BaseDto
 {
-    public PatientTurnViewModel? PatientTurn { get; set; }
+    public PatientTurnViewModel? PatientTurnViewModel { get; set; }
 
-    public TestViewModel? Test { get; set; }
+    public TestViewModel? TestViewModel { get; set; }
 
-    public PsychologistViewModel Psychologist { get; set; }
+    public PsychologistViewModel PsychologistViewModel { get; set; }
 
-    public PatientViewModel Patient { get; set; }
+    public PatientViewModel PatientViewModel { get; set; }
 
     public bool IsPaid { get; set; }
 

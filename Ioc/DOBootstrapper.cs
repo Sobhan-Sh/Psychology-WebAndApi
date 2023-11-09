@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.DiscountAndOrder;
 using Service.IRepository.DiscountAndOrder;
+using Service.IService.DiscountAndOrder;
+using Service.Service.DiscountAndOrder;
 
 namespace Ioc;
 
@@ -15,6 +17,8 @@ public static class DOBootstrapper
         services.AddTransient<IOrderRepository, OrderRepository>();
         services.AddTransient<IDiscountRepository, DiscountRepository>();
         // Services
+        services.AddTransient<IOrderService, OrderService>();
+        services.AddTransient<IDiscountService, DiscountService>();
 
         return services;
     }

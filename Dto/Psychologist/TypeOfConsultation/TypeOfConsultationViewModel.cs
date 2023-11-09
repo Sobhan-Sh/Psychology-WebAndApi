@@ -4,5 +4,5 @@ namespace Dto.Psychologist.TypeOfConsultation;
 
 public class TypeOfConsultationViewModel : CreateTypeOfConsultation
 {
-    public List<PatientTurnViewModel> PatientTurns { get; set; }
+    public List<PatientTurnViewModel> PatientTurnViewModels { get; set; }
 }

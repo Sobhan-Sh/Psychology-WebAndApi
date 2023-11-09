@@ -17,8 +17,9 @@ namespace Psychology.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
         [Route("/Profile")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Profile()
         {
             BaseResult<EditUser> user = await _userService.GetAsync(Id: Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value));
             return View("Porfille", user.Data);

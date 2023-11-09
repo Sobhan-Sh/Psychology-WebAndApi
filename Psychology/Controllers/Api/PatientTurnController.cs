@@ -1,4 +1,6 @@
 ﻿using Dto.Patient.PatientTurn;
+using Framework.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IService.Patient;
 using Utility.ReturnFuncResult;
@@ -7,6 +9,7 @@ namespace Psychology.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{RoleHelper.Admin}")]
     public class PatientTurnController : ControllerBase
     {
         private readonly IPatientTurnService _patientTurnService;
@@ -15,6 +18,13 @@ namespace Psychology.Controllers.Api
         {
             _patientTurnService = patientTurnService;
         }
+
+        /// <summary>
+        /// Get All Search
+        /// </summary>
+        /// <param name="SearchPatientTurn"></param>
+        /// <returns> BaseResult(List(PatientTurnViewModel)) </returns>
+        #region Search
 
         [HttpGet("get-all-search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -26,6 +36,14 @@ namespace Psychology.Controllers.Api
             return await _patientTurnService.GetAllAsync(model);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(PatientTurnViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -35,6 +53,15 @@ namespace Psychology.Controllers.Api
         {
             return await _patientTurnService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(EditPatientTurn) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -47,6 +74,15 @@ namespace Psychology.Controllers.Api
             return await _patientTurnService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreatePatientTurn"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -57,6 +93,15 @@ namespace Psychology.Controllers.Api
         {
             return await _patientTurnService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="EditPatientTurn"></param>
+        /// <returns> BaseResult </returns>
+        #region Edit
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -70,6 +115,15 @@ namespace Psychology.Controllers.Api
             return await _patientTurnService.UpdateAsync(command);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
+
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -80,5 +134,7 @@ namespace Psychology.Controllers.Api
         {
             return await _patientTurnService.DeleteAsync(id);
         }
+
+        #endregion
     }
 }

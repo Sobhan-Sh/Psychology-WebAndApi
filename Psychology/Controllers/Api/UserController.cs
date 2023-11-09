@@ -19,6 +19,13 @@ namespace Psychology.Controllers.Api
             _userService = userService;
         }
 
+        /// <summary>
+        /// Get All Search
+        /// </summary>
+        /// <param name="SearchUserViewModel"></param>
+        /// <returns> BaseResult(List(UserViewModel)) </returns>
+        #region Search
+
         [HttpGet("get-all-search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -29,6 +36,14 @@ namespace Psychology.Controllers.Api
             return await _userService.GetAllAsync(model);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Get All
+        /// </summary>
+        /// <returns> BaseResult(List(UserViewModel)) </returns>
+        #region Get All
+
         [HttpGet("get-all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,6 +53,15 @@ namespace Psychology.Controllers.Api
         {
             return await _userService.GetAllAsync();
         }
+
+        #endregion
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult(EditUser) </returns>
+        #region Get
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +74,15 @@ namespace Psychology.Controllers.Api
             return await _userService.GetAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="CreateUser"></param>
+        /// <returns> BaseResult </returns>
+        #region Create
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -60,6 +93,15 @@ namespace Psychology.Controllers.Api
         {
             return await _userService.CreateAsync(command);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="EditUser"></param>
+        /// <returns> BaseResult </returns>
+        #region Edit
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -73,6 +115,15 @@ namespace Psychology.Controllers.Api
             return await _userService.UpdateAsync(command);
         }
 
+        #endregion
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Delete
+
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,6 +134,15 @@ namespace Psychology.Controllers.Api
         {
             return await _userService.DeleteAsync(id);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Block User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region Block
 
         [HttpPut("block/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -95,6 +155,15 @@ namespace Psychology.Controllers.Api
             return await _userService.BlockAsync(id);
         }
 
+        #endregion
+
+        /// <summary>
+        /// On Block User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> BaseResult </returns>
+        #region OnBlock
+
         [HttpPut("on-block/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -105,5 +174,7 @@ namespace Psychology.Controllers.Api
         {
             return await _userService.OnBlockAsync(id);
         }
+
+        #endregion
     }
 }
