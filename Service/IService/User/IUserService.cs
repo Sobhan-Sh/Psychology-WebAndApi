@@ -15,6 +15,7 @@ public interface IUserService
     #region CRUD
 
     Task<BaseResult<EditUser>> GetAsync(int Id);
+    Task<BaseResult<UserViewModel>> ReturnViewGetAsync(int Id);
     Task<BaseResult> CreateAsync(CreateUser command);
     Task<BaseResult> UpdateAsync(EditUser command);
     Task<BaseResult> DeleteAsync(int Id);
@@ -26,5 +27,7 @@ public interface IUserService
     Task<BaseResult> BlockAsync(int Id);
     Task<BaseResult> OnBlockAsync(int Id);
     Task<BaseResult> ChangePasswordAsync(ChangePassword command);
+    Task<BaseResult<ResultFindUserAuth>> ChangeAuth(int Id);
+    Task<BaseResult> ChangeAuth(ChangeAuth command);
     // Other Operations
 }

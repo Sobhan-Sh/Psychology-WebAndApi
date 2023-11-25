@@ -1,0 +1,64 @@
+﻿@model Dto.Test.CreateTest
+@{
+    ViewData["Title"] = " : افزودن تست جدید";
+    ViewBag.ProgressCreateTest = 25;
+}
+@Html.Partial("_ProgressCreateTest")
+@if (ViewData["error"] == "true")
+{
+    <section class="my-4 alert alert-warning">
+        <h3>
+            @ViewData["message"]
+        </h3>
+    </section>
+}
+<section class="container-fluid pe-sm-4">
+    <form asp-controller="PsychologicalTests" asp-action="CreateTest" method="post">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTime" />
+        <section class="row">
+            <section class="col-12 col-md-6">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x=>x.Title,new{@class = "cusotm-form-controle"})
+                @Html.ValidationMessageFor(x => x.Title,"",new{@class="text-danger"})
+            </section>
+            <section class="col-12 col-md-6">
+                @Html.LabelFor(x => x.Price)
+                @Html.TextBoxFor(x=>x.Price,new{@class = "cusotm-form-controle"})
+                @Html.ValidationMessageFor(x => x.Price,"",new{@class="text-danger"})
+            </section>
+            <section class="col-12">
+                @Html.LabelFor(x => x.Description)
+                @Html.TextBoxFor(x=>x.Description,new{@class = "cusotm-form-controle"})
+                @Html.ValidationMessageFor(x => x.Description,"",new{@class="text-danger"})
+            </section>
+            <label>
+                چارچوب جواب ها
+            </label>
+            <section class="col-12 col-md-6">
+                <input type="text" class="cusotm-form-controle answerInput" placeholder="جواب" />
+            </section>
+            <section class="col-12 col-sm-6">
+                <input type="number" class="cusotm-form-controle scoreInput" placeholder="نمره" />
+            </section>
+            <section class="col-12 text-center">
+                <button class="btn btn-success" type="button" onclick="addAnswer()">
+                    افزودن جواب
+                </button>
+            </section>
+            <section class="col-3">
+                <ul class="viewAnswer list-group">
+                </ul>
+            </section>
+            <section class="col-3">
+                <button class="btn btn-custom btn-sm px-3 d-none" id="next"> مرحله بعد </button>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    @Html.Partial("_ValidationScriptsPartial")
+    <script src="/assets/js/AnswerHandel.js"></script>
+}

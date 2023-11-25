@@ -18,7 +18,8 @@ builder.Services.Configure<AppSetting>(appSettingsSection);
 #region IOC Configuration
 
 // User & Role
-builder.Services.AccountConfig(builder.Configuration.GetConnectionString("PsychologyConnection"), builder.Configuration["AppSettings:Secret"]);
+builder.Services.AccountConfig(builder.Configuration.GetConnectionString("PsychologyConnection"),
+    builder.Configuration["AppSettings:Secret"]);
 // Comment & Patient & PatientExam & PatientFile & PatientResponses & PatientTurn
 builder.Services.PatientConfig(builder.Configuration.GetConnectionString("PsychologyConnection"));
 // Order & Discount
@@ -79,6 +80,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "Admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

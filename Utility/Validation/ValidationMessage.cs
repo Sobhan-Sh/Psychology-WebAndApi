@@ -29,6 +29,8 @@ public class ValidationMessage
     public const string ActivePhone = "شماره موبایل شما اعتبار سنجی نشده";
     public const string DuplicatedRecordLicennseCode = "کد پروانه پزشکی تکراری است";
     public const string DuplicatedRecordDiscountPatient = "نمی توان برای یک بیمار از دوتا تخفیف استفاده کرد";
+    public const string RecordNotFoundSectionQuestionErrorTest = "مشخص کنید که این سوالات مربوط به کدام آزمون هستند";
+    public const string RecordNotFoundSectionAnswerErrorQuestion = "مشخص کنید که این جواب ها مربوط به کدام سوال است";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

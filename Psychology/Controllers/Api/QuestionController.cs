@@ -80,7 +80,7 @@ namespace Psychology.Controllers.Api
         /// Create
         /// </summary>
         /// <param name="CreateQuestion"></param>
-        /// <returns> BaseResult </returns>
+        /// <returns> BaseResult<CreateQuestion> </returns>
         #region Create
 
         [HttpPost]
@@ -89,7 +89,7 @@ namespace Psychology.Controllers.Api
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<BaseResult> Create([FromBody] CreateQuestion command)
+        public async Task<BaseResult<CreateQuestion>> Create([FromBody] CreateQuestion command)
         {
             return await _questionService.CreateAsync(command);
         }

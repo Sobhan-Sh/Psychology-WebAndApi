@@ -1,4 +1,7 @@
-﻿namespace Utility.Dto;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Utility.Dto;
+
 public class BaseDto
 {
     public int Id { get; set; }
@@ -11,8 +14,10 @@ public class BaseDto
 
     public DateTime? UpdatedAt { get; set; }
 
+    [Display(Name = "حالت کاربر")]
     public bool IsActive { get; set; }
 }
+
 public class BaseDto<TKey>
 {
     public TKey Id { get; set; }

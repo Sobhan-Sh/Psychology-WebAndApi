@@ -126,12 +126,12 @@ public class TestService : ITestService
         }
     }
 
-    public async Task<BaseResult> CreateAsync(CreateTest command)
+    public async Task<BaseResult<int>> CreateAsync(CreateTest command)
     {
         try
         {
             if (command == null)
-                return new BaseResult()
+                return new BaseResult<int>()
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.IsRequired,
@@ -139,25 +139,26 @@ public class TestService : ITestService
                 };
 
             if (await _repository.IsExistAsync(x => x.Title == command.Title))
-                return new BaseResult
+                return new BaseResult<int>
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.DuplicatedRecord,
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            await _repository.CreateAsync(_mapper.Map<Entity.Test.Test>(command));
+            Entity.Test.Test test = await _repository.ReturnCreateAsync(_mapper.Map<Entity.Test.Test>(command));
             await _repository.SaveAsync();
-            return new BaseResult()
+            return new BaseResult<int>()
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessCreate,
-                StatusCode = ValidationCode.Success
+                StatusCode = ValidationCode.Success,
+                Data = test.Id
             };
         }
         catch (Exception e)
         {
-            return new BaseResult()
+            return new BaseResult<int>()
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorCreate(e.Message),

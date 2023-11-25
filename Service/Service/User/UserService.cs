@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Dto.User;
 using Framework.Auth;
+using Service.IRepository.Patient;
+using Service.IRepository.Psychologist;
 using Service.IRepository.User;
 using Service.IService.User;
 using Utility.ReturnFuncResult;
@@ -12,11 +14,15 @@ namespace Service.Service.User;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IPatientRepository _patientRepository;
+    private readonly IPsychologistRepository _psychologistRepository;
     private IMapper _mapper;
 
-    public UserService(IUserRepository userRepository, IMapper mapper)
+    public UserService(IUserRepository userRepository, IPatientRepository patientRepository, IPsychologistRepository psychologistRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _patientRepository = patientRepository;
+        _psychologistRepository = psychologistRepository;
         _mapper = mapper;
     }
 
@@ -27,18 +33,18 @@ public class UserService : IUserService
             List<Entity.User.User> query = new List<Entity.User.User>();
             if (string.IsNullOrWhiteSpace(search.FName) && string.IsNullOrWhiteSpace(search.LName) && string.IsNullOrWhiteSpace(search.Phone))
             {
-                query.AddRange(await _userRepository.GetAllAsync(include: "Role"));
+                query.AddRange(await _userRepository.GetAllAsync(include: "Role,Gender"));
             }
             else
             {
                 if (!string.IsNullOrWhiteSpace(search.LName))
-                    query.AddRange(await _userRepository.GetAllAsync(x => x.LName.Contains(search.LName), include: "Role"));
+                    query.AddRange(await _userRepository.GetAllAsync(x => x.LName.Contains(search.LName), include: "Role,Gender"));
 
                 if (!string.IsNullOrWhiteSpace(search.FName))
-                    query.AddRange(await _userRepository.GetAllAsync(x => x.FName.Contains(search.FName), include: "Role"));
+                    query.AddRange(await _userRepository.GetAllAsync(x => x.FName.Contains(search.FName), include: "Role,Gender"));
 
                 if (!string.IsNullOrWhiteSpace(search.Phone))
-                    query.AddRange(await _userRepository.GetAllAsync(x => x.Phone == search.Phone, include: "Role"));
+                    query.AddRange(await _userRepository.GetAllAsync(x => x.Phone == search.Phone, include: "Role,Gender"));
             }
 
 
@@ -76,7 +82,7 @@ public class UserService : IUserService
     {
         try
         {
-            IEnumerable<Entity.User.User> query = await _userRepository.GetAllAsync(include: "Role");
+            IEnumerable<Entity.User.User> query = await _userRepository.GetAllAsync(include: "Role,Gender");
             if (!query.Any())
             {
                 return new BaseResult<List<UserViewModel>>
@@ -111,7 +117,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role");
+            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
             if (query == null)
             {
                 return new BaseResult<EditUser>
@@ -133,6 +139,40 @@ public class UserService : IUserService
         catch (Exception e)
         {
             return new BaseResult<EditUser>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<UserViewModel>> ReturnViewGetAsync(int Id)
+    {
+        try
+        {
+            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
+            if (query == null)
+            {
+                return new BaseResult<UserViewModel>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            return new BaseResult<UserViewModel>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<UserViewModel>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<UserViewModel>()
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorGet(e.Message),
@@ -166,7 +206,7 @@ public class UserService : IUserService
                 if (command.ImageUser.IsCheckFile())
                 {
                     string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
-                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, null, null, null, null);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, null, null);
                     command.Avatar = imageName;
                 }
                 else
@@ -180,6 +220,7 @@ public class UserService : IUserService
             command.RoleID = 2;
             command.IsActive = false;
             command.MobailActiveStatus = false;
+            command.ActivationCode = Guid.NewGuid().ToString();
             await _userRepository.CreateAsync(_mapper.Map<Entity.User.User>(command));
             await _userRepository.SaveAsync();
             return new BaseResult()
@@ -213,7 +254,24 @@ public class UserService : IUserService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            query.Edit(command.FName, command.LName, command.Address, command.Avatar, command.RoleID, command.Gender);
+            if (command.ImageUser != null)
+            {
+                if (command.ImageUser.IsCheckFile())
+                {
+                    var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, null, command.Avatar);
+                    command.Avatar = imageName;
+                }
+                else
+                {
+                    return new BaseResult() { IsSuccess = false, Message = ValidationMessage.InvalidFileFormat, StatusCode = ValidationCode.BadRequest };
+                }
+            }
+
+            //var passwordHasher = new PasswordHasher();
+            //command.Password = passwordHasher.HashPassword(command.Password);
+            //command.Password,
+            query.Edit(command.FName, command.LName, command.Address, command.Avatar, command.RoleID, command.GenderId);
             await _userRepository.SaveAsync();
             return new BaseResult()
             {
@@ -224,6 +282,8 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            if (File.Exists(PathExtention.UserAvatarOriginServer + command.Avatar))
+                File.Delete(PathExtention.UserAvatarOriginServer + command.Avatar);
             return new BaseResult()
             {
                 IsSuccess = false,
@@ -245,6 +305,14 @@ public class UserService : IUserService
                     Message = ValidationMessage.RecordNotFound,
                     StatusCode = ValidationCode.NotFound
                 };
+
+            Entity.Patient.Patient patient = await _patientRepository.GetAsync(x => x.UserId == Id);
+            Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.UserId == Id);
+            if (patient != null)
+                _patientRepository.DeleteAsync(patient);
+
+            if (psychologist != null)
+                _psychologistRepository.DeleteAsync(psychologist);
 
             if (!string.IsNullOrWhiteSpace(query.Avatar))
             {

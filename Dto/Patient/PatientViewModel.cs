@@ -5,11 +5,9 @@ namespace Dto.Patient;
 
 public class PatientViewModel : BaseDto
 {
-    [Required]
-    public string NationalCode { get; set; }
+    [Required] public string NationalCode { get; set; }
 
-    [Required]
-    public int Age { get; set; }
+    [Required] public int Age { get; set; }
 
     public int UserId { get; set; }
 

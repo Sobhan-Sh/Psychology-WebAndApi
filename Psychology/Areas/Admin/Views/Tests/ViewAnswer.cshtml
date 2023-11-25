@@ -1,0 +1,68 @@
+﻿@model Dto.Test.Question.QuestionViewModel
+@{
+    ViewData["Title"] = " : تغییر جواب ها";
+    int counter = 1;
+}
+
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+    <section class="section_error">
+        <a class="btn btn-success" asp-controller="Tests" asp-action="CreateAnswer" asp-route-questionId="@Model.Id">
+            افزودن جواب
+        </a>
+        <a class="btn btn-primary btn-sm" asp-controller="Tests" asp-action="ViewQuestions" asp-route-testId="@Model.TestId">
+            برگشت
+        </a>
+    </section>
+    <section>
+        @if (Model.AnswerViewModels != null)
+        {
+            if (Model.AnswerViewModels.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> سوال </th>
+                            <th scope="col"> امکانات </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AnswerViewModels)
+                        {
+                            <tr class="s@(item.Id)">
+                                <th scope="row">@counter</th>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <th>
+                                    <a class="btn btn-danger btn-sm" href="#" onclick="DeleteAnswer('s@(item.Id)',@item.Id,@Model.TestId)"> حذف سوال </a>
+                                </th>
+                            </tr>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <h6>
+                    هیچ جوابی نیست
+                </h6>
+            </div>
+        }
+    </section>
+</section>
+@section Scripts
+    {
+    <script src="/assets/js/AnswerHandel.js"></script>
+}

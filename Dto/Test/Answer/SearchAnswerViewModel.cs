@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Dto.Test.Answer;
+﻿namespace Dto.Test.Answer;
 
 public class SearchAnswerViewModel
 {

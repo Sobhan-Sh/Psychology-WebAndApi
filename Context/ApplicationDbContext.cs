@@ -6,7 +6,7 @@ using Entity.Test;
 using Entity.User;
 using Framework.Auth;
 using Microsoft.EntityFrameworkCore;
-using static Utility.SD;
+using Utility;
 
 namespace Context;
 
@@ -35,6 +35,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<PatientTurn> PatientTurn { get; set; }
     public DbSet<PatientFile> PatientFiles { get; set; }
     public DbSet<PsychologistWorkingDateAndTime> PsychologistWorkingDateAndTime { get; set; }
+    public DbSet<Gender> Genders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,10 +50,17 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Role>().HasData(new List<Role>
         {
-            new Role() { Id = RoleName.Admin_Id, Name = RoleName.Admin, IsActive = true, CreatedAt = DateTime.Now },
-            new Role() { Id = RoleName.Customer_Id, Name = RoleName.Customer, IsActive = true, CreatedAt = DateTime.Now },
-            new Role() { Id = RoleName.Patient_Id, Name = RoleName.Patient, IsActive = true, CreatedAt = DateTime.Now },
-            new Role() { Id = RoleName.Psychologist_Id, Name = RoleName.Psychologist, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = SD.RoleName.Admin_Id, Name = SD.RoleName.Admin, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = SD.RoleName.Customer_Id, Name = SD.RoleName.Customer, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = SD.RoleName.Patient_Id, Name = SD.RoleName.Patient, IsActive = true, CreatedAt = DateTime.Now },
+            new Role() { Id = SD.RoleName.Psychologist_Id, Name = SD.RoleName.Psychologist, IsActive = true, CreatedAt = DateTime.Now },
+        });
+
+        modelBuilder.Entity<Gender>().HasData(new List<Gender>
+        {
+            new Gender() { Id =SD.GenderName.Man_Id, Name = SD.GenderName.Man, IsActive = true, CreatedAt = DateTime.Now },
+            new Gender() { Id = SD.GenderName.Lady_Id, Name = SD.GenderName.Lady, IsActive = true, CreatedAt = DateTime.Now },
+            new Gender() { Id = SD.GenderName.Oder_Id, Name = SD.GenderName.Oder, IsActive = true, CreatedAt = DateTime.Now },
         });
 
         modelBuilder.Entity<User>().HasData(new User()
@@ -60,13 +68,14 @@ public class ApplicationDbContext : DbContext
             Id = 1,
             FName = "مدیر",
             LName = "سیستم",
-            Phone = UserName.Admin,
+            Phone = SD.UserName.Admin,
             Password = passwordHasher.HashPassword("Admin@10132023"),
             MobailActiveStatus = true,
             ActivationCode = Guid.NewGuid().ToString(),
             IsActive = true,
             RoleID = 1,
-            CreatedAt = DateTime.Now
+            CreatedAt = DateTime.Now,
+            GenderId = SD.GenderName.Lady_Id,
         });
 
         List<PsychologistWorkingHours> PsychologistWorkingHours = new List<PsychologistWorkingHours>();

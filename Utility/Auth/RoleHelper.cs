@@ -7,4 +7,5 @@ public class RoleHelper
 
     public const string Admin = "AdminManagment";
     public const string Customer = "Customer";
+    public const string Psychologist = "Psychologist";
 }

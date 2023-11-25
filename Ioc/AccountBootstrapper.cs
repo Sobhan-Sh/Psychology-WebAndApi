@@ -27,9 +27,11 @@ public static class AccountBootstrapper
         // Repository
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IRoleRepository, RoleRepository>();
+        services.AddTransient<IGenderRepository, GenderRepository>();
         // Service
         services.AddTransient(typeof(IUserService), typeof(UserService));
         services.AddTransient<IAuthService, AuthService>();
+        services.AddTransient<IGenderService, GenderService>();
         // Mapper
         IMapper mapper = MappProfile.RegisterMapp().CreateMapper();
         services.AddSingleton(mapper);

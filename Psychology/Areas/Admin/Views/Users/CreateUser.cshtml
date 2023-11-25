@@ -1,0 +1,76 @@
+﻿@model Dto.User.CreateUser
+@{
+    ViewData["Title"] = " : افزودن کابر";
+    SelectList ListItemGender = (SelectList)ViewData["ListItemGender"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <form asp-controller="Users" asp-action="CreateUser" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTime" />
+        <section class="row align-items-end">
+            <section class="col-12 col-md-6">
+                <label asp-for="FName"></label>
+                <input class="cusotm-form-controle" asp-for="FName">
+                <span asp-validation-for="FName"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="LName"></label>
+                <input class="cusotm-form-controle" asp-for="LName">
+                <span asp-validation-for="LName"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="Phone"></label>
+                <input class="cusotm-form-controle" asp-for="Phone">
+                <span asp-validation-for="Phone"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="GenderId"></label>
+                <select class="cusotm-form-controle" asp-for="GenderId" asp-items="ListItemGender">
+                </select>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="Password"></label>
+                <input class="cusotm-form-controle" asp-for="Password">
+                <span asp-validation-for="Password"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="ConfirmPassword"></label>
+                <input class="cusotm-form-controle" asp-for="ConfirmPassword">
+                <span asp-validation-for="ConfirmPassword"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="ImageUser"></label>
+                <input class="cusotm-form-controle" onchange="PreviewImage(this)" type="file" asp-for="ImageUser">
+            </section>
+            <section class="col-12 col-md-6">
+                <label for="previewImage"> نمایش اواتار </label>
+                <img id="previewImage" style="width: 90px; height: 90px;" class="img-thumbnail">
+            </section>
+            <section class="col-12 col-md-4 cntr d-none mt-3">
+                <label asp-for="MobailActiveStatus"></label>
+                <input class="cusotm-form-controle d-none" asp-for="MobailActiveStatus">
+                <div class="checkmark ms-3"></div>
+            </section>
+            <section class="col-12 col-md-8 cntr d-none mt-3">
+                <label asp-for="IsActive"></label>
+                <input class="cusotm-form-controle d-none" asp-for="IsActive">
+                <div class="checkmark ms-3"></div>
+            </section>
+            <section class="col-3 mt-3">
+                <button class="btn btn-custom px-3"> افزودن </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="/assets/js/UserHandel.js"></script>
+}

@@ -1,0 +1,64 @@
+﻿@model Dto.User.UserViewModel
+@{
+    ViewData["Title"] = " : حذف کاربر";
+    SelectList ListItemGender = (SelectList)ViewData["ListItemGender"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <form asp-controller="Users" asp-action="DeleteUser" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedAt" />
+        <input type="hidden" asp-for="Avatar" />
+        <input type="hidden" asp-for="Password" />
+        <input type="hidden" asp-for="MobailActiveStatus" />
+        <input type="hidden" asp-for="ActivationCode" />
+        <input type="hidden" asp-for="Phone" />
+        <input type="hidden" asp-for="RoleViewModel.Name" />
+        <input type="hidden" asp-for="GenderViewModel.Name" />     
+        <input type="hidden" asp-for="RoleViewModel.CreatedAt" />
+        <input type="hidden" asp-for="GenderViewModel.CreatedAt" />
+        <input type="hidden" asp-for="GenderViewModel.UsersViewModels" />
+        <section class="row align-items-end">
+            <section class="col-12 col-md-6">
+                <label asp-for="FName"></label>
+                <input class="cusotm-form-controle" asp-for="FName">
+                <span asp-validation-for="FName"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="LName"></label>
+                <input class="cusotm-form-controle" asp-for="LName">
+                <span asp-validation-for="LName"></span>
+            </section>
+            @if (Model.Avatar != null)
+            {
+                <section class="col-12 col-md-6">
+                    <label for="previewImage"> نمایش اواتار </label>
+                    <img src="/assets/Image/Users/Avatar/@Model.Avatar" id="previewImage" style="width: 90px;height: 90px" class="img-thumbnail">
+                </section>
+            }
+            <section class="col-12 col-md-4 cntr">
+                <label asp-for="MobailActiveStatus"></label>
+                <input class="cusotm-form-controle" @(Model.MobailActiveStatus ? "checked" : "")>
+                <div class="checkmark ms-3"></div>
+            </section>
+            <section class="col-12">
+                <label asp-for="GenderViewModel.Name"></label><br/>
+                @Model.GenderViewModel.Name
+            </section>
+            <section class="col-3">
+                <button class="btn btn-custom px-3"> حذف </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

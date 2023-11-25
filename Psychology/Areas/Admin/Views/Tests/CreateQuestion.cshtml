@@ -1,0 +1,33 @@
+﻿@model Dto.Test.Question.CreateQuestion
+@{
+    ViewData["Title"] = " : افزودن سوال";
+
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h6>
+                @ViewData["message"]
+            </h6>
+        </section>
+    }
+    <!-- create question -->
+    <form asp-controller="Tests" asp-action="CreateQuestion" method="post">
+        <section class="row align-items-end">
+            <input type="hidden" asp-for="TestId" />
+            <input type="hidden" asp-for="CreatedAt" value="@ViewData["DateTime"]" />
+            <section class="col-12 col-md-6">
+                <label asp-for="Title"></label>
+                <input class="cusotm-form-controle" asp-for="Title">
+            </section>
+            <section class="col-3">
+                <button class="btn btn-custom px-3"> افزودن </button>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

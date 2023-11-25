@@ -15,6 +15,7 @@ using Dto.Test;
 using Dto.Test.Answer;
 using Dto.Test.Question;
 using Dto.User;
+using Dto.User.Gender;
 using Entity.DiscountAndOrder;
 using Entity.Patient;
 using Entity.Psychologist;
@@ -84,6 +85,10 @@ public class MappProfile : Profile
 
             #endregion
 
+            config.CreateMap<QuestionViewModel, CreateQuestion>().ReverseMap();
+
+            config.CreateMap<AnswerViewModel, CreateAnswer>().ReverseMap();
+
             #endregion
 
             #region Patient
@@ -120,13 +125,26 @@ public class MappProfile : Profile
 
             #region User
 
-            config.CreateMap<CreateUser, User>().ReverseMap();
+            config.CreateMap<CreateUser, User>()
+                .ForMember(x => x.GenderId, x => x.MapFrom(sub => sub.GenderId))
+                .ReverseMap();
 
             config.CreateMap<UserViewModel, User>()
-                .ForMember(x => x.Role, x => x.MapFrom(sub => sub.RoleViewModel)).ReverseMap();
+                .ForMember(x => x.Role, x => x.MapFrom(sub => sub.RoleViewModel))
+                .ForMember(x => x.Gender, x => x.MapFrom(sub => sub.GenderViewModel))
+                .ReverseMap();
 
-            config.CreateMap<EditUser, User>().ReverseMap();
+            config.CreateMap<EditUser, User>()
+                .ForMember(x => x.GenderId, x => x.MapFrom(sub => sub.GenderId))
+                .ReverseMap();
 
+            #region Gender
+
+            config.CreateMap<GenderViewModel, Gender>()
+                .ForMember(x => x.Users, x => x.MapFrom(sub => sub.UsersViewModels))
+                .ReverseMap();
+
+            #endregion
 
             #endregion
 

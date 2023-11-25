@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Dto.Patient;
+﻿namespace Dto.Patient;
 
 public class EditPatient : CreatePatient
 {

@@ -21,12 +21,13 @@ namespace Entity.User
 
         public string? Avatar { get; set; }
 
-        public string? Gender { get; set; }
-
         public int RoleID { get; set; }
-
         [ForeignKey("RoleID")]
         public Role.Role Role { get; set; }
+
+        public int GenderId { get; set; }
+        [ForeignKey("GenderId")]
+        public Gender Gender { get; set; }
 
         public List<Patient.Patient> Patient { get; set; }
 
@@ -34,14 +35,14 @@ namespace Entity.User
 
         public string? Token { get; set; }
 
-        public void Edit(string fName, string lName, string? address, string? avatar, int roleId, string? gender)
+        public void Edit(string fName, string lName, string? address, string? avatar, int roleId, int genderId)
         {
             FName = fName;
             LName = lName;
             Address = address;
             Avatar = avatar;
             RoleID = roleId;
-            Gender = gender;
+            GenderId = genderId;
         }
 
         public void ActiveMobail()

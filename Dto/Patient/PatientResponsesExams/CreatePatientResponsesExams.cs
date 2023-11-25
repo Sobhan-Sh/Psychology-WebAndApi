@@ -1,20 +1,17 @@
-﻿using Dto.Test;
+﻿using System.ComponentModel.DataAnnotations;
+using Dto.Test;
 using Dto.Test.Answer;
 using Dto.Test.Question;
-using System.ComponentModel.DataAnnotations;
 
 namespace Dto.Patient.PatientResponsesExams;
 
 public class CreatePatientResponsesExams
 {
-    [Required]
-    public CreateTest CreateTest { get; set; }
+    [Required] public CreateTest CreateTest { get; set; }
 
-    [Required]
-    public List<CreateQuestion> CreateQuestions { get; set; }
+    [Required] public List<CreateQuestion> CreateQuestions { get; set; }
 
-    [Required]
-    public List<CreateAnswer> CreateAnswers { get; set; }
+    [Required] public List<CreateAnswer> CreateAnswers { get; set; }
 
     public int? Score { get; set; }
 

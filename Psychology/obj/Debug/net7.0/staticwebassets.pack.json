@@ -9,8 +9,36 @@
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar2138de0b1f46459cbccb629c4c6c8a2e.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar2138de0b1f46459cbccb629c4c6c8a2e.jpg"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar30095a6ccfa34ef3b9b17a261868aaeb.jpg",
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar30095a6ccfa34ef3b9b17a261868aaeb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar42de7ccc620e4776972a1d08fcd46b67.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar42de7ccc620e4776972a1d08fcd46b67.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar7d55cfdc2a0141afbfa0918d8b9f6727.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar7d55cfdc2a0141afbfa0918d8b9f6727.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatara1fa8787d3fe4d70a4597e21ad99f6b0.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatara1fa8787d3fe4d70a4597e21ad99f6b0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatarc51d948073084c79ba9f85f139845c0a.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatarc51d948073084c79ba9f85f139845c0a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatard868e0ef9222493a9b0297607a46001a.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatard868e0ef9222493a9b0297607a46001a.jpg"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_css_bootstrap.rtl.min.css",
@@ -27,6 +55,10 @@
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\style.css",
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\styleAdmin.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styleAdmin.css"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.eot",
@@ -121,8 +153,28 @@
       "PackagePath": "staticwebassets\\assets\\imageTemplate\\ui-cirlcle.svg"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\AnswerHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\AnswerHandel.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\QuestionHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\QuestionHandel.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\TestHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\TestHandel.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\UserHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\UserHandel.js"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-3.7.1.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.1.min.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\main.js",

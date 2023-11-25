@@ -1,0 +1,37 @@
+﻿@model Dto.Test.Answer.CreateAnswer
+@{
+    ViewData["Title"] = " : افزودن جواب";
+
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <!-- create question -->
+    <form asp-controller="Tests" asp-action="CreateAnswer" method="post">
+        <section class="row align-items-end">
+            <input type="hidden" asp-for="QuestionId" value="@ViewData["questionId"]" />
+            <section class="col-12 col-md-6">
+                <label asp-for="Title"></label>
+                <input class="cusotm-form-controle" asp-for="Title">
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="Score"></label>
+                <input class="cusotm-form-controle" asp-for="Score">
+            </section>
+            <section class="col-12">
+                <label asp-for="Description"></label>
+                <input class="cusotm-form-controle" asp-for="Description">
+            </section>
+            <section class="col-3">
+                <button class="btn btn-custom px-3"> ثبت </button>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

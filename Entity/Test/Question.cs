@@ -1,12 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Utility.Domain;
 
 namespace Entity.Test;
 
 public class Question : BaseEntity
 {
-    [Required]
     public string Title { get; set; }
 
     public List<Answer> Answer { get; set; }
@@ -18,5 +16,6 @@ public class Question : BaseEntity
     public void Edit(string title)
     {
         Title = title;
+        UpdatedAt = DateTime.Now;
     }
 }

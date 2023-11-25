@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = " : اتمام کار";
+    ViewBag.ProgressCreateTest = 100;
+}
+
+<section class="container-fluid pe-sm-4">
+    @Html.Partial("_ProgressCreateTest")
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <h1>
+        تبریک میگم شما توانستید یک ازمون جدید اضافه کنید!
+    </h1>
+</section>

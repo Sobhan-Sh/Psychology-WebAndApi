@@ -1,0 +1,75 @@
+﻿@model Dto.User.EditUser
+@{
+    ViewData["Title"] = " : افزودن کابر";
+    SelectList ListItemGender = (SelectList)ViewData["ListItemGender"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-info" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-info"><strong class="me-auto text-info"> نتیجه </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    @if (ViewData["RnderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RnderMessage"]
+            </div>
+        </div>
+    }
+    <!-- create question -->
+    <form asp-controller="Users" asp-action="EditUser" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedAt" />
+        <input type="hidden" asp-for="Avatar" />
+        <input type="hidden" asp-for="Password" />
+        <input type="hidden" asp-for="RoleID" />
+        <input type="hidden" asp-for="IsActive" />
+        <input type="hidden" asp-for="MobailActiveStatus" />
+        <section class="row align-items-end">
+            <section class="col-12 col-md-6">
+                <label asp-for="FName"></label>
+                <input class="cusotm-form-controle" asp-for="FName">
+                <span asp-validation-for="FName"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="LName"></label>
+                <input class="cusotm-form-controle" asp-for="LName">
+                <span asp-validation-for="LName"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="Phone"></label>
+                <input class="cusotm-form-controle" asp-for="Phone">
+                <span asp-validation-for="Phone"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="GenderId"></label>
+                <select class="cusotm-form-controle" asp-for="GenderId" asp-items="ListItemGender">
+                </select>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="ImageUser"></label>
+                <input class="cusotm-form-controle" onchange="PreviewImage(this)" type="file" asp-for="ImageUser">
+            </section>
+            <section class="col-12 col-md-6">
+                <label for="previewImage"> نمایش اواتار </label>
+                <img src="/assets/Image/Users/Avatar/@(Model.Avatar!=null?Model.Avatar:"")" id="previewImage" style="width: 90px; height: 90px;" class="img-thumbnail">
+            </section>
+            <section class="col-3 mt-4">
+                <button class="btn btn-custom px-3"> ویرایش </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="/assets/js/UserHandel.js"></script>
+}

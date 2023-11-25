@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Dto.Test.Question.QuestionViewModel>
+@{
+    ViewData["Title"] = " : افزودن سوال به آزمون";
+    int counter = 1;
+}
+
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+    <section>
+        <a class="btn btn-success" asp-controller="Tests" asp-action="CreateQuestion" asp-route-testId="@Model.FirstOrDefault().TestId">
+            افزودن سوال جدید
+        </a>
+        <a class="btn btn-warning" asp-controller="Tests" asp-action="ViewAnswer" asp-route-questionId="@Model.FirstOrDefault().Id">
+            جواب ها
+        </a>
+        <a class="btn btn-primary" asp-controller="Tests" asp-action="Index">
+            بازگشت
+        </a>
+    </section>
+    <section>
+        <section class="my-3">
+            <h4 class="text-primary alert alert-primary py-4 text-center"> جواب های این سوالان </h4>
+            <ul class="list-group">
+                @foreach (var item in Model.FirstOrDefault().AnswerViewModels)
+                {
+                    <li class="list-group-item d-flex justify-content-between px-2"> <span> @item.Title </span> <span> @item.Score </span> </li>
+                }
+            </ul>
+        </section>
+        <h4 class="text-primary alert alert-primary py-4 text-center"> سوالات </h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"> سوال </th>
+                    <th scope="col"> امکانات </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="s@(item.Id)">
+                        <th scope="row">@counter</th>
+                        <td>
+                            @item.Title
+                        </td>
+                        <th>
+                            <a class="btn btn-outline-warning btn-sm" asp-controller="Tests" asp-action="UpdateQuestion" asp-route-questionId="@item.Id"> ویرایش سوال </a>
+                            <button class="btn btn-danger btn-sm" onclick="RemoveQuestion(@item.Id,@item.TestId,'s@(item.Id)')"> حذف سوال </button>
+                        </th>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </section>
+</section>
+
+@section Scripts
+    {
+    <script src="/assets/js/QuestionHandel.js"></script>
+}

@@ -4,6 +4,5 @@ namespace Dto.Patient;
 
 public class SearchPatientViewModel
 {
-    [Required]
-    public string NationalCode { get; set; }
+    [Required] public string NationalCode { get; set; }
 }

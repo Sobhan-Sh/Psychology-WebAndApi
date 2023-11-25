@@ -1,0 +1,338 @@
+﻿@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel.eot");
+    src: url("../fonts/Sahel.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel.woff2") format("woff2"), url("../fonts/Sahel.woff") format("woff"), url("../fonts/Sahel.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Bold.eot");
+    src: url("../fonts/Sahel-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Bold.woff2") format("woff2"), url("../fonts/Sahel-Bold.woff") format("woff"), url("../fonts/Sahel-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Light.eot");
+    src: url("../fonts/Sahel-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Light.woff2") format("woff2"), url("../fonts/Sahel-Light.woff") format("woff"), url("../fonts/Sahel-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-SemiBold.eot");
+    src: url("../fonts/Sahel-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-SemiBold.woff2") format("woff2"), url("../fonts/Sahel-SemiBold.woff") format("woff"), url("../fonts/Sahel-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url("../fonts/Sahel-Black.eot");
+    src: url("../fonts/Sahel-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/Sahel-Black.woff2") format("woff2"), url("../fonts/Sahel-Black.woff") format("woff"), url("../fonts/Sahel-Black.ttf") format("truetype");
+    font-weight: 900;
+}
+/** import font sahel */
+:root {
+    --darkMode-background: #090e34;
+    --darkMode-primary: #4a6cf7;
+    --darkMode-onPrimary: #fff;
+    --darkMode-onSecondary: #a3b5ff;
+    --darkMode-background-input: rgb(36 43 81);
+    --darkMode-light-background: rgb(149 156 177);
+    --darkMode-hover-primary: 0.9;
+    --darkMode-font-size-defualt: 18px;
+    --darkMode-back-card: rgb(74 108 247 / 0.1);
+    --darkMode-back-card-active: #4a6cf79c;
+    --darkMode-back-card-hover: #4a6cf76b;
+    --darkMode-notValid: rgb(222, 5, 5);
+    --darkMode-valid: #03df03;
+}
+
+* {
+    color: var(--darkMode-onPrimary);
+    font-size: var(--darkMode-font-size-defualt);
+    line-height: 28px;
+    font-family: "Sahel" !important;
+    font-weight: 500;
+}
+
+body {
+    background-color: var(--darkMode-background);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header nav div div div ul.navbar-nav li.nav-item a.nav-link span,
+header nav div div div ul.navbar-nav li.nav-item a.nav-link {
+    display: flex;
+    align-items: center;
+    --bs-nav-link-color: var(--darkMode-onPrimary);
+}
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link:not(.active):hover {
+        text-shadow: 0 0 5px white, 0 0 10px white,0 0 15px white;
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link.active span {
+        color: var(--darkMode-onSecondary);
+        font-weight: bold;
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link svg {
+        width: 22px;
+        margin-left: 5px;
+        fill: var(--darkMode-onPrimary);
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link.active svg {
+        fill: var(--darkMode-primary);
+    }
+
+.bg-parent {
+    background-color: var(--darkMode-background);
+    box-shadow: 0 0 0px 1px var(--darkMode-primary);
+}
+
+    .bg-parent ul li a {
+        display: block;
+        padding: 11px 10px;
+        position: relative;
+        transition: padding-right 0.3s;
+    }
+
+        .bg-parent ul li a::after {
+            position: absolute;
+            content: "";
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            width: 0;
+            background-color: var(--darkMode-primary);
+            box-shadow: 0 0 5px var(--darkMode-primary);
+            transition: 0.5s;
+            border-radius: 7px;
+        }
+
+        .bg-parent ul li a:hover {
+            color: var(--darkMode-onPrimary);
+            padding-right: 17px;
+        }
+
+            .bg-parent ul li a:hover:after {
+                width: 50%;
+            }
+
+        .bg-parent ul li a.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .bg-parent ul li a.active svg {
+                height: 30px;
+            }
+
+.navbar-expand-lg .my_offcanvas .offcanvas-header {
+    display: flex;
+}
+
+.bg-parent ~ .offcanvas-backdrop {
+    display: none;
+    z-index: -1000;
+}
+
+@media (min-width:576px ) {
+    .my_offcanvas {
+        transform: none !important;
+        visibility: visible;
+    }
+}
+
+.my_offcanvas {
+    max-width: 320px;
+}
+
+@media (max-width:768px ) {
+    .my_offcanvas {
+        max-width: 250px;
+    }
+
+    header nav div div div ul.navbar-nav li.nav-item a.nav-link span, header nav div div div ul.navbar-nav li.nav-item a.nav-link {
+        font-size: 16px;
+    }
+}
+
+.btn-custom {
+    background-color: var(--darkMode-primary);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: var(--darkMode-onPrimary);
+    transition: 0.3s;
+    font-weight: 700;
+}
+
+    .btn-custom:hover {
+        opacity: var(--darkMode-hover-primary);
+        --bs-btn-hover-bg: var(--darkMode-primary);
+    }
+
+.cusotm-form-controle {
+    background-color: var(--darkMode-background-input);
+    width: 100%;
+    margin: 8px 0;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    outline: 0;
+}
+
+    .cusotm-form-controle::placeholder {
+        color: var(--darkMode-light-background);
+        text-align: center;
+    }
+
+    .cusotm-form-controle:focus {
+        border-color: var(--darkMode-primary);
+    }
+
+.field-validation-error span {
+    color: var(--darkMode-notValid);
+}
+
+.parent_progress_create_test {
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+    .parent_progress_create_test .progress {
+        width: 100%
+    }
+
+    .parent_progress_create_test .progress_create_test {
+        position: absolute;
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        backdrop-filter: blur(2px);
+        top: 50%;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+    }
+
+        .parent_progress_create_test .progress_create_test:nth-of-type(1) {
+            background-image: conic-gradient(from 90deg,#4e81fb00,rgb(78 129 251 / 83%));
+            box-shadow: 0 0 10px #3f63b8;
+            right: 0;
+            transform: translate(0, -50%);
+        }
+
+        .parent_progress_create_test .progress_create_test:nth-of-type(2) {
+            background-image: conic-gradient(from 90deg,#2ed5734d,rgb(46 213 115 / 83%));
+            box-shadow: 0 0 10px #00ff69;
+            right: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .parent_progress_create_test .progress_create_test:nth-of-type(3) {
+            background-image: conic-gradient(from 90deg,#eab3084d,rgb(234 179 8 / 83%));
+            box-shadow: 0 0 10px #ffc100;
+            right: 100%;
+            transform: translate(100%, -50%);
+        }
+
+.icon-trash-section-create-answer {
+    width: 23px;
+}
+
+/*******************************? My CheckBox */
+/** Hide the default checkbox */
+.cntr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    height: 62px;
+    width: 100%;
+    z-index: 10;
+}
+
+.cntr {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/** Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    border: 2px solid #414141;
+    border-radius: 5px;
+    -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cntr input:hover ~ .checkmark {
+    border: 2px solid #0974f1;
+}
+
+/** When the checkbox is checked */
+.cntr input:checked ~ .checkmark {
+    -webkit-box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+    box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+    border: 2px solid #0974f1;
+}
+
+/** Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/** Show the checkmark when checked */
+.cntr input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/** Style the checkmark/indicator */
+.cntr .checkmark:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.cntr input[type="checkbox"] ~ .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+}
+
+.cntr input[type="radio"] ~ .checkmark:after {
+    left: 0.35em;
+    top: 0.35em;
+    width: 0.4em;
+    height: 0.4em;
+    border: 0.15em solid white;
+    border-radius: 0.05em;
+}
+/*******************************? end My CheckBox */

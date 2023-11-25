@@ -16,7 +16,11 @@ public interface IAnswerService
 
     Task<BaseResult<EditAnswer>> GetAsync(int Id);
     Task<BaseResult> CreateAsync(CreateAnswer command);
+    Task<BaseResult<CreateAnswer>> ReturnCreateAsync(CreateAnswer command);
+    Task<BaseResult> CreateRangeAsync(List<CreateAnswer> command);
+    Task<BaseResult> UpdateAnswersInQuestionAsync(CreateAnswer command);
     Task<BaseResult> DeleteAsync(int Id);
+    Task<BaseResult> DeleteAllAnswerQuestionsAsync(int answerId);
 
     #endregion
 }

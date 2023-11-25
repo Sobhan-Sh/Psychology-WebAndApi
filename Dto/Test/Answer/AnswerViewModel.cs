@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
+﻿using Utility.Dto;
 
 namespace Dto.Test.Answer;
 

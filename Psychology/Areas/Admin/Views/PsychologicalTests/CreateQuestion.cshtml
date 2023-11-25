@@ -1,0 +1,57 @@
+﻿@using Dto.Test.Question
+@model Dto.Test.Question.CreateQuestion
+@{
+    ViewData["Title"] = " : افزودن سوال به آزمون";
+    ViewBag.ProgressCreateTest = 65;
+    List<CreateQuestion> question = (List<CreateQuestion>)ViewData["questions"];
+}
+
+<section class="container-fluid pe-sm-4">
+    @Html.Partial("_ProgressCreateTest")
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <!-- create question -->
+    <form asp-controller="PsychologicalTests" asp-action="CreateQuestion" method="post">
+        <section class="row align-items-end">
+            <input type="hidden" name="TestId" id="TestId" value="@ViewBag.TestId" />
+            <section class="col-12 col-md-6">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x => x.Title, new { @class = "cusotm-form-controle mb-0" })
+            </section>
+            <section class="col-3">
+                <button class="btn btn-custom px-3"> ثبت </button>
+            </section>
+        </section>
+    </form>
+    <!-- show question -->
+    @if (question != null)
+    {
+        if (question.Any())
+        {
+            <section class="mt-3">
+                <table class="table table-hover table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> متن سوال </th>
+                            <th scope="col"> امکانات </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in question.Distinct())
+                        {
+                            <tr id="@("delsgeefetee8855e"+item.Id)"> <td class="text_question"> @item.Title </td> <td> <button class="btn btn-danger btn-sm" onclick="DeleteQuestion(@item.Id,'@("delsgeefetee8855e"+item.Id)')"> حذف </button></td></tr>
+                        }
+                    </tbody>
+                </table>
+                <a class="btn btn-custom btn-sm px-4" asp-action="Finish" asp-controller="PsychologicalTests"> بعدی </a>
+            </section>
+        }
+    }
+</section>
+@section Scripts
+    {
+    <script src="/assets/js/QuestionHandel.js"></script>
+}

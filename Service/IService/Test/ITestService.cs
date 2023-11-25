@@ -15,7 +15,7 @@ public interface ITestService
     #region CRUD
 
     Task<BaseResult<EditTest>> GetAsync(int Id);
-    Task<BaseResult> CreateAsync(CreateTest command);
+    Task<BaseResult<int>> CreateAsync(CreateTest command);
     Task<BaseResult> UpdateAsync(EditTest command);
     Task<BaseResult> DeleteAsync(int Id);
 

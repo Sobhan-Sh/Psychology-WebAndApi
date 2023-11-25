@@ -10,7 +10,7 @@ public class ImageOptimizer
 
         var customHeight = height ?? 100;
 
-        using (var image = SixLabors.ImageSharp.Image.Load(inputImagePath))
+        using (var image = Image.Load(inputImagePath))
         {
             image.Mutate(x => x.Resize(customWidth, customHeight));
 

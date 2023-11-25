@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Dto.Test.TestViewModel>
+@{
+    ViewData["Title"] = " : نمایش سوالات";
+    int counter = 1;
+}
+
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+
+    @if (ViewData["RnderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RnderMessage"]
+            </div>
+        </div>
+    }
+
+    <section>
+        <a class="btn btn-success" asp-controller="PsychologicalTests" asp-action="Index">
+            افزودن ازمون جدید
+        </a>
+    </section>
+    <section>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"> نام ازمون </th>
+                    <th scope="col"> قیمت </th>
+                    <th scope="col"> تعداد سوالات </th>
+                    <th scope="col"> امکانات </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="s@(item.Price)">
+                        <th scope="row">@counter</th>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.QuestionViewModel.Count
+                        </td>
+                        <th>
+                            @if (item.QuestionViewModel.Count > 0)
+                            {
+                                <a class="btn btn-info btn-sm" asp-controller="Tests" asp-action="ViewQuestions" asp-route-testId="@item.Id"> سوالات این ازمون </a>
+                            }
+                            <a class="btn btn-warning btn-sm" asp-controller="Tests" asp-action="TestingTest" asp-route-testId="@item.Id"> تست کردن این ازمون </a>
+                            @if (item.IsActive)
+                            {
+                                <a class="btn btn-outline-danger btn-sm" asp-controller="Tests" asp-action="DeActiveTest" asp-route-testId="@item.Id"> غیر فعال کردن </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-success btn-sm" asp-controller="Tests" asp-action="ActiveTest" asp-route-testId="@item.Id"> فعال کردن </a>
+                            }
+                            <a class="btn btn-danger btn-sm" href="#" onclick="DeleteTest(@item.Id,'s@(item.Price)')"> حذف ازمون </a>
+                        </th>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </section>
+</section>
+@section Scripts
+    {
+    <script src="/assets/js/TestHandel.js"></script>
+}

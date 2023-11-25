@@ -15,9 +15,13 @@ public interface IQuestionService
     #region CRUD
 
     Task<BaseResult<EditQuestion>> GetAsync(int Id);
-    Task<BaseResult> CreateAsync(CreateQuestion command);
+    Task<BaseResult<QuestionViewModel>> GetQuestionViewModelAsync(int Id);
+    Task<BaseResult<CreateQuestion>> CreateAsync(CreateQuestion command);
+    Task<BaseResult<CreateQuestion>> CreateQuestionAndAnswer(CreateQuestion command);
+    Task<BaseResult<List<CreateQuestion>>> CreateRangeAsync(List<CreateQuestion> command);
     Task<BaseResult> UpdateAsync(EditQuestion command);
     Task<BaseResult> DeleteAsync(int Id);
+    Task<BaseResult<int>> ReturnDeleteAsync(int Id);
 
     #endregion
 }
