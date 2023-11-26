@@ -31,6 +31,8 @@ public class ValidationMessage
     public const string DuplicatedRecordDiscountPatient = "نمی توان برای یک بیمار از دوتا تخفیف استفاده کرد";
     public const string RecordNotFoundSectionQuestionErrorTest = "مشخص کنید که این سوالات مربوط به کدام آزمون هستند";
     public const string RecordNotFoundSectionAnswerErrorQuestion = "مشخص کنید که این جواب ها مربوط به کدام سوال است";
+    public const string SuccessChangeAuth = "سطح دسترسی کاربر با موفقیت تغییر کرد!";
+    public const string SuccessCheckUserBeforeChangeAuth = "کاربر اعتبار سنجی و تایید می شود!";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";
@@ -69,5 +71,20 @@ public class ValidationMessage
     public static string ErrorLogin(string e)
     {
         return $"مشکلی در وارد شدن به حساب کاربری روخ داده. متن اررور:({e})";
+    }
+
+    public static string ErrorChackUserInChangeAuth(string e)
+    {
+        return $"در هنگام تایید کاربر برای تغییر سطح دسترسی ان به مشکل برخوردیم. متن اررور:({e})";
+    }
+
+    public static string ErrorChangeAuth(string e)
+    {
+        return $"در هنگام تغییر سطح دسترسی کاربر به مشکل برخوردیم. متن اررور:({e})";
+    }
+
+    public static string AdminSuccessUpdatePassword(string fn, string g)
+    {
+        return $"رمز {g} {fn} با موقیت تغییر یافت";
     }
 }

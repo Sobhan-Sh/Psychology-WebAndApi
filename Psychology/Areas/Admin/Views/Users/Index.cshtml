@@ -96,6 +96,8 @@
                                         {
                                             <a class="btn btn-outline-primary btn-sm" asp-controller="Users" asp-action="ActivePhone" asp-route-userId="@item.Id"> فعال کردن موبایل </a>
                                         }
+                                        <a class="btn btn-outline-info btn-sm" asp-controller="Users" asp-action="ChangePassword" asp-route-userId="@item.Id"> تغییر رمز عبور </a>
+                                        <a class="btn btn-light btn-sm" asp-controller="Users" asp-action="ChangeAuth" asp-route-userId="@item.Id"> تغییر سطح دسترسی </a>
                                     </th>
                                 }
                                 else

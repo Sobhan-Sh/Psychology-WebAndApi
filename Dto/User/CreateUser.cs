@@ -25,12 +25,14 @@ public class CreateUser : BaseDto
     [Display(Name = "رمزعبور")]
     [Required(ErrorMessage = ErrorHandling.Required)]
     [DataType(DataType.Password)]
+    [StringLength(maximumLength: 15, MinimumLength = 5, ErrorMessage = ErrorHandling.StringLength)]
     public string Password { get; set; }
 
     [Display(Name = "تکرار رمز عبور")]
     [Required(ErrorMessage = ErrorHandling.Required)]
     [DataType(DataType.Password)]
-    [Compare("Password",ErrorMessage = ErrorHandling.PasswordConfirm)]
+    [Compare("Password", ErrorMessage = ErrorHandling.PasswordConfirm)]
+    [StringLength(maximumLength: 15, MinimumLength = 5, ErrorMessage = ErrorHandling.StringLength)]
     public string ConfirmPassword { get; set; }
 
     [Display(Name = "وضعیت تلفن همراه")]

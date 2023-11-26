@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Dto.Role;
 using Dto.User;
 using Framework.Auth;
 using Service.IRepository.Patient;
 using Service.IRepository.Psychologist;
+using Service.IRepository.Role;
 using Service.IRepository.User;
 using Service.IService.User;
 using Utility.ReturnFuncResult;
@@ -14,13 +16,15 @@ namespace Service.Service.User;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IRoleRepository _roleRepository;
     private readonly IPatientRepository _patientRepository;
     private readonly IPsychologistRepository _psychologistRepository;
     private IMapper _mapper;
 
-    public UserService(IUserRepository userRepository, IPatientRepository patientRepository, IPsychologistRepository psychologistRepository, IMapper mapper)
+    public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IPatientRepository patientRepository, IPsychologistRepository psychologistRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _roleRepository = roleRepository;
         _patientRepository = patientRepository;
         _psychologistRepository = psychologistRepository;
         _mapper = mapper;
@@ -268,9 +272,6 @@ public class UserService : IUserService
                 }
             }
 
-            //var passwordHasher = new PasswordHasher();
-            //command.Password = passwordHasher.HashPassword(command.Password);
-            //command.Password,
             query.Edit(command.FName, command.LName, command.Address, command.Avatar, command.RoleID, command.GenderId);
             await _userRepository.SaveAsync();
             return new BaseResult()
@@ -459,5 +460,120 @@ public class UserService : IUserService
             Message = ValidationMessage.SuccessUpdatePassword,
             StatusCode = ValidationCode.Success,
         };
+    }
+
+    public async Task<BaseResult> ChangePasswordAsync(AdminChangePasswored command)
+    {
+        Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id, include: "Gender");
+        if (query == null)
+        {
+            return new BaseResult
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.RecordNotFound,
+                StatusCode = ValidationCode.NotFound,
+            };
+        }
+
+        if (command.NewPassword.Length < 5)
+        {
+            return new BaseResult
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.PasswordLenght,
+                StatusCode = ValidationCode.BadRequest,
+            };
+        }
+
+        if (command.NewPassword != command.ConfirmNewPassword)
+        {
+            return new BaseResult
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.NoConfirmPassword,
+                StatusCode = ValidationCode.BadRequest,
+            };
+        }
+
+        var passwordHasher = new PasswordHasher();
+        query.Password = passwordHasher.HashPassword(command.NewPassword);
+        await _userRepository.SaveAsync();
+        //todo: Send onHashPass To User phone By SMS
+        return new BaseResult
+        {
+            IsSuccess = true,
+            Message = ValidationMessage.AdminSuccessUpdatePassword(query.FullName(), query.Gender.Name),
+            StatusCode = ValidationCode.Success,
+        };
+    }
+
+    public async Task<BaseResult<ResultFindUserAuth>> ChangeAuth(int Id)
+    {
+        try
+        {
+            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult<ResultFindUserAuth>()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            return new BaseResult<ResultFindUserAuth>()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCheckUserBeforeChangeAuth,
+                StatusCode = ValidationCode.Success,
+                Data = new ResultFindUserAuth()
+                {
+                    Id = query.Id,
+                    RoleViewModels = _mapper.Map<List<RoleViewModel>>(await _roleRepository.GetAllAsync(x => x.Id > 1)),
+                    RoleId = query.RoleID
+                }
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<ResultFindUserAuth>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorChackUserInChangeAuth(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult> ChangeAuth(ChangeAuth command)
+    {
+        try
+        {
+            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            query.ChangeAuth(command.RoleId);
+            await _userRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessChangeAuth,
+                StatusCode = ValidationCode.Success,
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorChangeAuth(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 }

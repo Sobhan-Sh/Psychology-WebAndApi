@@ -69,5 +69,10 @@ namespace Entity.User
         {
             return FName + LName;
         }
+
+        public void ChangeAuth(int roleId)
+        {
+            RoleID = roleId;
+        }
     }
 }

@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Dto.User.ChangeAuth
 @{
+    ViewData["Title"] = " :  تعیین سطح دسترسی کاربر";
+    SelectList roleSelectList = (SelectList)ViewData["RoleViewModel"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+
+    <form asp-controller="Users" asp-action="ChangeAuth" method="post">
+        <input type="hidden" asp-for="Id" value="@ViewBag.UserId" />
+        <section class="row align-items-end">
+            <section class="col-12">
+                <select class="cusotm-form-controle" asp-for="RoleId" asp-items="roleSelectList"></select>
+            </section>
+            <section class="col-3 mt-3">
+                <button class="btn btn-custom px-3"> تغییر سطح دسترسی </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
 }

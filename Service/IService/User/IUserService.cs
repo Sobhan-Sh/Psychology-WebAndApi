@@ -27,6 +27,7 @@ public interface IUserService
     Task<BaseResult> BlockAsync(int Id);
     Task<BaseResult> OnBlockAsync(int Id);
     Task<BaseResult> ChangePasswordAsync(ChangePassword command);
+    Task<BaseResult> ChangePasswordAsync(AdminChangePasswored command);
     Task<BaseResult<ResultFindUserAuth>> ChangeAuth(int Id);
     Task<BaseResult> ChangeAuth(ChangeAuth command);
     // Other Operations

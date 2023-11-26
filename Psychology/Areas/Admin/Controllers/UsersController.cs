@@ -28,6 +28,8 @@ namespace Psychology.Areas.Admin.Controllers
             return View(result.Data);
         }
 
+        #region block & onBlock & activePhone
+
         public async Task<IActionResult> OnBlock(int userId)
         {
             BaseResult result = await _userService.OnBlockAsync(userId);
@@ -45,6 +47,10 @@ namespace Psychology.Areas.Admin.Controllers
             BaseResult result = await _userService.ActivePhone(userId);
             return RedirectToAction("Index", new { renderMessage = result.Message });
         }
+
+        #endregion
+
+        #region CreateUser
 
         public async Task<IActionResult> CreateUser()
         {
@@ -77,6 +83,10 @@ namespace Psychology.Areas.Admin.Controllers
 
             return View();
         }
+
+        #endregion
+
+        #region UpdateUser
 
         public async Task<IActionResult> EditUser(int userId, string? renderMessage)
         {
@@ -112,6 +122,10 @@ namespace Psychology.Areas.Admin.Controllers
             return RedirectToAction("EditUser", new { userId = user.Id, renderMessage = message });
         }
 
+        #endregion
+
+        #region DeleteUser
+
         public async Task<IActionResult> DeleteUser(int userId)
         {
             BaseResult<UserViewModel> result = await _userService.ReturnViewGetAsync(userId);
@@ -136,6 +150,10 @@ namespace Psychology.Areas.Admin.Controllers
             return RedirectToAction("DeleteUser", new { userId = user.Id });
         }
 
+        #endregion
+
+        #region ChangePassword
+
         public async Task<IActionResult> ChangePassword(int userId, string? renderMessage)
         {
             BaseResult<EditUser> result = await _userService.GetAsync(userId);
@@ -150,25 +168,57 @@ namespace Psychology.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePassword pas)
+        public async Task<IActionResult> ChangePassword(AdminChangePasswored pas)
         {
-            BaseResult result = await _userService.ChangePasswordAsync(pas);
-            if (result.IsSuccess)
-                return RedirectToAction("Index", new { renderMessage = result.Message });
+            string message = "";
+            if (ModelState.IsValid)
+            {
+                BaseResult result = await _userService.ChangePasswordAsync(pas);
+                if (result.IsSuccess)
+                    return RedirectToAction("Index", new { renderMessage = result.Message });
 
-            return RedirectToAction("ChangePassword", new { userId = pas.Id, renderMessage = result.Message });
+                message = result.Message;
+            }
+
+            return RedirectToAction("ChangePassword", new { userId = pas.Id, renderMessage = message });
         }
 
-        public async Task<IActionResult> ChangeAuth(int userId)
+        #endregion
+
+        #region ChangeAuth
+
+        public async Task<IActionResult> ChangeAuth(int userId, string? renderMessage)
         {
             BaseResult<ResultFindUserAuth> result = await _userService.ChangeAuth(userId);
             if (result.IsSuccess)
             {
-                ViewData["RoleViewModel"]=new SelectList()
+                if (!string.IsNullOrWhiteSpace(renderMessage))
+                    ViewData["Message"] = renderMessage;
+
+                ViewBag.UserId = userId;
+                ViewData["RoleViewModel"] = new SelectList(result.Data.RoleViewModels, "Id", "Name", result.Data.RoleId);
                 return View();
             }
 
-            return RedirectToAction("ChangePassword", new { userId = pas.Id, renderMessage = result.Message });
+            return RedirectToAction("Index", new { renderMessage = result.Message });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeAuth(ChangeAuth auth)
+        {
+            string message = "";
+            if (ModelState.IsValid)
+            {
+                BaseResult result = await _userService.ChangeAuth(auth);
+                if (result.IsSuccess)
+                    return RedirectToAction("Index", new { renderMessage = result.Message });
+
+                message = result.Message; ;
+            }
+
+            return RedirectToAction("ChangeAuth", new { userId = auth.Id, renderMessage = message });
+        }
+
+        #endregion
     }
 }
