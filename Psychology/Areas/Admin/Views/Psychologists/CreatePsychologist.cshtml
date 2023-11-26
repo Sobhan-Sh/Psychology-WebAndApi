@@ -1,0 +1,71 @@
+﻿@model Dto.Psychologist.CreatePsychologist
+@{
+    ViewData["Title"] = " : افزودن روانشناس جدید";
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-info" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-info"><strong class="me-auto text-info"> نتیجه </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    @if (ViewData["RnderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RnderMessage"]
+            </div>
+        </div>
+    }
+    <!-- create question -->
+    <form asp-controller="Psychologists" asp-action="CreatePsychologist" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="UserId" value="@ViewData["UserId"]" />
+        <input type="hidden" asp-for="CreatedAt" value="@ViewData["Time"]" />
+        <section class="row align-items-end">
+            <section class="col-12 col-md-6">
+                <label asp-for="NationalCode"></label>
+                <input class="cusotm-form-controle" type="number" asp-for="NationalCode">
+                <span asp-validation-for="NationalCode"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="MedicalLicennseCode"></label>
+                <input class="cusotm-form-controle" asp-for="MedicalLicennseCode">
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="DateOfBirth"></label>
+                <input class="cusotm-form-controle" asp-for="DateOfBirth">
+            </section>
+            <section class="col-12 col-md-3">
+                <label asp-for="Age"></label>
+                <input class="cusotm-form-controle" asp-for="Age">
+                <span asp-validation-for="Age"></span>
+            </section>
+            <section class="col-12 col-md-3">
+                <label asp-for="Commission"></label>
+                <input class="cusotm-form-controle" asp-for="Commission">
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="ImageLicennse"></label>
+                <input class="cusotm-form-controle" onchange="PreviewImage(this)" type="file" asp-for="ImageLicennse">
+            </section>
+            <section class="col-12 col-md-6">
+                <label for="previewImage"> نمایش عکس پراونه طبابت </label>
+                <img id="previewImage" style="width: 90px; height: 90px;" class="img-thumbnail">
+            </section>
+            <section class="col-3 mt-4">
+                <button class="btn btn-custom px-3"> افزودن روانشناس </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="/assets/js/PreviewImage.js"></script>
+}

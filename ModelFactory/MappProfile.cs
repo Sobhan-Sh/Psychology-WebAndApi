@@ -132,6 +132,7 @@ public class MappProfile : Profile
             config.CreateMap<UserViewModel, User>()
                 .ForMember(x => x.Role, x => x.MapFrom(sub => sub.RoleViewModel))
                 .ForMember(x => x.Gender, x => x.MapFrom(sub => sub.GenderViewModel))
+                .ForMember(x => x.Psychologists, x => x.MapFrom(sub => sub.PsychologistViewModels))
                 .ReverseMap();
 
             config.CreateMap<EditUser, User>()

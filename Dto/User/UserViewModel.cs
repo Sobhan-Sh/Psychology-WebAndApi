@@ -1,6 +1,7 @@
 ﻿using Dto.Role;
 using Dto.User.Gender;
 using System.ComponentModel.DataAnnotations;
+using Dto.Psychologist;
 using Utility.Dto;
 
 namespace Dto.User;
@@ -33,4 +34,6 @@ public class UserViewModel : BaseDto
     public RoleViewModel? RoleViewModel { get; set; }
 
     public GenderViewModel? GenderViewModel { get; set; }
+
+    public List<PsychologistViewModel> PsychologistViewModels { get; set; }
 }

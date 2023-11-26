@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Dto.Psychologist.PsychologistViewModel>
+@{
+    ViewData["Title"] = " : روانشناسان";
+    int counter = 1;
+}
+
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+    @if (ViewData["RenderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RenderMessage"]
+            </div>
+        </div>
+    }
+    <section class="section_error mb-3">
+        <a class="btn btn-success" asp-controller="Users" asp-action="Index"> افزودن روانشناس </a>
+        <a class="btn btn-primary" asp-area="Admin" asp-controller="Home" asp-action="Index">
+            برگشت
+        </a>
+    </section>
+    <section>
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> نام </th>
+                            <th scope="col"> فامیلی </th>
+                            <th scope="col"> کد ملی </th>
+                            <th scope="col">  کد پروانه طبابت </th>
+                            <th scope="col"> درصد همکاری </th>
+                            <th scope="col"> تاریخ تولد </th>
+                            <th scope="col"> سن </th>
+                            <th scope="col"> امکانات </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">@counter</td>
+                                <td>
+                                    @item.UserViewModel.FName
+                                </td>
+                                <td>
+                                    @item.UserViewModel.LName
+                                </td>
+                                <td>
+                                    @item.NationalCode
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrWhiteSpace(item.MedicalLicennseCode))
+                                    {
+                                        <span class="badge text-bg-success">
+                                            @item.MedicalLicennseCode
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-warning">
+                                            کدی ثبت نشده
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Commission > 0)
+                                    {
+                                        <span class="badge bg-info">
+                                            @item.Commission
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            مقدار همکاری تعیین نشده
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @item.DateOfBirth.ToString()
+                                </td>
+                                <td>
+                                    @item.Age
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@item.Id"> حذف </a>
+                                    <a class="btn btn-warning btn-sm" asp-controller="Users" asp-action="EditUser" asp-route-userId="@item.Id"> ویرایش </a>
+                                    @if (item.IsActive)
+                                    {
+                                        <a class="btn btn-outline-danger btn-sm" asp-controller="Users" asp-action="Block" asp-route-userId="@item.Id"> بلاک </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-outline-success btn-sm" asp-controller="Users" asp-action="OnBlock" asp-route-userId="@item.Id"> ان بلاک </a>
+                                    }
+
+                                    <a class="btn btn-outline-info btn-sm" asp-controller="Users" asp-action="ChangePassword" asp-route-userId="@item.Id"> تغییر رمز عبور </a>
+                                    <a class="btn btn-light btn-sm" asp-controller="Users" asp-action="ChangeAuth" asp-route-userId="@item.Id"> تغییر سطح دسترسی </a>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <h6>
+                    هیچ روانشناسی وجود نداردن
+                </h6>
+            </div>
+        }
+    </section>
+</section>

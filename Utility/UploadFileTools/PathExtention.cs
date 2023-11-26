@@ -8,5 +8,5 @@ public class PathExtention
         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/Image/Users/Avatar/");
 
     public static string PathImageLicennsePsychologist =
-        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/Image/Psychology/Licennse");
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/Image/Psychology/Licennse/");
 }

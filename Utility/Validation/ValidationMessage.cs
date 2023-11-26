@@ -33,6 +33,8 @@ public class ValidationMessage
     public const string RecordNotFoundSectionAnswerErrorQuestion = "مشخص کنید که این جواب ها مربوط به کدام سوال است";
     public const string SuccessChangeAuth = "سطح دسترسی کاربر با موفقیت تغییر کرد!";
     public const string SuccessCheckUserBeforeChangeAuth = "کاربر اعتبار سنجی و تایید می شود!";
+    public const string SuccessIsCheckedSectionPsychologist = "کاربر تایید شده و اماده تبدیل نقش است";
+    public const string SuccessFindPatientSectionPsychologist = "متاسفانه این کاربر بیمار است و نمی توان ان را روانشناس کرد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

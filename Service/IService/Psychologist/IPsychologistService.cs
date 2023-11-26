@@ -23,4 +23,5 @@ public interface IPsychologistService
 
     public Task<BaseResult> ActiveAsync(int Id);
     public Task<BaseResult> DeActiveAsync(int Id);
+    public Task<BaseResult<IsCheckedUser>> IsChecked(int Id);
 }

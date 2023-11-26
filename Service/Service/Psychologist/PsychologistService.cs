@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Dto.Psychologist;
+using Service.IRepository.Patient;
 using Service.IRepository.Psychologist;
+using Service.IRepository.User;
 using Service.IService.Psychologist;
 using Utility.ReturnFuncResult;
 using Utility.UploadFileTools;
@@ -11,11 +13,15 @@ namespace Service.Service.Psychologist;
 public class PsychologistService : IPsychologistService
 {
     private readonly IPsychologistRepository _psychologistRepository;
+    private readonly IPatientRepository _patientRepository;
+    private readonly IUserRepository _userRepository;
     private IMapper _mapper;
 
-    public PsychologistService(IPsychologistRepository psychologistRepository, IMapper mapper)
+    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IMapper mapper)
     {
         _psychologistRepository = psychologistRepository;
+        _patientRepository = patientRepository;
+        _userRepository = userRepository;
         _mapper = mapper;
     }
 
@@ -23,7 +29,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order");
+            IEnumerable<Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order,User");
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistViewModel>>
@@ -176,7 +182,11 @@ public class PsychologistService : IPsychologistService
                     command.ImageLicennse.AddFileToServer(imageName, PathExtention.PathImageLicennsePsychologist, null, null, null, null);
                     command.EvidencePath = imageName;
                 }
+                else
+                    return new BaseResult() { IsSuccess = false, Message = ValidationMessage.InvalidFileFormat, StatusCode = ValidationCode.BadRequest };
 
+            command.CreatedAt = DateTime.Now.ToString();
+            command.IsActive = true;
             await _psychologistRepository.CreateAsync(_mapper.Map<Entity.Psychologist.Psychologist>(command));
             await _psychologistRepository.SaveAsync();
             return new BaseResult()
@@ -201,8 +211,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == command.Id);
-            if (query == null)
+            if (!await _psychologistRepository.IsExistAsync(x => x.Id == command.Id))
                 return new BaseResult()
                 {
                     IsSuccess = false,
@@ -210,6 +219,7 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound
                 };
 
+            Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == command.Id);
             if (command.ImageLicennse != null)
                 if (command.ImageLicennse.IsCheckFile())
                 {
@@ -217,6 +227,8 @@ public class PsychologistService : IPsychologistService
                     command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, null, null);
                     command.EvidencePath = fileName;
                 }
+                else
+                    return new BaseResult() { IsSuccess = false, Message = ValidationMessage.InvalidFileFormat, StatusCode = ValidationCode.BadRequest };
 
             query.Edit(command.Age, command.NationalCode, command.EvidencePath, command.DateOfBirth, command.MedicalLicennseCode);
             await _psychologistRepository.SaveAsync();
@@ -317,5 +329,55 @@ public class PsychologistService : IPsychologistService
             Message = ValidationMessage.SuccessDeActive,
             StatusCode = ValidationCode.Success
         };
+    }
+
+    public async Task<BaseResult<IsCheckedUser>> IsChecked(int Id)
+    {
+        try
+        {
+            if (!await _userRepository.IsExistAsync(x => x.Id == Id))
+                return new BaseResult<IsCheckedUser>()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound,
+                    Data = new IsCheckedUser
+                    {
+                        IsPatient = false,
+                    }
+                };
+
+            if (await _patientRepository.IsExistAsync(x => x.UserId == Id) == true)
+                return new BaseResult<IsCheckedUser>()
+                {
+                    IsSuccess = true,
+                    Message = ValidationMessage.SuccessFindPatientSectionPsychologist,
+                    StatusCode = ValidationCode.NotFound,
+                    Data = new IsCheckedUser
+                    {
+                        IsPatient = true,
+                    }
+                };
+
+            return new BaseResult<IsCheckedUser>()
+            {
+                Message = ValidationMessage.SuccessIsCheckedSectionPsychologist,
+                StatusCode = ValidationCode.Success,
+                IsSuccess = true,
+                Data = new IsCheckedUser
+                {
+                    IsPatient = false,
+                }
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<IsCheckedUser>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorUpdate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
     }
 }

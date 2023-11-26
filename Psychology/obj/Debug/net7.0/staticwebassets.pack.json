@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Psychology.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg",
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg"
     },
@@ -155,6 +159,14 @@
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\AnswerHandel.js",
       "PackagePath": "staticwebassets\\assets\\js\\AnswerHandel.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\PreviewImage.js",
+      "PackagePath": "staticwebassets\\assets\\js\\PreviewImage.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\PsychologistHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\PsychologistHandel.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\QuestionHandel.js",

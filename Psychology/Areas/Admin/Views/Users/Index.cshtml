@@ -51,7 +51,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr class="s@(item.Id) @(item.Id == 1?"table-primary":"")">
+                            <tr class="@(item.Id == 1?"table-primary":"")">
                                 <td scope="row">@counter</td>
                                 <td>
                                     @item.FName
@@ -81,7 +81,7 @@
                                 </td>
                                 @if (item.Id > 1)
                                 {
-                                    <th>
+                                    <td>
                                         <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@item.Id"> حذف </a>
                                         <a class="btn btn-warning btn-sm" asp-controller="Users" asp-action="EditUser" asp-route-userId="@item.Id"> ویرایش </a>
                                         @if (item.IsActive)
@@ -98,7 +98,8 @@
                                         }
                                         <a class="btn btn-outline-info btn-sm" asp-controller="Users" asp-action="ChangePassword" asp-route-userId="@item.Id"> تغییر رمز عبور </a>
                                         <a class="btn btn-light btn-sm" asp-controller="Users" asp-action="ChangeAuth" asp-route-userId="@item.Id"> تغییر سطح دسترسی </a>
-                                    </th>
+                                        <a class="btn btn-outline-warning btn-sm" asp-controller="Psychologists" asp-action="CreatePsychologist" asp-route-userId="@item.Id"> تبدیل به روانشناس </a>
+                                    </td>
                                 }
                                 else
                                 {
