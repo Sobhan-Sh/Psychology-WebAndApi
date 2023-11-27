@@ -150,7 +150,7 @@ public class AuthService : IAuthService
                 if (command.ImageUser.IsCheckFile())
                 {
                     var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
-                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, null, null, null, null);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, null, null);
                     command.Avatar = imageName;
                 }
                 else

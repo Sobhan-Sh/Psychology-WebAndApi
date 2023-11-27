@@ -154,7 +154,7 @@ public class MappProfile : Profile
             #region Psychologist
 
             config.CreateMap<CreatePsychologist, Psychologist>().ReverseMap();
-
+            config.CreateMap<EditPsychologist, Psychologist>().ReverseMap();
             config.CreateMap<PsychologistViewModel, Psychologist>()
                 .ForMember(x => x.Order, x => x.MapFrom(sub => sub.OrderViewModels))
                 .ForMember(x => x.Discount, x => x.MapFrom(sub => sub.DiscountViewModels))

@@ -99,19 +99,19 @@
                                     @item.Age
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@item.Id"> حذف </a>
-                                    <a class="btn btn-warning btn-sm" asp-controller="Users" asp-action="EditUser" asp-route-userId="@item.Id"> ویرایش </a>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="DeleteUser" asp-route-psychologistId="@item.Id"> حذف </a>
+                                    <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditPsychologist" asp-route-psychologistId="@item.Id"> ویرایش </a>
                                     @if (item.IsActive)
                                     {
-                                        <a class="btn btn-outline-danger btn-sm" asp-controller="Users" asp-action="Block" asp-route-userId="@item.Id"> بلاک </a>
+                                        <a class="btn btn-outline-danger btn-sm" asp-controller="Users" asp-action="Block" asp-route-psychologistId="@item.Id"> بلاک </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-outline-success btn-sm" asp-controller="Users" asp-action="OnBlock" asp-route-userId="@item.Id"> ان بلاک </a>
+                                        <a class="btn btn-outline-success btn-sm" asp-controller="Users" asp-action="OnBlock" asp-route-psychologistId="@item.Id"> ان بلاک </a>
                                     }
 
-                                    <a class="btn btn-outline-info btn-sm" asp-controller="Users" asp-action="ChangePassword" asp-route-userId="@item.Id"> تغییر رمز عبور </a>
-                                    <a class="btn btn-light btn-sm" asp-controller="Users" asp-action="ChangeAuth" asp-route-userId="@item.Id"> تغییر سطح دسترسی </a>
+                                    <a class="btn btn-outline-info btn-sm" asp-controller="Users" asp-action="ChangePassword" asp-route-psychologistId="@item.Id"> تغییر رمز عبور </a>
+                                    <a class="btn btn-light btn-sm" asp-controller="Users" asp-action="ChangeAuth" asp-route-psychologistId="@item.Id"> تغییر سطح دسترسی </a>
                                 </td>
                             </tr>
                             counter++;

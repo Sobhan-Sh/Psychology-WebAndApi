@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\Psychology.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg",
-      "PackagePath": "staticwebassets\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\b0a2ce8cafa147fb965617974db750c7.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Psychology\\Licennse\\b0a2ce8cafa147fb965617974db750c7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\eb42cd17983d4a828b9364c9c1f44e75.png",
+      "PackagePath": "staticwebassets\\assets\\Image\\Psychology\\Licennse\\eb42cd17983d4a828b9364c9c1f44e75.png"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg",
@@ -29,8 +33,12 @@
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar7d55cfdc2a0141afbfa0918d8b9f6727.jpg"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg",
-      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatara1fa8787d3fe4d70a4597e21ad99f6b0.jpg",

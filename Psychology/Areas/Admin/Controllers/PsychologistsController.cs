@@ -64,5 +64,32 @@ namespace Psychology.Areas.Admin.Controllers
 
         #endregion
 
+        #region EditPsychologist
+
+        public async Task<IActionResult> EditPsychologist(int psychologistId)
+        {
+            BaseResult<EditPsychologist> result = await _psychologistService.GetAsync(psychologistId);
+            if (!result.IsSuccess)
+                ViewData["Message"] = result.Message;
+
+            return View(result.Data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPsychologist(EditPsychologist psychologist)
+        {
+            if (ModelState.IsValid)
+            {
+                BaseResult result = await _psychologistService.UpdateAsync(psychologist);
+                if (result.IsSuccess)
+                    return RedirectToAction("Index", new { renderMessage = result.Message });
+
+                ViewData["Message"] = result.Message;
+            }
+
+            return View(psychologist);
+        }
+
+        #endregion
     }
 }

@@ -5,7 +5,7 @@ namespace Utility.UploadFileTools;
 public static class UploadImageExtension
 {
     public static bool AddFileToServer(this IFormFile image, string fileName, string orginalPath, int? width,
-        int? height, string thumbPath = null, string deletefileName = null)
+        int? height, bool isThumb = false, string deletefileName = null)
     {
         if (image != null && image.IsCheckFile())
         {
@@ -15,9 +15,9 @@ public static class UploadImageExtension
             {
                 if (File.Exists(orginalPath + deletefileName))
                     File.Delete(orginalPath + deletefileName);
-                if (!string.IsNullOrEmpty(thumbPath))
-                    if (File.Exists(thumbPath + deletefileName))
-                        File.Delete(thumbPath + deletefileName);
+                //if (!string.IsNullOrEmpty(thumbPath))
+                //    if (File.Exists(thumbPath + deletefileName))
+                //        File.Delete(thumbPath + deletefileName);
             }
 
             var OriginPath = orginalPath + fileName;
@@ -25,16 +25,24 @@ public static class UploadImageExtension
             {
                 if (!Directory.Exists(OriginPath)) image.CopyTo(stream);
             }
-
-            if (!string.IsNullOrEmpty(thumbPath))
+            if (isThumb)
             {
-                if (!Directory.Exists(thumbPath))
-                    Directory.CreateDirectory(thumbPath);
+            //    if (!Directory.Exists(thumbPath))
+            //        Directory.CreateDirectory(thumbPath);
                 var resizer = new ImageOptimizer();
 
                 if (width != null && height != null)
-                    resizer.ImageResizer(orginalPath + fileName, thumbPath + fileName, width, height);
+                    resizer.ImageResizer(orginalPath + fileName, orginalPath + fileName, width, height);
             }
+            //if (!string.IsNullOrEmpty(thumbPath))
+            //{
+            //    if (!Directory.Exists(thumbPath))
+            //        Directory.CreateDirectory(thumbPath);
+            //    var resizer = new ImageOptimizer();
+
+            //    if (width != null && height != null)
+            //        resizer.ImageResizer(orginalPath + fileName, orginalPath + fileName, width, height);
+            //}
 
             return true;
         }

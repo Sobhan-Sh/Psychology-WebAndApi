@@ -75,7 +75,7 @@ public class PatientFileService : IPatientFileService
                 // create path
                 string pathFilePatient = PathExtention.PatientFile + "/" + patient.User.FullName() + "/";
                 // check && upload file
-                command.File.AddFileToServer(fileName, pathFilePatient, null, null, null, null);
+                command.File.AddFileToServer(fileName, pathFilePatient, null, null);
                 command.FilePath = fileName;
             }
 
@@ -104,7 +104,7 @@ public class PatientFileService : IPatientFileService
         try
         {
             PatientFile query = await _patientFileRepository.GetAsync(x => x.Id == Id);
-            Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.Id == query.PatientId,"User");
+            Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.Id == query.PatientId, "User");
             if (query == null)
                 return new BaseResult()
                 {

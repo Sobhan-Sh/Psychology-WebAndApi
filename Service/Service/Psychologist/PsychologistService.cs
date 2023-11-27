@@ -179,7 +179,7 @@ public class PsychologistService : IPsychologistService
                 if (command.ImageLicennse.IsCheckFile())
                 {
                     string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(imageName, PathExtention.PathImageLicennsePsychologist, null, null, null, null);
+                    command.ImageLicennse.AddFileToServer(imageName, PathExtention.PathImageLicennsePsychologist, null, null);
                     command.EvidencePath = imageName;
                 }
                 else
@@ -224,7 +224,7 @@ public class PsychologistService : IPsychologistService
                 if (command.ImageLicennse.IsCheckFile())
                 {
                     var fileName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageLicennse.FileName);
-                    command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, null, null);
+                    command.ImageLicennse.AddFileToServer(fileName, /* Create Path */PathExtention.PathImageLicennsePsychologist, null, null, false, command.EvidencePath);
                     command.EvidencePath = fileName;
                 }
                 else

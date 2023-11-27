@@ -210,7 +210,7 @@ public class UserService : IUserService
                 if (command.ImageUser.IsCheckFile())
                 {
                     string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
-                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, null, null);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, true, null);
                     command.Avatar = imageName;
                 }
                 else
@@ -263,7 +263,7 @@ public class UserService : IUserService
                 if (command.ImageUser.IsCheckFile())
                 {
                     var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
-                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, null, command.Avatar);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, false, command.Avatar);
                     command.Avatar = imageName;
                 }
                 else

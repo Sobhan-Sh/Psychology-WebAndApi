@@ -17,6 +17,8 @@ public class CreateUser : BaseDto
 
     [Display(Name = "تلفن همراه")]
     [Required(ErrorMessage = ErrorHandling.Required)]
+    [RegularExpression(@"^\d{11,}$", ErrorMessage = "فیلد باید یک عدد با حداقل 11 رقم باشد.")]
+    [DataType(dataType: DataType.PhoneNumber)]
     public string Phone { get; set; }
 
     [Display(Name = "ادرس")]

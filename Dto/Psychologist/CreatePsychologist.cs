@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Dto.Discount;
-using Dto.Order;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using Utility.Dto;
 using Utility.ReturnError;
 
@@ -12,9 +9,7 @@ public class CreatePsychologist : BaseDto
 {
     [Display(Name = "کد ملی")]
     [Required(ErrorMessage = ErrorHandling.Required)]
-    //    [Range(minimum: 10, maximum: 11, ErrorMessage = ErrorHandling.Range)]
     [RegularExpression(@"^\d{10,}$", ErrorMessage = "فیلد باید یک عدد با حداقل 10 رقم باشد.")]
-    [DataType(dataType: DataType.PhoneNumber)]
     public string NationalCode { get; set; }
 
     [Display(Name = "کد پرونده طبابت")]

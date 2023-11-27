@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dydM21RvnV+sClUSbSpLAdJcy1LpsMI9bTkNbZlvDyc=",
+  "Hash": "Bj5uSWFjhqiymHhExgh8O0jyeE6wqKpQqKR0TbUj80w=",
   "Source": "Psychology",
   "BasePath": "_content/Psychology",
   "Mode": "Default",
@@ -1496,12 +1496,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.woff2"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\b0a2ce8cafa147fb965617974db750c7.jpg",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/Image/Psychology/Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg",
+      "RelativePath": "assets/Image/Psychology/Licennse/b0a2ce8cafa147fb965617974db750c7.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1510,15 +1510,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\Image\\Psychology\\Licennse192b004b9c79420b8c7161ce8c3c0cd8.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Psychology\\Licennse\\b0a2ce8cafa147fb965617974db750c7.jpg"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\eb42cd17983d4a828b9364c9c1f44e75.png",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/Image/Users/Avatar/63a03a7907ed42e2b442814160c35324.jpg",
+      "RelativePath": "assets/Image/Psychology/Licennse/eb42cd17983d4a828b9364c9c1f44e75.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1527,7 +1527,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\63a03a7907ed42e2b442814160c35324.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Psychology\\Licennse\\eb42cd17983d4a828b9364c9c1f44e75.png"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Users/Avatar/027a3b2f2e0f48cb8813ebebe071ade3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Users/Avatar/f055e894116a43d88d4040e55c91ba0c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg",
