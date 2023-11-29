@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
+﻿using Utility.Dto;
 
 namespace Dto.Patient;
 
 public class PatientViewModel : BaseDto
 {
-    [Required] public string NationalCode { get; set; }
+    public string NationalCode { get; set; }
 
-    [Required] public int Age { get; set; }
+    public int Age { get; set; }
 
     public int UserId { get; set; }
 

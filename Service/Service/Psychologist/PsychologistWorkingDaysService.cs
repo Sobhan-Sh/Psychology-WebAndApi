@@ -22,7 +22,7 @@ public class PsychologistWorkingDaysService : IPsychologistWorkingDaysService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.PsychologistWorkingDays> query = await _psychologistWorkingDays.GetAllAsync(include: "PsychologistWorkingDateAndTime");
+            IEnumerable<Entity.Psychologist.PsychologistWorkingDays> query = await _psychologistWorkingDays.GetAllAsync();
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistWorkingDaysViewModel>>
@@ -56,7 +56,7 @@ public class PsychologistWorkingDaysService : IPsychologistWorkingDaysService
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDays query = await _psychologistWorkingDays.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime");
+            Entity.Psychologist.PsychologistWorkingDays query = await _psychologistWorkingDays.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditPsychologistWorkingDays>

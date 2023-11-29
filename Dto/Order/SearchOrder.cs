@@ -12,4 +12,10 @@ public class SearchOrder
 
     // مبلغ کل بدون تخفیف
     public int? TotalAmount { get; set; }
+
+    public int? PatientTurnId { get; set; }
+
+    public int? TestId { get; set; }
+
+    public int? PsychologistId { get; set; }
 }

@@ -32,16 +32,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naWNhbFRlc3RzXEZpbmlzaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/CreateOrderThisPsychologist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVPcmRlclRoaXNQc3ljaG9sb2dpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/CreatePsychologist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVQc3ljaG9sb2dpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/CreateWorkTimePsychologist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVXb3JrVGltZVBzeWNob2xvZ2lzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/EditPsychologist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xFZGl0UHN5Y2hvbG9naXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/EditWorkTimePsychologist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xFZGl0V29ya1RpbWVQc3ljaG9sb2dpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/OrderThisPsychologit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xPcmRlclRoaXNQc3ljaG9sb2dpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/PatientsThisPsychologist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xQYXRpZW50c1RoaXNQc3ljaG9sb2dpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/WorkTimePsychologist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xXb3JrVGltZVBzeWNob2xvZ2lzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]

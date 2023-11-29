@@ -23,7 +23,7 @@ public class CreateOrder : BaseDto
     public int? DiscountAmount { get; set; }
 
     // مبلغ کل بدون تخفیف
-    public int? TotalAmount { get; set; }
+    public int TotalAmount { get; set; }
 
     public string? Description { get; set; }
 }

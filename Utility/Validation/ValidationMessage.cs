@@ -35,6 +35,7 @@ public class ValidationMessage
     public const string SuccessCheckUserBeforeChangeAuth = "کاربر اعتبار سنجی و تایید می شود!";
     public const string SuccessIsCheckedSectionPsychologist = "کاربر تایید شده و اماده تبدیل نقش است";
     public const string SuccessFindPatientSectionPsychologist = "متاسفانه این کاربر بیمار است و نمی توان ان را روانشناس کرد";
+    public const string IsRequiredSearch = "هیچ فیلدی برای جستجو پیدا نشد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

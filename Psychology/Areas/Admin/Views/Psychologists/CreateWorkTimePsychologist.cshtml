@@ -1,0 +1,54 @@
+﻿@using Dto.Psychologist.PsychologistWorkingHours
+@model Dto.Psychologist.PsychologistWorkingDateAndTime.CreatePsychologistWorkingDateAndTime
+@{
+    ViewData["Title"] = " : افزودن ساعت کاری";
+    SelectList ListItemWrokingDay = (SelectList)ViewData["ListItemWrokingDay"];
+    List<PsychologistWorkingHoursViewModel> ListItemWrokingHours = (List<PsychologistWorkingHoursViewModel>)ViewData["ListItemWrokingHours"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <form asp-controller="Psychologists" asp-action="CreateWorkTimePsychologist" method="post">
+        <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTime" />
+        <input type="hidden" asp-for="PsychologistId" value="@ViewBag.PsychologistId" />
+        <section class="row">
+            <section class="col-12 col-md-6">
+                <label asp-for="PsychologistWorkingDaysId"></label>
+                <select class="cusotm-form-controle" asp-for="PsychologistWorkingDaysId" asp-items="ListItemWrokingDay">
+                </select>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="PsychologistWorkingHoursId"></label>
+                <ul class="row list-group list-group-horizontal list-group-flush rounded">
+                    @foreach (var item in ListItemWrokingHours)
+                    {
+                        <li class="col list-group-item list-group-item-action cntr rounded border border-secondary m-1">
+                            <input type="radio" value="@item.Id" asp-for="PsychologistWorkingHoursId" class="cusotm-form-controle h-100" />
+                            <div class="checkmark ms-3"></div>
+                            @($"از {item.StartTime.ToString("HH:mm")} تا {item.EndTime.ToString("HH:mm")}")
+                        </li>
+                    }
+                </ul>
+                <span asp-validation-for="PsychologistWorkingHoursId"></span>
+            </section>
+            <section class="col-12 col-md-8 cntr d-none mt-3">
+                <label asp-for="IsActive"></label>
+                <input class="cusotm-form-controle d-none" asp-for="IsActive">
+                <div class="checkmark ms-3"></div>
+            </section>
+            <section class="col-3 mt-3">
+                <button class="btn btn-custom px-3"> افزودن </button>
+                <a class="btn btn-outline-primary ms-3" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@ViewBag.PsychologistId">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

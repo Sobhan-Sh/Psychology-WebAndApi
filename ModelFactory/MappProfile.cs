@@ -167,7 +167,7 @@ public class MappProfile : Profile
             #region PsychologistWorkingDateAndTime
 
             config.CreateMap<CreatePsychologistWorkingDateAndTime, PsychologistWorkingDateAndTime>().ReverseMap();
-
+            config.CreateMap<EditPsychologistWorkingDateAndTime, PsychologistWorkingDateAndTime>().ReverseMap();
             config.CreateMap<PsychologistWorkingDateAndTimeViewModel, PsychologistWorkingDateAndTime>()
                 .ForMember(x => x.PsychologistWorkingDays, x => x.MapFrom(sub => sub.PsychologistWorkingDaysViewModel))
                 .ForMember(x => x.Psychologist, x => x.MapFrom(sub => sub.PsychologistViewModel))

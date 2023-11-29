@@ -67,20 +67,38 @@ public class OrderService : IOrderService
         try
         {
             List<Order> query = new List<Order>();
-            if (f.IsPaid == null && f.DiscountAmount <= 1 && f.PayAmount <= 1 && f.TotalAmount < 1)
+            if (f.IsPaid == null && f.DiscountAmount < 1 && f.PayAmount < 1 && f.TotalAmount < 1 && f.TestId < 1 && f.PatientTurnId < 1 && f.PsychologistId < 1)
             {
-                query.AddRange(await _orderRepository.GetAllAsync(include: "Patient,Psychologist,Test,PatientTurn"));
+                if (!query.Any())
+                    return new BaseResult<List<OrderViewModel>>
+                    {
+                        IsSuccess = false,
+                        Message = ValidationMessage.Vacant,
+                        StatusCode = ValidationCode.BadRequest
+                    };
             }
             else
             {
                 if (f.TotalAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
+                
                 if (f.IsPaid == null)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.IsPaid == f.IsPaid, include: "Patient,Psychologist,Test,PatientTurn"));
+              
                 if (f.PayAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.PayAmount >= f.PayAmount, include: "Patient,Psychologist,Test,PatientTurn"));
+               
                 if (f.TotalAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
+
+                if (f.TestId > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.TestId == f.TestId, include: "Patient,Psychologist,Test,PatientTurn"));
+
+                if (f.PatientTurnId > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.PatientTurnId == f.PatientTurnId, include: "Patient,Psychologist,Test,PatientTurn"));
+
+                if (f.PsychologistId > 0)
+                    query.AddRange(await _orderRepository.GetAllAsync(x => x.PsychologistId == f.PsychologistId, include: "Patient,Psychologist,Test,PatientTurn"));
             }
 
             if (!query.Any())

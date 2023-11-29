@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bj5uSWFjhqiymHhExgh8O0jyeE6wqKpQqKR0TbUj80w=",
+  "Hash": "kmpBokQWMIrGxcgO2+2REqyjr4zeZVU7dvzat7qc2Vg=",
   "Source": "Psychology",
   "BasePath": "_content/Psychology",
   "Mode": "Default",
@@ -1494,6 +1494,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\914a74e68aa5443c939cd20e2f9a3f51.jpg",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Psychology/Licennse/914a74e68aa5443c939cd20e2f9a3f51.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Psychology\\Licennse\\914a74e68aa5443c939cd20e2f9a3f51.jpg"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\b0a2ce8cafa147fb965617974db750c7.jpg",

@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Dto.Order.OrderViewModel>
+@{
+    ViewData["Title"] = " : فاکتور ها";
+    int counter = 1;
+}
+
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+    @if (ViewData["RenderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RenderMessage"]
+            </div>
+        </div>
+    }
+    <section class="section_error mb-3">
+        <a class="btn btn-success" asp-controller="Psychologists" asp-action="CreateOrderThisPsychologist" asp-route-psychologistId="@ViewData["psychologistId"]"> افزودن فاکتور </a>
+        <a class="btn btn-primary" asp-area="Admin" asp-controller="Psychologists" asp-action="Index">
+            برگشت
+        </a>
+    </section>
+    <section>
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> تاریخ ویزیت </th>
+                            <th scope="col"> قیمت ویزیت </th>
+                            <th scope="col"> آزمون </th>
+                            <th scope="col"> قیمت آزمون </th>
+                            <th scope="col"> کدام بیمار </th>
+                            <th scope="col"> سن </th>
+                            <th scope="col"> وضعیت فاکتور </th>
+                            <th scope="col"> کل مبلغ با تخفیف </th>
+                            <th scope="col"> مبلغ کل تخفیف </th>
+                            <th scope="col"> کل مبلغ بدون تخفیف </th>
+                            <th scope="col"> توضیحات </th>
+                            <th scope="col"> امکانات </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">@counter</td>
+                                <td>
+                                    @if (item.PatientTurnViewModel != null)
+                                    {
+                                        <span>
+                                            @item.PatientTurnViewModel.ConsultationDay
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.PatientTurnViewModel != null)
+                                    {
+                                        <span>
+                                            @item.PatientTurnViewModel.Price
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.TestViewModel != null)
+                                    {
+                                        <span>
+                                            @item.TestViewModel.Title
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.TestViewModel != null)
+                                    {
+                                        <span>
+                                            @item.TestViewModel.Price
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.NationalCode
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.Age
+                                </td>
+                                <td>
+                                    @if (item.IsPaid)
+                                    {
+                                        <span class="badge bg-success">
+                                            پرداخت شده
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            پرداخت نشده
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @item.PayAmount
+                                </td>
+                                <td>
+                                    @item.DiscountAmount
+                                </td>
+                                <td>
+                                    @item.TotalAmount
+                                </td>
+                                <td>
+                                    @item.Description
+                                </td>
+                                <td>
+                                    @* <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeletePsychologst" asp-route-psychologistId="@item.Id"> حذف </a> *@
+                                    <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditPsychologist" asp-route-psychologistId="@item.Id"> ویرایش </a>
+                                    @if (item.IsActive)
+                                    {
+                                        <a class="btn btn-outline-danger btn-sm" asp-controller="Psychologists" asp-action="DeActive" asp-route-psychologistId="@item.Id"> غیر فعال کردن حساب کاربری </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-outline-success btn-sm" asp-controller="Psychologists" asp-action="Active" asp-route-psychologistId="@item.Id"> فعال کردن حساب کاربری </a>
+                                    }
+
+                                    <a class="btn btn-outline-info btn-sm" asp-controller="Psychologists" asp-action="OrderThisPsychologit" asp-route-psychologistId="@item.Id"> فاکتور ها </a>
+                                    <a class="btn btn-light btn-sm" asp-controller="Psychologists" asp-action="PatientsThisPsychologist" asp-route-psychologistId="@item.Id"> بیماران </a>
+
+                                    <a class="btn btn-outline-dark btn-sm" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@item.Id"> زمان های کاری </a>
+                                    <a class="btn btn-outline-primary btn-sm" asp-controller="Psychologists" asp-action="UnvisiedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <h6>
+                    هیچ فاکتوری وجود ندارد
+                </h6>
+            </div>
+        }
+    </section>
+</section>

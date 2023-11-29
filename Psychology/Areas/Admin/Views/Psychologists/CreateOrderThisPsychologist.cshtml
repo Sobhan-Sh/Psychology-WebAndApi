@@ -1,0 +1,47 @@
+﻿@model Dto.Order.CreateOrder
+@{
+    ViewData["Title"] = " : افزودن فاکتور";
+    SelectList ListItemPatient = (SelectList)ViewData["ListItemPatient"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <form asp-controller="Users" asp-action="CreateUser" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTime" />
+        <input type="hidden" asp-for="PsychologistId" value="@ViewBag.PsychologistId" />
+        <section class="row align-items-end">
+            <section class="col-12 col-md-6">
+                <label asp-for="TotalAmount"></label>
+                <input class="cusotm-form-controle" asp-for="TotalAmount">
+                <span asp-validation-for="TotalAmount"></span>
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="Description"></label>
+                <input class="cusotm-form-controle" asp-for="Description">
+            </section>
+            <section class="col-12 col-md-6">
+                <label asp-for="PatientId"></label>
+                <select class="cusotm-form-controle" asp-for="PatientId" asp-items="ListItemPatient">
+                </select>
+            </section>
+            <section class="col-12 col-md-8 cntr d-none mt-3">
+                <label asp-for="IsActive"></label>
+                <input class="cusotm-form-controle d-none" asp-for="IsActive">
+                <div class="checkmark ms-3"></div>
+            </section>
+            <section class="col-3 mt-3">
+                <button class="btn btn-custom px-3"> افزودن </button>
+                <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                    بازگشت
+                </a>
+            </section>
+        </section>
+    </form>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

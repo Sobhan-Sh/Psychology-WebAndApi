@@ -52,7 +52,6 @@ public class UserService : IUserService
             }
 
 
-
             if (!query.Any())
             {
                 return new BaseResult<List<UserViewModel>>

@@ -24,5 +24,6 @@ public class PsychologistWorkingDateAndTime : BaseEntity
     {
         PsychologistWorkingDaysId = psychologistWorkingDaysId;
         PsychologistWorkingHoursId = psychologistWorkingHoursId;
+        UpdatedAt = DateTime.Now;
     }
 }

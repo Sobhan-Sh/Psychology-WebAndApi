@@ -22,7 +22,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.PsychologistWorkingHours> query = await _psychologistWorkingHours.GetAllAsync(include: "PsychologistWorkingDateAndTime");
+            IEnumerable<Entity.Psychologist.PsychologistWorkingHours> query = await _psychologistWorkingHours.GetAllAsync();
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistWorkingHoursViewModel>>
@@ -59,15 +59,15 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
             List<Entity.Psychologist.PsychologistWorkingHours> query = new List<Entity.Psychologist.PsychologistWorkingHours>();
             if (f.EndTime == null && f.StartTime == null)
             {
-                query.AddRange(await _psychologistWorkingHours.GetAllAsync(include: "PsychologistWorkingDateAndTime"));
+                query.AddRange(await _psychologistWorkingHours.GetAllAsync());
             }
             else
             {
                 if (f.EndTime != null)
-                    query.AddRange(await _psychologistWorkingHours.GetAllAsync(x => x.EndTime <= f.EndTime, include: "PsychologistWorkingDateAndTime"));
+                    query.AddRange(await _psychologistWorkingHours.GetAllAsync(x => x.EndTime <= f.EndTime));
 
                 if (f.StartTime != null)
-                    query.AddRange(await _psychologistWorkingHours.GetAllAsync(x => x.StartTime >= f.StartTime, include: "PsychologistWorkingDateAndTime"));
+                    query.AddRange(await _psychologistWorkingHours.GetAllAsync(x => x.StartTime >= f.StartTime));
             }
 
             if (!query.Any())
@@ -101,7 +101,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime");
+            Entity.Psychologist.PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditPsychologistWorkingHours>
