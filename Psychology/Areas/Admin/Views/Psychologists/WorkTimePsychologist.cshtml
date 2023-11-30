@@ -42,6 +42,7 @@
                             <th scope="col"> روز های فعالیت </th>
                             <th scope="col"> از ساعت </th>
                             <th scope="col"> تا ساعت </th>
+                            <th scope="col"> اخرین تغییرات </th>
                             <th scope="col"> امکانات </th>
                         </tr>
                     </thead>
@@ -58,6 +59,20 @@
                                 </td>
                                 <td>
                                     @item.PsychologistWorkingHoursViewModel.EndTime.ToString("HH:mm")
+                                </td>
+                                <td>
+                                    @if (item.UpdatedAt != null)
+                                    {
+                                        <span class="badge text-bg-success">
+                                            @item.UpdatedAt?.ToString("HH:mm")
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-info">
+                                            هیچ تغییری نداشته
+                                        </span>
+                                    }
                                 </td>
                                 <td>
                                     <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeleteWorkTimePsychologist" asp-route-PsychologistWorkingDateAndTimeId="@item.Id"> حذف </a>

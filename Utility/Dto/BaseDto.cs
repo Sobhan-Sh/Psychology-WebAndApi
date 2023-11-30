@@ -16,6 +16,8 @@ public class BaseDto
 
     [Display(Name = "حالت کاربر")]
     public bool IsActive { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }
 
 public class BaseDto<TKey>
@@ -31,4 +33,6 @@ public class BaseDto<TKey>
     public string? UpdatedAt { get; set; }
 
     public bool IsActive { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }

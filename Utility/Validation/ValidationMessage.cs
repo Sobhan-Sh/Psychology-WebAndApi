@@ -36,6 +36,8 @@ public class ValidationMessage
     public const string SuccessIsCheckedSectionPsychologist = "کاربر تایید شده و اماده تبدیل نقش است";
     public const string SuccessFindPatientSectionPsychologist = "متاسفانه این کاربر بیمار است و نمی توان ان را روانشناس کرد";
     public const string IsRequiredSearch = "هیچ فیلدی برای جستجو پیدا نشد";
+    public const string SuccessVisited = "بیمار ویزیت شد!";
+    public const string SuccessCanseled = "ویزیت بیمار لغو شد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";
@@ -89,5 +91,15 @@ public class ValidationMessage
     public static string AdminSuccessUpdatePassword(string fn, string g)
     {
         return $"رمز {g} {fn} با موقیت تغییر یافت";
+    }
+
+    public static string ErrorCanseled(string e)
+    {
+        return $"در زمان لغو کردن ویزیت بیمار به مشکل برخوردیم. متن اررور:({e})";
+    }
+
+    public static string ErrorVisited(string e)
+    {
+        return $"در زمان تایید کردن ویزیت بیمار به مشکل برخوردیم. متن اررور:({e})";
     }
 }

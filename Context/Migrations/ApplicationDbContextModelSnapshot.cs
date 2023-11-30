@@ -42,6 +42,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("PatientId")
                         .IsRequired()
                         .HasColumnType("int");
@@ -80,6 +83,9 @@ namespace Context.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsPaid")
@@ -138,6 +144,9 @@ namespace Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("NationalCode")
@@ -201,6 +210,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
@@ -226,6 +238,9 @@ namespace Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("PathFile")
@@ -263,6 +278,15 @@ namespace Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCanseled")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsVisited")
                         .HasColumnType("bit");
 
                     b.Property<int>("PatientId")
@@ -317,6 +341,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MedicalLicennseCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -349,6 +376,9 @@ namespace Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("PsychologistId")
@@ -392,6 +422,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -403,51 +436,58 @@ namespace Context.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8637),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2293),
                             Day = "شنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8641),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2295),
                             Day = "یکشنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8643),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2297),
                             Day = "دوشنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8644),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2298),
                             Day = "سه شنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8645),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2299),
                             Day = "چهار شنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8648),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2301),
                             Day = "پنج شنبه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8649),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2302),
                             Day = "جمعه",
-                            IsActive = true
+                            IsActive = true,
+                            IsDeleted = false
                         });
                 });
 
@@ -468,6 +508,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -482,194 +525,218 @@ namespace Context.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 1, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8434)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2150)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 11, 22, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 2, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 2, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8440)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2155)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 11, 22, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 3, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 2, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 3, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8481)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2158)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 11, 22, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 4, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 3, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 4, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8484)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2161)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2023, 11, 22, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 5, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 4, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 5, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8487)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2164)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2023, 11, 22, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 5, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 6, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8493)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2170)
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2023, 11, 22, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 7, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 7, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8496)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2173)
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2023, 11, 22, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 7, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8499)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2176)
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2023, 11, 22, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8502)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2179)
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2023, 11, 22, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8505)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2183)
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8508)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2186)
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2023, 11, 22, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8511)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2188)
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2023, 11, 22, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8514)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2192)
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2023, 11, 22, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8517)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2194)
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2023, 11, 22, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8520)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2209)
                         },
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2023, 11, 22, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8523)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2212)
                         },
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2023, 11, 22, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8526)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2215)
                         },
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2023, 11, 22, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 18, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8529)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2218)
                         },
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2023, 11, 22, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 19, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8532)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2221)
                         },
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2023, 11, 22, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8535)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2224)
                         },
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(2023, 11, 22, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8538)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2227)
                         },
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(2023, 11, 22, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 22, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 22, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8541)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2230)
                         },
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(2023, 11, 22, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 23, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 22, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 23, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8544)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2233)
                         },
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(2023, 11, 22, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndTime = new DateTime(2023, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2023, 11, 30, 23, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2023, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            StartTime = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8547)
+                            IsDeleted = false,
+                            StartTime = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2236)
                         });
                 });
 
@@ -685,6 +752,9 @@ namespace Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -716,6 +786,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -731,29 +804,33 @@ namespace Context.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9144),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7932),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "AdminManagment"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9150),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7940),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "Customer"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9151),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7942),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "Patient"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9152),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7943),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "Psychologist"
                         });
                 });
@@ -773,6 +850,9 @@ namespace Context.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("QuestionId")
@@ -809,6 +889,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("TestId")
                         .HasColumnType("int");
 
@@ -843,6 +926,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -872,6 +958,9 @@ namespace Context.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -887,22 +976,25 @@ namespace Context.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9197),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7978),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "آقا"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9200),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7981),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "خانم"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 497, DateTimeKind.Local).AddTicks(9202),
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7982),
                             IsActive = true,
+                            IsDeleted = false,
                             Name = "دیگر"
                         });
                 });
@@ -936,6 +1028,9 @@ namespace Context.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LName")
@@ -974,14 +1069,15 @@ namespace Context.Migrations
                         new
                         {
                             Id = 1,
-                            ActivationCode = "6c810af1-8ab5-4ff9-b126-79553ad09653",
-                            CreatedAt = new DateTime(2023, 11, 22, 10, 54, 15, 499, DateTimeKind.Local).AddTicks(8290),
+                            ActivationCode = "0183c2c5-05a9-4351-a875-bacff1a0dfa7",
+                            CreatedAt = new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(1990),
                             FName = "مدیر",
                             GenderId = 2,
                             IsActive = true,
+                            IsDeleted = false,
                             LName = "سیستم",
                             MobailActiveStatus = true,
-                            Password = "AQAAAAEAACcQAAAAEGOb4fv5vZf8pyDG1SkwZ81YFI/1w1ruTk1MbQApWUdMYP+3CtvhH/QfPq3Zsjm0CQ==",
+                            Password = "AQAAAAEAACcQAAAAECmoZoKT+7jrDg6Ks/7XSipx7LF3oW0Brkd8sKtOctVFaZImXR+1yFibZpi+5LvvaQ==",
                             Phone = "Administrator@1402",
                             RoleID = 1
                         });

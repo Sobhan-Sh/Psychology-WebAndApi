@@ -1,5 +1,6 @@
 ﻿using Dto.Order;
 using Dto.Patient;
+using Dto.Patient.PatientTurn;
 using Dto.Psychologist;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.PsychologistWorkingDays;
@@ -22,8 +23,9 @@ namespace Psychology.Areas.Admin.Controllers
         private readonly IOrderService _orderService;
         private readonly IPatientService _petientService;
         private readonly IPsychologistWorkingHoursService _psychologistWorkingHoursService;
+        private readonly IPatientTurnService _petientTurnService;
 
-        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService)
+        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService, IPatientTurnService petientTurnService)
         {
             _psychologistService = psychologistService;
             _dateAndTimeService = dateAndTimeService;
@@ -31,6 +33,7 @@ namespace Psychology.Areas.Admin.Controllers
             _orderService = orderService;
             _petientService = petientService;
             _psychologistWorkingHoursService = psychologistWorkingHoursService;
+            _petientTurnService = petientTurnService;
         }
 
         private static List<PatientViewModel> staticPatientViewModel;
@@ -178,12 +181,6 @@ namespace Psychology.Areas.Admin.Controllers
 
         #endregion
 
-        public async Task<IActionResult> PatientsThisPsychologist(int psychologistId)
-        {
-            return View();
-        }
-
-
         #region WorkTimePsychologist
 
         public async Task<IActionResult> WorkTimePsychologist(int psychologistId, string? renderMessage)
@@ -291,5 +288,22 @@ namespace Psychology.Areas.Admin.Controllers
         }
 
         #endregion
+
+        public async Task<IActionResult> PatientsThisPsychologist(int psychologistId)
+        {
+            BaseResult<List<PatientTurnViewModel>> response =
+                await _petientTurnService.FindPatientByPsychologistIdAsync(psychologistId);
+            if (!response.IsSuccess)
+                ViewData["Message"] = response.Message;
+
+            return View(response.Data);
+        }
+
+        public async Task<IActionResult> UnvisiedPatients(int psychologistId)
+        {
+            BaseResult<List<PatientTurnViewModel>> response =
+                await _petientTurnService.UnvisitedPatients(psychologistId);
+            return View();
+        }
     }
 }

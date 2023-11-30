@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Dto.Patient.PatientTurn;
+using Dto.Psychologist;
 using Entity.Psychologist;
 using Service.IRepository.Patient;
 using Service.IRepository.Psychologist;
@@ -101,6 +102,113 @@ public class PatientTurnService : IPatientTurnService
         }
     }
 
+    public async Task<BaseResult<List<PsychologistViewModel>>> FindPsychologistByPatientIdAsync(int Id)
+    {
+        try
+        {
+            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PatientId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
+            if (query == null)
+            {
+                return new BaseResult<List<PsychologistViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            List<PsychologistViewModel> listPsychologist = new List<PsychologistViewModel>();
+            foreach (var item in query)
+            {
+                listPsychologist.Add(_mapper.Map<PsychologistViewModel>(item.PsychologistWorkingDateAndTime.Psychologist));
+            }
+            return new BaseResult<List<PsychologistViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = listPsychologist,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<PsychologistViewModel>>
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<PatientTurnViewModel>>> FindPatientByPsychologistIdAsync(int Id)
+    {
+        try
+        {
+            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "Patient");
+            if (!query.Any())
+            {
+                return new BaseResult<List<PatientTurnViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            return new BaseResult<List<PatientTurnViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<List<PatientTurnViewModel>>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<PatientTurnViewModel>>
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<PatientTurnViewModel>>> UnvisitedPatients(int Id)
+    {
+        try
+        {
+            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id && x.IsVisited != true, include: "Patient");
+            if (!query.Any())
+            {
+                return new BaseResult<List<PatientTurnViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            return new BaseResult<List<PatientTurnViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<List<PatientTurnViewModel>>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<PatientTurnViewModel>>
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult<EditPatientTurn>> GetAsync(int Id)
     {
         try
@@ -150,6 +258,8 @@ public class PatientTurnService : IPatientTurnService
             //TODO : ما اینجا باید محاسبه کنیم قیمت مشاوره رو بر اساس ساعت
             TypeOfConsultation typeOfConsultation = await _typeOfConsultationRepository.GetAsync(x => x.Id == command.TypeOfConsultationId);
             command.Price = 120000 + typeOfConsultation.Price;
+            command.IsCanseled = false;
+            command.IsVisited = false;
             await _patientTurnRepository.CreateAsync(_mapper.Map<Entity.Patient.PatientTurn>(command));
             await _patientTurnRepository.SaveAsync();
             return new BaseResult()
@@ -231,6 +341,72 @@ public class PatientTurnService : IPatientTurnService
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult> CanseledAsync(int Id)
+    {
+        try
+        {
+            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            query.Canseled();
+            await _patientTurnRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCanseled,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCanseled(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult> VisitedAsync(int Id)
+    {
+        try
+        {
+            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            query.Visited();
+            await _patientTurnRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessVisited,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorVisited(e.Message),
                 StatusCode = ValidationCode.BadRequest
             };
         }

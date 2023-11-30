@@ -35,5 +35,5 @@ public class UserViewModel : BaseDto
 
     public GenderViewModel? GenderViewModel { get; set; }
 
-    public List<PsychologistViewModel> PsychologistViewModels { get; set; }
+    public List<PsychologistViewModel>? PsychologistViewModels { get; set; }
 }

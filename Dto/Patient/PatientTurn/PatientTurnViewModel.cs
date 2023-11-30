@@ -11,6 +11,10 @@ public class PatientTurnViewModel : BaseDto
 
     public int Price { get; set; }
 
+    public bool IsVisited { get; set; }
+
+    public bool IsCanseled { get; set; }
+
     public List<OrderViewModel> OrderViewModels { get; set; }
 
     public PsychologistWorkingDateAndTimeViewModel PsychologistWorkingDateAndTimeViewModel { get; set; }

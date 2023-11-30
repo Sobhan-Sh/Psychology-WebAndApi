@@ -1,5 +1,100 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Dto.Patient.PatientTurn.PatientTurnViewModel>
 @{
+    ViewData["Title"] = " : بیماران این روانشناس";
+    int counter = 1;
 }
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["message"] != null)
+    {
+        <section class="alert alert-danger">
+            <h4>
+                @ViewData["message"]
+            </h4>
+        </section>
+    }
+    @if (ViewData["RenderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RenderMessage"]
+            </div>
+        </div>
+    }
+    <section class="section_error mb-3">
+        <a class="btn btn-primary" asp-area="Admin" asp-controller="Psychologists" asp-action="Index">
+            برگشت
+        </a>
+    </section>
+    <section>
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> تاریخ ویزیت </th>
+                            <th scope="col"> قیمت </th>
+                            <th scope="col"> ساعت حضور روانشناس </th>
+                            <th scope="col"> نوع جلسه </th>
+                            <th scope="col"> نام بیمار </th>
+                            <th scope="col"> کد ملی بیمار </th>
+                            <th scope="col"> سن بیمار </th>
+                            <th scope="col"> امکانات </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">@counter</td>
+                                <td>
+                                    @item.ConsultationDay
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                                <td>
+                                    @($"روز {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingDaysViewModel.Day} از ساعت {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingHoursViewModel.StartTime.ToString("HH:mm")} تا ساعت {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingHoursViewModel.EndTime.ToString("HH:mm")}")
+                                </td>
+                                <td>
+                                    @item.TypeOfConsultationViewModel.Name
+                                </td>
+                                <td>
+                                    @(item.PatientViewModel.UserViewModel.FName + " " + item.PatientViewModel.UserViewModel.LName)
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.NationalCode
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.Age
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeleteWorkTimePsychologist" asp-route-PsychologistWorkingDateAndTimeId="@item.Id"> حذف </a>
+                                    <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditWorkTimePsychologist" asp-route-PsychologistWorkingDateAndTimeId="@item.Id"> ویرایش </a>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <h6>
+                    هیچ قرار ویزیتی وجود ندارد
+                </h6>
+            </div>
+        }
+    </section>
+</section>

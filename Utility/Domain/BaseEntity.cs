@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Utility.Domain;
+﻿namespace Utility.Domain;
 
 public class BaseEntity
 {
@@ -9,13 +7,15 @@ public class BaseEntity
         CreatedAt = DateTime.Now;
     }
 
-    [Key] public int Id { get; set; }
+    public int Id { get; set; }
 
-    [Required] public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
-    [Required] public bool IsActive { get; set; }
+    public bool IsActive { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }
 
 public class BaseEntity<TKey>
@@ -25,11 +25,14 @@ public class BaseEntity<TKey>
         CreatedAt = DateTime.Now;
     }
 
-    [Key] public TKey Id { get; set; }
+    public TKey Id { get; set; }
 
-    [Required] public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
-    [Required] public bool IsActive { get; set; }
+    public bool IsActive { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
+
 }

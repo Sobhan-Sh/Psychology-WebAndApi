@@ -1,4 +1,5 @@
-﻿using Utility.Dto;
+﻿using Dto.User;
+using Utility.Dto;
 
 namespace Dto.Patient;
 
@@ -9,6 +10,8 @@ public class PatientViewModel : BaseDto
     public int Age { get; set; }
 
     public int UserId { get; set; }
+
+    public UserViewModel UserViewModel { get; set; }
 
     public int PatientExamId { get; set; }
 }

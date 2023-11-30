@@ -132,13 +132,14 @@ namespace Psychology.Areas.Admin.Controllers
             // print result
             if (!result.IsSuccess)
                 ViewData["message"] = result.Message;
+
             return View(result.Data);
         }
 
         [HttpPost]
         public async Task<IActionResult> DeleteUser(UserViewModel user)
         {
-            if (ModelState.IsValid)
+            if (user.Id > 0)
             {
                 BaseResult result = await _userService.DeleteAsync(user.Id);
                 if (result.IsSuccess)

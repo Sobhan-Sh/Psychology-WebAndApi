@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kmpBokQWMIrGxcgO2+2REqyjr4zeZVU7dvzat7qc2Vg=",
+  "Hash": "3XdN7iGZSxgcqBiqskP5Tu6oOI2/HezQxdxoeXmnTpw=",
   "Source": "Psychology",
   "BasePath": "_content/Psychology",
   "Mode": "Default",
@@ -1562,23 +1562,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg",
-      "SourceId": "Psychology",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
-      "BasePath": "_content/Psychology",
-      "RelativePath": "assets/Image/Users/Avatar/f055e894116a43d88d4040e55c91ba0c.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\f055e894116a43d88d4040e55c91ba0c.jpg"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg",
