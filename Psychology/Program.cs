@@ -44,10 +44,11 @@ builder.Services.AddAuthentication(option =>
         option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         option.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        option.DefaultSignOutScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     }).AddCookie(option =>
     {
         option.LoginPath = new PathString("/Accounts/Login");
-        option.ExpireTimeSpan = TimeSpan.FromDays(7);
+        option.ExpireTimeSpan = TimeSpan.FromDays(1);
     });
 
 var app = builder.Build();

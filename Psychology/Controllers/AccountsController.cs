@@ -51,7 +51,7 @@ namespace Psychology.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, new AuthenticationProperties
                     {
                         IsPersistent = log.RemomberMe,
-                        ExpiresUtc = DateTime.UtcNow.AddDays(7)
+                        ExpiresUtc = DateTime.UtcNow.AddDays(1)
                     });
                     return Redirect(ReturnUrl);
                 }

@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Dto.Psychologist.PsychologistWorkingDateAndTime.PsychologistWorkingDateAndTimeViewModel>
+﻿@model IEnumerable<Dto.Patient.PatientTurn.PatientTurnViewModel>
 @{
-    ViewData["Title"] = " : ساعات کاری روانشناس";
+    ViewData["Title"] = " : بیماران این روانشناس";
     int counter = 1;
 }
 <section class="container-fluid pe-sm-4">
@@ -25,7 +25,6 @@
         </div>
     }
     <section class="section_error mb-3">
-        <a class="btn btn-success" asp-controller="Psychologists" asp-action="CreateWorkTimePsychologist" asp-route-psychologistId="@ViewData["psychologistId"]"> افزودن ساعات کاری </a>
         <a class="btn btn-primary" asp-area="Admin" asp-controller="Psychologists" asp-action="Index">
             برگشت
         </a>
@@ -39,40 +38,44 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col"> روز های فعالیت </th>
-                            <th scope="col"> از ساعت </th>
-                            <th scope="col"> تا ساعت </th>
-                            <th scope="col"> اخرین تغییرات </th>
+                            <th scope="col"> تاریخ ویزیت </th>
+                            <th scope="col"> قیمت </th>
+                            <th scope="col"> ساعت حضور روانشناس </th>
+                            <th scope="col"> نوع جلسه </th>
+                            <th scope="col"> نام بیمار </th>
+                            <th scope="col"> کد ملی بیمار </th>
+                            <th scope="col"> سن بیمار </th>
                             <th scope="col"> امکانات </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.OrderBy(x => x.PsychologistWorkingDaysViewModel.Day))
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 <td scope="row">@counter</td>
                                 <td>
-                                    @item.PsychologistWorkingDaysViewModel.Day
+                                    @item.ConsultationDay
                                 </td>
                                 <td>
-                                    @item.PsychologistWorkingHoursViewModel.StartTime.ToString("HH:mm")
+                                    @item.Price
                                 </td>
                                 <td>
-                                    @item.PsychologistWorkingHoursViewModel.EndTime.ToString("HH:mm")
+                                    @($"روز {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingDaysViewModel.Day} از ساعت {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingHoursViewModel.StartTime.ToString("HH:mm")} تا ساعت {item.PsychologistWorkingDateAndTimeViewModel.PsychologistWorkingHoursViewModel.EndTime.ToString("HH:mm")}")
                                 </td>
                                 <td>
-                                    @if (item.UpdatedAt != null)
-                                    {
-                                        <span class="badge text-bg-success">
-                                            @item.UpdatedAt?.ToString("HH:mm")
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge text-bg-info">
-                                            هیچ تغییری نداشته
-                                        </span>
-                                    }
+                                    @item.TypeOfConsultationViewModel.Name
+                                </td>
+                                <td>
+                                    @(item.PatientViewModel.UserViewModel.FName + " " + item.PatientViewModel.UserViewModel.LName)
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.NationalCode
+                                </td>
+                                <td>
+                                    @item.PatientViewModel.Age
+                                </td>
+                                <td>
+                                    @item.Price
                                 </td>
                                 <td>
                                     <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeleteWorkTimePsychologist" asp-route-PsychologistWorkingDateAndTimeId="@item.Id"> حذف </a>
@@ -89,7 +92,7 @@
         {
             <div class="alert alert-warning">
                 <h6>
-                    هیچ برنامه کاری وجود ندارد
+                    هیچ قرار ویزیتی وجود ندارد
                 </h6>
             </div>
         }

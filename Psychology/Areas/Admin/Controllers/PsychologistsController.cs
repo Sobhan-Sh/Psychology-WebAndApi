@@ -1,4 +1,5 @@
-﻿using Dto.Order;
+﻿using Azure;
+using Dto.Order;
 using Dto.Patient;
 using Dto.Patient.PatientTurn;
 using Dto.Psychologist;
@@ -194,7 +195,10 @@ namespace Psychology.Areas.Admin.Controllers
             if (!string.IsNullOrWhiteSpace(renderMessage))
                 ViewData["RenderMessage"] = renderMessage;
 
-            return View(result.Data.OrderBy(x => x.PsychologistWorkingDaysViewModel.Day));
+            if (!result.IsSuccess)
+                ViewData["Message"] = result.Message;
+
+            return View(result.Data);
         }
 
         public async Task<IActionResult> CreateWorkTimePsychologist(int psychologistId)
@@ -299,11 +303,14 @@ namespace Psychology.Areas.Admin.Controllers
             return View(response.Data);
         }
 
-        public async Task<IActionResult> UnvisiedPatients(int psychologistId)
+        public async Task<IActionResult> UnvisitedPatients(int psychologistId)
         {
             BaseResult<List<PatientTurnViewModel>> response =
                 await _petientTurnService.UnvisitedPatients(psychologistId);
-            return View();
+            if (!response.IsSuccess)
+                ViewData["Message"] = response.Message;
+
+            return View(response.Data);
         }
     }
 }

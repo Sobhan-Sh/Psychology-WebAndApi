@@ -93,7 +93,7 @@
                                     }
                                 </td>
                                 <td>
-                                    @item.DateOfBirth.ToString()
+                                    @item.DateOfBirth?.ToString("yyyy/MM/dd")
                                 </td>
                                 <td>
                                     @item.Age
@@ -114,7 +114,7 @@
                                     <a class="btn btn-light btn-sm" asp-controller="Psychologists" asp-action="PatientsThisPsychologist" asp-route-psychologistId="@item.Id"> بیماران </a>
 
                                     <a class="btn btn-outline-light btn-sm" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@item.Id"> زمان های کاری </a>
-                                    <a class="btn btn-outline-primary btn-sm" asp-controller="Psychologists" asp-action="UnvisiedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
+                                    <a class="btn btn-outline-primary btn-sm" asp-controller="Psychologists" asp-action="UnvisitedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
                                 </td>
                             </tr>
                             counter++;
