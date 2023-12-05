@@ -48,7 +48,7 @@
             </ul>
         </div>
     </aside>
-    @User.FindFirst("Token")
+    @* @User.FindFirst("Token") *@
     <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
         <!--* card -->
         <section class="card mx-auto pt-5 pb-3 card-profile-form">
@@ -66,29 +66,47 @@
             <hr>
             <!--* body card -->
             <section class="card-body px-0">
-                <form action="#" class="container-fluid">
+                <form asp-action="Profile" enctype="multipart/form-data" class="container-fluid">
+                    <input type="hidden" asp-for="MobailActiveStatus" />
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Avatar" />
+                    <input type="hidden" asp-for="RoleID" />
+                    <input type="hidden" asp-for="Password" />
+                    <input type="hidden" asp-for="Phone" />
+                    <input type="hidden" asp-for="IsActive" />
+                    <input type="hidden" asp-for="IsDeleted" />
                     <section class="row">
                         <section class="col-12 col-md-6">
-                            <input class="cusotm-form-controle" placeholder="نام" type="text">
+                            <label asp-for="FName"></label>
+                            <input class="cusotm-form-controle" placeholder="نام" asp-for="FName" type="text">
                         </section>
                         <section class="col-12 col-md-6">
-                            <input class="cusotm-form-controle" placeholder="نام خانوادگی" type="text">
+                            <label asp-for="LName"></label>
+                            <input class="cusotm-form-controle" placeholder="نام خانوادگی" asp-for="LName" type="text">
                         </section>
                         <section class="col-12 col-md-6 input-div">
+                            <label asp-for="ImageUser"></label>
                             <span class="cusotm-form-controle"> انتخاب اواتار </span>
-                            <input class="cusotm-form-controle" type="file">
+                            <input asp-for="ImageUser" class="cusotm-form-controle" type="file">
                         </section>
                         <section class="col-12 col-md-6">
-                            <input class="cusotm-form-controle" placeholder="تست" type="text">
+                            <label asp-for="Phone"></label>
+                            <input class="cusotm-form-controle" disabled placeholder="تلفن همراه" asp-for="Phone" type="number">
                         </section>
                         <section class="col-12 col-md-6">
-                            <input class="cusotm-form-controle" placeholder="تست" type="text">
+                            <label asp-for="MobailActiveStatus"></label>
+                            <input class="cusotm-form-controle" placeholder="وضعیت موبایل" value='@(Model.MobailActiveStatus ? "گوشی شما فعال است" : "گوشی شما فعال نیست")' type="text">
                         </section>
-                        <section class="col-12 col-md-6">
-                            <input class="cusotm-form-controle" placeholder="تست" type="text">
+                        <section class="col-12 col-md-6 input-div">
+                            <label asp-for="GenderId"></label>
+                            <select class="cusotm-form-controle" asp-for="GenderId" asp-items="@((SelectList)ViewData["listGender"])"></select>
+                        </section>
+                        <section class="col-12">
+                            <label asp-for="Address"></label>
+                            <input class="cusotm-form-controle" asp-for="Address" placeholder="ادرس" type="text">
                         </section>
                     </section>
-                    <input class="btn btn-custom w-100 mt-3" type="submit" value="ثبت اطلاعات">
+                    <button class="btn btn-custom w-100 mt-3" type="submit"> ثبت اطلاعات </button>
                 </form>
             </section>
         </section>

@@ -12,7 +12,8 @@
           "Context": "1.0.0",
           "Dto": "1.0.0",
           "Entity": "1.0.0",
-          "Utility": "1.0.0"
+          "Utility": "1.0.0",
+          "Microsoft.AspNetCore.DataProtection.Abstractions": "7.0.0.0"
         },
         "runtime": {
           "Service.dll": {}
@@ -699,6 +700,14 @@
         "runtime": {
           "Utility.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.DataProtection.Abstractions/7.0.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.1123.42502"
+          }
+        }
       }
     }
   },
@@ -1180,6 +1189,11 @@
     },
     "Utility/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.DataProtection.Abstractions/7.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

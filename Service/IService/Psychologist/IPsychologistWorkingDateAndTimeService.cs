@@ -16,6 +16,7 @@ public interface IPsychologistWorkingDateAndTimeService
     public Task<BaseResult> UpdateAsync(EditPsychologistWorkingDateAndTime command);
     public Task<BaseResult> DeleteAsync(int Id);
     public Task<BaseResult<int>> ReturnIdDeleteAsync(int Id);
+    public Task<BaseResult<List<CheckDateVisit>>> CheckDateVisit(int Id, DateTime DateVisit);
 
     #endregion
 }

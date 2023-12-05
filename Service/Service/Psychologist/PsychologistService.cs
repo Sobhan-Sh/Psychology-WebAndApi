@@ -29,7 +29,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order,User");
+            IEnumerable<Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order,User.Gender");
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistViewModel>>

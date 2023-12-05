@@ -41,6 +41,18 @@
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\74dd4aa63c724490b0f555f776e8a149.png",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\74dd4aa63c724490b0f555f776e8a149.png"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\8d914bccbcbc4f8584cd919725931f2e.png",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\8d914bccbcbc4f8584cd919725931f2e.png"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\ba62d264d4ec47499a225b59d8ca7c8c.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\ba62d264d4ec47499a225b59d8ca7c8c.jpg"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatara1fa8787d3fe4d70a4597e21ad99f6b0.jpg",
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatara1fa8787d3fe4d70a4597e21ad99f6b0.jpg"
     },
@@ -55,6 +67,10 @@
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_css_bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_css_bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\persian-datepicker.css",
+      "PackagePath": "staticwebassets\\assets\\css\\persian-datepicker.css"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\select2.min.css",
@@ -73,84 +89,88 @@
       "PackagePath": "staticwebassets\\assets\\css\\styleAdmin.css"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.eot",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Black.eot"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\sweetalert2.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\sweetalert2.min.css"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.ttf",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Black.ttf"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Black.eot"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.woff",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Black.woff"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Black.ttf"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.woff2",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Black.woff2"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Black.woff"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.eot",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Bold.eot"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Black.woff2"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.ttf",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Bold.ttf"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Bold.eot"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.woff",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Bold.woff"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Bold.ttf"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.woff2",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Bold.woff2"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Bold.woff"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.eot",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Light.eot"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Bold.woff2"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.ttf",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Light.ttf"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Light.eot"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.woff",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Light.woff"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Light.ttf"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.woff2",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-Light.woff2"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Light.woff"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.eot",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-SemiBold.eot"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-Light.woff2"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.ttf",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-SemiBold.ttf"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-SemiBold.eot"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.woff",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-SemiBold.woff"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-SemiBold.ttf"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.woff2",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel-SemiBold.woff2"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-SemiBold.woff"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.eot",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel.eot"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel-SemiBold.woff2"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.ttf",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel.ttf"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel.eot"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.woff",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel.woff"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel.ttf"
     },
     {
-      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.woff2",
-      "PackagePath": "staticwebassets\\assets\\font\\Sahel.woff2"
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Sahel.woff2"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\imageTemplate\\doctor.png",
@@ -189,8 +209,16 @@
       "PackagePath": "staticwebassets\\assets\\js\\UserHandel.js"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\VisitHandel.js",
+      "PackagePath": "staticwebassets\\assets\\js\\VisitHandel.js"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-2.2.4.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-2.2.4.min.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-3.7.1.min.js",
@@ -201,12 +229,24 @@
       "PackagePath": "staticwebassets\\assets\\js\\main.js"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\persian-date.js",
+      "PackagePath": "staticwebassets\\assets\\js\\persian-date.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\persian-datepicker.js",
+      "PackagePath": "staticwebassets\\assets\\js\\persian-datepicker.js"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\select2.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\select2.min.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\site.js",
       "PackagePath": "staticwebassets\\assets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\sweetalert2.all.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\sweetalert2.all.min.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\favicon.ico",

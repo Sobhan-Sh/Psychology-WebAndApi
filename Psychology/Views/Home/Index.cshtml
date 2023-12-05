@@ -1,5 +1,7 @@
-﻿@{
+﻿@model Dto.Patient.PatientTurn.PatientTurnViewModel
+@{
     ViewData["Title"] = "خانه";
+    SelectList psySelectList = (SelectList)ViewData["Psychologist"];
 }
 <div class="container">
     <!--* card -->
@@ -7,9 +9,33 @@
         <section class="card mx-auto mx-md-0 p-2 py-4 p-md-5">
             <!--* title card -->
             <section class="card-title">
-                <h3> قالب روانشاسی </h3>
+                <h3> برای دریافت نوبت اینترنتی فرم را تکمیل کنید </h3>
                 <h6> لطفا در کامل کردن اطلاعات خود دقت فرماید </h6>
             </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body">
+                <form action="#" method="get">
+                    <input class="cusotm-form-controle" type="text" placeholder="نام و نام خانوادگی">
+                    <input class="cusotm-form-controle" type="text" placeholder="شماره تماس">
+                    @if (psySelectList != null)
+                    {
+                        <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@psySelectList" onchange="Visite(this)">
+                            <option value="null">
+                                روانشناس خود را انتخاب کنید
+                            </option>
+                        </select>
+                    }
+                    @*                <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@((SelectList)ViewData["TypeOfConsultation"])">
+                    <option value="null">
+                    نوع مشاوره
+                    </option>
+                    </select> *@
+                    <input type="text" class="cusotm-form-controle ConsultationDay" asp-for="ConsultationDay" />
+                    <input class="btn btn-custom w-100 mt-3" type="submit" value="ثبت ویزیت">
+                </form>
+            </section>
+
         </section>
     </section>
 </div>
@@ -23,5 +49,7 @@
     <script>
         $(".selectMy").select2();
     </script>
-  }
+
+    <script src="/assets/js/VisitHandel.js"></script>
+}
 

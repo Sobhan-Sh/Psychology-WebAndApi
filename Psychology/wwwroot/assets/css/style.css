@@ -646,7 +646,7 @@ b {
     text-shadow: 0 0 5px, 0 0 10px, 0 0 15px;
 }
 
-.field-validation-error *{
+.field-validation-error * {
     font-size: 15px;
 }
 
@@ -660,4 +660,8 @@ span.text-danger.field-validation-error * {
 
 span.text-info.field-validation-error * {
     color: rgba(var(--bs-info-rgb), var(--bs-text-opacity));
+}
+
+.datepicker-plot-area {
+    direction: ltr;
 }

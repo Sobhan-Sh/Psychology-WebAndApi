@@ -10,6 +10,7 @@
     <link href="/assets/css/select2.min.css" rel="stylesheet" />
     <!-- my style -->
     <link rel="stylesheet" href="/assets/css/style.css" asp-append-version="true">
+    <!-- date picker -->
     <!-- title -->
     <title>@ViewData["Title"] - روان شناس من</title>
 </head>
@@ -96,12 +97,6 @@
             </nav>
         </section>
     </header>
-    <label>
-        روانشناس ها
-    </label>
-    <a href="https://localhost:44321/test.html">
-        برو به پروفایل روانشناس
-    </a>
     <!--? end Header -->
     <!--? start Main -->
     <main>
@@ -111,8 +106,30 @@
     <!-- script bootstrap -->
     <script src="/assets/js/cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"></script>
     <!--? Jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    <script src="/assets/js/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- date picker -->
+    <link rel="stylesheet"
+          href="/assets/css/persian-datepicker.css" />
+    @* <script src="/assets/js/jquery-2.2.4.min.js"></script> *@
+    <script src="/assets/js/persian-date.js"></script>
+    <script src="/assets/js/persian-datepicker.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('.ConsultationDay').persianDatepicker({
+                altField: '#ConsultationDay',
+                altFormat: 'YYYY/MM/DD',
+                titleFormat: 'yyyy',
+                minDate: new persianDate().toDate(),
+                autoClose: true,
+                show: false
+            });
+        });
+
+    </script>
     <!--? select js -->
     <script src="/assets/js/select2.min.js"></script>
     <!-- my script -->

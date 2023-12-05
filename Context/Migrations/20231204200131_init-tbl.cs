@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Context.Migrations
 {
     /// <inheritdoc />
-    public partial class inite_psychologistDb : Migration
+    public partial class inittbl : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,6 +37,7 @@ namespace Context.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Day = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DayEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -503,23 +504,23 @@ namespace Context.Migrations
                 columns: new[] { "Id", "CreatedAt", "IsActive", "IsDeleted", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7978), true, false, "آقا", null },
-                    { 2, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7981), true, false, "خانم", null },
-                    { 3, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7982), true, false, "دیگر", null }
+                    { 1, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2264), true, false, "آقا", null },
+                    { 2, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2266), true, false, "خانم", null },
+                    { 3, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2267), true, false, "دیگر", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "PsychologistWorkingDays",
-                columns: new[] { "Id", "CreatedAt", "Day", "IsActive", "IsDeleted", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Day", "DayEn", "IsActive", "IsDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2293), "شنبه", true, false, null },
-                    { 2, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2295), "یکشنبه", true, false, null },
-                    { 3, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2297), "دوشنبه", true, false, null },
-                    { 4, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2298), "سه شنبه", true, false, null },
-                    { 5, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2299), "چهار شنبه", true, false, null },
-                    { 6, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2301), "پنج شنبه", true, false, null },
-                    { 7, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2302), "جمعه", true, false, null }
+                    { 1, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9144), "شنبه", "Saturday", true, false, null },
+                    { 2, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9149), "یک‌شنبه", "Sunday", true, false, null },
+                    { 3, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9150), "دو‌شنبه", "Monday", true, false, null },
+                    { 4, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9151), "سه‌شنبه", "Tuesday", true, false, null },
+                    { 5, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9152), "چهارشنبه", "Wednesday", true, false, null },
+                    { 6, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9154), "پنج‌شنبه", "Thursday", true, false, null },
+                    { 7, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9154), "جمعه", "Friday", true, false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -527,30 +528,30 @@ namespace Context.Migrations
                 columns: new[] { "Id", "CreatedAt", "EndTime", "IsActive", "IsDeleted", "StartTime", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 1, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2150), null },
-                    { 2, new DateTime(2023, 11, 30, 1, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 2, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2155), null },
-                    { 3, new DateTime(2023, 11, 30, 2, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 3, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2158), null },
-                    { 4, new DateTime(2023, 11, 30, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 4, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2161), null },
-                    { 5, new DateTime(2023, 11, 30, 4, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 5, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2164), null },
-                    { 6, new DateTime(2023, 11, 30, 5, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 6, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2170), null },
-                    { 7, new DateTime(2023, 11, 30, 6, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 7, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2173), null },
-                    { 8, new DateTime(2023, 11, 30, 7, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 8, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2176), null },
-                    { 9, new DateTime(2023, 11, 30, 8, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 9, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2179), null },
-                    { 10, new DateTime(2023, 11, 30, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 10, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2183), null },
-                    { 11, new DateTime(2023, 11, 30, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 11, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2186), null },
-                    { 12, new DateTime(2023, 11, 30, 11, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 12, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2188), null },
-                    { 13, new DateTime(2023, 11, 30, 12, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 13, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2192), null },
-                    { 14, new DateTime(2023, 11, 30, 13, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 14, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2194), null },
-                    { 15, new DateTime(2023, 11, 30, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 15, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2209), null },
-                    { 16, new DateTime(2023, 11, 30, 15, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 16, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2212), null },
-                    { 17, new DateTime(2023, 11, 30, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 17, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2215), null },
-                    { 18, new DateTime(2023, 11, 30, 17, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 18, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2218), null },
-                    { 19, new DateTime(2023, 11, 30, 18, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 19, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2221), null },
-                    { 20, new DateTime(2023, 11, 30, 19, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 20, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2224), null },
-                    { 21, new DateTime(2023, 11, 30, 20, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 21, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2227), null },
-                    { 22, new DateTime(2023, 11, 30, 21, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2230), null },
-                    { 23, new DateTime(2023, 11, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 23, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2233), null },
-                    { 24, new DateTime(2023, 11, 30, 23, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(2236), null }
+                    { 1, new DateTime(2023, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8969), null },
+                    { 2, new DateTime(2023, 12, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 2, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8975), null },
+                    { 3, new DateTime(2023, 12, 4, 2, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 3, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8991), null },
+                    { 4, new DateTime(2023, 12, 4, 3, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 4, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8994), null },
+                    { 5, new DateTime(2023, 12, 4, 4, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 5, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8997), null },
+                    { 6, new DateTime(2023, 12, 4, 5, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 6, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9004), null },
+                    { 7, new DateTime(2023, 12, 4, 6, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 7, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9007), null },
+                    { 8, new DateTime(2023, 12, 4, 7, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 8, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9009), null },
+                    { 9, new DateTime(2023, 12, 4, 8, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 9, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9012), null },
+                    { 10, new DateTime(2023, 12, 4, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 10, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9016), null },
+                    { 11, new DateTime(2023, 12, 4, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 11, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9018), null },
+                    { 12, new DateTime(2023, 12, 4, 11, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 12, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9021), null },
+                    { 13, new DateTime(2023, 12, 4, 12, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 13, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9023), null },
+                    { 14, new DateTime(2023, 12, 4, 13, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 14, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9026), null },
+                    { 15, new DateTime(2023, 12, 4, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 15, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9029), null },
+                    { 16, new DateTime(2023, 12, 4, 15, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 16, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9031), null },
+                    { 17, new DateTime(2023, 12, 4, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 17, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9034), null },
+                    { 18, new DateTime(2023, 12, 4, 17, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 18, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9037), null },
+                    { 19, new DateTime(2023, 12, 4, 18, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 19, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9040), null },
+                    { 20, new DateTime(2023, 12, 4, 19, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 20, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9043), null },
+                    { 21, new DateTime(2023, 12, 4, 20, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 21, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9045), null },
+                    { 22, new DateTime(2023, 12, 4, 21, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 22, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9048), null },
+                    { 23, new DateTime(2023, 12, 4, 22, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 23, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9050), null },
+                    { 24, new DateTime(2023, 12, 4, 23, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(9053), null }
                 });
 
             migrationBuilder.InsertData(
@@ -558,16 +559,16 @@ namespace Context.Migrations
                 columns: new[] { "Id", "CreatedAt", "IsActive", "IsDeleted", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7932), true, false, "AdminManagment", null },
-                    { 2, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7940), true, false, "Customer", null },
-                    { 3, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7942), true, false, "Patient", null },
-                    { 4, new DateTime(2023, 11, 30, 10, 21, 55, 366, DateTimeKind.Local).AddTicks(7943), true, false, "Psychologist", null }
+                    { 1, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2211), true, false, "AdminManagment", null },
+                    { 2, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2220), true, false, "Customer", null },
+                    { 3, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2222), true, false, "Patient", null },
+                    { 4, new DateTime(2023, 12, 4, 23, 31, 31, 325, DateTimeKind.Local).AddTicks(2223), true, false, "Psychologist", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "ActivationCode", "Address", "Avatar", "CreatedAt", "FName", "GenderId", "IsActive", "IsDeleted", "LName", "MobailActiveStatus", "Password", "Phone", "RoleID", "Token", "UpdatedAt" },
-                values: new object[] { 1, "0183c2c5-05a9-4351-a875-bacff1a0dfa7", null, null, new DateTime(2023, 11, 30, 10, 21, 55, 368, DateTimeKind.Local).AddTicks(1990), "مدیر", 2, true, false, "سیستم", true, "AQAAAAEAACcQAAAAECmoZoKT+7jrDg6Ks/7XSipx7LF3oW0Brkd8sKtOctVFaZImXR+1yFibZpi+5LvvaQ==", "Administrator@1402", 1, null, null });
+                values: new object[] { 1, "75351081-6e85-49d4-a6c1-0379653e69fd", null, null, new DateTime(2023, 12, 4, 23, 31, 31, 326, DateTimeKind.Local).AddTicks(8728), "مدیر", 2, true, false, "سیستم", true, "AQAAAAEAACcQAAAAEP4SA/Dds4rturNUdOn64m7hH1gtTiCRMscOaP8fPbcLnWThCIjQMbQ4CSTHx6HhMg==", "Administrator@1402", 1, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Answers_QuestionId",

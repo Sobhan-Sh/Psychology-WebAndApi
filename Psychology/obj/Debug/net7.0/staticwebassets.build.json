@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3XdN7iGZSxgcqBiqskP5Tu6oOI2/HezQxdxoeXmnTpw=",
+  "Hash": "2gZT2yOxK36AkWlyWsg4pkqnGo1aieMpLw4vMDwMEDc=",
   "Source": "Psychology",
   "BasePath": "_content/Psychology",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_css_bootstrap.rtl.min.css"
     },
     {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\persian-datepicker.css",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/css/persian-datepicker.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\persian-datepicker.css"
+    },
+    {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\select2.min.css",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
@@ -1156,12 +1173,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\styleAdmin.css"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.eot",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\sweetalert2.min.css",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel.eot",
+      "RelativePath": "assets/css/sweetalert2.min.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1170,15 +1187,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel.eot"
+      "OriginalItemSpec": "wwwroot\\assets\\css\\sweetalert2.min.css"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.ttf",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.eot",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel.ttf",
+      "RelativePath": "assets/fonts/Sahel.eot",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1187,15 +1204,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel.ttf"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel.eot"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.woff",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.ttf",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel.woff",
+      "RelativePath": "assets/fonts/Sahel.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1204,15 +1221,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel.woff"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel.ttf"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel.woff2",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.woff",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel.woff2",
+      "RelativePath": "assets/fonts/Sahel.woff",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1221,15 +1238,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel.woff2"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel.woff"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.eot",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel.woff2",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Black.eot",
+      "RelativePath": "assets/fonts/Sahel.woff2",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1238,15 +1255,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Black.eot"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel.woff2"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.ttf",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.eot",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Black.ttf",
+      "RelativePath": "assets/fonts/Sahel-Black.eot",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1255,15 +1272,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Black.ttf"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Black.eot"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.woff",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.ttf",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Black.woff",
+      "RelativePath": "assets/fonts/Sahel-Black.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1272,15 +1289,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Black.woff"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Black.ttf"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Black.woff2",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.woff",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Black.woff2",
+      "RelativePath": "assets/fonts/Sahel-Black.woff",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1289,15 +1306,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Black.woff2"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Black.woff"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.eot",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.woff2",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Bold.eot",
+      "RelativePath": "assets/fonts/Sahel-Black.woff2",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1306,15 +1323,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Bold.eot"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Black.woff2"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.ttf",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.eot",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Bold.ttf",
+      "RelativePath": "assets/fonts/Sahel-Bold.eot",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1323,15 +1340,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Bold.ttf"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Bold.eot"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.woff",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.ttf",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Bold.woff",
+      "RelativePath": "assets/fonts/Sahel-Bold.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1340,15 +1357,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Bold.woff"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Bold.ttf"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Bold.woff2",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.woff",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Bold.woff2",
+      "RelativePath": "assets/fonts/Sahel-Bold.woff",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1357,15 +1374,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Bold.woff2"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Bold.woff"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.eot",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Bold.woff2",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Light.eot",
+      "RelativePath": "assets/fonts/Sahel-Bold.woff2",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1374,15 +1391,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Light.eot"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Bold.woff2"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.ttf",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.eot",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Light.ttf",
+      "RelativePath": "assets/fonts/Sahel-Light.eot",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1391,15 +1408,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Light.ttf"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Light.eot"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.woff",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.ttf",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Light.woff",
+      "RelativePath": "assets/fonts/Sahel-Light.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1408,15 +1425,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Light.woff"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Light.ttf"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-Light.woff2",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.woff",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-Light.woff2",
+      "RelativePath": "assets/fonts/Sahel-Light.woff",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1425,15 +1442,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-Light.woff2"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Light.woff"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.eot",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Light.woff2",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-SemiBold.eot",
+      "RelativePath": "assets/fonts/Sahel-Light.woff2",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1442,15 +1459,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.eot"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-Light.woff2"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.ttf",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.eot",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-SemiBold.ttf",
+      "RelativePath": "assets/fonts/Sahel-SemiBold.eot",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1459,15 +1476,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.ttf"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-SemiBold.eot"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.woff",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.ttf",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-SemiBold.woff",
+      "RelativePath": "assets/fonts/Sahel-SemiBold.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1476,15 +1493,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.woff"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-SemiBold.ttf"
     },
     {
-      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\font\\Sahel-SemiBold.woff2",
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.woff",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
       "BasePath": "_content/Psychology",
-      "RelativePath": "assets/font/Sahel-SemiBold.woff2",
+      "RelativePath": "assets/fonts/Sahel-SemiBold.woff",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1493,7 +1510,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\font\\Sahel-SemiBold.woff2"
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-SemiBold.woff"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-SemiBold.woff2",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/fonts/Sahel-SemiBold.woff2",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\Sahel-SemiBold.woff2"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Psychology\\Licennse\\914a74e68aa5443c939cd20e2f9a3f51.jpg",
@@ -1562,6 +1596,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\74dd4aa63c724490b0f555f776e8a149.png",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Users/Avatar/74dd4aa63c724490b0f555f776e8a149.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\74dd4aa63c724490b0f555f776e8a149.png"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\8d914bccbcbc4f8584cd919725931f2e.png",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Users/Avatar/8d914bccbcbc4f8584cd919725931f2e.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\8d914bccbcbc4f8584cd919725931f2e.png"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\ba62d264d4ec47499a225b59d8ca7c8c.jpg",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/Image/Users/Avatar/ba62d264d4ec47499a225b59d8ca7c8c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Image\\Users\\Avatar\\ba62d264d4ec47499a225b59d8ca7c8c.jpg"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar0b510fd3f4fe4844845d05b4af0541eb.jpg",
@@ -1785,6 +1870,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"
     },
     {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-2.2.4.min.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/jquery-2.2.4.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\jquery-2.2.4.min.js"
+    },
+    {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-3.7.1.min.js",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
@@ -1817,6 +1919,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\main.js"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\persian-date.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/persian-date.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\persian-date.js"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\persian-datepicker.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/persian-datepicker.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\persian-datepicker.js"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\PreviewImage.js",
@@ -1904,6 +2040,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\site.js"
     },
     {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\sweetalert2.all.min.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/sweetalert2.all.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\sweetalert2.all.min.js"
+    },
+    {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\TestHandel.js",
       "SourceId": "Psychology",
       "SourceType": "Discovered",
@@ -1936,6 +2089,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\UserHandel.js"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\VisitHandel.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/VisitHandel.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\VisitHandel.js"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\favicon.ico",

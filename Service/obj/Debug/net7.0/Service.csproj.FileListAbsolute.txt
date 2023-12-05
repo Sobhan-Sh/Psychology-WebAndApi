@@ -19,3 +19,5 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Co
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Entity.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Context.pdb
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Entity.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Abstractions.xml

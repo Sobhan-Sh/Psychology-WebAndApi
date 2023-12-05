@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
+using Service.IRepository.Patient;
 using Service.IRepository.Psychologist;
 using Service.IService.Psychologist;
 using Utility.ReturnFuncResult;
@@ -10,11 +11,15 @@ namespace Service.Service.Psychologist;
 public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAndTimeService
 {
     private readonly IPsychologistWorkingDateAndTimeRepository _dateAndTimeRepository;
+    private readonly IPsychologistRepository _psychologistRepository;
+    private readonly IPatientTurnRepository _turnRepository;
     private IMapper _mapper;
 
-    public PsychologistWorkingDateAndTimeService(IPsychologistWorkingDateAndTimeRepository dateAndTimeRepository, IMapper mapper)
+    public PsychologistWorkingDateAndTimeService(IPsychologistWorkingDateAndTimeRepository dateAndTimeRepository, IPsychologistRepository psychologistRepository, IPatientTurnRepository turnRepository, IMapper mapper)
     {
         _dateAndTimeRepository = dateAndTimeRepository;
+        _psychologistRepository = psychologistRepository;
+        _turnRepository = turnRepository;
         _mapper = mapper;
     }
 
@@ -303,6 +308,79 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<CheckDateVisit>>> CheckDateVisit(int Id, DateTime DateVisit)
+    {
+        try
+        {
+            if (Id < 1 || DateVisit == null)
+                return new BaseResult<List<CheckDateVisit>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.IsRequired,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
+            if (psychologist == null)
+                return new BaseResult<List<CheckDateVisit>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            string ResultDateVisitMessage = null;
+            IEnumerable<Entity.Psychologist.PsychologistWorkingDateAndTime> dateVisit = await _dateAndTimeRepository.GetAllAsync(x => x.PsychologistId == Id && x.PsychologistWorkingDays.DayEn == DateVisit.DayOfWeek.ToString(), include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+            if (dateVisit.Count() < 1)
+            {
+                int day = 1;
+                while (!dateVisit.Any())
+                {
+                    //TODO: چک بشه تاریخ که اگر یکی اضافه شد برای بار دوم دوتا اضافه نشه و مقدار بشه 3 و تاریخ 3 روز بره جلو
+                    dateVisit = await _dateAndTimeRepository.GetAllAsync(x => x.PsychologistId == Id && x.PsychologistWorkingDays.DayEn == DateVisit.AddDays(day).DayOfWeek.ToString(), include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+                    ResultDateVisitMessage = $"دکتر در این روز ویزیت نمی کند.شما می توانید{dateVisit.FirstOrDefault().PsychologistWorkingDays.Day} یعنی {day} روز بعد از تاریخ انتخاب شده ساعت ویزیت خود را مشخص کنید";
+                    day++;
+                    if (day == 6 && !dateVisit.Any())
+                        return new BaseResult<List<CheckDateVisit>>
+                        {
+                            IsSuccess = false,
+                            Message = ValidationMessage.NoFoundGet,
+                            StatusCode = ValidationCode.NotFound
+                        };
+
+                }
+            }
+
+            List<CheckDateVisit> model = new();
+            foreach (var psychologistWorkingDateAndTime in dateVisit)
+            {
+                model.Add(new CheckDateVisit()
+                {
+                    EndTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.EndTime,
+                    StartTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.StartTime,
+                    IsVisit = await _turnRepository.IsExistAsync(x => x.PsychologistWorkingDateAndTimeId == psychologistWorkingDateAndTime.Id)
+                });
+            }
+
+            return new BaseResult<List<CheckDateVisit>>
+            {
+                IsSuccess = true,
+                Message = !string.IsNullOrWhiteSpace(ResultDateVisitMessage) ? ResultDateVisitMessage : ValidationMessage.SuccessGet,
+                Data = model,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<CheckDateVisit>>
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
                 StatusCode = ValidationCode.BadRequest
             };
         }

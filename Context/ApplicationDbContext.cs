@@ -92,15 +92,41 @@ public class ApplicationDbContext : DbContext
             else h2 = 0;
         }
         modelBuilder.Entity(typeof(PsychologistWorkingHours)).HasData(PsychologistWorkingHours);
-        modelBuilder.Entity(typeof(PsychologistWorkingDays)).HasData(new List<PsychologistWorkingDays>()
+
+        List<string> daysInPersian = new List<string>
         {
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "شنبه",Id = 1,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "یکشنبه",Id = 2,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "دوشنبه",Id = 3,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "سه شنبه",Id = 4,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "چهار شنبه",Id = 5,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "پنج شنبه",Id = 6,IsActive = true},
-            new PsychologistWorkingDays(){CreatedAt = DateTime.Now, Day = "جمعه",Id = 7,IsActive = true},
-        });
+            "شنبه",
+            "یک‌شنبه",
+            "دو‌شنبه",
+            "سه‌شنبه",
+            "چهارشنبه",
+            "پنج‌شنبه",
+            "جمعه"
+        };
+        List<string> daysInEnglish = new List<string>
+        {
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+        };
+        List<PsychologistWorkingDays> psychologistWorkingDays = new List<PsychologistWorkingDays>();
+        int numberDay = 1;
+        for (int i = 0; i < daysInEnglish.Count; i++)
+        {
+            psychologistWorkingDays.Add(new PsychologistWorkingDays()
+            {
+                CreatedAt = DateTime.Now,
+                Day = daysInPersian[i],
+                DayEn = daysInEnglish[i],
+                Id = numberDay,
+                IsActive = true
+            });
+            numberDay++;
+        }
+        modelBuilder.Entity(typeof(PsychologistWorkingDays)).HasData(psychologistWorkingDays);
     }
 }
