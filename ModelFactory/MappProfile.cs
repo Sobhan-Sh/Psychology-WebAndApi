@@ -199,7 +199,7 @@ public class MappProfile : Profile
             #region TypeOfConsultation
 
             config.CreateMap<CreateTypeOfConsultation, TypeOfConsultation>().ReverseMap();
-
+            config.CreateMap<EditTypeOfConsultation, TypeOfConsultation>().ReverseMap();
             config.CreateMap<TypeOfConsultationViewModel, TypeOfConsultation>()
                 .ForMember(x => x.PatientTurns, x => x.MapFrom(sub => sub.PatientTurnViewModels))
                 .ReverseMap();

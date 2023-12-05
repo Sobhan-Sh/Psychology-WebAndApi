@@ -17,4 +17,9 @@ public class TypeOfConsultation : BaseEntity
         Price = price;
         UpdatedAt = DateTime.Now;
     }
+
+    public void Delete()
+    {
+        IsDeleted = true;
+    }
 }

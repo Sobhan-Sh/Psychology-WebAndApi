@@ -40,12 +40,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVQc3ljaG9sb2dpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/CreateTypeOfConsultation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVUeXBlT2ZDb25zdWx0YXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/CreateWorkTimePsychologist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xDcmVhdGVXb3JrVGltZVBzeWNob2xvZ2lzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/EditPsychologist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xFZGl0UHN5Y2hvbG9naXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/EditTypeOfConsultation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xFZGl0VHlwZU9mQ29uc3VsdGF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/EditWorkTimePsychologist.cshtml]
@@ -62,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/PatientsThisPsychologist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xQYXRpZW50c1RoaXNQc3ljaG9sb2dpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/TypeOfConsultation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHN5Y2hvbG9naXN0c1xUeXBlT2ZDb25zdWx0YXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Areas/Admin/Views/Psychologists/UnvisitedPatients.cshtml]

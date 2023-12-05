@@ -1,11 +1,11 @@
-﻿using Azure;
-using Dto.Order;
+﻿using Dto.Order;
 using Dto.Patient;
 using Dto.Patient.PatientTurn;
 using Dto.Psychologist;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.PsychologistWorkingDays;
 using Dto.Psychologist.PsychologistWorkingHours;
+using Dto.Psychologist.TypeOfConsultation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.IService.DiscountAndOrder;
@@ -25,8 +25,9 @@ namespace Psychology.Areas.Admin.Controllers
         private readonly IPatientService _petientService;
         private readonly IPsychologistWorkingHoursService _psychologistWorkingHoursService;
         private readonly IPatientTurnService _petientTurnService;
+        private readonly ITypeOfConsultationService _typeOfConsultationService;
 
-        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService, IPatientTurnService petientTurnService)
+        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService, IPatientTurnService petientTurnService, ITypeOfConsultationService typeOfConsultationService)
         {
             _psychologistService = psychologistService;
             _dateAndTimeService = dateAndTimeService;
@@ -35,6 +36,7 @@ namespace Psychology.Areas.Admin.Controllers
             _petientService = petientService;
             _psychologistWorkingHoursService = psychologistWorkingHoursService;
             _petientTurnService = petientTurnService;
+            _typeOfConsultationService = typeOfConsultationService;
         }
 
         private static List<PatientViewModel> staticPatientViewModel;
@@ -312,5 +314,70 @@ namespace Psychology.Areas.Admin.Controllers
 
             return View(response.Data);
         }
+
+        #region TypeOfConsultation
+
+        public async Task<IActionResult> TypeOfConsultation(string? renderMessage)
+        {
+            BaseResult<List<TypeOfConsultationViewModel>> result = await _typeOfConsultationService.GetAllAsync();
+            if (!string.IsNullOrWhiteSpace(renderMessage))
+                ViewData["RenderMessage"] = renderMessage;
+
+            if (!result.IsSuccess)
+                ViewData["Message"] = result.Message;
+
+            return View(result.Data);
+        }
+
+        public IActionResult CreateTypeOfConsultation()
+        {
+            ViewData["Time"] = DateTime.Now.ToString();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTypeOfConsultation(CreateTypeOfConsultation typeOfConsultation)
+        {
+            if (ModelState.IsValid)
+            {
+                BaseResult result = await _typeOfConsultationService.CreateAsync(typeOfConsultation);
+                if (result.IsSuccess)
+                    return RedirectToAction("TypeOfConsultation", new { renderMessage = result.Message });
+
+                ViewData["Message"] = result.Message;
+            }
+
+            ViewData["Time"] = DateTime.Now.ToString();
+            return View();
+        }
+
+        public async Task<IActionResult> EditTypeOfConsultation(int typeOfConsultationId)
+        {
+            BaseResult<EditTypeOfConsultation> result = await _typeOfConsultationService.GetAsync(typeOfConsultationId);
+            return View(result.Data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditTypeOfConsultation(EditTypeOfConsultation typeOfConsultation)
+        {
+            if (ModelState.IsValid)
+            {
+                BaseResult response = await _typeOfConsultationService.UpdateAsync(typeOfConsultation);
+                if (response.IsSuccess)
+                    return RedirectToAction("TypeOfConsultation", new { renderMessage = response.Message });
+
+                ViewData["Message"] = response.Message;
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteTypeOfConsultation(int typeOfConsultationId)
+        {
+            BaseResult result = await _typeOfConsultationService.DeleteAsync(typeOfConsultationId);
+            return RedirectToAction("TypeOfConsultation", new { renderMessage = result.Message });
+        }
+
+        #endregion
     }
 }

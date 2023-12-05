@@ -22,7 +22,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.TypeOfConsultation> query = await _consultationRepository.GetAllAsync(include: "PatientTurn");
+            IEnumerable<Entity.Psychologist.TypeOfConsultation> query = await _consultationRepository.GetAllAsync();
             if (!query.Any())
             {
                 return new BaseResult<List<TypeOfConsultationViewModel>>
@@ -56,7 +56,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id, include: "PatientTurn");
+            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditTypeOfConsultation>
@@ -172,7 +172,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            await _consultationRepository.DeleteAsync(query);
+            query.Delete();
             await _consultationRepository.SaveAsync();
             return new BaseResult()
             {
