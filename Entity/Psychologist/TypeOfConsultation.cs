@@ -9,6 +9,8 @@ public class TypeOfConsultation : BaseEntity
 
     public int Price { get; set; }
 
+    public List<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
+
     public List<PatientTurn> PatientTurns { get; set; }
 
     public void Edit(string name, int price)

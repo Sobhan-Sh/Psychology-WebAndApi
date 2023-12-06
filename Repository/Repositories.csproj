@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="DiscountAndOrder\" />
-    <Folder Include="Psychologist\" />
     <Folder Include="Role\" />
     <Folder Include="Patient\" />
   </ItemGroup>

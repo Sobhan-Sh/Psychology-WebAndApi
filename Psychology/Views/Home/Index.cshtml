@@ -1,7 +1,6 @@
 ﻿@model Dto.Patient.PatientTurn.PatientTurnViewModel
 @{
     ViewData["Title"] = "خانه";
-    SelectList psySelectList = (SelectList)ViewData["Psychologist"];
 }
 <div class="container">
     <!--* card -->
@@ -14,28 +13,44 @@
             </section>
             <hr>
             <!--* body card -->
-            <section class="card-body">
-                <form action="#" method="get">
-                    <input class="cusotm-form-controle" type="text" placeholder="نام و نام خانوادگی">
-                    <input class="cusotm-form-controle" type="text" placeholder="شماره تماس">
-                    @if (psySelectList != null)
-                    {
-                        <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@psySelectList" onchange="Visite(this)">
-                            <option value="null">
-                                روانشناس خود را انتخاب کنید
-                            </option>
-                        </select>
-                    }
-                    @*                <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@((SelectList)ViewData["TypeOfConsultation"])">
-                    <option value="null">
-                    نوع مشاوره
-                    </option>
-                    </select> *@
-                    <input type="text" class="cusotm-form-controle ConsultationDay" asp-for="ConsultationDay" />
-                    <input class="btn btn-custom w-100 mt-3" type="submit" value="ثبت ویزیت">
-                </form>
-            </section>
-
+            @if (ViewData["Psychologist"] != null)
+            {
+                if (ViewData["TypeOfConsultation"] != null)
+                {
+                    <section class="card-body">
+                        <form action="#" method="get">
+                            <input class="cusotm-form-controle" type="text" placeholder="نام و نام خانوادگی">
+                            <input class="cusotm-form-controle" type="text" placeholder="شماره تماس">
+                            <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@((SelectList)ViewData["Psychologist"])" onchange="Visite(this)">
+                                <option value="null">
+                                    روانشناس خود را انتخاب کنید
+                                </option>
+                            </select>
+                            <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@((SelectList)ViewData["TypeOfConsultation"])">
+                                <option value="null">
+                                    نوع مشاوره
+                                </option>
+                            </select>
+                            <input type="text" class="cusotm-form-controle ConsultationDay" asp-for="ConsultationDay" />
+                            <section class="d-flex flex-wrap" id="viewTimeVisit">
+                            </section>
+                            <input class="btn btn-custom w-100 mt-3" type="submit" value="ثبت ویزیت">
+                        </form>
+                    </section>
+                }
+                else
+                {
+                    <span class="text-bg-info">
+                        اطلاعاتی از نوع جلسه ویزیت موجود نیست
+                    </span>
+                }
+            }
+            else
+            {
+                <span class="text-bg-info">
+                    اطلاعاتی از روانشناس موجود نیست
+                </span>
+            }
         </section>
     </section>
 </div>
@@ -49,7 +64,6 @@
     <script>
         $(".selectMy").select2();
     </script>
-
     <script src="/assets/js/VisitHandel.js"></script>
 }
 

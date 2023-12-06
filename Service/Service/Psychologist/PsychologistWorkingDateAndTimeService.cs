@@ -361,8 +361,8 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
             {
                 model.Add(new CheckDateVisit()
                 {
-                    EndTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.EndTime,
-                    StartTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.StartTime,
+                    EndTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.EndTime.ToString("hh"),
+                    StartTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.StartTime.ToString("hh"),
                     IsVisit = await _turnRepository.IsExistAsync(x => x.PsychologistWorkingDateAndTimeId == psychologistWorkingDateAndTime.Id)
                 });
             }

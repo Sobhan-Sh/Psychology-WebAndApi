@@ -1,5 +1,6 @@
 ﻿using Dto.Discount;
 using Dto.Order;
+using Dto.Psychologist.PsychologistTypeOfConsultation;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.User;
 using Microsoft.AspNetCore.Http;
@@ -30,4 +31,6 @@ public class PsychologistViewModel : BaseDto
     public List<DiscountViewModel> DiscountViewModels { get; set; }
 
     public List<OrderViewModel> OrderViewModels { get; set; }
+
+    public List<PsychologistTypeOfConsultationViewModel> PsychologistTypeOfConsultationViewModels { get; set; }
 }

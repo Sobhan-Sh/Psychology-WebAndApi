@@ -36,6 +36,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<PatientFile> PatientFiles { get; set; }
     public DbSet<PsychologistWorkingDateAndTime> PsychologistWorkingDateAndTime { get; set; }
     public DbSet<Gender> Genders { get; set; }
+    public DbSet<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

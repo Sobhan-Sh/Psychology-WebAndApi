@@ -665,3 +665,30 @@ span.text-info.field-validation-error * {
 .datepicker-plot-area {
     direction: ltr;
 }
+
+.view-list-timevisit {
+    margin-top: 10px;
+    padding: 0 9px;
+}
+
+    .view-list-timevisit label {
+        font-size: 16px;
+    }
+
+    .view-list-timevisit li {
+        list-style-type: none;
+        background: var(--darkMode-background-input);
+        border-radius: 7px;
+        position: relative;
+        padding: 7px 5px;
+        margin: 7px 0;
+        font-size: 16px;
+    }
+
+        .view-list-timevisit li input {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10;
+            opacity: 0;
+        }

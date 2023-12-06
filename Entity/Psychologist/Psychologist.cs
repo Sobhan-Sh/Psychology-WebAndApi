@@ -28,6 +28,8 @@ public class Psychologist : BaseEntity
 
     public List<Order> Order { get; set; }
 
+    public List<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
+
     public void Edit(int age, string nationalCode, string? evidencePath, DateTime? dateOfBirth, string? medicalLicennseCode)
     {
         Age = age;

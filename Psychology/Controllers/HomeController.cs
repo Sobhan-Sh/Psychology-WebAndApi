@@ -1,5 +1,6 @@
 ﻿using Dto.Psychologist;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
+using Dto.Psychologist.TypeOfConsultation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Psychology.Models;
@@ -42,14 +43,15 @@ namespace Psychology.Controllers
                     });
                 }
 
-                SelectList list = new SelectList(psychologistSelectLlists, "Id", "Name");
-                ViewData["Psychologist"] = list;
-
+                ViewData["Psychologist"] = new SelectList(psychologistSelectLlists, "Id", "Name");
             }
-            // BaseResult<List<TypeOfConsultationViewModel>> typeOf =
-            //    await _typeOfConsultationService.GetAllAsync();
 
-            //ViewData["TypeOfConsultation"] = new SelectList(typeOf.Data, "Id", "Name");
+            BaseResult<List<TypeOfConsultationViewModel>> typeOf =
+              await _typeOfConsultationService.GetAllAsync();
+
+            if (typeOf.IsSuccess)
+                ViewData["TypeOfConsultation"] = new SelectList(typeOf.Data.Where(x => !x.IsDeleted), "Id", "Name");
+
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace Psychology.Controllers
         public async Task<IActionResult> CheckTimeVisit(int PsychologistId, string ConsultationDay)
         {
             BaseResult<List<CheckDateVisit>> result = await _typeOfWorkingDateAndTimeService.CheckDateVisit(PsychologistId, DateTimeConvertor.ToMiladi(ConsultationDay));
-            return Json(new { success = "ok" });
+            return Json(new { success = result.IsSuccess, data = result.Data });
         }
     }
 }
