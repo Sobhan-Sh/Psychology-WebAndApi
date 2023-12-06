@@ -2,6 +2,7 @@
 using Dto.Patient;
 using Dto.Patient.PatientTurn;
 using Dto.Psychologist;
+using Dto.Psychologist.PsychologistTypeOfConsultation;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.PsychologistWorkingDays;
 using Dto.Psychologist.PsychologistWorkingHours;
@@ -26,8 +27,9 @@ namespace Psychology.Areas.Admin.Controllers
         private readonly IPsychologistWorkingHoursService _psychologistWorkingHoursService;
         private readonly IPatientTurnService _petientTurnService;
         private readonly ITypeOfConsultationService _typeOfConsultationService;
+        private readonly IPsychologistTypeOfConsultationService _psychologistTypeOfConsultationService;
 
-        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService, IPatientTurnService petientTurnService, ITypeOfConsultationService typeOfConsultationService)
+        public PsychologistsController(IPsychologistService psychologistService, IPsychologistWorkingDateAndTimeService dateAndTimeService, IPsychologistWorkingDaysService psychologistWorkingDaysService, IOrderService orderService, IPatientService petientService, IPsychologistWorkingHoursService psychologistWorkingHoursService, IPatientTurnService petientTurnService, ITypeOfConsultationService typeOfConsultationService, IPsychologistTypeOfConsultationService psychologistTypeOfConsultationService)
         {
             _psychologistService = psychologistService;
             _dateAndTimeService = dateAndTimeService;
@@ -37,6 +39,7 @@ namespace Psychology.Areas.Admin.Controllers
             _psychologistWorkingHoursService = psychologistWorkingHoursService;
             _petientTurnService = petientTurnService;
             _typeOfConsultationService = typeOfConsultationService;
+            _psychologistTypeOfConsultationService = psychologistTypeOfConsultationService;
         }
 
         private static List<PatientViewModel> staticPatientViewModel;
@@ -128,6 +131,17 @@ namespace Psychology.Areas.Admin.Controllers
             }
 
             return View(psychologist);
+        }
+
+        #endregion
+
+        #region DeletePsychologist
+
+        public async Task<IActionResult> DeletePsychologst(int psychologistId)
+        {
+            BaseResult result =
+                await _psychologistService.DeleteAsync(psychologistId);
+            return RedirectToAction("PsychologistTypeOfConsultation", new { renderMessage = result.Message });
         }
 
         #endregion
@@ -376,6 +390,99 @@ namespace Psychology.Areas.Admin.Controllers
         {
             BaseResult result = await _typeOfConsultationService.DeleteAsync(typeOfConsultationId);
             return RedirectToAction("TypeOfConsultation", new { renderMessage = result.Message });
+        }
+
+        #endregion
+
+        #region PsychologistTypeOfConsultation
+
+        public async Task<IActionResult> PsychologistTypeOfConsultation(int psychologistId, string? renderMessage)
+        {
+            BaseResult<List<PsychologistTypeOfConsultationViewModel>> result =
+                await _psychologistTypeOfConsultationService.GetAllAsync(new SearchPsychologistTypeOfConsultation()
+                {
+                    PsychologistId = psychologistId
+                });
+            if (!string.IsNullOrWhiteSpace(renderMessage))
+                ViewData["RenderMessage"] = renderMessage;
+
+            ViewData["psychologistId"] = psychologistId;
+            return View(result.Data);
+        }
+
+        public async Task<IActionResult> CreatePsychologistTypeOfConsultation(int psychologistId, string? renderMessage)
+        {
+            BaseResult<List<TypeOfConsultationViewModel>> result = await _typeOfConsultationService.GetAllAsync();
+            if (result.IsSuccess)
+                ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data, "Id", "Name");
+
+            ViewData["PsychologistId"] = psychologistId;
+            ViewBag.DateTime = DateTime.Now.ToString();
+            if (!string.IsNullOrWhiteSpace(renderMessage))
+                ViewData["RenderMessage"] = renderMessage;
+
+            if (!result.IsSuccess)
+                ViewData["Message"] = result.Message;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePsychologistTypeOfConsultation(CreatePsychologistTypeOfConsultation createPsychologistTypeOfConsultation)
+        {
+            string message = null;
+            if (ModelState.IsValid)
+            {
+                BaseResult response =
+                    await _psychologistTypeOfConsultationService.CreateAsync(createPsychologistTypeOfConsultation);
+                if (response.IsSuccess)
+                    return RedirectToAction("PsychologistTypeOfConsultation", new { psychologistId = createPsychologistTypeOfConsultation.PsychologistId, renderMessage = response.Message });
+
+                message = response.Message;
+            }
+
+            return RedirectToAction("CreatePsychologistTypeOfConsultation", new { psychologistId = createPsychologistTypeOfConsultation.PsychologistId, renderMessage = message });
+        }
+
+        public async Task<IActionResult> EditPsychologistTypeOfConsultation(int psychologistTypeOfConsultationId, string? renderMessage)
+        {
+            BaseResult<EditPsychologistTypeOfConsultation> response =
+                await _psychologistTypeOfConsultationService.GetAsync(psychologistTypeOfConsultationId);
+
+            BaseResult<List<TypeOfConsultationViewModel>> result = await _typeOfConsultationService.GetAllAsync();
+
+            ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data, "Id", "Name", response.Data.TypeOfConsultationId);
+            if (!string.IsNullOrWhiteSpace(renderMessage))
+                ViewData["RenderMessage"] = renderMessage;
+
+            if (!result.IsSuccess)
+                ViewData["Message"] = result.Message;
+
+            return View(response.Data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPsychologistTypeOfConsultation(EditPsychologistTypeOfConsultation editPsychologistTypeOfConsultation)
+        {
+            string message = null;
+            if (ModelState.IsValid)
+            {
+                BaseResult response =
+                    await _psychologistTypeOfConsultationService.UpdateAsync(editPsychologistTypeOfConsultation);
+                if (response.IsSuccess)
+                    return RedirectToAction("PsychologistTypeOfConsultation", new { psychologistId = editPsychologistTypeOfConsultation.PsychologistId, renderMessage = response.Message });
+
+                message = response.Message;
+            }
+
+            return RedirectToAction("EditPsychologistTypeOfConsultation", new { psychologistTypeOfConsultationId = editPsychologistTypeOfConsultation.Id, renderMessage = message });
+        }
+
+        public async Task<IActionResult> DeletePsychologistTypeOfConsultation(int psychologistTypeOfConsultationId)
+        {
+            BaseResult<int> result =
+                await _psychologistTypeOfConsultationService.ReturnDeleteAsync(psychologistTypeOfConsultationId);
+            return RedirectToAction("PsychologistTypeOfConsultation", new { psychologistId = result.Data, renderMessage = result.Message });
         }
 
         #endregion

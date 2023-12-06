@@ -1,0 +1,58 @@
+﻿@model Dto.Psychologist.PsychologistTypeOfConsultation.CreatePsychologistTypeOfConsultation
+@{
+    ViewData["Title"] = " : افزودن نوع جلسه به روانشناس";
+    SelectList selectListTypeOfConsultation = (SelectList)ViewData["selectListTypeOfConsultation"];
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-danger" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-danger"><strong class="me-auto text-danger"> خطا </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    @if (ViewData["RenderMessage"] != null)
+    {
+        <div class="toast fade show border-1 border-info position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header border-info">
+                <strong class="me-auto text-info"> نتیجه </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @ViewData["RenderMessage"]
+            </div>
+        </div>
+    }
+    @if (selectListTypeOfConsultation != null)
+    {
+        <form asp-controller="Psychologists" asp-action="CreatePsychologistTypeOfConsultation" method="post">
+            <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTime" />
+            <input type="hidden" asp-for="PsychologistId" value="@ViewData["PsychologistId"]" />
+            <section class="row align-items-end">
+                <section class="col-10 col-md-7">
+                    <label asp-for="TypeOfConsultationId"></label>
+                    <select class="cusotm-form-controle" asp-for="TypeOfConsultationId" asp-items="selectListTypeOfConsultation">
+                    </select>
+                    <span asp-validation-for="TypeOfConsultationId"></span>
+                </section>
+                <section class="col-7 mt-3">
+                    <button class="btn btn-custom px-3"> افزودن </button>
+                    <a class="btn btn-outline-primary ms-3" asp-action="PsychologistTypeOfConsultation" asp-route-psychologistId="@ViewData["PsychologistId"]">
+                        بازگشت
+                    </a>
+                </section>
+            </section>
+        </form>
+    }
+    else
+    {
+        <section class="alert alert-info">
+            <h6>
+                شما هنوز نوعی تعریف نکردید
+            </h6>
+            <a asp-area="Admin" asp-controller="Psychologists" asp-action="TypeOfConsultation" class="btn btn-primary"> منو ببر تا اضافه کنم </a>
+        </section>
+    }
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

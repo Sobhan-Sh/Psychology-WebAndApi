@@ -49,4 +49,9 @@ public class Psychologist : BaseEntity
     {
         IsActive = false;
     }
+
+    public void Delete()
+    {
+        IsDeleted = true;
+    }
 }

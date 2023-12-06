@@ -263,13 +263,14 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            if (!string.IsNullOrWhiteSpace(query.EvidencePath))
-            {
-                if (File.Exists(PathExtention.PathImageLicennsePsychologist + query.EvidencePath))
-                    File.Delete(PathExtention.PathImageLicennsePsychologist + query.EvidencePath);
-            }
+            //if (!string.IsNullOrWhiteSpace(query.EvidencePath))
+            //{
+            //    if (File.Exists(PathExtention.PathImageLicennsePsychologist + query.EvidencePath))
+            //        File.Delete(PathExtention.PathImageLicennsePsychologist + query.EvidencePath);
+            //}
 
-            await _psychologistRepository.DeleteAsync(query);
+            //await _psychologistRepository.DeleteAsync(query);
+            query.Delete();
             await _psychologistRepository.SaveAsync();
             return new BaseResult()
             {

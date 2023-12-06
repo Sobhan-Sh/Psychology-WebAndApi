@@ -496,6 +496,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Image\Users\Avatar\027a3b2f2e0f48cb8813ebebe071ade3.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Image\Users\Avatar\2b0b4bf647f443f4886bdf8b19b0f026.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Psychology</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Psychology</BasePath>
+      <RelativePath>assets/Image/Users/Avatar/2b0b4bf647f443f4886bdf8b19b0f026.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Image\Users\Avatar\2b0b4bf647f443f4886bdf8b19b0f026.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Image\Users\Avatar\74dd4aa63c724490b0f555f776e8a149.png))">
       <SourceType>Package</SourceType>
       <SourceId>Psychology</SourceId>

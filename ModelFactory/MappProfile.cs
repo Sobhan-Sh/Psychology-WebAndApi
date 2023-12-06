@@ -6,6 +6,7 @@ using Dto.Patient;
 using Dto.Patient.PatientFile;
 using Dto.Patient.PatientTurn;
 using Dto.Psychologist;
+using Dto.Psychologist.PsychologistTypeOfConsultation;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.PsychologistWorkingDays;
 using Dto.Psychologist.PsychologistWorkingHours;
@@ -202,6 +203,17 @@ public class MappProfile : Profile
             config.CreateMap<EditTypeOfConsultation, TypeOfConsultation>().ReverseMap();
             config.CreateMap<TypeOfConsultationViewModel, TypeOfConsultation>()
                 .ForMember(x => x.PatientTurns, x => x.MapFrom(sub => sub.PatientTurnViewModels))
+                .ReverseMap();
+
+            #endregion
+
+            #region PsychologistTypeOfConsultation
+
+            config.CreateMap<CreatePsychologistTypeOfConsultation, PsychologistTypeOfConsultation>().ReverseMap();
+            config.CreateMap<EditPsychologistTypeOfConsultation, PsychologistTypeOfConsultation>().ReverseMap();
+            config.CreateMap<PsychologistTypeOfConsultationViewModel, PsychologistTypeOfConsultation>()
+                .ForMember(x => x.Psychologist, x => x.MapFrom(sub => sub.PsychologistViewModel))
+                .ForMember(x => x.TypeOfConsultation, x => x.MapFrom(sub => sub.TypeOfConsultationViewModel))
                 .ReverseMap();
 
             #endregion

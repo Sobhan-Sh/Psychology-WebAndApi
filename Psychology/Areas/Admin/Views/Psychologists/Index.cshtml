@@ -47,6 +47,7 @@
                             <th scope="col"> درصد همکاری </th>
                             <th scope="col"> تاریخ تولد </th>
                             <th scope="col"> سن </th>
+                            <th scope="col"> وضعیت روانشناس </th>
                             <th scope="col"> امکانات </th>
                         </tr>
                     </thead>
@@ -99,7 +100,21 @@
                                     @item.Age
                                 </td>
                                 <td>
-                                    @* <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeletePsychologst" asp-route-psychologistId="@item.Id"> حذف </a> *@
+                                    @if (item.IsDeleted)
+                                    {
+                                        <span class="badge text-bg-danger">
+                                            این فیلد حذف شده
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-success">
+                                            حذف نشده
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeletePsychologst" asp-route-psychologistId="@item.Id"> حذف </a>
                                     <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditPsychologist" asp-route-psychologistId="@item.Id"> ویرایش </a>
                                     @if (item.IsActive)
                                     {
@@ -115,6 +130,8 @@
 
                                     <a class="btn btn-outline-light btn-sm" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@item.Id"> زمان های کاری </a>
                                     <a class="btn btn-outline-primary btn-sm" asp-controller="Psychologists" asp-action="UnvisitedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
+
+                                    <a class="btn btn-outline-warning btn-sm" asp-controller="Psychologists" asp-action="PsychologistTypeOfConsultation" asp-route-psychologistId="@item.Id"> تعیین نوع جلسه رواشناس </a>
                                 </td>
                             </tr>
                             counter++;

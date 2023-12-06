@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="IService\Account\" />
     <Folder Include="IService\DiscountAndOrder\" />
-    <Folder Include="IService\Psychologist\" />
     <Folder Include="IService\Test\" />
     <Folder Include="Service\Account\" />
     <Folder Include="Service\DiscountAndOrder\" />
