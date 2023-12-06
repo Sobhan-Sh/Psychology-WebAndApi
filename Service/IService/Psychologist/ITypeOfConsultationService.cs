@@ -17,5 +17,7 @@ public interface ITypeOfConsultationService
 
     public Task<BaseResult> DeleteAsync(int Id);
 
+    public Task<BaseResult> RestoreDeleteAsync(int Id);
+
     #endregion
 }

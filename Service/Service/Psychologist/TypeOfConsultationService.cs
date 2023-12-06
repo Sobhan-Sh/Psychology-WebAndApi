@@ -191,4 +191,37 @@ public class TypeOfConsultationService : ITypeOfConsultationService
             };
         }
     }
+
+    public async Task<BaseResult> RestoreDeleteAsync(int Id)
+    {
+        try
+        {
+            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            query.Restore();
+            await _consultationRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessDelete,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
 }

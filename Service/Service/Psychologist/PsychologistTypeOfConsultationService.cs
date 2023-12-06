@@ -11,11 +11,13 @@ namespace Service.Service.Psychologist;
 public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsultationService
 {
     private readonly IPsychologistTypeOfConsultationRepository _psychologistTypeOfConsultationRepository;
+    private readonly ITypeOfConsultationRepository _typeOfConsultationRepository;
     private IMapper _mapper;
 
-    public PsychologistTypeOfConsultationService(IPsychologistTypeOfConsultationRepository psychologistTypeOfConsultationRepository, IMapper mapper)
+    public PsychologistTypeOfConsultationService(IPsychologistTypeOfConsultationRepository psychologistTypeOfConsultationRepository, ITypeOfConsultationRepository typeOfConsultationRepository, IMapper mapper)
     {
         _psychologistTypeOfConsultationRepository = psychologistTypeOfConsultationRepository;
+        _typeOfConsultationRepository = typeOfConsultationRepository;
         _mapper = mapper;
     }
 
@@ -116,6 +118,15 @@ public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsulta
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.DuplicatedRecord,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            TypeOfConsultation typeOfConsultation = await _typeOfConsultationRepository.GetAsync(x => x.Id == command.TypeOfConsultationId);
+            if (typeOfConsultation.IsDeleted)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordDelete,
                     StatusCode = ValidationCode.BadRequest
                 };
 

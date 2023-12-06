@@ -88,7 +88,14 @@
                                     }
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeleteTypeOfConsultation" asp-route-typeOfConsultationId="@item.Id"> حذف </a>
+                                    @if (item.IsDeleted)
+                                    {
+                                        <a class="btn btn-primary btn-sm" asp-controller="Psychologists" asp-action="ReturnTypeOfConsultation" asp-route-typeOfConsultationId="@item.Id"> بازگردانی </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeleteTypeOfConsultation" asp-route-typeOfConsultationId="@item.Id"> حذف </a>
+                                    }
                                     <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditTypeOfConsultation" asp-route-typeOfConsultationId="@item.Id"> ویرایش </a>
                                 </td>
                             </tr>

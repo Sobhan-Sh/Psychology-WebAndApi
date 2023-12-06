@@ -114,24 +114,24 @@
                                     }
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" asp-controller="Psychologists" asp-action="DeletePsychologst" asp-route-psychologistId="@item.Id"> حذف </a>
-                                    <a class="btn btn-warning btn-sm" asp-controller="Psychologists" asp-action="EditPsychologist" asp-route-psychologistId="@item.Id"> ویرایش </a>
+                                    <a class="btn btn-danger btn-sm my-1" asp-controller="Psychologists" asp-action="DeletePsychologst" asp-route-psychologistId="@item.Id"> حذف </a>
+                                    <a class="btn btn-warning btn-sm my-1" asp-controller="Psychologists" asp-action="EditPsychologist" asp-route-psychologistId="@item.Id"> ویرایش </a>
                                     @if (item.IsActive)
                                     {
-                                        <a class="btn btn-outline-danger btn-sm" asp-controller="Psychologists" asp-action="DeActive" asp-route-psychologistId="@item.Id"> غیر فعال کردن حساب کاربری </a>
+                                        <a class="btn btn-outline-danger btn-sm my-1" asp-controller="Psychologists" asp-action="DeActive" asp-route-psychologistId="@item.Id"> غیر فعال کردن حساب کاربری </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-outline-success btn-sm" asp-controller="Psychologists" asp-action="Active" asp-route-psychologistId="@item.Id"> فعال کردن حساب کاربری </a>
+                                        <a class="btn btn-outline-success btn-sm my-1" asp-controller="Psychologists" asp-action="Active" asp-route-psychologistId="@item.Id"> فعال کردن حساب کاربری </a>
                                     }
 
-                                    <a class="btn btn-outline-info btn-sm" asp-controller="Psychologists" asp-action="OrderThisPsychologit" asp-route-psychologistId="@item.Id"> فاکتور ها </a>
+                                    <a class="btn btn-outline-info btn-sm my-1" asp-controller="Psychologists" asp-action="OrderThisPsychologit" asp-route-psychologistId="@item.Id"> فاکتور ها </a>
                                     <a class="btn btn-light btn-sm" asp-controller="Psychologists" asp-action="PatientsThisPsychologist" asp-route-psychologistId="@item.Id"> بیماران </a>
 
-                                    <a class="btn btn-outline-light btn-sm" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@item.Id"> زمان های کاری </a>
-                                    <a class="btn btn-outline-primary btn-sm" asp-controller="Psychologists" asp-action="UnvisitedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
+                                    <a class="btn btn-outline-light btn-sm my-1" asp-controller="Psychologists" asp-action="WorkTimePsychologist" asp-route-psychologistId="@item.Id"> زمان های کاری </a>
+                                    <a class="btn btn-outline-primary btn-sm my-1" asp-controller="Psychologists" asp-action="UnvisitedPatients" asp-route-psychologistId="@item.Id"> بیماران ویزیت نشده </a>
 
-                                    <a class="btn btn-outline-warning btn-sm" asp-controller="Psychologists" asp-action="PsychologistTypeOfConsultation" asp-route-psychologistId="@item.Id"> تعیین نوع جلسه رواشناس </a>
+                                    <a class="btn btn-outline-warning btn-sm my-1" asp-controller="Psychologists" asp-action="PsychologistTypeOfConsultation" asp-route-psychologistId="@item.Id"> تعیین نوع جلسه رواشناس </a>
                                 </td>
                             </tr>
                             counter++;

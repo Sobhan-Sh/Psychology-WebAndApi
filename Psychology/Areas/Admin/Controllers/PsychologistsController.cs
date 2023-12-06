@@ -392,6 +392,12 @@ namespace Psychology.Areas.Admin.Controllers
             return RedirectToAction("TypeOfConsultation", new { renderMessage = result.Message });
         }
 
+        public async Task<IActionResult> ReturnTypeOfConsultation(int typeOfConsultationId)
+        {
+            BaseResult result = await _typeOfConsultationService.RestoreDeleteAsync(typeOfConsultationId);
+            return RedirectToAction("TypeOfConsultation", new { renderMessage = result.Message });
+        }
+
         #endregion
 
         #region PsychologistTypeOfConsultation
@@ -414,7 +420,7 @@ namespace Psychology.Areas.Admin.Controllers
         {
             BaseResult<List<TypeOfConsultationViewModel>> result = await _typeOfConsultationService.GetAllAsync();
             if (result.IsSuccess)
-                ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data, "Id", "Name");
+                ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data.Where(x => !x.IsDeleted), "Id", "Name");
 
             ViewData["PsychologistId"] = psychologistId;
             ViewBag.DateTime = DateTime.Now.ToString();
@@ -451,7 +457,7 @@ namespace Psychology.Areas.Admin.Controllers
 
             BaseResult<List<TypeOfConsultationViewModel>> result = await _typeOfConsultationService.GetAllAsync();
 
-            ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data, "Id", "Name", response.Data.TypeOfConsultationId);
+            ViewData["selectListTypeOfConsultation"] = new SelectList(result.Data.Where(x => !x.IsDeleted), "Id", "Name", response.Data.TypeOfConsultationId);
             if (!string.IsNullOrWhiteSpace(renderMessage))
                 ViewData["RenderMessage"] = renderMessage;
 

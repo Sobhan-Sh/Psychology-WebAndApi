@@ -24,4 +24,9 @@ public class TypeOfConsultation : BaseEntity
     {
         IsDeleted = true;
     }
+
+    public void Restore()
+    {
+        IsDeleted = false;
+    }
 }
