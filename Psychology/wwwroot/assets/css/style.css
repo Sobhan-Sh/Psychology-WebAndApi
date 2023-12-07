@@ -680,7 +680,7 @@ span.text-info.field-validation-error * {
         background: var(--darkMode-background-input);
         border-radius: 7px;
         position: relative;
-        padding: 7px 5px;
+        padding: 7px 8px;
         margin: 7px 0;
         font-size: 16px;
     }
@@ -691,4 +691,56 @@ span.text-info.field-validation-error * {
             position: absolute;
             z-index: 10;
             opacity: 0;
+            right: 0;
+            top: 0;
+            cursor: pointer;
         }
+
+            .view-list-timevisit li input + span {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                top: 0;
+                background: transparent;
+                border: 2px dashed transparent;
+                border-radius: 7px;
+                transition: .3s ease;
+            }
+
+        .view-list-timevisit li.visit input + span {
+            border-color: var(--darkMode-notValid);
+        }
+
+        .view-list-timevisit li:not(.visit) input:checked + span {
+            border-color: #0974f1;
+        }
+
+/**********  sweet alert customize  ***********/
+.swal2-container {
+    background: #000000a1;
+    backdrop-filter: blur(8px);
+}
+
+div:where(.swal2-container).swal2-center > .swal2-popup {
+    background: #161616;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    color: #fffdfd !important;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+    color: #c2c2c2 !important;
+}
+
+div:where(.swal2-icon).swal2-warning {
+    border-color: #ff7600 !important;
+    color: #ff7700 !important;
+    box-shadow: 0 0 9px #ff9f4d !important;
+}
+
+    div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content {
+        color: #ff9f4b !important;
+    }

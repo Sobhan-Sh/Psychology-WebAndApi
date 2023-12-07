@@ -1,4 +1,5 @@
 ﻿using Dto.Psychologist;
+using Dto.Psychologist.PsychologistTypeOfConsultation;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.TypeOfConsultation;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,14 @@ namespace Psychology.Controllers
         private readonly IPsychologistService _psychologistService;
         private readonly ITypeOfConsultationService _typeOfConsultationService;
         private readonly IPsychologistWorkingDateAndTimeService _typeOfWorkingDateAndTimeService;
+        private readonly IPsychologistTypeOfConsultationService _psychologistTypeOfConsultationService;
 
-        public HomeController(IPsychologistService psychologistService, ITypeOfConsultationService typeOfConsultationService, IPsychologistWorkingDateAndTimeService typeOfWorkingDateAndTimeService)
+        public HomeController(IPsychologistService psychologistService, ITypeOfConsultationService typeOfConsultationService, IPsychologistWorkingDateAndTimeService typeOfWorkingDateAndTimeService, IPsychologistTypeOfConsultationService psychologistTypeOfConsultationService)
         {
             _psychologistService = psychologistService;
             _typeOfConsultationService = typeOfConsultationService;
             _typeOfWorkingDateAndTimeService = typeOfWorkingDateAndTimeService;
+            _psychologistTypeOfConsultationService = psychologistTypeOfConsultationService;
         }
 
         public async Task<IActionResult> Index()
@@ -32,11 +35,11 @@ namespace Psychology.Controllers
 
             if (psychologist.IsSuccess)
             {
-                List<PsychologistSelectLlist> psychologistSelectLlists = new();
+                List<PsychologistSelectListModel> psychologistSelectLlists = new();
 
                 foreach (var item in psychologist.Data)
                 {
-                    psychologistSelectLlists.Add(new PsychologistSelectLlist()
+                    psychologistSelectLlists.Add(new PsychologistSelectListModel()
                     {
                         Id = item.Id,
                         Name = $"{item.UserViewModel.GenderViewModel.Name} دکتر {item.UserViewModel.FullName()}"
@@ -59,7 +62,22 @@ namespace Psychology.Controllers
         public async Task<IActionResult> CheckTimeVisit(int PsychologistId, string ConsultationDay)
         {
             BaseResult<List<CheckDateVisit>> result = await _typeOfWorkingDateAndTimeService.CheckDateVisit(PsychologistId, DateTimeConvertor.ToMiladi(ConsultationDay));
+            return Json(new { success = result.IsSuccess, data = result.Data, message = result.Message });
+        }
+
+        public async Task<IActionResult> GetPsychologist(int TOCId)
+        {
+            BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>> result = await _psychologistTypeOfConsultationService.ReturnNewModelInPageVisitGetAllAsync(new()
+            {
+                TypeOfConsultationId = TOCId
+            });
             return Json(new { success = result.IsSuccess, data = result.Data });
+        }
+
+        public async Task<IActionResult> SetVisit(SetVisitModel model)
+        {
+
+            return null;
         }
     }
 }

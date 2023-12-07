@@ -167,13 +167,14 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            if (await _psychologistRepository.IsExistAsync(x => x.MedicalLicennseCode == command.MedicalLicennseCode))
-                return new BaseResult
-                {
-                    IsSuccess = false,
-                    Message = ValidationMessage.DuplicatedRecordLicennseCode,
-                    StatusCode = ValidationCode.BadRequest
-                };
+            if (!string.IsNullOrWhiteSpace(command.MedicalLicennseCode))
+                if (await _psychologistRepository.IsExistAsync(x => x.MedicalLicennseCode == command.MedicalLicennseCode))
+                    return new BaseResult
+                    {
+                        IsSuccess = false,
+                        Message = ValidationMessage.DuplicatedRecordLicennseCode,
+                        StatusCode = ValidationCode.BadRequest
+                    };
 
             if (command.ImageLicennse != null)
                 if (command.ImageLicennse.IsCheckFile())

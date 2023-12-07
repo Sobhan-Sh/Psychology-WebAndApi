@@ -1,8 +1,8 @@
 ﻿namespace Psychology.Models;
 
-public class PsychologistSelectLlist
+public class PsychologistSelectListModel
 {
-    public int  Id { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; }
 }

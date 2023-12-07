@@ -9,6 +9,18 @@ public static class DateTimeConvertor
     public static string[] DayNames = { "شنبه", "یکشنبه", "دو شنبه", "سه شنبه", "چهار شنبه", "پنج شنبه", "جمعه" };
     public static string[] DayNamesG = { "یکشنبه", "دو شنبه", "سه شنبه", "چهار شنبه", "پنج شنبه", "جمعه", "شنبه" };
 
+    public static List<string> DayNamePersian = new() { "شنبه", "یک‌شنبه", "دو‌شنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه" };
+    public static List<string> DayNameEnglish = new() { "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+
+    public static string ConvertDayEnglishToPersian(string dayEn)
+    {
+        return DayNamePersian[DayNameEnglish.FindIndex(x => x.ToLower() == dayEn.ToLower())];
+    }
+
+    public static string ConvertDayPersianToEnglish(string dayPr)
+    {
+        return DayNameEnglish[DayNamePersian.FindIndex(x => x.Replace(" ", "") == dayPr.Replace(" ", ""))];
+    }
 
     public static string ToFarsi(this DateTime? date)
     {

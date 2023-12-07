@@ -6,6 +6,7 @@ namespace Service.IService.Psychologist;
 public interface IPsychologistTypeOfConsultationService
 {
     public Task<BaseResult<List<PsychologistTypeOfConsultationViewModel>>> GetAllAsync(SearchPsychologistTypeOfConsultation f);
+    public Task<BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>>> ReturnNewModelInPageVisitGetAllAsync(SearchPsychologistTypeOfConsultation f);
 
     #region CRUD
 

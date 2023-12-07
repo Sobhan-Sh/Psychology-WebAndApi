@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
+using Entity.Patient;
 using Service.IRepository.Patient;
 using Service.IRepository.Psychologist;
 using Service.IService.Psychologist;
+using Utility.DateConvertor;
 using Utility.ReturnFuncResult;
 using Utility.Validation;
 
@@ -343,9 +345,13 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
                 {
                     //TODO: چک بشه تاریخ که اگر یکی اضافه شد برای بار دوم دوتا اضافه نشه و مقدار بشه 3 و تاریخ 3 روز بره جلو
                     dateVisit = await _dateAndTimeRepository.GetAllAsync(x => x.PsychologistId == Id && x.PsychologistWorkingDays.DayEn == DateVisit.AddDays(day).DayOfWeek.ToString(), include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
-                    ResultDateVisitMessage = $"دکتر در این روز ویزیت نمی کند.شما می توانید{dateVisit.FirstOrDefault().PsychologistWorkingDays.Day} یعنی {day} روز بعد از تاریخ انتخاب شده ساعت ویزیت خود را مشخص کنید";
+                    string dayName = dateVisit.Any()
+                        ? dateVisit.FirstOrDefault().PsychologistWorkingDays.Day
+                        : DateTimeConvertor.ConvertDayEnglishToPersian(DateVisit.AddDays(day).DayOfWeek.ToString());
+
+                    ResultDateVisitMessage = $"دکتر در این روز ویزیت نمی کند.شما می توانید{dayName} یعنی {day} روز بعد از تاریخ انتخاب شده ساعت ویزیت خود را مشخص کنید";
                     day++;
-                    if (day == 6 && !dateVisit.Any())
+                    if (day == 7 && !dateVisit.Any())
                         return new BaseResult<List<CheckDateVisit>>
                         {
                             IsSuccess = false,
@@ -356,22 +362,18 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
                 }
             }
 
-            List<CheckDateVisit> model = new();
+            List<PatientTurn> patientTurnsModel = new();
             foreach (var psychologistWorkingDateAndTime in dateVisit)
             {
-                model.Add(new CheckDateVisit()
-                {
-                    EndTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.EndTime.ToString("hh"),
-                    StartTime = psychologistWorkingDateAndTime.PsychologistWorkingHours.StartTime.ToString("hh"),
-                    IsVisit = await _turnRepository.IsExistAsync(x => x.PsychologistWorkingDateAndTimeId == psychologistWorkingDateAndTime.Id)
-                });
+                PatientTurn patientTurn = await _turnRepository.GetAsync(x => x.PsychologistWorkingDateAndTimeId == psychologistWorkingDateAndTime.Id);
+                if (patientTurn != null)
+                    patientTurnsModel.Add(patientTurn);
             }
-
             return new BaseResult<List<CheckDateVisit>>
             {
                 IsSuccess = true,
                 Message = !string.IsNullOrWhiteSpace(ResultDateVisitMessage) ? ResultDateVisitMessage : ValidationMessage.SuccessGet,
-                Data = model,
+                Data = Mapping.Mapping.ConvertPsychologistWorkingDateAndTimeToCheckDateVisitMapping(dateVisit.ToList(), patientTurnsModel),
                 StatusCode = ValidationCode.Success
             };
         }

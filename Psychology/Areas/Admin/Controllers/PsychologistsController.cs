@@ -98,6 +98,7 @@ namespace Psychology.Areas.Admin.Controllers
                 if (result.IsSuccess)
                     return RedirectToAction("Index", new { renderMessage = result.Message });
 
+                ViewData["Message"] = result.Message;
             }
 
             ViewData["UserId"] = psychologist.UserId;

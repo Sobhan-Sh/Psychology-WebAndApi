@@ -12,12 +12,14 @@ public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsulta
 {
     private readonly IPsychologistTypeOfConsultationRepository _psychologistTypeOfConsultationRepository;
     private readonly ITypeOfConsultationRepository _typeOfConsultationRepository;
+    private readonly IPsychologistWorkingDateAndTimeRepository _workingDateAndTimeRepository;
     private IMapper _mapper;
 
-    public PsychologistTypeOfConsultationService(IPsychologistTypeOfConsultationRepository psychologistTypeOfConsultationRepository, ITypeOfConsultationRepository typeOfConsultationRepository, IMapper mapper)
+    public PsychologistTypeOfConsultationService(IPsychologistTypeOfConsultationRepository psychologistTypeOfConsultationRepository, ITypeOfConsultationRepository typeOfConsultationRepository, IPsychologistWorkingDateAndTimeRepository workingDateAndTimeRepository, IMapper mapper)
     {
         _psychologistTypeOfConsultationRepository = psychologistTypeOfConsultationRepository;
         _typeOfConsultationRepository = typeOfConsultationRepository;
+        _workingDateAndTimeRepository = workingDateAndTimeRepository;
         _mapper = mapper;
     }
 
@@ -28,15 +30,15 @@ public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsulta
             List<PsychologistTypeOfConsultation> query = new List<PsychologistTypeOfConsultation>();
             if (f.PsychologistId < 1 && f.TypeOfConsultationId < 1)
             {
-                query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(include: "Psychologist,TypeOfConsultation"));
+                query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(include: "Psychologist.User.Gender,TypeOfConsultation"));
             }
             else
             {
                 if (f.PsychologistId > 0)
-                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.PsychologistId == f.PsychologistId, include: "Psychologist,TypeOfConsultation"));
+                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.PsychologistId == f.PsychologistId, include: "Psychologist.User.Gender,TypeOfConsultation"));
 
                 if (f.TypeOfConsultationId > 0)
-                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.TypeOfConsultationId == f.TypeOfConsultationId, include: "Psychologist,TypeOfConsultation"));
+                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.TypeOfConsultationId == f.TypeOfConsultationId, include: "Psychologist.User.Gender,TypeOfConsultation"));
 
             }
 
@@ -67,11 +69,63 @@ public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsulta
         }
     }
 
+    public async Task<BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>>> ReturnNewModelInPageVisitGetAllAsync(SearchPsychologistTypeOfConsultation f)
+    {
+        try
+        {
+            List<PsychologistTypeOfConsultation> query = new List<PsychologistTypeOfConsultation>();
+            if (f.PsychologistId < 1 && f.TypeOfConsultationId < 1)
+            {
+                query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(include: "Psychologist.User.Gender,TypeOfConsultation"));
+            }
+            else
+            {
+                if (f.PsychologistId > 0)
+                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.PsychologistId == f.PsychologistId, include: "Psychologist.User.Gender,TypeOfConsultation"));
+
+                if (f.TypeOfConsultationId > 0)
+                    query.AddRange(await _psychologistTypeOfConsultationRepository.GetAllAsync(x => x.TypeOfConsultationId == f.TypeOfConsultationId, include: "Psychologist.User.Gender,TypeOfConsultation"));
+
+            }
+
+            if (!query.Any())
+                return new BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>>
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+
+            query = query.Where(x => !x.Psychologist.IsDeleted && x.Psychologist.IsActive).ToList();
+            foreach (var ofConsultation in query)
+            {
+                if (await _workingDateAndTimeRepository.IsExistAsync(x => x.PsychologistId == ofConsultation.PsychologistId) == false)
+                    query.RemoveAt(query.FindIndex(x => x.PsychologistId == ofConsultation.PsychologistId));
+            }
+            return new BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>>
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAllSearch(query.Distinct().Count()),
+                Data = Mapping.Mapping.ConvertPsychologistToNewModelPsychologistTypeOfConsultationInPageVisitViewModelMapping(query.Distinct().ToList()),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<NewModelPsychologistTypeOfConsultationInPageVisitViewModel>>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult<EditPsychologistTypeOfConsultation>> GetAsync(int Id)
     {
         try
         {
-            PsychologistTypeOfConsultation query = await _psychologistTypeOfConsultationRepository.GetAsync(x => x.Id == Id, include: "Psychologist,TypeOfConsultation");
+            PsychologistTypeOfConsultation query = await _psychologistTypeOfConsultationRepository.GetAsync(x => x.Id == Id, include: "Psychologist.User.Gender,TypeOfConsultation");
             if (query == null)
             {
                 return new BaseResult<EditPsychologistTypeOfConsultation>
@@ -113,7 +167,7 @@ public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsulta
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            if (await _psychologistTypeOfConsultationRepository.IsExistAsync(x => x.TypeOfConsultationId == command.TypeOfConsultationId))
+            if (await _psychologistTypeOfConsultationRepository.IsExistAsync(x => x.PsychologistId == command.PsychologistId && x.TypeOfConsultationId == command.TypeOfConsultationId))
                 return new BaseResult()
                 {
                     IsSuccess = false,
