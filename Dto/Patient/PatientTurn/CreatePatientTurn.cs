@@ -10,7 +10,7 @@ public class CreatePatientTurn : BaseDto
 
     public int PatientId { get; set; }
 
-    public DateTime ConsultationDay { get; set; }
+    public string ConsultationDay { get; set; }
 
     public int? Price { get; set; }
 

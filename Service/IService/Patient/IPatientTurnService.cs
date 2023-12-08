@@ -18,6 +18,8 @@ public interface IPatientTurnService
 
     public Task<BaseResult> CreateAsync(CreatePatientTurn command);
 
+    public Task<BaseResult> CreateAsync(SetVisitModel command);
+
     public Task<BaseResult> UpdateAsync(EditPatientTurn command);
 
     public Task<BaseResult> DeleteAsync(int Id);

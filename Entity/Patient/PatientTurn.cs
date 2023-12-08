@@ -21,7 +21,7 @@ public class PatientTurn : BaseEntity
     [ForeignKey("PatientId")]
     public Patient Patient { get; set; }
 
-    public DateTime ConsultationDay { get; set; }
+    public string ConsultationDay { get; set; }
 
     public int Price { get; set; }
 
@@ -29,7 +29,7 @@ public class PatientTurn : BaseEntity
 
     public bool IsCanseled { get; set; }
 
-    public void Edit(int? price, DateTime consultationDay, int typeOfConsultationId, int psychologistWorkingDateAndTimeId)
+    public void Edit(int? price, string consultationDay, int typeOfConsultationId, int psychologistWorkingDateAndTimeId)
     {
         Price = (int)price;
         ConsultationDay = consultationDay;

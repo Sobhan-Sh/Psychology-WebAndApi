@@ -27,10 +27,10 @@ public class Order : BaseEntity
     public int? RefId { get; set; }
 
     // مبلغ کل با تخفیف
-    public int PayAmount { get; set; }
+    public int? PayAmount { get; set; }
 
     // مبلغ کل تخفیف
-    public int DiscountAmount { get; set; }
+    public int? DiscountAmount { get; set; }
 
     // مبلغ کل بدون تخفیف
     public int TotalAmount { get; set; }
@@ -50,5 +50,6 @@ public class Order : BaseEntity
     {
         IsPaid = true;
         RefId = refId;
+        IsActive = true;
     }
 }

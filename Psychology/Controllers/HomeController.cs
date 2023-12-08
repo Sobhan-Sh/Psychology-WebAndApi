@@ -1,10 +1,12 @@
-﻿using Dto.Psychologist;
+﻿using Dto.Patient.PatientTurn;
+using Dto.Psychologist;
 using Dto.Psychologist.PsychologistTypeOfConsultation;
 using Dto.Psychologist.PsychologistWorkingDateAndTime;
 using Dto.Psychologist.TypeOfConsultation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Psychology.Models;
+using Service.IService.Patient;
 using Service.IService.Psychologist;
 using Utility.DateConvertor;
 using Utility.ReturnFuncResult;
@@ -19,13 +21,15 @@ namespace Psychology.Controllers
         private readonly ITypeOfConsultationService _typeOfConsultationService;
         private readonly IPsychologistWorkingDateAndTimeService _typeOfWorkingDateAndTimeService;
         private readonly IPsychologistTypeOfConsultationService _psychologistTypeOfConsultationService;
+        private readonly IPatientTurnService _atientTurnService;
 
-        public HomeController(IPsychologistService psychologistService, ITypeOfConsultationService typeOfConsultationService, IPsychologistWorkingDateAndTimeService typeOfWorkingDateAndTimeService, IPsychologistTypeOfConsultationService psychologistTypeOfConsultationService)
+        public HomeController(IPsychologistService psychologistService, ITypeOfConsultationService typeOfConsultationService, IPsychologistWorkingDateAndTimeService typeOfWorkingDateAndTimeService, IPsychologistTypeOfConsultationService psychologistTypeOfConsultationService, IPatientTurnService atientTurnService)
         {
             _psychologistService = psychologistService;
             _typeOfConsultationService = typeOfConsultationService;
             _typeOfWorkingDateAndTimeService = typeOfWorkingDateAndTimeService;
             _psychologistTypeOfConsultationService = psychologistTypeOfConsultationService;
+            _atientTurnService = atientTurnService;
         }
 
         public async Task<IActionResult> Index()
@@ -58,7 +62,12 @@ namespace Psychology.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// اینجا باید روز رو از میلادی به شمسی به کلاینت برگردونیم
+        /// </summary>
+        /// <param name="PsychologistId"></param>
+        /// <param name="ConsultationDay"></param>
+        /// <returns></returns>
         public async Task<IActionResult> CheckTimeVisit(int PsychologistId, string ConsultationDay)
         {
             BaseResult<List<CheckDateVisit>> result = await _typeOfWorkingDateAndTimeService.CheckDateVisit(PsychologistId, DateTimeConvertor.ToMiladi(ConsultationDay));
@@ -76,7 +85,9 @@ namespace Psychology.Controllers
 
         public async Task<IActionResult> SetVisit(SetVisitModel model)
         {
-
+            BaseResult result = await _atientTurnService.CreateAsync(model);
+            if (result.IsSuccess)
+                return null;
             return null;
         }
     }
