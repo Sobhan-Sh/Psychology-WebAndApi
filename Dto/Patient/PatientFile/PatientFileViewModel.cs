@@ -1,4 +1,4 @@
-﻿namespace Dto.Patient.PatientFile;
+﻿namespace PC.Dto.Patient.PatientFile;
 
 public class PatientFileViewModel : CreatePatientFile
 {

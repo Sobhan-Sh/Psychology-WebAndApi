@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Discount;
+namespace PC.Dto.Discount;
 
 public class CreateDiscount : BaseDto
 {

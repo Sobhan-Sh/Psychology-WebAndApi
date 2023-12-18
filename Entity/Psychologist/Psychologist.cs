@@ -1,8 +1,8 @@
-﻿using Entity.DiscountAndOrder;
-using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using PC.Utility.Domain;
+using PD.Entity.DiscountAndOrder;
 
-namespace Entity.Psychologist;
+namespace PD.Entity.Psychologist;
 
 public class Psychologist : BaseEntity
 {

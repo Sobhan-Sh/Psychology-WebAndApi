@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Psychologist.TypeOfConsultation;
-using Service.IRepository.Psychologist;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IService.Psychologist;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Psychologist;
 
-namespace Service.Service.Psychologist;
+namespace PC.Service.Service.Psychologist;
 
 public class TypeOfConsultationService : ITypeOfConsultationService
 {
@@ -22,7 +23,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.TypeOfConsultation> query = await _consultationRepository.GetAllAsync();
+            IEnumerable<TypeOfConsultation> query = await _consultationRepository.GetAllAsync();
             if (!query.Any())
             {
                 return new BaseResult<List<TypeOfConsultationViewModel>>
@@ -56,7 +57,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
+            TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditTypeOfConsultation>
@@ -106,7 +107,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            await _consultationRepository.CreateAsync(_mapper.Map<Entity.Psychologist.TypeOfConsultation>(command));
+            await _consultationRepository.CreateAsync(_mapper.Map<TypeOfConsultation>(command));
             await _consultationRepository.SaveAsync();
             return new BaseResult()
             {
@@ -130,7 +131,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == command.Id);
+            TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -163,7 +164,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
+            TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -196,7 +197,7 @@ public class TypeOfConsultationService : ITypeOfConsultationService
     {
         try
         {
-            Entity.Psychologist.TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
+            TypeOfConsultation query = await _consultationRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {

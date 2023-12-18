@@ -1,7 +1,7 @@
-﻿using Utility.Data;
+﻿using PC.Utility.Data;
 
-namespace Service.IRepository.Psychologist;
+namespace PC.Service.IRepository.Psychologist;
 
-public interface IPsychologistRepository : IGenericRepository<Entity.Psychologist.Psychologist>
+public interface IPsychologistRepository : IGenericRepository<PD.Entity.Psychologist.Psychologist>
 {
 }

@@ -1,9 +1,9 @@
-﻿using Context;
-using Entity.Psychologist;
-using Service.IRepository.Psychologist;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Psychologist;
+using PC.Utility.Data;
+using PD.Entity.Psychologist;
 
-namespace Repositories.Psychologist;
+namespace PD.Repositories.Psychologist;
 
 public class PsychologistWorkingDaysRepository : GenericRepository<PsychologistWorkingDays>, IPsychologistWorkingDaysRepository
 {

@@ -1,15 +1,15 @@
-﻿using AutoMapper;
-using Dto.Patient.PatientResponsesExams;
-using Entity.Patient;
-using Service.IRepository.Patient;
-using Service.IService.Patient;
-using System.Text.Json;
-using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
-using Utility.Validation;
-using static Service.Mapping.Mapping;
+﻿using System.Text.Json;
+using AutoMapper;
+using PC.Dto.Patient.PatientResponsesExams;
+using PC.Service.IRepository.Patient;
+using PC.Service.IService.Patient;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.UploadFileTools;
+using PC.Utility.Validation;
+using PD.Entity.Patient;
+using static PC.Service.Mapping.Mapping;
 
-namespace Service.Service.Patient;
+namespace PC.Service.Service.Patient;
 
 public class PatientResponsesExamsService : IPatientResponsesExamsService
 {

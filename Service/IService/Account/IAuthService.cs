@@ -1,7 +1,7 @@
-﻿using Dto.account;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.account;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Account;
+namespace PC.Service.IService.Account;
 
 public interface IAuthService
 {

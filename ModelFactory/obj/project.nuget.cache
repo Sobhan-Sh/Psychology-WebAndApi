@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xqYPXGBYnMoilWVC/OVZ6uw66CfIacy+KrY2YsAuzgpWCPy5QYaTLgrI0PR79XKx/sbY/mQ19UiaoBBuqTnBRQ==",
+  "dgSpecHash": "P+WQxQO391rMRZ6/e1T1EnYLwnwhH7bAF25Ld9l+0OP/UZ4JXJDw5gJaQysozppzKa79YBK6MgjpQeCZ/3gZiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\ModelFactory.csproj",
+  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dear User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Dear User\\.nuget\\packages\\bitmiracle.libtiff.net\\2.4.649\\bitmiracle.libtiff.net.2.4.649.nupkg.sha512",

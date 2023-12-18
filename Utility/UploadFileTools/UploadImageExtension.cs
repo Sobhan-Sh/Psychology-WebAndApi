@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Utility.UploadFileTools;
+namespace PC.Utility.UploadFileTools;
 
 public static class UploadImageExtension
 {

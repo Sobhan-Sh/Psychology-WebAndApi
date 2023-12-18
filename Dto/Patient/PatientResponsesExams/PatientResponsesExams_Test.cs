@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Patient.PatientResponsesExams;
+namespace PC.Dto.Patient.PatientResponsesExams;
 
 public class PatientResponsesExams_Test : BaseDto
 {

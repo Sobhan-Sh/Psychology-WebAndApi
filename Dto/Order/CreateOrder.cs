@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Order;
+namespace PC.Dto.Order;
 
 public class CreateOrder : BaseDto
 {

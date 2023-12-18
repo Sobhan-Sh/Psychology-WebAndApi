@@ -1,7 +1,7 @@
-﻿using Entity.Patient;
-using Utility.Data;
+﻿using PC.Utility.Data;
+using PD.Entity.Patient;
 
-namespace Service.IRepository.Patient;
+namespace PC.Service.IRepository.Patient;
 
 public interface ICommentRepository : IGenericRepository<Comment>
 {

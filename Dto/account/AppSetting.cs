@@ -1,4 +1,4 @@
-﻿namespace Dto.account;
+﻿namespace PC.Dto.account;
 
 public class AppSetting
 {

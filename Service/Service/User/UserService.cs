@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
-using Dto.Role;
-using Dto.User;
-using Framework.Auth;
-using Service.IRepository.Patient;
-using Service.IRepository.Psychologist;
-using Service.IRepository.Role;
-using Service.IRepository.User;
-using Service.IService.User;
-using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
-using Utility.Validation;
+using PC.Dto.Role;
+using PC.Dto.User;
+using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IRepository.Role;
+using PC.Service.IRepository.User;
+using PC.Service.IService.User;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.UploadFileTools;
+using PC.Utility.Validation;
 
-namespace Service.Service.User;
+namespace PC.Service.Service.User;
 
 public class UserService : IUserService
 {
@@ -34,7 +34,7 @@ public class UserService : IUserService
     {
         try
         {
-            List<Entity.User.User> query = new List<Entity.User.User>();
+            List<PD.Entity.User.User> query = new List<PD.Entity.User.User>();
             if (string.IsNullOrWhiteSpace(search.FName) && string.IsNullOrWhiteSpace(search.LName) && string.IsNullOrWhiteSpace(search.Phone))
             {
                 query.AddRange(await _userRepository.GetAllAsync(include: "Role,Gender"));
@@ -85,7 +85,7 @@ public class UserService : IUserService
     {
         try
         {
-            IEnumerable<Entity.User.User> query = await _userRepository.GetAllAsync(include: "Role,Gender");
+            IEnumerable<PD.Entity.User.User> query = await _userRepository.GetAllAsync(include: "Role,Gender");
             if (!query.Any())
             {
                 return new BaseResult<List<UserViewModel>>
@@ -120,7 +120,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
             if (query == null)
             {
                 return new BaseResult<EditUser>
@@ -154,7 +154,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id, "Role,Gender");
             if (query == null)
             {
                 return new BaseResult<UserViewModel>
@@ -224,7 +224,7 @@ public class UserService : IUserService
             command.IsActive = false;
             command.MobailActiveStatus = false;
             command.ActivationCode = Guid.NewGuid().ToString();
-            await _userRepository.CreateAsync(_mapper.Map<Entity.User.User>(command));
+            await _userRepository.CreateAsync(_mapper.Map<PD.Entity.User.User>(command));
             await _userRepository.SaveAsync();
             return new BaseResult()
             {
@@ -248,7 +248,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -297,7 +297,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id);
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -306,8 +306,8 @@ public class UserService : IUserService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            Entity.Patient.Patient patient = await _patientRepository.GetAsync(x => x.UserId == Id);
-            Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.UserId == Id);
+            PD.Entity.Patient.Patient patient = await _patientRepository.GetAsync(x => x.UserId == Id);
+            PD.Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.UserId == Id);
             if (patient != null)
                 _patientRepository.DeleteAsync(patient);
 
@@ -410,7 +410,7 @@ public class UserService : IUserService
 
     public async Task<BaseResult> ChangePasswordAsync(ChangePassword command)
     {
-        Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
+        PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
         if (query == null)
         {
             return new BaseResult
@@ -463,7 +463,7 @@ public class UserService : IUserService
 
     public async Task<BaseResult> ChangePasswordAsync(AdminChangePasswored command)
     {
-        Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id, include: "Gender");
+        PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id, include: "Gender");
         if (query == null)
         {
             return new BaseResult
@@ -510,7 +510,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id);
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult<ResultFindUserAuth>()
                 {
@@ -547,7 +547,7 @@ public class UserService : IUserService
     {
         try
         {
-            Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
+            PD.Entity.User.User query = await _userRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {

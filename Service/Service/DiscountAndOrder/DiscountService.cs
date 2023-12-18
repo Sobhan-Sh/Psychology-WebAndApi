@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Discount;
-using Service.IRepository.DiscountAndOrder;
-using Service.IService.DiscountAndOrder;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Discount;
+using PC.Service.IRepository.DiscountAndOrder;
+using PC.Service.IService.DiscountAndOrder;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.DiscountAndOrder;
 
-namespace Service.Service.DiscountAndOrder;
+namespace PC.Service.Service.DiscountAndOrder;
 
 public class DiscountService : IDiscountService
 {
@@ -22,7 +23,7 @@ public class DiscountService : IDiscountService
     {
         try
         {
-            IEnumerable<Entity.DiscountAndOrder.Discount> query = await _discountRepository.GetAllAsync(include: "Patient,Psychologist");
+            IEnumerable<Discount> query = await _discountRepository.GetAllAsync(include: "Patient,Psychologist");
             if (!query.Any())
             {
                 return new BaseResult<List<DiscountViewModel>>
@@ -56,7 +57,7 @@ public class DiscountService : IDiscountService
     {
         try
         {
-            List<Entity.DiscountAndOrder.Discount> query = new List<Entity.DiscountAndOrder.Discount>();
+            List<Discount> query = new List<Discount>();
             if (f.DiscountWithMoney == 0 && f.DiscountWithPercentage == 0)
             {
                 query.AddRange(await _discountRepository.GetAllAsync(include: "Patient,Psychologist"));
@@ -101,7 +102,7 @@ public class DiscountService : IDiscountService
     {
         try
         {
-            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == Id, include: "Patient,Psychologist");
+            Discount query = await _discountRepository.GetAsync(x => x.Id == Id, include: "Patient,Psychologist");
             if (query == null)
             {
                 return new BaseResult<EditDiscount>
@@ -151,7 +152,7 @@ public class DiscountService : IDiscountService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            await _discountRepository.CreateAsync(_mapper.Map<Entity.DiscountAndOrder.Discount>(command));
+            await _discountRepository.CreateAsync(_mapper.Map<Discount>(command));
             await _discountRepository.SaveAsync();
             return new BaseResult()
             {
@@ -175,7 +176,7 @@ public class DiscountService : IDiscountService
     {
         try
         {
-            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == command.Id);
+            Discount query = await _discountRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -208,7 +209,7 @@ public class DiscountService : IDiscountService
     {
         try
         {
-            Entity.DiscountAndOrder.Discount query = await _discountRepository.GetAsync(x => x.Id == Id);
+            Discount query = await _discountRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {

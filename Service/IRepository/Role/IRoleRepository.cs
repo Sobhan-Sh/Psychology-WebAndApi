@@ -1,7 +1,7 @@
-﻿using Utility.Data;
+﻿using PC.Utility.Data;
 
-namespace Service.IRepository.Role;
+namespace PC.Service.IRepository.Role;
 
-public interface IRoleRepository : IGenericRepository<Entity.Role.Role>
+public interface IRoleRepository : IGenericRepository<PD.Entity.Role.Role>
 {
 }

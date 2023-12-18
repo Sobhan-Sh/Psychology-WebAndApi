@@ -1,8 +1,8 @@
-﻿using Entity.Patient;
-using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using PC.Utility.Domain;
+using PD.Entity.Patient;
 
-namespace Entity.DiscountAndOrder;
+namespace PD.Entity.DiscountAndOrder;
 
 public class Order : BaseEntity
 {

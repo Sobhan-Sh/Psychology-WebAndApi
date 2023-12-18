@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entity.Patient;
+namespace PD.Entity.Patient;
 
 public class PatientExam
 {

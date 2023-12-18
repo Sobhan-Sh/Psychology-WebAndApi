@@ -1,10 +1,13 @@
-﻿using Dto.Patient.PatientResponsesExams;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Entity.Patient;
-using Entity.Psychologist;
+﻿using PC.Dto.Patient;
+using PC.Dto.Patient.PatientResponsesExams;
+using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.User;
+using PD.Entity.Patient;
+using PD.Entity.Psychologist;
 
-namespace Service.Mapping;
+namespace PC.Service.Mapping;
 
 public static class Mapping
 {
@@ -46,8 +49,43 @@ public static class Mapping
             Id = x.Id,
             EndTime = x.PsychologistWorkingHours.EndTime.ToString("hh"),
             StartTime = x.PsychologistWorkingHours.StartTime.ToString("hh"),
-            IsVisit = turnRepository.Any(x =>  x.PsychologistWorkingDateAndTimeId == x.Id),
+            IsVisit = turnRepository.Any(x => x.PsychologistWorkingDateAndTimeId == x.Id),
             Day = x.PsychologistWorkingDays.Day
+        }).ToList();
+    }
+
+
+    public static List<ListPatientViewModel> ConvertPatientToListPatientViewModelMapping(List<Patient> patient, List<PatientTurn> patientTurns)
+    {
+        return patient.Select(x => new ListPatientViewModel()
+        {
+            FName = x.User.FName,
+            LName = x.User.LName,
+            CreateDateTime = x.CreatedAt,
+            PatientId = x.Id,
+            PsychologistViewModels = ConvertPsychologistToPsychologistViewModel(patientTurns.Where(p => p.PatientId == x.Id).Select(p => p.PsychologistWorkingDateAndTime.Psychologist).ToList()),
+            MobailActiveStatus = x.User.MobailActiveStatus,
+            NationalCode = x.NationalCode,
+            Phone = x.User.Phone,
+        }).ToList();
+    }
+
+    private static List<PsychologistViewModel> ConvertPsychologistToPsychologistViewModel(List<Psychologist> psychologists)
+    {
+        return psychologists.Select(x => new PsychologistViewModel()
+        {
+            Id = x.Id,
+            IsActive = x.IsActive,
+            IsDeleted = x.IsDeleted,
+            CreatedAt = x.CreatedAt.ToString(),
+            Age = x.Age,
+            NationalCode = x.NationalCode,
+            UserViewModel = new UserViewModel
+            {
+                FName = x.User.FName,
+                LName = x.User.LName,
+                Id = x.Id
+            }
         }).ToList();
     }
 }

@@ -13,3 +13,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\Dto.cs
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\Utility.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\Utility.pdb
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\Dto.csproj.CopyComplete
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\Dto.sourcelink.json

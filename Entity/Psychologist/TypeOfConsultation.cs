@@ -1,7 +1,7 @@
-﻿using Entity.Patient;
-using Utility.Domain;
+﻿using PC.Utility.Domain;
+using PD.Entity.Patient;
 
-namespace Entity.Psychologist;
+namespace PD.Entity.Psychologist;
 
 public class TypeOfConsultation : BaseEntity
 {

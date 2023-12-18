@@ -1,12 +1,12 @@
-﻿using Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.Psychologist;
-using Service.IRepository.Psychologist;
-using Service.IService.Psychologist;
-using Service.Service.Psychologist;
+using PC.Context;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IService.Psychologist;
+using PC.Service.Service.Psychologist;
+using PD.Repositories.Psychologist;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public static class PsychologistBootstrapper
 {

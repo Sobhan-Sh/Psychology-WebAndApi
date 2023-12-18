@@ -10,3 +10,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\re
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\Utility.pdb
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\ref\Utility.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\Utility.csproj.AssemblyReference.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\Utility.sourcelink.json

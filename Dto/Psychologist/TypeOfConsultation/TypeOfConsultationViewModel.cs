@@ -1,7 +1,7 @@
-﻿using Dto.Patient.PatientTurn;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
+﻿using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
 
-namespace Dto.Psychologist.TypeOfConsultation;
+namespace PC.Dto.Psychologist.TypeOfConsultation;
 
 public class TypeOfConsultationViewModel : CreateTypeOfConsultation
 {

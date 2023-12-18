@@ -21,3 +21,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Co
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Entity.pdb
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Abstractions.xml
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Service\obj\Debug\net7.0\Service.sourcelink.json

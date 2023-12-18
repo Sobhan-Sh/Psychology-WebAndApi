@@ -1,12 +1,12 @@
-﻿using Dto.Discount;
-using Dto.Order;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Dto.User;
-using Microsoft.AspNetCore.Http;
-using Utility.Dto;
+﻿using Microsoft.AspNetCore.Http;
+using PC.Dto.Discount;
+using PC.Dto.Order;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.User;
+using PC.Utility.Dto;
 
-namespace Dto.Psychologist;
+namespace PC.Dto.Psychologist;
 
 public class PsychologistViewModel : BaseDto
 {

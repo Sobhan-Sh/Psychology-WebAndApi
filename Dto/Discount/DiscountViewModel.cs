@@ -1,8 +1,8 @@
-﻿using Dto.Patient;
-using Dto.Psychologist;
-using Utility.Dto;
+﻿using PC.Dto.Patient;
+using PC.Dto.Psychologist;
+using PC.Utility.Dto;
 
-namespace Dto.Discount;
+namespace PC.Dto.Discount;
 
 public class DiscountViewModel : BaseDto
 {

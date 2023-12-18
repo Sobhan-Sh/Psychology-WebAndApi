@@ -1,10 +1,12 @@
-﻿using Dto.Role;
-using Dto.User.Gender;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Dto.Psychologist;
-using Utility.Dto;
+using Microsoft.AspNetCore.Http;
+using PC.Dto.Psychologist;
+using PC.Dto.Role;
+using PC.Dto.User.Gender;
+using PC.Utility.Dto;
 
-namespace Dto.User;
+namespace PC.Dto.User;
 
 public class UserViewModel : BaseDto
 {
@@ -29,10 +31,13 @@ public class UserViewModel : BaseDto
     public string ActivationCode { get; set; }
 
     [Display(Name = "اواتار")]
+    public IFormFile? ImageUser { get; set; }
+
     public string? Avatar { get; set; }
 
     public RoleViewModel? RoleViewModel { get; set; }
 
+    [Display(Name = "جنسیت")]
     public GenderViewModel? GenderViewModel { get; set; }
 
     public List<PsychologistViewModel>? PsychologistViewModels { get; set; }

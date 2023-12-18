@@ -1,7 +1,7 @@
-﻿using Dto.User;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.User;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.User;
+namespace PC.Service.IService.User;
 
 public interface IUserService
 {

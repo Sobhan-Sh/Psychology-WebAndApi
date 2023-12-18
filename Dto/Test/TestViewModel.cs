@@ -1,7 +1,7 @@
-﻿using Dto.Test.Question;
-using Utility.Dto;
+﻿using PC.Dto.Test.Question;
+using PC.Utility.Dto;
 
-namespace Dto.Test;
+namespace PC.Dto.Test;
 
 public class TestViewModel : BaseDto
 {

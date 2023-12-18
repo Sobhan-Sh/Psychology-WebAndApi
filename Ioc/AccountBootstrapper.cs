@@ -1,22 +1,22 @@
-﻿using AutoMapper;
-using Context;
+﻿using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using ModelFactory;
-using Repositories.Role;
-using Repositories.User;
-using Service.IRepository.Role;
-using Service.IRepository.User;
-using Service.IService.Account;
-using Service.IService.User;
-using Service.Service.Account;
-using Service.Service.User;
-using System.Text;
+using PC.Context;
+using PC.Service.IRepository.Role;
+using PC.Service.IRepository.User;
+using PC.Service.IService.Account;
+using PC.Service.IService.User;
+using PC.Service.Service.Account;
+using PC.Service.Service.User;
+using PD.Repositories.Role;
+using PD.Repositories.User;
+using PF.ModelFactory;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public static class AccountBootstrapper
 {

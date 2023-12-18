@@ -1,27 +1,30 @@
 ﻿using AutoMapper;
-using Dto.Psychologist;
-using Service.IRepository.Patient;
-using Service.IRepository.Psychologist;
-using Service.IRepository.User;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
-using Utility.Validation;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IRepository.User;
+using PC.Service.IService.Psychologist;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.UploadFileTools;
+using PC.Utility.Validation;
 
-namespace Service.Service.Psychologist;
+namespace PC.Service.Service.Psychologist;
 
 public class PsychologistService : IPsychologistService
 {
     private readonly IPsychologistRepository _psychologistRepository;
     private readonly IPatientRepository _patientRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IPatientTurnRepository _turnRepository;
     private IMapper _mapper;
 
-    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IMapper mapper)
+    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IPatientTurnRepository turnRepository, IMapper mapper)
     {
         _psychologistRepository = psychologistRepository;
         _patientRepository = patientRepository;
         _userRepository = userRepository;
+        _turnRepository = turnRepository;
         _mapper = mapper;
     }
 
@@ -29,7 +32,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order,User.Gender");
+            IEnumerable<PD.Entity.Psychologist.Psychologist> query = await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order,User.Gender");
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistViewModel>>
@@ -63,7 +66,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            List<Entity.Psychologist.Psychologist> query = new List<Entity.Psychologist.Psychologist>();
+            List<PD.Entity.Psychologist.Psychologist> query = new List<PD.Entity.Psychologist.Psychologist>();
             if (string.IsNullOrWhiteSpace(f.MedicalLicennseCode) && string.IsNullOrWhiteSpace(f.NationalCode) && f.DateOfBirth == null && f.Age! > 0 && f.Commission! > 0)
             {
                 query.AddRange(await _psychologistRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order"));
@@ -117,7 +120,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime,Discount,Order");
+            PD.Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime,Discount,Order");
             if (query == null)
             {
                 return new BaseResult<EditPsychologist>
@@ -188,7 +191,7 @@ public class PsychologistService : IPsychologistService
 
             command.CreatedAt = DateTime.Now.ToString();
             command.IsActive = true;
-            await _psychologistRepository.CreateAsync(_mapper.Map<Entity.Psychologist.Psychologist>(command));
+            await _psychologistRepository.CreateAsync(_mapper.Map<PD.Entity.Psychologist.Psychologist>(command));
             await _psychologistRepository.SaveAsync();
             return new BaseResult()
             {
@@ -220,7 +223,7 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound
                 };
 
-            Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == command.Id);
+            PD.Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == command.Id);
             if (command.ImageLicennse != null)
                 if (command.ImageLicennse.IsCheckFile())
                 {
@@ -255,7 +258,7 @@ public class PsychologistService : IPsychologistService
     {
         try
         {
-            Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == Id);
+            PD.Entity.Psychologist.Psychologist query = await _psychologistRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -291,9 +294,41 @@ public class PsychologistService : IPsychologistService
         }
     }
 
+    public async Task<BaseResult<List<PatientTurnViewModel>>> PatientMy(int Id)
+    {
+        try
+        {
+            IEnumerable<PD.Entity.Patient.PatientTurn> query = await _turnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.Psychologist.UserId == Id, "Patient.User.Gender");
+            if (!query.Any())
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessDelete,
+                StatusCode = ValidationCode.Success,
+                Data = _mapper.Map<List<PatientTurnViewModel>>(query.ToList())
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult> ActiveAsync(int Id)
     {
-        Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
+        PD.Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
         if (psychologist == null)
             return new BaseResult
             {
@@ -314,7 +349,7 @@ public class PsychologistService : IPsychologistService
 
     public async Task<BaseResult> DeActiveAsync(int Id)
     {
-        Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
+        PD.Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
         if (psychologist == null)
             return new BaseResult
             {

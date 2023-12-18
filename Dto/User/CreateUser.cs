@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
-using Utility.ReturnError;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+using PC.Utility.Dto;
+using PC.Utility.ReturnError;
 
-namespace Dto.User;
+namespace PC.Dto.User;
 
 public class CreateUser : BaseDto
 {

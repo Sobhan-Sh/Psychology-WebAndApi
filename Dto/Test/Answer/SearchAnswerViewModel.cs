@@ -1,4 +1,4 @@
-﻿namespace Dto.Test.Answer;
+﻿namespace PC.Dto.Test.Answer;
 
 public class SearchAnswerViewModel
 {

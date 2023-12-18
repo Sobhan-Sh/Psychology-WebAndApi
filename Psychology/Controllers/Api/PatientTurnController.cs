@@ -1,9 +1,9 @@
-﻿using Dto.Patient.PatientTurn;
-using Framework.Auth;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.IService.Patient;
-using Utility.ReturnFuncResult;
+using PC.Dto.Patient.PatientTurn;
+using PC.Service.IService.Patient;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers.Api
 {

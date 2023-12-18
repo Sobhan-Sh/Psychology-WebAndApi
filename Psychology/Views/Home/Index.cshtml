@@ -1,4 +1,4 @@
-﻿@model Dto.Patient.PatientTurn.PatientTurnViewModel
+﻿@model PC.Dto.Patient.PatientTurn.PatientTurnViewModel
 @{
     ViewData["Title"] = "خانه";
 }
@@ -15,20 +15,21 @@
             <!--* body card -->
             @if (ViewData["TypeOfConsultation"] != null)
             {
-                <section class="card-body">
-                    <input class="cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.UserViewModel.FName" type="text" placeholder="نام و نام خانوادگی">
-                    <input class="cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.UserViewModel.Phone" type="text" placeholder="شماره تماس">
-                    <input type="text" class="cusotm-form-controle ConsultationDay" asp-for="ConsultationDay" onchange="GetTimesVisit()" />
-                    <select class="selectMy cusotm-form-controle" asp-for="PsychologistWorkingDateAndTimeViewModel.PsychologistViewModel.Id" asp-items="@((SelectList)ViewData["TypeOfConsultation"])" onchange="GetPsychologist(this)">
-                        <option value="null">
-                            نوع مشاوره
-                        </option>
-                    </select>
-                    <section id="viewListPsychologist"></section>
-                    <section class="d-flex flex-wrap" id="viewTimeVisit">
+                <form asp-controller="Home" asp-action="SetVisit" id="FormSetVisit" onsubmit="FormSetVisit()" method="post">
+                    <section class="card-body">
+                        <input class="cusotm-form-controle" name="Name" id="Name" type="text" placeholder="نام و نام خانوادگی">
+                        <input class="cusotm-form-controle" name="Phone" id="Phone" type="text" placeholder="شماره تماس">
+                        <input type="text" class="cusotm-form-controle ConsultationDay" name="DateTimeVisit" id="DateTimeVisit" onchange="GetTimesVisit()" />
+                        <select class="selectMy cusotm-form-controle" name="TypeOfConsultationId" id="TypeOfConsultationId" asp-items="@((SelectList)ViewData["TypeOfConsultation"])" onchange="GetPsychologist(this)">
+                            <option value="null">
+                                نوع مشاوره
+                            </option>
+                        </select>
+                        <section id="viewListPsychologist"></section>
+                        <section class="d-flex flex-wrap" id="viewTimeVisit"></section>
+                        <button class="btn btn-custom w-100 mt-3" type="button" onclick="SetVisit()"> ثبت ویزیت </button>
                     </section>
-                    <button class="btn btn-custom w-100 mt-3" type="button" onclick="SetVisit()"> ثبت ویزیت </button>
-                </section>
+                </form>
             }
             else
             {
@@ -40,12 +41,12 @@
     </section>
 </div>
 @section ImageIndexUi
-    {
+{
     <img src="/assets/imageTemplate/doctor.png" class="ui-image-user d-none d-md-block" alt="image body in ui" title="Ui Body">
 }
 
 @section Scripts
-    {
+{
     <script>
         $(".selectMy").select2();
     </script>

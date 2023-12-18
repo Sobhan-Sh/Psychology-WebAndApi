@@ -1,8 +1,7 @@
-﻿using Framework.Auth;
-using Framework.Auth.IAuth;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PC.Utility.Auth.IAuth;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public class ApiBootstrapper
 {

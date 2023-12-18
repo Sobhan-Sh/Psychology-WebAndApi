@@ -21,3 +21,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Repository\obj\Debug\net7.0
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Repository\obj\Debug\net7.0\ref\Repositories.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Repository\bin\Debug\net7.0\Dto.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Repository\bin\Debug\net7.0\Dto.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Repository\obj\Debug\net7.0\Repositories.sourcelink.json

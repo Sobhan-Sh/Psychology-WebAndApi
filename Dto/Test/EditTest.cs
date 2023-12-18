@@ -1,4 +1,4 @@
-﻿namespace Dto.Test;
+﻿namespace PC.Dto.Test;
 
 public class EditTest : CreateTest
 {

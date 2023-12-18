@@ -1,4 +1,4 @@
-﻿namespace Dto.Order;
+﻿namespace PC.Dto.Order;
 
 public class PaymentSuccess
 {

@@ -1,8 +1,8 @@
-﻿using Context;
-using Service.IRepository.User;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.User;
+using PC.Utility.Data;
 
-namespace Repositories.User
+namespace PD.Repositories.User
 {
     public class UserRepository : GenericRepository<Entity.User.User>, IUserRepository
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+using PC.Utility.Domain;
 
-namespace Entity.DiscountAndOrder;
+namespace PD.Entity.DiscountAndOrder;
 
 public class Discount : BaseEntity
 {

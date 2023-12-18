@@ -83,8 +83,8 @@ a {
     text-decoration: none;
 }
 
-.table > :not(caption) > * > * {
-    backdrop-filter: blur(8px);
+.table:not(.not-backdrop-filter) > :not(caption) > * > * {
+    /* backdrop-filter: blur(8px); */
 }
 
 header nav div div div ul.navbar-nav li.nav-item a.nav-link span,
@@ -245,20 +245,24 @@ header nav div div div ul.navbar-nav li.nav-item a.nav-link {
     outline: 0;
 }
 
-    .card-profile-form .cusotm-form-controle::placeholder,
-    .card-register-form .card .cusotm-form-controle::placeholder,
-    .card-login-form .card .cusotm-form-controle::placeholder,
-    .card-visit-form .card .cusotm-form-controle::placeholder {
-        color: var(--darkMode-light-background);
-        text-align: center;
-    }
+.cusotm-form-controle.inValid {
+    border-color: var(--darkMode-notValid) !important;
+}
 
-    .card-profile-form .cusotm-form-controle:focus,
-    .card-register-form .card .cusotm-form-controle:focus,
-    .card-login-form .card .cusotm-form-controle:focus,
-    .card-visit-form .card .cusotm-form-controle:focus {
-        border-color: var(--darkMode-primary);
-    }
+.card-profile-form .cusotm-form-controle::placeholder,
+.card-register-form .card .cusotm-form-controle::placeholder,
+.card-login-form .card .cusotm-form-controle::placeholder,
+.card-visit-form .card .cusotm-form-controle::placeholder {
+    color: var(--darkMode-light-background);
+    text-align: center;
+}
+
+.card-profile-form .cusotm-form-controle:focus,
+.card-register-form .card .cusotm-form-controle:focus,
+.card-login-form .card .cusotm-form-controle:focus,
+.card-visit-form .card .cusotm-form-controle:focus {
+    border-color: var(--darkMode-primary);
+}
 
 .card-profile-form hr,
 .card-question-form .card hr,

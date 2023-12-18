@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Entity.Patient;
-using Service.IRepository.Patient;
-using Service.IRepository.Psychologist;
-using Service.IService.Psychologist;
-using Utility.DateConvertor;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IService.Psychologist;
+using PC.Utility.DateConvertor;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Patient;
+using PD.Entity.Psychologist;
 
-namespace Service.Service.Psychologist;
+namespace PC.Service.Service.Psychologist;
 
 public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAndTimeService
 {
@@ -29,7 +30,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            IEnumerable<Entity.Psychologist.PsychologistWorkingDateAndTime> query = await _dateAndTimeRepository.GetAllAsync(include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+            IEnumerable<PsychologistWorkingDateAndTime> query = await _dateAndTimeRepository.GetAllAsync(include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistWorkingDateAndTimeViewModel>>
@@ -63,7 +64,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            List<Entity.Psychologist.PsychologistWorkingDateAndTime> query = new List<Entity.Psychologist.PsychologistWorkingDateAndTime>();
+            List<PsychologistWorkingDateAndTime> query = new List<PsychologistWorkingDateAndTime>();
             if (command.PsychologistId == 0 && command.PsychologistWorkingDaysId == 0 && command.PsychologistWorkingHoursId == 0)
             {
                 return new BaseResult<List<PsychologistWorkingDateAndTimeViewModel>>
@@ -118,7 +119,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+            PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
             if (query == null)
             {
                 return new BaseResult<EditPsychologistWorkingDateAndTime>
@@ -152,7 +153,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.PsychologistId == Id, include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+            PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.PsychologistId == Id, include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
             if (query == null)
             {
                 return new BaseResult<EditPsychologistWorkingDateAndTime>
@@ -195,7 +196,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
                 };
 
             command.IsActive = true;
-            await _dateAndTimeRepository.CreateAsync(_mapper.Map<Entity.Psychologist.PsychologistWorkingDateAndTime>(command));
+            await _dateAndTimeRepository.CreateAsync(_mapper.Map<PsychologistWorkingDateAndTime>(command));
             await _dateAndTimeRepository.SaveAsync();
             return new BaseResult()
             {
@@ -219,7 +220,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == command.Id);
+            PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -252,7 +253,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id);
+            PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -285,7 +286,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id);
+            PsychologistWorkingDateAndTime query = await _dateAndTimeRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult<int>()
                 {
@@ -327,7 +328,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
                     StatusCode = ValidationCode.NotFound
                 };
 
-            Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
+            PD.Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == Id);
             if (psychologist == null)
                 return new BaseResult<List<CheckDateVisit>>
                 {
@@ -337,7 +338,7 @@ public class PsychologistWorkingDateAndTimeService : IPsychologistWorkingDateAnd
                 };
 
             string ResultDateVisitMessage = null;
-            IEnumerable<Entity.Psychologist.PsychologistWorkingDateAndTime> dateVisit = await _dateAndTimeRepository.GetAllAsync(x => x.PsychologistId == Id && x.PsychologistWorkingDays.DayEn == DateVisit.DayOfWeek.ToString(), include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
+            IEnumerable<PsychologistWorkingDateAndTime> dateVisit = await _dateAndTimeRepository.GetAllAsync(x => x.PsychologistId == Id && x.PsychologistWorkingDays.DayEn == DateVisit.DayOfWeek.ToString(), include: "PsychologistWorkingHours,PsychologistWorkingDays,Psychologist");
             if (dateVisit.Count() < 1)
             {
                 int day = 1;

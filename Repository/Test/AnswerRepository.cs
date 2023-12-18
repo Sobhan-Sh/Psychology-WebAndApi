@@ -1,9 +1,9 @@
-﻿using Context;
-using Entity.Test;
-using Service.IRepository.Test;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Test;
+using PC.Utility.Data;
+using PD.Entity.Test;
 
-namespace Repositories.Test;
+namespace PD.Repositories.Test;
 
 public class AnswerRepository : GenericRepository<Answer>, IAnswerRepository
 {

@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Psychologist.PsychologistWorkingHours;
-using Service.IRepository.Psychologist;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Psychologist.PsychologistWorkingHours;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IService.Psychologist;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Psychologist;
 
-namespace Service.Service.Psychologist;
+namespace PC.Service.Service.Psychologist;
 
 public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
 {
@@ -22,7 +23,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            IEnumerable<Entity.Psychologist.PsychologistWorkingHours> query = await _psychologistWorkingHours.GetAllAsync();
+            IEnumerable<PsychologistWorkingHours> query = await _psychologistWorkingHours.GetAllAsync();
             if (!query.Any())
             {
                 return new BaseResult<List<PsychologistWorkingHoursViewModel>>
@@ -56,7 +57,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            List<Entity.Psychologist.PsychologistWorkingHours> query = new List<Entity.Psychologist.PsychologistWorkingHours>();
+            List<PsychologistWorkingHours> query = new List<PsychologistWorkingHours>();
             if (f.EndTime == null && f.StartTime == null)
             {
                 query.AddRange(await _psychologistWorkingHours.GetAllAsync());
@@ -101,7 +102,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id);
+            PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditPsychologistWorkingHours>
@@ -143,7 +144,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            await _psychologistWorkingHours.CreateAsync(_mapper.Map<Entity.Psychologist.PsychologistWorkingHours>(command));
+            await _psychologistWorkingHours.CreateAsync(_mapper.Map<PsychologistWorkingHours>(command));
             await _psychologistWorkingHours.SaveAsync();
             return new BaseResult()
             {
@@ -167,7 +168,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == command.Id);
+            PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -200,7 +201,7 @@ public class PsychologistWorkingHoursService : IPsychologistWorkingHoursService
     {
         try
         {
-            Entity.Psychologist.PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id);
+            PsychologistWorkingHours query = await _psychologistWorkingHours.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {

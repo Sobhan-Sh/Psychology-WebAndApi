@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O/Styd5rh3NpPKcKHLqCdRQFSjIhDqQd9bYEE5+vWl6jj2hjX1MjcBlD69mj5H+9X0W7Agek2ozw8N3URXJU1Q==",
+  "dgSpecHash": "rZrZcDwMohMA0CqDK+Fq3GOBnpQ/IDtV8My4oXJ8ozDFQxo+PonlSn49nHrKqRlJ0eRZwDGEkwg3Av3NLsFj3A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\Psychology.csproj",
   "expectedPackageFiles": [
@@ -247,7 +247,8 @@
     "C:\\Users\\Dear User\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Dear User\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Dear User\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Dear User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Dear User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Dear User\\.nuget\\packages\\zarinpal\\3.0.1\\zarinpal.3.0.1.nupkg.sha512"
   ],
   "logs": []
 }

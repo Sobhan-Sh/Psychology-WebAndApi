@@ -1,7 +1,7 @@
-﻿using Dto.Test;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Test;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Test;
+namespace PC.Service.IService.Test;
 
 public interface ITestService
 {

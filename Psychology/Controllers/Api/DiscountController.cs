@@ -1,9 +1,9 @@
-﻿using Dto.Discount;
-using Framework.Auth;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.IService.DiscountAndOrder;
-using Utility.ReturnFuncResult;
+using PC.Dto.Discount;
+using PC.Service.IService.DiscountAndOrder;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers.Api
 {

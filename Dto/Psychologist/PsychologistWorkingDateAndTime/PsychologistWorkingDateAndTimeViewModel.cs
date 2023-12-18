@@ -1,9 +1,9 @@
-﻿using Dto.Patient.PatientTurn;
-using Dto.Psychologist.PsychologistWorkingDays;
-using Dto.Psychologist.PsychologistWorkingHours;
-using Utility.Dto;
+﻿using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist.PsychologistWorkingDays;
+using PC.Dto.Psychologist.PsychologistWorkingHours;
+using PC.Utility.Dto;
 
-namespace Dto.Psychologist.PsychologistWorkingDateAndTime;
+namespace PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
 
 public class PsychologistWorkingDateAndTimeViewModel : BaseDto
 {

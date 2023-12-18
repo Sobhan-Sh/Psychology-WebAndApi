@@ -1,4 +1,4 @@
-﻿namespace Dto.Patient.PatientResponsesExams;
+﻿namespace PC.Dto.Patient.PatientResponsesExams;
 
 public class PatientResponsesExams_Question
 {

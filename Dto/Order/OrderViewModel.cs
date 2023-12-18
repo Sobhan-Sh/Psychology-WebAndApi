@@ -1,10 +1,10 @@
-﻿using Dto.Patient;
-using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Dto.Test;
-using Utility.Dto;
+﻿using PC.Dto.Patient;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Dto.Test;
+using PC.Utility.Dto;
 
-namespace Dto.Order;
+namespace PC.Dto.Order;
 
 public class OrderViewModel : BaseDto
 {

@@ -1204,20 +1204,7 @@
           }
         }
       },
-      "Entity/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Utility": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Entity.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Entity.dll": {}
-        }
-      },
-      "Utility/1.0.0": {
+      "PC.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -1229,10 +1216,23 @@
           "System.Drawing.Common": "7.0.0"
         },
         "compile": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
+        }
+      },
+      "PD.Entity/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "PC.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PD.Entity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PD.Entity.dll": {}
         }
       }
     }
@@ -3237,24 +3237,24 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Entity/1.0.0": {
+    "PC.Utility/1.0.0": {
       "type": "project",
-      "path": "../Entity/Entity.csproj",
-      "msbuildProject": "../Entity/Entity.csproj"
+      "path": "../Utility/PC.Utility.csproj",
+      "msbuildProject": "../Utility/PC.Utility.csproj"
     },
-    "Utility/1.0.0": {
+    "PD.Entity/1.0.0": {
       "type": "project",
-      "path": "../Utility/Utility.csproj",
-      "msbuildProject": "../Utility/Utility.csproj"
+      "path": "../Entity/PD.Entity.csproj",
+      "msbuildProject": "../Entity/PD.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Entity >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.12",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.12",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.12"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.12",
+      "PD.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3264,9 +3264,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj",
-      "projectName": "Context",
-      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj",
+      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
+      "projectName": "PC.Context",
+      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
       "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\obj\\",
       "projectStyle": "PackageReference",
@@ -3290,8 +3290,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
-              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj"
+            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj"
             }
           }
         }
@@ -3300,9 +3300,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {

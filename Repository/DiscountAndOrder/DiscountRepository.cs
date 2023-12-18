@@ -1,9 +1,9 @@
-﻿using Context;
-using Entity.DiscountAndOrder;
-using Service.IRepository.DiscountAndOrder;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.DiscountAndOrder;
+using PC.Utility.Data;
+using PD.Entity.DiscountAndOrder;
 
-namespace Repositories.DiscountAndOrder;
+namespace PD.Repositories.DiscountAndOrder;
 
 public class DiscountRepository : GenericRepository<Discount>, IDiscountRepository
 {

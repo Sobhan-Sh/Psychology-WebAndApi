@@ -1,6 +1,6 @@
-﻿using Service.IService.Role;
+﻿using PC.Service.IService.Role;
 
-namespace Service.Service.Role;
+namespace PC.Service.Service.Role;
 
 public class RoleService : IRoleService
 {

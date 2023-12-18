@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Patient.PatientTurn;
+namespace PC.Dto.Patient.PatientTurn;
 
 public class CreatePatientTurn : BaseDto
 {

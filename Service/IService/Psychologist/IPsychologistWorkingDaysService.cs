@@ -1,7 +1,7 @@
-﻿using Dto.Psychologist.PsychologistWorkingDays;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Psychologist.PsychologistWorkingDays;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Psychologist;
+namespace PC.Service.IService.Psychologist;
 
 public interface IPsychologistWorkingDaysService
 {

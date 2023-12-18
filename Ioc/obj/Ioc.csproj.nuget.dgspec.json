@@ -4,12 +4,12 @@
     "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\Ioc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj": {
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj",
-        "projectName": "Context",
-        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj",
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
+        "projectName": "PC.Context",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
         "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\obj\\",
         "projectStyle": "PackageReference",
@@ -93,12 +93,12 @@
         }
       }
     },
-    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj": {
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj",
-        "projectName": "Dto",
-        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj",
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj",
+        "projectName": "PC.Dto",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj",
         "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\obj\\",
         "projectStyle": "PackageReference",
@@ -262,8 +262,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
               },
               "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\ModelFactory.csproj": {
                 "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\ModelFactory.csproj"
@@ -357,8 +357,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj"
               },
               "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
                 "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj"
@@ -433,8 +433,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
               },
               "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\Service.csproj": {
                 "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\Service.csproj"
@@ -503,11 +503,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\Context.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
               },
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj"
               },
               "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
                 "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj"

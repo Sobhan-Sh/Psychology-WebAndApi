@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Utility.ReturnFuncResult;
+namespace PC.Utility.ReturnFuncResult;
 
 public class BaseResult
 {

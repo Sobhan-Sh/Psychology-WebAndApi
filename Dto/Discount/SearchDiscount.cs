@@ -1,4 +1,4 @@
-﻿namespace Dto.Discount;
+﻿namespace PC.Dto.Discount;
 
 public class SearchDiscount
 {

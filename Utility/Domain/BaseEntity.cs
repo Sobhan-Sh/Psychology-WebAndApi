@@ -1,4 +1,4 @@
-﻿namespace Utility.Domain;
+﻿namespace PC.Utility.Domain;
 
 public class BaseEntity
 {

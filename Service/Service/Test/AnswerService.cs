@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Test.Answer;
-using Entity.Test;
-using Service.IRepository.Test;
-using Service.IService.Test;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Test.Answer;
+using PC.Service.IRepository.Test;
+using PC.Service.IService.Test;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Test;
 
-namespace Service.Service.Test;
+namespace PC.Service.Service.Test;
 
 public class AnswerService : IAnswerService
 {

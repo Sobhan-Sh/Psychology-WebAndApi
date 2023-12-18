@@ -1,7 +1,8 @@
-﻿using Dto.Psychologist;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Psychologist;
+namespace PC.Service.IService.Psychologist;
 
 public interface IPsychologistService
 {
@@ -21,6 +22,7 @@ public interface IPsychologistService
 
     #endregion
 
+    public Task<BaseResult<List<PatientTurnViewModel>>> PatientMy(int Id);
     public Task<BaseResult> ActiveAsync(int Id);
     public Task<BaseResult> DeActiveAsync(int Id);
     public Task<BaseResult<IsCheckedUser>> IsChecked(int Id);

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility.ReturnError;
+using PC.Utility.ReturnError;
 
-namespace Dto.User;
+namespace PC.Dto.User;
 
 public class AdminChangePasswored
 {

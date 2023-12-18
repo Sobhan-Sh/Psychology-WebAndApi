@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
-using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Entity.DiscountAndOrder;
-using Entity.Patient;
-using Entity.Psychologist;
-using Framework.Auth;
-using Service.IRepository.DiscountAndOrder;
-using Service.IRepository.Patient;
-using Service.IRepository.Psychologist;
-using Service.IRepository.User;
-using Service.IService.Patient;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Service.IRepository.DiscountAndOrder;
+using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IRepository.User;
+using PC.Service.IService.Patient;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Patient;
+using PD.Entity.Psychologist;
 
-namespace Service.Service.Patient;
+namespace PC.Service.Service.Patient;
 
 public class PatientTurnService : IPatientTurnService
 {
@@ -46,7 +46,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(include: "Patient,Order,TypeOfConsultation,PsychologistWorkingDateAndTime");
+            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(include: "Patient,Order,TypeOfConsultation,PsychologistWorkingDateAndTime");
             if (!query.Any())
             {
                 return new BaseResult<List<PatientTurnViewModel>>
@@ -80,7 +80,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            List<Entity.Patient.PatientTurn> query = new List<Entity.Patient.PatientTurn>();
+            List<PatientTurn> query = new List<PatientTurn>();
             if (f.ConsultationDay == null && f.Price < 1)
             {
                 query.AddRange(await _patientTurnRepository.GetAllAsync(include: "PsychologistWorkingDateAndTime,Discount,Order"));
@@ -125,7 +125,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PatientId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
+            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PatientId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
             if (query == null)
             {
                 return new BaseResult<List<PsychologistViewModel>>
@@ -164,7 +164,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "Patient");
+            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "Patient");
             if (!query.Any())
             {
                 return new BaseResult<List<PatientTurnViewModel>>
@@ -198,7 +198,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            IEnumerable<Entity.Patient.PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id && x.IsVisited != true, include: "Patient");
+            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id && x.IsVisited != true, include: "Patient");
             if (!query.Any())
             {
                 return new BaseResult<List<PatientTurnViewModel>>
@@ -232,7 +232,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime,Discount,Order");
+            PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id, include: "PsychologistWorkingDateAndTime,Discount,Order");
             if (query == null)
             {
                 return new BaseResult<EditPatientTurn>
@@ -279,7 +279,7 @@ public class PatientTurnService : IPatientTurnService
             command.Price = 120000 + typeOfConsultation.Price;
             command.IsCanseled = false;
             command.IsVisited = false;
-            await _patientTurnRepository.CreateAsync(_mapper.Map<Entity.Patient.PatientTurn>(command));
+            await _patientTurnRepository.CreateAsync(_mapper.Map<PatientTurn>(command));
             await _patientTurnRepository.SaveAsync();
             return new BaseResult()
             {
@@ -299,12 +299,12 @@ public class PatientTurnService : IPatientTurnService
         }
     }
 
-    public async Task<BaseResult> CreateAsync(SetVisitModel command)
+    public async Task<BaseResult<ReturnSetVisitModel>> CreateAsync(SetVisitModel command)
     {
         try
         {
             if (string.IsNullOrWhiteSpace(command.Name) || string.IsNullOrWhiteSpace(command.Phone) || command.TypeOfConsultationId < 1 || command.PsychologistId < 0 || command.TimeId < 0 || string.IsNullOrWhiteSpace(command.DateTimeVisit))
-                return new BaseResult()
+                return new()
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.IsRequired,
@@ -316,7 +316,7 @@ public class PatientTurnService : IPatientTurnService
                     x => x.TypeOfConsultationId == command.TypeOfConsultationId &&
                          x.PsychologistId == command.PsychologistId, "TypeOfConsultation");
             if (psychologistTypeOfConsultation == null)
-                return new BaseResult()
+                return new()
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.RecordNotFound,
@@ -327,7 +327,7 @@ public class PatientTurnService : IPatientTurnService
                 await _psychologistWorkingDate.GetAsync(x =>
                     x.Id == command.TimeId && x.PsychologistId == command.PsychologistId, "PsychologistWorkingHours");
             if (psychologistWorkingDateAndTime == null)
-                return new BaseResult()
+                return new()
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.RecordNotFound,
@@ -336,7 +336,7 @@ public class PatientTurnService : IPatientTurnService
 
             int patienId = 0, discountWithMoney = 0, discountWithPercentage = 0, price = 0, BasePrice = 120000 + psychologistTypeOfConsultation.TypeOfConsultation.Price;
             //TODO : ما اینجا باید محاسبه کنیم قیمت مشاوره رو بر اساس ساعت
-            Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.User.Phone == command.Phone && x.User.RoleID == RoleHelper.Patient_Id);
+            PD.Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.User.Phone == command.Phone && x.User.RoleID == RoleHelper.Patient_Id);
             if (user != null)
             {
                 patienId = user.Id;
@@ -347,11 +347,13 @@ public class PatientTurnService : IPatientTurnService
                     discountWithPercentage = (int)discountModel.DiscountWithPercentage;
                     discountWithMoney = (int)discountModel.DiscountWithMoney;
                 }
+
+                user.IsPatientTrue();
             }
             else
             {
                 // Create User
-                Entity.User.User userModel = await _userRepository.ReturnCreateAsync(new()
+                PD.Entity.User.User userModel = await _userRepository.ReturnCreateAsync(new()
                 {
                     FName = command.Name,
                     LName = "پر نشده",
@@ -368,7 +370,7 @@ public class PatientTurnService : IPatientTurnService
                 await _patientTurnRepository.SaveAsync();
 
                 // Convert User To Patient
-                Entity.Patient.Patient patientModel = await _patientRepository.ReturnCreateAsync(new()
+                PD.Entity.Patient.Patient patientModel = await _patientRepository.ReturnCreateAsync(new()
                 {
                     UserId = userModel.Id,
                     CreatedAt = DateTime.Now,
@@ -376,7 +378,8 @@ public class PatientTurnService : IPatientTurnService
                     IsActive = false,
                     IsDeleted = false,
                     NationalCode = "پر نشده",
-                    TheReason = "پر نشده"
+                    TheReason = "پر نشده",
+                    IsPatient = false
                 });
                 await _patientTurnRepository.SaveAsync();
 
@@ -424,16 +427,23 @@ public class PatientTurnService : IPatientTurnService
                 RefId = null
             });
             await _patientTurnRepository.SaveAsync();
-            return new BaseResult()
+            return new()
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessCreate,
-                StatusCode = ValidationCode.Success
+                StatusCode = ValidationCode.Success,
+                Data = new()
+                {
+                    Amount = (int)order.PayAmount,
+                    Phone = command.Phone,
+                    PatientId = patienId,
+                    OrderId = order.Id,
+                }
             };
         }
         catch (Exception e)
         {
-            return new BaseResult()
+            return new()
             {
                 IsSuccess = false,
                 Message = ValidationMessage.ErrorCreate(e.Message),
@@ -446,7 +456,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == command.Id);
+            PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -479,7 +489,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
+            PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -512,7 +522,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
+            PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -545,7 +555,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            Entity.Patient.PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
+            PatientTurn query = await _patientTurnRepository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {

@@ -1,8 +1,8 @@
-﻿using Context;
-using Service.IRepository.Test;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Test;
+using PC.Utility.Data;
 
-namespace Repositories.Test
+namespace PD.Repositories.Test
 {
     public class TestRepository : GenericRepository<Entity.Test.Test>, ITestRepository
     {

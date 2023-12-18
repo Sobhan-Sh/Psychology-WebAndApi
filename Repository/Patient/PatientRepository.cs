@@ -1,8 +1,8 @@
-﻿using Context;
-using Service.IRepository.Patient;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Patient;
+using PC.Utility.Data;
 
-namespace Repositories.Patient;
+namespace PD.Repositories.Patient;
 
 public class PatientRepository : GenericRepository<Entity.Patient.Patient>, IPatientRepository
 {

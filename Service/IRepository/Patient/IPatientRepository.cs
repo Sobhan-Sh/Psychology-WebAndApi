@@ -1,7 +1,7 @@
-﻿using Utility.Data;
+﻿using PC.Utility.Data;
 
-namespace Service.IRepository.Patient;
+namespace PC.Service.IRepository.Patient;
 
-public interface IPatientRepository : IGenericRepository<Entity.Patient.Patient>
+public interface IPatientRepository : IGenericRepository<PD.Entity.Patient.Patient>
 {
 }

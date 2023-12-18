@@ -1,7 +1,7 @@
-﻿using Dto.Order;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Order;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.DiscountAndOrder;
+namespace PC.Service.IService.DiscountAndOrder;
 
 public interface IOrderService
 {

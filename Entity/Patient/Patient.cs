@@ -1,8 +1,8 @@
-﻿using Entity.DiscountAndOrder;
+﻿using PC.Utility.Domain;
+using PD.Entity.DiscountAndOrder;
 using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
 
-namespace Entity.Patient;
+namespace PD.Entity.Patient;
 
 public class Patient : BaseEntity
 {
@@ -11,6 +11,8 @@ public class Patient : BaseEntity
     public int Age { get; set; }
 
     public string? TheReason { get; set; }
+
+    public bool IsPatient { get; set; }
 
     public int UserId { get; set; }
     [ForeignKey("UserId")]
@@ -30,5 +32,21 @@ public class Patient : BaseEntity
     {
         NationalCode = nationalCode;
         Age = age;
+        UpdatedAt = DateTime.Now;
+    }
+
+    public void IsPatientTrue()
+    {
+        IsPatient = true;
+    }
+
+    public void Delete()
+    {
+        IsDeleted = true;
+    }
+
+    public void Restor()
+    {
+        IsDeleted = false;
     }
 }

@@ -1,8 +1,8 @@
-﻿using Context;
-using Service.IRepository.Role;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Role;
+using PC.Utility.Data;
 
-namespace Repositories.Role;
+namespace PD.Repositories.Role;
 
 public class RoleRepository : GenericRepository<Entity.Role.Role>, IRoleRepository
 {

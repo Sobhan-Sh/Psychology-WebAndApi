@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using Dto.Order;
-using Entity.DiscountAndOrder;
-using Entity.Patient;
-using Service.IRepository.DiscountAndOrder;
-using Service.IRepository.Patient;
-using Service.IRepository.Test;
-using Service.IService.DiscountAndOrder;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Order;
+using PC.Service.IRepository.DiscountAndOrder;
+using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Test;
+using PC.Service.IService.DiscountAndOrder;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Patient;
 
-namespace Service.Service.DiscountAndOrder;
+namespace PC.Service.Service.DiscountAndOrder;
 
 public class OrderService : IOrderService
 {
@@ -180,7 +180,7 @@ public class OrderService : IOrderService
             command.RefId = 0;
             if (command.TestId != null)
             {
-                Entity.Test.Test test = await _testRepository.GetAsync(x => x.Id == command.TestId);
+                PD.Entity.Test.Test test = await _testRepository.GetAsync(x => x.Id == command.TestId);
                 totalPrice += test.Price;
             }
 

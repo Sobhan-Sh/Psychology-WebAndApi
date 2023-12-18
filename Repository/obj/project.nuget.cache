@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FrktnVrniJSkdnElrGOzSvKpXbwklwCyDS7W/x4CgpZAdNiS7b+i4axhVfYBb/F2IHR6xLTUvAPnenAFdojmMg==",
+  "dgSpecHash": "bPHJg0WaI0gsLmFCUwMCEuZIrAFwu/RjVBCzlkzsufRgFNIrZG92Aqvbiuf8/BmPte8x3PQaqGgBnjDVz6DpLg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\Repositories.csproj",
+  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dear User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Dear User\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

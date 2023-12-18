@@ -1,4 +1,4 @@
-﻿namespace Framework.Auth;
+﻿namespace PC.Utility.Auth;
 
 public class RoleHelper
 {

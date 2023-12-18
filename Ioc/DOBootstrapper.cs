@@ -1,12 +1,12 @@
-﻿using Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.DiscountAndOrder;
-using Service.IRepository.DiscountAndOrder;
-using Service.IService.DiscountAndOrder;
-using Service.Service.DiscountAndOrder;
+using PC.Context;
+using PC.Service.IRepository.DiscountAndOrder;
+using PC.Service.IService.DiscountAndOrder;
+using PC.Service.Service.DiscountAndOrder;
+using PD.Repositories.DiscountAndOrder;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public static class DOBootstrapper
 {

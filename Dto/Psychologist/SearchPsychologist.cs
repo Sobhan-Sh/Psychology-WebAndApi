@@ -1,4 +1,4 @@
-﻿namespace Dto.Psychologist;
+﻿namespace PC.Dto.Psychologist;
 
 public class SearchPsychologist
 {

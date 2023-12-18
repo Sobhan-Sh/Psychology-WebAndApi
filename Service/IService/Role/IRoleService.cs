@@ -1,4 +1,4 @@
-﻿namespace Service.IService.Role;
+﻿namespace PC.Service.IService.Role;
 
 public interface IRoleService
 {

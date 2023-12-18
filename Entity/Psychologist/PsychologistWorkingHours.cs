@@ -1,6 +1,6 @@
-﻿using Utility.Domain;
+﻿using PC.Utility.Domain;
 
-namespace Entity.Psychologist;
+namespace PD.Entity.Psychologist;
 
 public class PsychologistWorkingHours : BaseEntity
 {

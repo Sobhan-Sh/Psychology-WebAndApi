@@ -1,12 +1,12 @@
-﻿using Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.Test;
-using Service.IRepository.Test;
-using Service.IService.Test;
-using Service.Service.Test;
+using PC.Context;
+using PC.Service.IRepository.Test;
+using PC.Service.IService.Test;
+using PC.Service.Service.Test;
+using PD.Repositories.Test;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public static class TestBootstrapper
 {

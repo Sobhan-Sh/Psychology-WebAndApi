@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 
-namespace Utility.UploadFileTools;
+namespace PC.Utility.UploadFileTools;
 
 public static class CheckContentImage
 {

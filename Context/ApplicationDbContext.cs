@@ -1,14 +1,14 @@
-﻿using Entity.DiscountAndOrder;
-using Entity.Patient;
-using Entity.Psychologist;
-using Entity.Role;
-using Entity.Test;
-using Entity.User;
-using Framework.Auth;
-using Microsoft.EntityFrameworkCore;
-using Utility;
+﻿using Microsoft.EntityFrameworkCore;
+using PC.Utility;
+using PC.Utility.Auth;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Patient;
+using PD.Entity.Psychologist;
+using PD.Entity.Role;
+using PD.Entity.Test;
+using PD.Entity.User;
 
-namespace Context;
+namespace PC.Context;
 
 public class ApplicationDbContext : DbContext
 {
@@ -37,6 +37,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<PsychologistWorkingDateAndTime> PsychologistWorkingDateAndTime { get; set; }
     public DbSet<Gender> Genders { get; set; }
     public DbSet<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

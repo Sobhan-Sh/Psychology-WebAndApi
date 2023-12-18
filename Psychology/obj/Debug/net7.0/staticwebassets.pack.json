@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\027a3b2f2e0f48cb8813ebebe071ade3.jpg"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\292887b3931a4c608d31ec087658ca1a.jpg",
+      "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\292887b3931a4c608d31ec087658ca1a.jpg"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\Image\\Users\\Avatar\\2b0b4bf647f443f4886bdf8b19b0f026.png",
       "PackagePath": "staticwebassets\\assets\\Image\\Users\\Avatar\\2b0b4bf647f443f4886bdf8b19b0f026.png"
     },
@@ -99,6 +103,10 @@
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\sweetalert2.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\sweetalert2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\css\\swiper-bundle.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\swiper-bundle.min.css"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\fonts\\Sahel-Black.eot",
@@ -245,6 +253,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\persian-datepicker.js"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\popper.min.js"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\select2.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\select2.min.js"
     },
@@ -255,6 +267,10 @@
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\sweetalert2.all.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\sweetalert2.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\swiper-bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\swiper-bundle.min.js"
     },
     {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\favicon.ico",

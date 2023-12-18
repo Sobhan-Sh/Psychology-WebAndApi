@@ -1,9 +1,9 @@
-﻿using Dto.Psychologist.PsychologistWorkingDays;
-using Framework.Auth;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
+using PC.Dto.Psychologist.PsychologistWorkingDays;
+using PC.Service.IService.Psychologist;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers.Api
 {

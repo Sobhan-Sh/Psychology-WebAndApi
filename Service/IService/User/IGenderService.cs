@@ -1,7 +1,7 @@
-﻿using Dto.User.Gender;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.User.Gender;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.User;
+namespace PC.Service.IService.User;
 
 public interface IGenderService
 {

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Dto.Patient.PatientFile;
-using Entity.Patient;
-using Service.IRepository.Patient;
-using Service.IService.Patient;
-using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
-using Utility.Validation;
+using PC.Dto.Patient.PatientFile;
+using PC.Service.IRepository.Patient;
+using PC.Service.IService.Patient;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.UploadFileTools;
+using PC.Utility.Validation;
+using PD.Entity.Patient;
 
-namespace Service.Service.Patient;
+namespace PC.Service.Service.Patient;
 public class PatientFileService : IPatientFileService
 {
     private readonly IPatientFileRepository _patientFileRepository;
@@ -104,7 +104,7 @@ public class PatientFileService : IPatientFileService
         try
         {
             PatientFile query = await _patientFileRepository.GetAsync(x => x.Id == Id);
-            Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.Id == query.PatientId, "User");
+            PD.Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.Id == query.PatientId, "User");
             if (query == null)
                 return new BaseResult()
                 {

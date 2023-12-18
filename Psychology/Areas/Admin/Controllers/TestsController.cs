@@ -1,9 +1,9 @@
-﻿using Dto.Test;
-using Dto.Test.Answer;
-using Dto.Test.Question;
-using Microsoft.AspNetCore.Mvc;
-using Service.IService.Test;
-using Utility.ReturnFuncResult;
+﻿using Microsoft.AspNetCore.Mvc;
+using PC.Dto.Test;
+using PC.Dto.Test.Answer;
+using PC.Dto.Test.Question;
+using PC.Service.IService.Test;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Areas.Admin.Controllers
 {

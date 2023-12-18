@@ -1,4 +1,4 @@
-﻿namespace Utility.UploadFileTools;
+﻿namespace PC.Utility.UploadFileTools;
 
 public class PathExtention
 {

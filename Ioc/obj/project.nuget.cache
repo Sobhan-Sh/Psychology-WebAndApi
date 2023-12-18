@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DlqPH5L8MNX5ENcYgP5Y2vUGPaTmMvtgo7IW/BTGKzcijSzKklxAmDmV+SHPHFhD65HCa3zj7nrDiRu6tKHCFw==",
+  "dgSpecHash": "kPchLKv6NPwXcfdf3ZJ7H/NTTpWPWsCRSwkEMotDwIUC//rT+b05/gYB3+YzxmsOWRQExLpyOhSmlzsO+JVHtg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\Ioc.csproj",
+  "projectFilePath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\PC.Ioc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dear User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Dear User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

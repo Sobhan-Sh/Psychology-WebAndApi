@@ -1,11 +1,11 @@
-﻿using Dto.account;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Service.IService.Account;
+using PC.Dto.account;
+using PC.Service.IService.Account;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
 using System.Security.Claims;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
 
 namespace Psychology.Controllers
 {
@@ -38,10 +38,10 @@ namespace Psychology.Controllers
                     //TODO: اینجا باید من اعتبار سنجی کنم اگر کاربر گوشیش فعال نبود بره به صفحه فعال کردن گوشی
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.MobilePhone, response.Data.Phone),
-                        new Claim(ClaimTypes.Role, response.Data.Role),
-                        new Claim(ClaimTypes.NameIdentifier, response.Data.UserId.ToString()),
-                        new Claim("Token", response.Data.Token)
+                        new (ClaimTypes.MobilePhone, response.Data.Phone),
+                        new (ClaimTypes.Role, response.Data.Role),
+                        new (ClaimTypes.NameIdentifier, response.Data.UserId.ToString()),
+                        new ("Token", response.Data.Token)
                        };
 
                     if (response.Data.Avatar != null) claims.Add(new Claim("Avatar", response.Data.Avatar));

@@ -25,3 +25,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Ioc\obj\Debug\net7.0\Ioc.pd
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Ioc\obj\Debug\net7.0\ref\Ioc.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Ioc\bin\Debug\net7.0\ModelFactory.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Ioc\bin\Debug\net7.0\ModelFactory.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Ioc\obj\Debug\net7.0\Ioc.sourcelink.json

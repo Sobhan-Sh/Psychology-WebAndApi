@@ -1,8 +1,8 @@
-﻿using Entity.DiscountAndOrder;
-using Entity.Patient;
-using Utility.Domain;
+﻿using PC.Utility.Domain;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Patient;
 
-namespace Entity.Test;
+namespace PD.Entity.Test;
 
 public class Test : BaseEntity
 {

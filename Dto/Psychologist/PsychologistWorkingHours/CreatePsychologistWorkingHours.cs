@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Psychologist.PsychologistWorkingHours;
+namespace PC.Dto.Psychologist.PsychologistWorkingHours;
 
 public class CreatePsychologistWorkingHours : BaseDto
 {

@@ -1,7 +1,7 @@
-﻿using Dto.Psychologist.TypeOfConsultation;
-using Utility.Dto;
+﻿using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Utility.Dto;
 
-namespace Dto.Psychologist.PsychologistTypeOfConsultation;
+namespace PC.Dto.Psychologist.PsychologistTypeOfConsultation;
 
 public class PsychologistTypeOfConsultationViewModel : BaseDto
 {

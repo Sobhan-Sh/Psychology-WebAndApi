@@ -1,4 +1,4 @@
-﻿namespace Dto.Test.Question;
+﻿namespace PC.Dto.Test.Question;
 
 public class SearchQustionViewModel
 {

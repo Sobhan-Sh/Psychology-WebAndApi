@@ -1,7 +1,7 @@
-﻿using Utility.Data;
+﻿using PC.Utility.Data;
 
-namespace Service.IRepository.User;
+namespace PC.Service.IRepository.User;
 
-public interface IUserRepository : IGenericRepository<Entity.User.User>
+public interface IUserRepository : IGenericRepository<PD.Entity.User.User>
 {
 }

@@ -1,4 +1,4 @@
-﻿namespace Utility.ReturnError;
+﻿namespace PC.Utility.ReturnError;
 
 public class ErrorHandling
 {

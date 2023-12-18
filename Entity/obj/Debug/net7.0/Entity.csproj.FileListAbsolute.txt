@@ -13,3 +13,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Ent
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\refint\Entity.dll
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.pdb
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\ref\Entity.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Entity\obj\Debug\net7.0\Entity.sourcelink.json

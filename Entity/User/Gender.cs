@@ -1,6 +1,6 @@
-﻿using Utility.Domain;
+﻿using PC.Utility.Domain;
 
-namespace Entity.User;
+namespace PD.Entity.User;
 
 public class Gender : BaseEntity
 {

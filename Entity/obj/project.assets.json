@@ -421,7 +421,7 @@
           }
         }
       },
-      "Utility/1.0.0": {
+      "PC.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -433,10 +433,10 @@
           "System.Drawing.Common": "7.0.0"
         },
         "compile": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
         }
       }
     }
@@ -1042,15 +1042,15 @@
         "version.txt"
       ]
     },
-    "Utility/1.0.0": {
+    "PC.Utility/1.0.0": {
       "type": "project",
-      "path": "../Utility/Utility.csproj",
-      "msbuildProject": "../Utility/Utility.csproj"
+      "path": "../Utility/PC.Utility.csproj",
+      "msbuildProject": "../Utility/PC.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Utility >= 1.0.0"
+      "PC.Utility >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1060,9 +1060,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj",
-      "projectName": "Entity",
-      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj",
+      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj",
+      "projectName": "PD.Entity",
+      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj",
       "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\obj\\",
       "projectStyle": "PackageReference",
@@ -1086,8 +1086,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj": {
-              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj"
+            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
             }
           }
         }
@@ -1096,9 +1096,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {

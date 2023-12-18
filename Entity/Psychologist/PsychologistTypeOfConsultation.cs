@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+using PC.Utility.Domain;
 
-namespace Entity.Psychologist;
+namespace PD.Entity.Psychologist;
 
 public class PsychologistTypeOfConsultation : BaseEntity
 {

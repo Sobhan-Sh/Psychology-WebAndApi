@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility.Domain;
+using PC.Utility.Domain;
 
-namespace Entity.Role
+namespace PD.Entity.Role
 {
     public class Role : BaseEntity
     {

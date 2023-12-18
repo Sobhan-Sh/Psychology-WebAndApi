@@ -1,7 +1,7 @@
-﻿using Dto.Patient.PatientResponses;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Patient.PatientResponses;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Patient;
+namespace PC.Service.IService.Patient;
 
 public interface IPatientResponsesService
 {

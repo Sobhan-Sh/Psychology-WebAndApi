@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Dto.Test;
-using Dto.Test.Answer;
-using Dto.Test.Question;
+using PC.Dto.Test;
+using PC.Dto.Test.Answer;
+using PC.Dto.Test.Question;
 
-namespace Dto.Patient.PatientResponsesExams;
+namespace PC.Dto.Patient.PatientResponsesExams;
 
 public class CreatePatientResponsesExams
 {

@@ -1,12 +1,12 @@
-﻿using Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.Patient;
-using Service.IRepository.Patient;
-using Service.IService.Patient;
-using Service.Service.Patient;
+using PC.Context;
+using PC.Service.IRepository.Patient;
+using PC.Service.IService.Patient;
+using PC.Service.Service.Patient;
+using PD.Repositories.Patient;
 
-namespace Ioc;
+namespace PC.Ioc;
 
 public static class PatientBootstrapper
 {

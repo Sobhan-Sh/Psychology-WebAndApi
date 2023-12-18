@@ -33,8 +33,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj": {
-                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj"
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
               }
             }
           }
@@ -71,12 +71,12 @@
         }
       }
     },
-    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj": {
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj",
-        "projectName": "Utility",
-        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\Utility.csproj",
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj",
+        "projectName": "PC.Utility",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj",
         "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\obj\\",
         "projectStyle": "PackageReference",
@@ -106,9 +106,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
         }
       },
       "frameworks": {

@@ -1,7 +1,7 @@
-﻿using Entity.User;
-using Utility.Data;
+﻿using PC.Utility.Data;
+using PD.Entity.User;
 
-namespace Service.IRepository.User;
+namespace PC.Service.IRepository.User;
 
 public interface IGenderRepository : IGenericRepository<Gender>
 {

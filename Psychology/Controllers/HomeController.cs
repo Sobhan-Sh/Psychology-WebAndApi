@@ -1,16 +1,17 @@
-﻿using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Dto.Psychologist.TypeOfConsultation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Service.IService.Patient;
+using PC.Service.IService.Psychologist;
+using PC.Utility;
+using PC.Utility.DateConvertor;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.SendRequestToPayment.ZarinPal;
 using Psychology.Models;
-using Service.IService.Patient;
-using Service.IService.Psychologist;
-using Utility.DateConvertor;
-using Utility.ReturnFuncResult;
-
 
 
 namespace Psychology.Controllers
@@ -32,7 +33,7 @@ namespace Psychology.Controllers
             _atientTurnService = atientTurnService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? renderMessage)
         {
             BaseResult<List<PsychologistViewModel>> psychologist =
                 await _psychologistService.GetAllAsync();
@@ -59,15 +60,13 @@ namespace Psychology.Controllers
             if (typeOf.IsSuccess)
                 ViewData["TypeOfConsultation"] = new SelectList(typeOf.Data.Where(x => !x.IsDeleted), "Id", "Name");
 
+            if (!string.IsNullOrWhiteSpace(renderMessage))
+                ViewData["renderMessage"] = renderMessage;
+
             return View();
         }
 
-        /// <summary>
         /// اینجا باید روز رو از میلادی به شمسی به کلاینت برگردونیم
-        /// </summary>
-        /// <param name="PsychologistId"></param>
-        /// <param name="ConsultationDay"></param>
-        /// <returns></returns>
         public async Task<IActionResult> CheckTimeVisit(int PsychologistId, string ConsultationDay)
         {
             BaseResult<List<CheckDateVisit>> result = await _typeOfWorkingDateAndTimeService.CheckDateVisit(PsychologistId, DateTimeConvertor.ToMiladi(ConsultationDay));
@@ -83,12 +82,26 @@ namespace Psychology.Controllers
             return Json(new { success = result.IsSuccess, data = result.Data });
         }
 
+        [HttpPost]
         public async Task<IActionResult> SetVisit(SetVisitModel model)
         {
-            BaseResult result = await _atientTurnService.CreateAsync(model);
+            BaseResult<ReturnSetVisitModel> result = await _atientTurnService.CreateAsync(model);
             if (result.IsSuccess)
-                return null;
-            return null;
+            {
+                BaseResult<string> response = await SendRequestToZarinPal.SendRequest(new()
+                {
+                    Data = $"OrderId={result.Data.OrderId}&PatientId={result.Data.PatientId}",
+                    description = "پرداخت نوبت ویزیت در سامانه روانشناس من",
+                    amount = result.Data.Amount,
+                    callback_url = SD.VerifyPayment.Visit,
+                    Phone = result.Data.Phone,
+                });
+
+                if (response.IsSuccess)
+                    return Redirect(response.Data);
+            }
+
+            return RedirectToAction("Index", new { renderMessage = result.Message });
         }
     }
 }

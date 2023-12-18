@@ -1,4 +1,4 @@
-﻿namespace Dto.Psychologist.PsychologistTypeOfConsultation;
+﻿namespace PC.Dto.Psychologist.PsychologistTypeOfConsultation;
 
 public class EditPsychologistTypeOfConsultation : CreatePsychologistTypeOfConsultation
 {

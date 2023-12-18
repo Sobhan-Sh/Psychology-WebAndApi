@@ -1,13 +1,13 @@
-﻿using Dto.Order;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Dto.Psychologist.TypeOfConsultation;
-using Utility.Dto;
+﻿using PC.Dto.Order;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Utility.Dto;
 
-namespace Dto.Patient.PatientTurn;
+namespace PC.Dto.Patient.PatientTurn;
 
 public class PatientTurnViewModel : BaseDto
 {
-    public DateTime ConsultationDay { get; set; }
+    public string ConsultationDay { get; set; }
 
     public int Price { get; set; }
 

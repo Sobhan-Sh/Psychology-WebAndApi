@@ -1,7 +1,7 @@
-﻿using Entity.Test;
-using Utility.Data;
+﻿using PC.Utility.Data;
+using PD.Entity.Test;
 
-namespace Service.IRepository.Test;
+namespace PC.Service.IRepository.Test;
 
 public interface IQuestionRepository : IGenericRepository<Question>
 {

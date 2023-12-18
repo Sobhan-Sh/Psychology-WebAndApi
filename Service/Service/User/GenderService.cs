@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Dto.User.Gender;
-using Entity.User;
-using Service.IRepository.User;
-using Service.IService.User;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.User.Gender;
+using PC.Service.IRepository.User;
+using PC.Service.IService.User;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.User;
 
-namespace Service.Service.User;
+namespace PC.Service.Service.User;
 
 public class GenderService : IGenderService
 {

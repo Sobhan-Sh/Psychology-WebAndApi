@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dto.Patient;
+namespace PC.Dto.Patient;
 
 public class SearchPatientViewModel
 {
-    [Required] public string NationalCode { get; set; }
+    public string NationalCode { get; set; }
 }

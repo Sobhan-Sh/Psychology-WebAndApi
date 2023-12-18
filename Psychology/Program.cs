@@ -1,7 +1,9 @@
-using Dto.account;
-using Ioc;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using PC.Dto.account;
+using PC.Ioc;
+using PC.Utility.Bootstrapper;
 using Psychology.Middleware;
+using ZarinPal.Class;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +37,10 @@ builder.Services.PsychologistConfig(builder.Configuration.GetConnectionString("P
 // Test & Question & Answer
 builder.Services.TestConfig(builder.Configuration.GetConnectionString("PsychologyConnection"));
 
+builder.Services.UtitlityConfig();
+
 #endregion
+builder.Services.AddTransient<Payment>();
 
 builder.Services.AddMemoryCache();
 

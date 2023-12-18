@@ -1,6 +1,6 @@
 ﻿using SixLabors.ImageSharp.Formats.Jpeg;
 
-namespace Utility.UploadFileTools;
+namespace PC.Utility.UploadFileTools;
 
 public class ImageOptimizer
 {

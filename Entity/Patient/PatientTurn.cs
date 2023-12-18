@@ -1,9 +1,9 @@
-﻿using Entity.DiscountAndOrder;
-using Entity.Psychologist;
-using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using PC.Utility.Domain;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Psychologist;
 
-namespace Entity.Patient;
+namespace PD.Entity.Patient;
 
 public class PatientTurn : BaseEntity
 {

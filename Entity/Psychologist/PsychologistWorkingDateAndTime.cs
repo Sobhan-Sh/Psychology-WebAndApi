@@ -1,8 +1,8 @@
-﻿using Entity.Patient;
-using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using PC.Utility.Domain;
+using PD.Entity.Patient;
 
-namespace Entity.Psychologist;
+namespace PD.Entity.Psychologist;
 
 public class PsychologistWorkingDateAndTime : BaseEntity
 {

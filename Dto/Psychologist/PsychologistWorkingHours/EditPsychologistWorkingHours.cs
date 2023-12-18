@@ -1,4 +1,4 @@
-﻿namespace Dto.Psychologist.PsychologistWorkingHours;
+﻿namespace PC.Dto.Psychologist.PsychologistWorkingHours;
 
 public class EditPsychologistWorkingHours : CreatePsychologistWorkingHours
 {

@@ -1,7 +1,7 @@
-﻿using Dto.Psychologist.TypeOfConsultation;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Psychologist;
+namespace PC.Service.IService.Psychologist;
 
 public interface ITypeOfConsultationService
 {

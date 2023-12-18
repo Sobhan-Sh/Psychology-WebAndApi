@@ -1,9 +1,13 @@
-﻿using Dto.User;
-using Dto.User.Gender;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Service.IService.User;
-using Utility.ReturnFuncResult;
+using PC.Dto.User.Gender;
+using PC.Service.IService.User;
+using PC.Utility.ReturnFuncResult;
+using AdminChangePasswored = PC.Dto.User.AdminChangePasswored;
+using CreateUser = PC.Dto.User.CreateUser;
+using EditUser = PC.Dto.User.EditUser;
+using ResultFindUserAuth = PC.Dto.User.ResultFindUserAuth;
+using UserViewModel = PC.Dto.User.UserViewModel;
 
 namespace Psychology.Areas.Admin.Controllers
 {
@@ -205,7 +209,7 @@ namespace Psychology.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangeAuth(ChangeAuth auth)
+        public async Task<IActionResult> ChangeAuth(PC.Dto.User.ChangeAuth auth)
         {
             string message = "";
             if (ModelState.IsValid)

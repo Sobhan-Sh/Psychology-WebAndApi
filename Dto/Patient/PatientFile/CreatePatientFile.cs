@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
-using Utility.Dto;
+using PC.Utility.Dto;
 
-namespace Dto.Patient.PatientFile;
+namespace PC.Dto.Patient.PatientFile;
 
 public class CreatePatientFile : BaseDto
 {

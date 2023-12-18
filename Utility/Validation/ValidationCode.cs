@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Utility.Validation;
+namespace PC.Utility.Validation;
 
 public class ValidationCode
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+using PC.Utility.Domain;
 
-namespace Entity.Patient;
+namespace PD.Entity.Patient;
 
 public class PatientFile : BaseEntity
 {

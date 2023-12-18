@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
-using Utility.ReturnError;
+using PC.Utility.Dto;
+using PC.Utility.ReturnError;
 
-namespace Dto.Psychologist.TypeOfConsultation;
+namespace PC.Dto.Psychologist.TypeOfConsultation;
 
 public class CreateTypeOfConsultation : BaseDto
 {

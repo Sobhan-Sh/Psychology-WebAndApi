@@ -1,4 +1,4 @@
-﻿namespace Utility.Validation;
+﻿namespace PC.Utility.Validation;
 
 public class ValidationMessage
 {
@@ -39,6 +39,8 @@ public class ValidationMessage
     public const string SuccessVisited = "بیمار ویزیت شد!";
     public const string SuccessCanseled = "ویزیت بیمار لغو شد";
     public const string RecordDelete = "این فیلد حذف شده";
+    public const string SuccessPayment = "عملیات پرداخت موفقیت آمیز بود";
+    public const string SuccessChangeToPatient = "کاربر با موفقیت به بیمار تبدیل شد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

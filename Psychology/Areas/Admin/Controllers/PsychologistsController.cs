@@ -1,18 +1,18 @@
-﻿using Dto.Order;
-using Dto.Patient;
-using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Dto.Psychologist.PsychologistWorkingDays;
-using Dto.Psychologist.PsychologistWorkingHours;
-using Dto.Psychologist.TypeOfConsultation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Service.IService.DiscountAndOrder;
-using Service.IService.Patient;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
+using PC.Dto.Order;
+using PC.Dto.Patient;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.Psychologist.PsychologistWorkingDays;
+using PC.Dto.Psychologist.PsychologistWorkingHours;
+using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Service.IService.DiscountAndOrder;
+using PC.Service.IService.Patient;
+using PC.Service.IService.Psychologist;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Areas.Admin.Controllers
 {
@@ -143,6 +143,16 @@ namespace Psychology.Areas.Admin.Controllers
             BaseResult result =
                 await _psychologistService.DeleteAsync(psychologistId);
             return RedirectToAction("PsychologistTypeOfConsultation", new { renderMessage = result.Message });
+        }
+
+        #endregion
+
+        #region DetailsPsychologist
+
+        public async Task<IActionResult> DetailsPsychologis(int psychologistId)
+        {
+            BaseResult<EditPsychologist> result = await _psychologistService.GetAsync(psychologistId);
+            return View(result.Data);
         }
 
         #endregion

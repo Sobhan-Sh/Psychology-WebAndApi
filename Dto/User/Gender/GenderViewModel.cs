@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
+using PC.Utility.Dto;
 
-namespace Dto.User.Gender;
+namespace PC.Dto.User.Gender;
 
 public class GenderViewModel : BaseDto
 {

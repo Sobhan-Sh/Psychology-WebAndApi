@@ -1,7 +1,7 @@
-﻿using Dto.Discount;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Discount;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.DiscountAndOrder;
+namespace PC.Service.IService.DiscountAndOrder;
 
 public interface IDiscountService
 {

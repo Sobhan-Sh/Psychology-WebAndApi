@@ -1,8 +1,7 @@
 ﻿using System.Security.Claims;
-using Framework.Auth.IAuth;
 using Microsoft.AspNetCore.Http;
 
-namespace Framework.Auth;
+namespace PC.Utility.Auth.IAuth;
 
 public class AuthHelper : IAuthHelper
 {
@@ -25,11 +24,11 @@ public class AuthHelper : IAuthHelper
         return null;
     }
 
-    public long CurrentAccountId()
+    public int CurrentAccountId()
     {
         var claimsIdentity = _contextAccessor.HttpContext.User.Identity as ClaimsIdentity;
         return IsAuthenticated()
-            ? long.Parse(claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value)
+            ? Convert.ToInt32(claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value)
             : 0;
     }
 

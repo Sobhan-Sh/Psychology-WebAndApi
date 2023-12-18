@@ -1,7 +1,7 @@
-﻿using Utility.Data;
+﻿using PC.Utility.Data;
 
-namespace Service.IRepository.Test;
+namespace PC.Service.IRepository.Test;
 
-public interface ITestRepository : IGenericRepository<Entity.Test.Test>
+public interface ITestRepository : IGenericRepository<PD.Entity.Test.Test>
 {
 }

@@ -1,20 +1,20 @@
-﻿using AutoMapper;
-using Dto.account;
-using Framework.Auth;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Service.IRepository.Role;
-using Service.IRepository.User;
-using Service.IService.Account;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
-using Utility.ReturnFuncResult;
-using Utility.UploadFileTools;
-using Utility.Validation;
+using AutoMapper;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using PC.Dto.account;
+using PC.Service.IRepository.Role;
+using PC.Service.IRepository.User;
+using PC.Service.IService.Account;
+using PC.Utility.Auth;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.UploadFileTools;
+using PC.Utility.Validation;
 
-namespace Service.Service.Account;
+namespace PC.Service.Service.Account;
 
 public class AuthService : IAuthService
 {
@@ -35,7 +35,7 @@ public class AuthService : IAuthService
     {
         try
         {
-            Entity.User.User user = await _userRepository.GetAsync(x => x.Phone == command.CellPhone, "Role");
+            PD.Entity.User.User user = await _userRepository.GetAsync(x => x.Phone == command.CellPhone, "Role");
             if (user == null)
                 return new BaseResult<LoginResult>()
                 {
@@ -170,7 +170,7 @@ public class AuthService : IAuthService
             command.MobailActiveStatus = true;
 
             command.ActivationCode = Guid.NewGuid().ToString("N");
-            await _userRepository.CreateAsync(_mapper.Map<Entity.User.User>(command));
+            await _userRepository.CreateAsync(_mapper.Map<PD.Entity.User.User>(command));
             await _userRepository.SaveAsync();
 
             //todo: Send randomCode to cellphone

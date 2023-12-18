@@ -446,25 +446,11 @@
           }
         }
       },
-      "Dto/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Features": "5.0.17",
-          "Utility": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Dto.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Dto.dll": {}
-        }
-      },
       "Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "Utility": "1.0.0"
+          "PC.Utility": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Entity.dll": {}
@@ -473,7 +459,21 @@
           "bin/placeholder/Entity.dll": {}
         }
       },
-      "Utility/1.0.0": {
+      "PC.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "PC.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PC.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PC.Dto.dll": {}
+        }
+      },
+      "PC.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -485,10 +485,23 @@
           "System.Drawing.Common": "7.0.0"
         },
         "compile": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Utility.dll": {}
+          "bin/placeholder/PC.Utility.dll": {}
+        }
+      },
+      "PD.Entity/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "PC.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PD.Entity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PD.Entity.dll": {}
         }
       }
     }
@@ -1178,27 +1191,33 @@
         "version.txt"
       ]
     },
-    "Dto/1.0.0": {
-      "type": "project",
-      "path": "../Dto/Dto.csproj",
-      "msbuildProject": "../Dto/Dto.csproj"
-    },
     "Entity/1.0.0": {
       "type": "project",
       "path": "../Entity/Entity.csproj",
       "msbuildProject": "../Entity/Entity.csproj"
     },
-    "Utility/1.0.0": {
+    "PC.Dto/1.0.0": {
       "type": "project",
-      "path": "../Utility/Utility.csproj",
-      "msbuildProject": "../Utility/Utility.csproj"
+      "path": "../Dto/PC.Dto.csproj",
+      "msbuildProject": "../Dto/PC.Dto.csproj"
+    },
+    "PC.Utility/1.0.0": {
+      "type": "project",
+      "path": "../Utility/PC.Utility.csproj",
+      "msbuildProject": "../Utility/PC.Utility.csproj"
+    },
+    "PD.Entity/1.0.0": {
+      "type": "project",
+      "path": "../Entity/PD.Entity.csproj",
+      "msbuildProject": "../Entity/PD.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper >= 12.0.1",
-      "Dto >= 1.0.0",
-      "Entity >= 1.0.0"
+      "Entity >= 1.0.0",
+      "PC.Dto >= 1.0.0",
+      "PD.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1208,9 +1227,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\ModelFactory.csproj",
-      "projectName": "ModelFactory",
-      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\ModelFactory.csproj",
+      "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj",
+      "projectName": "PF.ModelFactory",
+      "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj",
       "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\obj\\",
       "projectStyle": "PackageReference",
@@ -1234,11 +1253,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj": {
-              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\Dto.csproj"
+            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj"
             },
             "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
               "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj"
+            },
+            "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+              "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj"
             }
           }
         }
@@ -1247,9 +1269,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {

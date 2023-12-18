@@ -8,12 +8,14 @@
     ".NETCoreApp,Version=v7.0": {
       "Psychology/1.0.0": {
         "dependencies": {
-          "Ioc": "1.0.0",
           "Microsoft.AspNetCore.Identity.UI": "7.0.13",
           "Microsoft.EntityFrameworkCore.Design": "7.0.12",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.NET.StringTools": "17.3.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.9",
-          "Swashbuckle.AspNetCore": "6.5.0"
+          "PC.Ioc": "1.0.0",
+          "Swashbuckle.AspNetCore": "6.5.0",
+          "ZarinPal": "3.0.1"
         },
         "runtime": {
           "Psychology.dll": {}
@@ -2707,80 +2709,69 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "Context/1.0.0": {
-        "dependencies": {
-          "Entity": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.12",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12"
-        },
+      "ZarinPal/3.0.1": {
         "runtime": {
-          "Context.dll": {}
+          "lib/netcoreapp2.2/Dto.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netcoreapp2.2/Service.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netcoreapp2.2/ZarinPal.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
         }
       },
-      "Dto/1.0.0": {
+      "PC.Context/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.12",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12",
+          "PD.Entity": "1.0.0"
+        },
+        "runtime": {
+          "PC.Context.dll": {}
+        }
+      },
+      "PC.Dto/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
-          "Utility": "1.0.0"
+          "PC.Utility": "1.0.0"
         },
         "runtime": {
-          "Dto.dll": {}
+          "PC.Dto.dll": {}
         }
       },
-      "Entity/1.0.0": {
-        "dependencies": {
-          "Utility": "1.0.0"
-        },
-        "runtime": {
-          "Entity.dll": {}
-        }
-      },
-      "Ioc/1.0.0": {
+      "PC.Ioc/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "Context": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.12",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.OpenApi": "1.2.3",
-          "ModelFactory": "1.0.0",
-          "Repositories": "1.0.0",
+          "PC.Context": "1.0.0",
+          "PD.Repositories": "1.0.0",
+          "PF.ModelFactory": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
-          "Ioc.dll": {}
+          "PC.Ioc.dll": {}
         }
       },
-      "ModelFactory/1.0.0": {
+      "PC.Service/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
-          "Dto": "1.0.0",
-          "Entity": "1.0.0"
+          "PC.Context": "1.0.0",
+          "PC.Dto": "1.0.0",
+          "PC.Utility": "1.0.0",
+          "PD.Entity": "1.0.0"
         },
         "runtime": {
-          "ModelFactory.dll": {}
+          "PC.Service.dll": {}
         }
       },
-      "Repositories/1.0.0": {
-        "dependencies": {
-          "Context": "1.0.0",
-          "Service": "1.0.0"
-        },
-        "runtime": {
-          "Repositories.dll": {}
-        }
-      },
-      "Service/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "12.0.1",
-          "Context": "1.0.0",
-          "Dto": "1.0.0",
-          "Entity": "1.0.0",
-          "Utility": "1.0.0"
-        },
-        "runtime": {
-          "Service.dll": {}
-        }
-      },
-      "Utility/1.0.0": {
+      "PC.Utility/1.0.0": {
         "dependencies": {
           "IronSoftware.System.Drawing": "2023.11.1",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "7.0.13",
@@ -2790,7 +2781,35 @@
           "System.Drawing.Common": "7.0.0"
         },
         "runtime": {
-          "Utility.dll": {}
+          "PC.Utility.dll": {}
+        }
+      },
+      "PD.Entity/1.0.0": {
+        "dependencies": {
+          "PC.Utility": "1.0.0"
+        },
+        "runtime": {
+          "PD.Entity.dll": {}
+        }
+      },
+      "PD.Repositories/1.0.0": {
+        "dependencies": {
+          "PC.Context": "1.0.0",
+          "PC.Service": "1.0.0"
+        },
+        "runtime": {
+          "PD.Repositories.dll": {}
+        }
+      },
+      "PF.ModelFactory/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "Entity": "1.0.0",
+          "PC.Dto": "1.0.0",
+          "PD.Entity": "1.0.0"
+        },
+        "runtime": {
+          "PF.ModelFactory.dll": {}
         }
       }
     }
@@ -4509,42 +4528,49 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "Context/1.0.0": {
+    "ZarinPal/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1XPTvVdTa+ywa61JOK7TXVNqzHfwg/8bnMqKh9ISvHWk8HEhhrFXhuC/F5c/xDz9smay7254gD6T4WicgS+FeQ==",
+      "path": "zarinpal/3.0.1",
+      "hashPath": "zarinpal.3.0.1.nupkg.sha512"
+    },
+    "PC.Context/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Dto/1.0.0": {
+    "PC.Dto/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Entity/1.0.0": {
+    "PC.Ioc/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Ioc/1.0.0": {
+    "PC.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "ModelFactory/1.0.0": {
+    "PC.Utility/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Repositories/1.0.0": {
+    "PD.Entity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Service/1.0.0": {
+    "PD.Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Utility/1.0.0": {
+    "PF.ModelFactory/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

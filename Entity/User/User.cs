@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+using PC.Utility.Domain;
+using PD.Entity.Patient;
 
-namespace Entity.User
+namespace PD.Entity.User
 {
     public class User : BaseEntity
     {
@@ -33,6 +34,8 @@ namespace Entity.User
 
         public List<Psychologist.Psychologist> Psychologists { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
         public string? Token { get; set; }
 
         public void Edit(string fName, string lName, string? address, string? avatar, int roleId, int genderId)
@@ -43,6 +46,7 @@ namespace Entity.User
             Avatar = avatar;
             RoleID = roleId;
             GenderId = genderId;
+            UpdatedAt = DateTime.Now;
         }
 
         public void ActiveMobail()

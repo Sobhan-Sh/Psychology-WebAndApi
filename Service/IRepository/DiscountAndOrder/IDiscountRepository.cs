@@ -1,7 +1,7 @@
-﻿using Entity.DiscountAndOrder;
-using Utility.Data;
+﻿using PC.Utility.Data;
+using PD.Entity.DiscountAndOrder;
 
-namespace Service.IRepository.DiscountAndOrder;
+namespace PC.Service.IRepository.DiscountAndOrder;
 
 public interface IDiscountRepository : IGenericRepository<Discount>
 {

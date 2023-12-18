@@ -1,6 +1,6 @@
-﻿using Utility.Dto;
+﻿using PC.Utility.Dto;
 
-namespace Dto.Test.Answer;
+namespace PC.Dto.Test.Answer;
 
 public class AnswerViewModel : BaseDto
 {

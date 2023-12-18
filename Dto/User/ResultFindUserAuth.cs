@@ -1,6 +1,6 @@
-﻿using Dto.Role;
+﻿using PC.Dto.Role;
 
-namespace Dto.User;
+namespace PC.Dto.User;
 
 public class ResultFindUserAuth
 {

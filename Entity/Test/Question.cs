@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Utility.Domain;
+using PC.Utility.Domain;
 
-namespace Entity.Test;
+namespace PD.Entity.Test;
 
 public class Question : BaseEntity
 {

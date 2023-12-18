@@ -1,8 +1,8 @@
-﻿using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Patient;
+namespace PC.Service.IService.Patient;
 
 public interface IPatientTurnService
 {
@@ -18,7 +18,7 @@ public interface IPatientTurnService
 
     public Task<BaseResult> CreateAsync(CreatePatientTurn command);
 
-    public Task<BaseResult> CreateAsync(SetVisitModel command);
+    public Task<BaseResult<ReturnSetVisitModel>> CreateAsync(SetVisitModel command);
 
     public Task<BaseResult> UpdateAsync(EditPatientTurn command);
 

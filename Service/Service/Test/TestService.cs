@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Dto.Test;
-using Service.IRepository.Test;
-using Service.IService.Test;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Test;
+using PC.Service.IRepository.Test;
+using PC.Service.IService.Test;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
 
-namespace Service.Service.Test;
+namespace PC.Service.Service.Test;
 
 public class TestService : ITestService
 {
@@ -26,12 +26,29 @@ public class TestService : ITestService
     {
         try
         {
-            IEnumerable<Entity.Test.Test> query = await _repository.GetAllAsync(x => x.Title.Contains(search.Title));
+            List<PD.Entity.Test.Test> query = new();
+            if (string.IsNullOrWhiteSpace(search.Title) && search.TestId < 1)
+                return new()
+                {
+                    Message = ValidationMessage.IsRequiredSearch,
+                    StatusCode = ValidationCode.BadRequest,
+                    IsSuccess = false
+                };
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(search.Title))
+                    query.AddRange(await _repository.GetAllAsync(x => x.Title.Contains(search.Title), include: "Question.Answer"));
+
+                if (search.TestId > 0)
+                    query.AddRange(await _repository.GetAllAsync(x => x.Id == search.TestId, include: "Question.Answer"));
+
+            }
+
             if (!query.Any())
             {
                 return new BaseResult<List<TestViewModel>>
                 {
-                    IsSuccess = true,
+                    IsSuccess = false,
                     Message = ValidationMessage.Vacant,
                     Data = new List<TestViewModel>(),
                     StatusCode = ValidationCode.Success
@@ -61,7 +78,7 @@ public class TestService : ITestService
     {
         try
         {
-            IEnumerable<Entity.Test.Test> query = await _repository.GetAllAsync(include: "Question");
+            IEnumerable<PD.Entity.Test.Test> query = await _repository.GetAllAsync(include: "Question");
             if (!query.Any())
             {
                 return new BaseResult<List<TestViewModel>>
@@ -96,7 +113,7 @@ public class TestService : ITestService
     {
         try
         {
-            Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
+            PD.Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
             if (query == null)
             {
                 return new BaseResult<EditTest>
@@ -146,7 +163,7 @@ public class TestService : ITestService
                     StatusCode = ValidationCode.BadRequest
                 };
 
-            Entity.Test.Test test = await _repository.ReturnCreateAsync(_mapper.Map<Entity.Test.Test>(command));
+            PD.Entity.Test.Test test = await _repository.ReturnCreateAsync(_mapper.Map<PD.Entity.Test.Test>(command));
             await _repository.SaveAsync();
             return new BaseResult<int>()
             {
@@ -171,7 +188,7 @@ public class TestService : ITestService
     {
         try
         {
-            Entity.Test.Test query = await _repository.GetAsync(x => x.Id == command.Id);
+            PD.Entity.Test.Test query = await _repository.GetAsync(x => x.Id == command.Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -204,7 +221,7 @@ public class TestService : ITestService
     {
         try
         {
-            Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
+            PD.Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
             if (query == null)
                 return new BaseResult()
                 {
@@ -249,7 +266,7 @@ public class TestService : ITestService
 
     public async Task<BaseResult> ActiveAsync(int Id)
     {
-        Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
+        PD.Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
         if (query == null)
             return new BaseResult()
             {
@@ -270,7 +287,7 @@ public class TestService : ITestService
 
     public async Task<BaseResult> DeActiveAsync(int Id)
     {
-        Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
+        PD.Entity.Test.Test query = await _repository.GetAsync(x => x.Id == Id);
         if (query == null)
             return new BaseResult()
             {

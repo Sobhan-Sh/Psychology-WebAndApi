@@ -1,6 +1,6 @@
-﻿using Dto.Psychologist.PsychologistWorkingDateAndTime;
+﻿using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
 
-namespace Dto.Psychologist.PsychologistWorkingHours;
+namespace PC.Dto.Psychologist.PsychologistWorkingHours;
 
 public class PsychologistWorkingHoursViewModel : CreatePsychologistWorkingHours
 {

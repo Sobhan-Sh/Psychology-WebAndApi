@@ -1,7 +1,7 @@
-﻿using Dto.account;
-using Microsoft.AspNetCore.Mvc;
-using Service.IService.Account;
-using Utility.ReturnFuncResult;
+﻿using Microsoft.AspNetCore.Mvc;
+using PC.Dto.account;
+using PC.Service.IService.Account;
+using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers.Api.Client
 {

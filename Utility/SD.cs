@@ -1,7 +1,9 @@
-﻿namespace Utility;
+﻿namespace PC.Utility;
 
 public class SD
 {
+    public const string BaseUrlProject = "https://localhost:44321/";
+
     public class RoleName
     {
         public const int Admin_Id = 1;
@@ -29,5 +31,10 @@ public class SD
         public const string Man = "آقا";
         public const string Lady = "خانم";
         public const string Oder = "دیگر";
+    }
+
+    public class VerifyPayment
+    {
+        public const string Visit = "Payment/VerifyPaymentVisit";
     }
 }

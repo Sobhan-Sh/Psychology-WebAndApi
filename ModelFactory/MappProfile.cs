@@ -1,30 +1,30 @@
 ﻿using AutoMapper;
-using Dto.account;
-using Dto.Discount;
-using Dto.Order;
-using Dto.Patient;
-using Dto.Patient.PatientFile;
-using Dto.Patient.PatientTurn;
-using Dto.Psychologist;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Dto.Psychologist.PsychologistWorkingDateAndTime;
-using Dto.Psychologist.PsychologistWorkingDays;
-using Dto.Psychologist.PsychologistWorkingHours;
-using Dto.Psychologist.TypeOfConsultation;
-using Dto.Role;
-using Dto.Test;
-using Dto.Test.Answer;
-using Dto.Test.Question;
-using Dto.User;
-using Dto.User.Gender;
-using Entity.DiscountAndOrder;
-using Entity.Patient;
-using Entity.Psychologist;
-using Entity.Role;
-using Entity.Test;
-using Entity.User;
+using PC.Dto.account;
+using PC.Dto.Discount;
+using PC.Dto.Order;
+using PC.Dto.Patient;
+using PC.Dto.Patient.PatientFile;
+using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
+using PC.Dto.Psychologist.PsychologistWorkingDays;
+using PC.Dto.Psychologist.PsychologistWorkingHours;
+using PC.Dto.Psychologist.TypeOfConsultation;
+using PC.Dto.Role;
+using PC.Dto.Test;
+using PC.Dto.Test.Answer;
+using PC.Dto.Test.Question;
+using PC.Dto.User;
+using PC.Dto.User.Gender;
+using PD.Entity.DiscountAndOrder;
+using PD.Entity.Patient;
+using PD.Entity.Psychologist;
+using PD.Entity.Role;
+using PD.Entity.Test;
+using PD.Entity.User;
 
-namespace ModelFactory;
+namespace PF.ModelFactory;
 
 public class MappProfile : Profile
 {
@@ -104,8 +104,11 @@ public class MappProfile : Profile
             #region Patient
 
             config.CreateMap<CreatePatient, Patient>().ReverseMap();
-            config.CreateMap<PatientViewModel, Patient>().ReverseMap();
             config.CreateMap<EditPatient, Patient>().ReverseMap();
+            config.CreateMap<PatientViewModel, Patient>()
+                .ForMember(x=>x.User,x=>x.MapFrom(sub=>sub.UserViewModel))
+                .ForPath(x=>x.User.Gender,x=>x.MapFrom(sub=>sub.UserViewModel.GenderViewModel))
+                .ReverseMap();
 
             #endregion
 
@@ -116,7 +119,9 @@ public class MappProfile : Profile
             config.CreateMap<PatientTurnViewModel, PatientTurn>()
                 .ForMember(x => x.PsychologistWorkingDateAndTime, x => x.MapFrom(sub => sub.PsychologistWorkingDateAndTimeViewModel))
                 .ForMember(x => x.Patient, x => x.MapFrom(sub => sub.PatientViewModel))
-                .ForMember(x => x.TypeOfConsultation, x => x.MapFrom(sub => sub.TypeOfConsultationViewModel))
+                .ForPath(x => x.Patient.User, x => x.MapFrom(sub => sub.PatientViewModel.UserViewModel))
+                .ForPath(x => x.Patient.User.Gender, x => x.MapFrom(sub => sub.PatientViewModel.UserViewModel.GenderViewModel))
+                .ForPath(x => x.TypeOfConsultation, x => x.MapFrom(sub => sub.TypeOfConsultationViewModel))
                 .ForMember(x => x.Order, x => x.MapFrom(sub => sub.OrderViewModels))
                 .ReverseMap();
 

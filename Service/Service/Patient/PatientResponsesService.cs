@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Patient.PatientResponses;
-using Entity.Patient;
-using Service.IRepository.Patient;
-using Service.IService.Patient;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Patient.PatientResponses;
+using PC.Service.IRepository.Patient;
+using PC.Service.IService.Patient;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Patient;
 
-namespace Service.Service.Patient;
+namespace PC.Service.Service.Patient;
 
 public class PatientResponsesService : IPatientResponsesService
 {

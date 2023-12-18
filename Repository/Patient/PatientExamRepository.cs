@@ -1,9 +1,9 @@
-﻿using Context;
-using Entity.Patient;
-using Service.IRepository.Patient;
-using Utility.Data;
+﻿using PC.Context;
+using PC.Service.IRepository.Patient;
+using PC.Utility.Data;
+using PD.Entity.Patient;
 
-namespace Repositories.Patient;
+namespace PD.Repositories.Patient;
 
 public class PatientExamRepository : GenericRepository<PatientExam>, IPatientExamRepository
 {

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Utility.DateConvertor;
+namespace PC.Utility.DateConvertor;
 public static class DateTimeConvertor
 {
     public static string[] MonthNames =

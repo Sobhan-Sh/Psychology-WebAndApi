@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility.Dto;
+using PC.Utility.Dto;
 
-namespace Dto.Patient;
+namespace PC.Dto.Patient;
 
 public class CreatePatient : BaseDto
 {

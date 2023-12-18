@@ -17,3 +17,4 @@ C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Context\obj\Debug\net7.0\Co
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Context\obj\Debug\net7.0\Context.csproj.CopyComplete
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Context\bin\Debug\net7.0\Context.runtimeconfig.json
 C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Context\obj\Debug\net7.0\Context.genruntimeconfig.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Context\obj\Debug\net7.0\Context.sourcelink.json

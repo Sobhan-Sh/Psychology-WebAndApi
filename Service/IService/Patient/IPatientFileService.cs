@@ -1,7 +1,7 @@
-﻿using Dto.Patient.PatientFile;
-using Utility.ReturnFuncResult;
+﻿using PC.Dto.Patient.PatientFile;
+using PC.Utility.ReturnFuncResult;
 
-namespace Service.IService.Patient;
+namespace PC.Service.IService.Patient;
 
 public interface IPatientFileService
 {

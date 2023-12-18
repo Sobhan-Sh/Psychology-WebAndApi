@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Dto.Psychologist.PsychologistTypeOfConsultation;
-using Entity.Psychologist;
-using Service.IRepository.Psychologist;
-using Service.IService.Psychologist;
-using Utility.ReturnFuncResult;
-using Utility.Validation;
+using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
+using PC.Service.IRepository.Psychologist;
+using PC.Service.IService.Psychologist;
+using PC.Utility.ReturnFuncResult;
+using PC.Utility.Validation;
+using PD.Entity.Psychologist;
 
-namespace Service.Service.Psychologist;
+namespace PC.Service.Service.Psychologist;
 
 public class PsychologistTypeOfConsultationService : IPsychologistTypeOfConsultationService
 {

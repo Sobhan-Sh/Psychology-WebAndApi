@@ -1,4 +1,4 @@
-﻿namespace Dto.User;
+﻿namespace PC.Dto.User;
 
 public class ChangeAuth
 {

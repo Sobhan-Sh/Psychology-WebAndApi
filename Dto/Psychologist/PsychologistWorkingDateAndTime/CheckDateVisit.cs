@@ -1,4 +1,4 @@
-﻿namespace Dto.Psychologist.PsychologistWorkingDateAndTime;
+﻿namespace PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
 
 public class CheckDateVisit
 {
