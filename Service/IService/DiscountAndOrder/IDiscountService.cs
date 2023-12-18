@@ -12,6 +12,8 @@ public interface IDiscountService
 
     public Task<BaseResult<EditDiscount>> GetAsync(int Id);
 
+    public Task<BaseResult<DiscountViewModel>> GetByPatientId(int Id);
+
     public Task<BaseResult> CreateAsync(CreateDiscount command);
 
     public Task<BaseResult> UpdateAsync(EditDiscount command);

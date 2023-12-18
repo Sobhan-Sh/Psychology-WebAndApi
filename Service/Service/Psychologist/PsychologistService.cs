@@ -412,6 +412,39 @@ public class PsychologistService : IPsychologistService
             return new BaseResult<IsCheckedUser>()
             {
                 IsSuccess = false,
+                // TODO: این باید یه چیز دیگه برگردونه
+                Message = ValidationMessage.ErrorUpdate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<MyIncome>>> MyIncome(int Id)
+    {
+        try
+        {
+            if (!await _psychologistRepository.IsExistAsync(x => x.Id == Id))
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound,
+                };
+
+            IEnumerable<PD.Entity.Patient.PatientTurn> patientTurns = await _turnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
+            return new()
+            {
+                Message = ValidationMessage.SuccessGet,
+                StatusCode = ValidationCode.Success,
+                IsSuccess = true,
+                Data = Mapping.Mapping.ConvertPatientTurnToMyIncomesMapping(patientTurns.ToList())
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
                 Message = ValidationMessage.ErrorUpdate(e.Message),
                 StatusCode = ValidationCode.BadRequest
             };

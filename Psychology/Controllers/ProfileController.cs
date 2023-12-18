@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PC.Dto.Discount;
 using PC.Dto.Patient;
 using PC.Dto.Patient.PatientTurn;
+using PC.Dto.Psychologist;
 using PC.Dto.User;
 using PC.Dto.User.Gender;
+using PC.Service.IService.DiscountAndOrder;
 using PC.Service.IService.Patient;
 using PC.Service.IService.Psychologist;
 using PC.Service.IService.User;
@@ -21,14 +24,18 @@ namespace Psychology.Controllers
         private readonly IPsychologistService _ipsychologistService;
         private readonly IAuthHelper _authHelper;
         private readonly IPatientService _petientService;
+        private readonly IDiscountService _discountService;
 
-        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService)
+        private static string RenderMessageStatic;
+
+        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService)
         {
             _userService = userService;
             _genderService = genderService;
             _ipsychologistService = ipsychologistService;
             _authHelper = authHelper;
             _petientService = petientService;
+            _discountService = discountService;
         }
 
         [Route("/Profile")]
@@ -59,6 +66,14 @@ namespace Psychology.Controllers
         public async Task<IActionResult> MyPatient()
         {
             BaseResult<List<PatientTurnViewModel>> result = await _ipsychologistService.PatientMy(_authHelper.CurrentAccountId());
+            if (RenderMessageStatic == null)
+                RenderMessageStatic = "";
+            else if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
+            {
+                ViewData["RenderMessage"] = RenderMessageStatic;
+                RenderMessageStatic = "";
+            }
+
             return View(result.Data);
         }
 
@@ -82,12 +97,9 @@ namespace Psychology.Controllers
         {
             if (ModelState.IsValid)
             {
-                string message = string.Empty;
                 BaseResult resultPatient = await _petientService.UpdateAsync(patientViewModel);
-                if (!resultPatient.IsSuccess)
-                    message = resultPatient.Message;
-
-                return RedirectToAction("MyPatient", new { renderMessage = message });
+                RenderMessageStatic = resultPatient.Message;
+                return RedirectToAction("MyPatient");
             }
 
             return RedirectToAction("EditPatientMy", new { patientId = patientViewModel.Id });
@@ -96,19 +108,34 @@ namespace Psychology.Controllers
         public async Task<IActionResult> Visited(int patientId)
         {
             BaseResult result = await _petientService.Visited(patientId);
-            return RedirectToAction("MyPatient", new { renderMessage = result.Message });
+            RenderMessageStatic = result.Message;
+            return RedirectToAction("MyPatient");
         }
 
         public async Task<IActionResult> ChangeToPatient(int patientId)
         {
             BaseResult result = await _petientService.ChangeToPatient(patientId);
-            return RedirectToAction("MyPatient", new { renderMessage = result.Message });
+            RenderMessageStatic = result.Message;
+            return RedirectToAction("MyPatient");
         }
 
         public async Task<IActionResult> RestorPatient(int patientId)
         {
             BaseResult result = await _petientService.RestorPatient(patientId);
-            return RedirectToAction("MyPatient", new { renderMessage = result.Message });
+            RenderMessageStatic = result.Message;
+            return RedirectToAction("MyPatient");
+        }
+
+        public async Task<IActionResult> MyIncome()
+        {
+            BaseResult<List<MyIncome>> result = await _ipsychologistService.MyIncome(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
+        public async Task<IActionResult> DiscountPatient(int patientId)
+        {
+            BaseResult<DiscountViewModel> result = await _discountService.GetByPatientId(patientId);
+            return View(result.Data);
         }
 
         #endregion

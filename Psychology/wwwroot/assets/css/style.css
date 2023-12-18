@@ -51,6 +51,13 @@
     --darkMode-back-card-hover: #4a6cf76b;
     --darkMode-notValid: rgb(222, 5, 5);
     --darkMode-valid: #03df03;
+    /* color alert */
+    --primary: #0676ed;
+    --background: #222b45;
+    --warning: #f2a600;
+    --success: #12c99b;
+    --error: #e41749;
+    --dark: #151a30;
 }
 
 * {
@@ -81,6 +88,74 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.custom_alert {
+    min-height: 67px;
+    width: 560px;
+    max-width: 90%;
+    border-radius: 12px;
+    padding: 16px 22px 17px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.custom_alert_primary {
+    background: var(--primary);
+    box-shadow: 0 0 5px 1px #0059b7;
+}
+
+.custom_alert_error {
+    background: var(--error);
+}
+
+.custom_alert .icon__wrapper {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .custom_alert .icon__wrapper span {
+        font-size: 21px;
+        color: #fff;
+    }
+
+.custom_alert p {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.animation_rotate_custome {
+    animation: rotateAnime 1s linear 0.3s;
+    transition: all 0.3s;
+    perspective: 1000px;
+    transform: translateX(50%) rotateX(0deg);
+}
+
+@keyframes rotateAnime {
+    0% {
+        transform: translateX(50%) rotateX(0deg);
+    }
+
+    25% {
+        transform: translateX(50%) rotateX(-40deg);
+    }
+
+    50% {
+        transform: translateX(50%) rotateX(0deg);
+    }
+
+    75% {
+        transform: translateX(50%) rotateX(40deg);
+    }
+
+    100% {
+        transform: translateX(50%) rotateX(0deg);
+    }
 }
 
 .table:not(.not-backdrop-filter) > :not(caption) > * > * {

@@ -10,6 +10,17 @@
         <partial name="_NavbarProfile" />
     </aside>
     <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        @if (ViewData["RenderMessage"] != null)
+        {
+            <div class="custom_alert mt-2 border-2 animation_rotate_custome border-info position-fixed top-0 start-50 custom_alert_primary w-50">
+                <div class="icon__wrapper" onclick="this.remove()">
+                    <span class="mdi mdi-alert-outline"></span>
+                </div>
+                <p class="mb-0"> @ViewData["RenderMessage"] </p>
+            </div>
+        }
+        <div class="box">
+        </div>
         @if (Model.Any())
         {
             <table class="table not-backdrop-filter">
@@ -22,7 +33,7 @@
                         <th scope="col"> لغو شده ها </th>
                         <th scope="col"> قیمت </th>
                         <th scope="col"> حالت این فرد </th>
-                        <th scope="col">  </th>
+                        <th scope="col"> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,7 +86,7 @@
                                         {
                                             <li><a data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" data-bs-title="<small><small class='text-dark'> اگر قبل از اینکه بیمار تایید شود که بیمار است و شما روی این دکمه کلیک کنید بیمار <span class='text-danger'> حذف </span> می شود </small></small>" class="dropdown-item" asp-controller="Profile" asp-action="Visited" asp-route-patientId="@item.PatientViewModel.Id"> ویزیت انجام شد </a></li>
                                         }
-                                        @if (!item.PatientViewModel.IsPatient)
+                                        @if (!item.PatientViewModel.IsDeleted&&!item.PatientViewModel.IsPatient)
                                         {
                                             <li><a class="dropdown-item" asp-controller="Profile" asp-action="ChangeToPatient" asp-route-patientId="@item.PatientViewModel.Id"> این فرد بیمار شود </a></li>
                                         }
@@ -88,6 +99,7 @@
                                             <li><a class="dropdown-item" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> ویرایش بیمار </a></li>
                                         }
                                         <li><a class="dropdown-item text-warning" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> چت با بیمار </a></li>
+                                        <li><a class="dropdown-item" asp-controller="Profile" asp-action="DiscountPatient" asp-route-patientId="@item.PatientViewModel.Id"> تخفیف </a></li>
                                     </ul>
                                 </div>
                             </td>

@@ -4,6 +4,7 @@ using PC.Dto.Psychologist;
 using PC.Dto.Psychologist.PsychologistTypeOfConsultation;
 using PC.Dto.Psychologist.PsychologistWorkingDateAndTime;
 using PC.Dto.User;
+using PC.Utility.DateConvertor;
 using PD.Entity.Patient;
 using PD.Entity.Psychologist;
 
@@ -86,6 +87,17 @@ public static class Mapping
                 LName = x.User.LName,
                 Id = x.Id
             }
+        }).ToList();
+    }
+
+    public static List<MyIncome> ConvertPatientTurnToMyIncomesMapping(List<PatientTurn> patientTurns)
+    {
+        return patientTurns.Select(x => new MyIncome
+        {
+            Commission = x.PsychologistWorkingDateAndTime.Psychologist.Commission,
+            CreatedAt = DateTimeConvertor.ToPersianNumber(DateTimeConvertor.ToFarsi(x.CreatedAt)),
+            ConsultationDay = x.ConsultationDay,
+            Price = ((x.Price * (int)x.PsychologistWorkingDateAndTime.Psychologist.Commission) / 100) - x.Price,
         }).ToList();
     }
 }

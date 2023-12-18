@@ -70,7 +70,7 @@ public static class DateTimeConvertor
         return cash;
     }
 
-    public static string ToPersianNumber(this int intNum)
+    public static string ToPersianNumber(this string intNum)
     {
         var chash = intNum.ToString();
         for (var i = 0; i < 10; i++)

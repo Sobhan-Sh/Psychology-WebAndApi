@@ -132,6 +132,40 @@ public class DiscountService : IDiscountService
         }
     }
 
+    public async Task<BaseResult<DiscountViewModel>> GetByPatientId(int Id)
+    {
+        try
+        {
+            Discount query = await _discountRepository.GetAsync(x => x.PatientId == Id);
+            if (query == null)
+            {
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+            }
+
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<DiscountViewModel>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult> CreateAsync(CreateDiscount command)
     {
         try
