@@ -1,0 +1,95 @@
+﻿@model PC.Dto.Patient.PatientViewModel
+@{
+    ViewData["Title"] = "ویرایش بیمار";
+    ViewData["btn-custom_btn-login-header"] = "btn-custom btn-login-header";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <!--* card -->
+        <section class="card mx-auto pt-5 pb-3 card-profile-form">
+            <!--* title card -->
+            <section class="card-title">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                    ویرایش بیمار
+                </h3>
+            </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body px-0">
+                <form asp-action="EditPatientMy" enctype="multipart/form-data" class="container-fluid">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="CreatedAt" />
+                    <input type="hidden" asp-for="UserViewModel.Avatar" />
+                    <input type="hidden" asp-for="UserViewModel.ActivationCode" />
+                    <input type="hidden" asp-for="UserViewModel.MobailActiveStatus" />
+                    <input type="hidden" asp-for="UserViewModel.Phone" />
+                    <input type="hidden" asp-for="UserViewModel.Phone" />
+                    <input type="hidden" asp-for="UserViewModel.GenderViewModel.Name" />
+                    <input type="hidden" asp-for="UserViewModel.GenderViewModel.CreatedAt" />
+                    <input type="hidden" asp-for="UserViewModel.GenderViewModel.UsersViewModels" />
+                    <input type="hidden" asp-for="UserViewModel.CreatedAt" />
+                    <input type="hidden" asp-for="UserViewModel.IsActive" />
+                    <input type="hidden" asp-for="UserViewModel.Password" />
+                    <input type="hidden" asp-for="UserId" />
+                    <input type="hidden" asp-for="IsActive" />
+                    <input type="hidden" asp-for="IsDeleted" />
+                    <section class="row">
+                        <section class="col-12 col-md-6">
+                            <label asp-for="UserViewModel.FName"></label>
+                            <input class="cusotm-form-controle" placeholder="نام" asp-for="UserViewModel.FName" type="text">
+                            <span asp-validation-for="UserViewModel.FName"></span>
+                        </section>
+                        <section class="col-12 col-md-6">
+                            <label asp-for="UserViewModel.LName"></label>
+                            <input class="cusotm-form-controle" placeholder="نام خانوادگی" asp-for="UserViewModel.LName" type="text">
+                            <span asp-validation-for="UserViewModel.LName"></span>
+                        </section>
+                        <section class="col-12 col-md-6 input-div">
+                            <label asp-for="UserViewModel.ImageUser"></label>
+                            <span class="cusotm-form-controle"> انتخاب اواتار </span>
+                            <input asp-for="UserViewModel.ImageUser" class="cusotm-form-controle" type="file">
+                        </section>
+                        <section class="col-12 col-md-6">
+                            <label asp-for="UserViewModel.Phone"></label>
+                            <input class="cusotm-form-controle" disabled placeholder="تلفن همراه" asp-for="UserViewModel.Phone" type="number">
+                            <span asp-validation-for="UserViewModel.Phone"></span>
+                        </section>
+                        <section class="col-12 col-md-6">
+                            <label asp-for="NationalCode"></label>
+                            <input class="cusotm-form-controle" placeholder="کد ملی" asp-for="NationalCode" type="text">
+                            <span asp-validation-for="NationalCode"></span>
+                        </section>
+                        <section class="col-12 col-md-6">
+                            <label asp-for="Age"></label>
+                            <input class="cusotm-form-controle" placeholder="سن" asp-for="Age">
+                            <span asp-validation-for="Age"></span>
+                        </section>
+                        <section class="col-12 col-md-6 input-div">
+                            <label asp-for="UserViewModel.GenderViewModel"></label>
+                            <select class="cusotm-form-controle" asp-for="UserViewModel.GenderViewModel.Id" asp-items="@((SelectList)ViewData["listGender"])">
+                                <option> جنسیت </option>
+                            </select>
+                        </section>
+                        <section class="col-12 col-md-6">
+                            <label asp-for="UserViewModel.Address"></label>
+                            <input class="cusotm-form-controle" asp-for="UserViewModel.Address" placeholder="ادرس" type="text">
+                        </section>
+                    </section>
+                    <button class="btn btn-custom w-100 mt-3" type="submit"> ثبت اطلاعات </button>
+                </form>
+            </section>
+        </section>
+    </section>
+</section>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

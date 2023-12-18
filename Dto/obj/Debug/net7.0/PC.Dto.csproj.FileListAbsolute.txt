@@ -1,0 +1,16 @@
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\PC.Dto.deps.json
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\PC.Dto.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\PC.Dto.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\PC.Utility.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\bin\Debug\net7.0\PC.Utility.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.csproj.AssemblyReference.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.AssemblyInfoInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.AssemblyInfo.cs
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.csproj.CoreCompileInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.sourcelink.json
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.csproj.CopyComplete
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\refint\PC.Dto.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\PC.Dto.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Dto\obj\Debug\net7.0\ref\PC.Dto.dll

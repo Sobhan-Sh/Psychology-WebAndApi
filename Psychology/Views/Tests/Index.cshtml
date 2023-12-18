@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PC.Dto.Test.TestViewModel>
+@{
+    ViewData["Title"] = "آزمون ها";
+}
+<section class="mx-auto mt-5 mt-lg-4 pt-5 pt-lg-0 card-test-form">
+    <section class="card mx-auto p-5">
+        <!--* title card -->
+        <section class="card-title">
+            <h3> آزمون ها </h3>
+            <h6> شما از این قسمت می توانید ازمون مربوطه را انتخاب کنید </h6>
+        </section>
+        <hr>
+        <!--* body card -->
+        @if (Model.Any())
+        {
+            <section class="card-body">
+                <ol class="list-group list-group-flush list-group-numbered rounded">
+                    @foreach (var item in Model)
+                    {
+                        <!--? item -->
+                        <li class="list-group-item list-group-item-primary d-flex">
+                            <a asp-controller="Tests" asp-action="StartTheTest" asp-route-testId="@item.Id" class="w-100 d-flex justify-content-between align-items-center">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"> @item.Title </div>
+                                    @item.Price.ToString("#,0") تومان
+                                </div>
+                                <section class="d-flex align-items-center">
+                                    <small>
+                                        تعداد سوالات
+                                    </small>
+                                    <span class="badge mx-2">@item.QuestionViewModel.Count</span>
+                                </section>
+                            </a>
+                        </li>
+                    }
+                </ol>
+            </section>
+        }
+        else
+        {
+            <span>
+                هنوز آزمونی ثبت نشده
+            </span>
+        }
+    </section>
+</section>

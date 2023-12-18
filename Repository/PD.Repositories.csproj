@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DiscountAndOrder\" />
+    <Folder Include="Role\" />
+    <Folder Include="Patient\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Context\PC.Context.csproj" />
+    <ProjectReference Include="..\Service\PC.Service.csproj" />
+  </ItemGroup>
+
+</Project>

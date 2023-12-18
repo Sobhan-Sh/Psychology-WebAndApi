@@ -1,0 +1,45 @@
+﻿@model PC.Dto.Psychologist.EditPsychologist
+@{
+    ViewData["Title"] = " : جزئیات روانشناس";
+}
+<section class="container-fluid pe-sm-4">
+    @if (ViewData["Message"] != null)
+    {
+        <!-- print error -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast fade show border border-info" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header border-info"><strong class="me-auto text-info"> نتیجه </strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">@ViewData["Message"]</div></div></div>
+    }
+    <section class="row align-items-end">
+        <section class="col-12 col-md-6 py-2">
+            <label asp-for="NationalCode"></label>
+            <span class="badge text-bg-warning">
+                @Model.NationalCode
+            </span>
+        </section>
+        <section class="col-12 col-md-6 py-2">
+            <label asp-for="MedicalLicennseCode"></label>
+            @Model.MedicalLicennseCode
+        </section>
+        <section class="col-12 col-md-6 py-2">
+            <label asp-for="DateOfBirth"></label>
+            @Model.DateOfBirth?.ToString("yyyy/MM/dd")
+        </section>
+        <section class="col-12 col-md-3 py-2">
+            <label asp-for="Age"></label>
+            @Model.Age
+        </section>
+        <section class="col-12 col-md-3 py-2">
+            <label asp-for="Commission"></label>
+            @Model.Commission
+        </section>
+        <section class="col-7 py-2">
+            <label for="previewImage"> نمایش عکس پراونه طبابت </label>
+            <img src="/assets/Image/Psychology/Licennse/@(!string.IsNullOrWhiteSpace(Model.EvidencePath)?Model.EvidencePath:"")" id="previewImage" style="width: 90px; height: 90px;" class="img-thumbnail">
+        </section>
+        <section class="col-6 mt-4">
+            <a class="btn btn-custom px-3" asp-action="EditPsychologist" asp-route-psychologistId="@Model.Id"> ویرایش روانشناس </a>
+            <a class="btn btn-outline-primary ms-3" asp-action="Index">
+                بازگشت
+            </a>
+        </section>
+    </section>
+</section>

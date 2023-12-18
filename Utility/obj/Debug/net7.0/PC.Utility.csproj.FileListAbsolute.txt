@@ -1,0 +1,13 @@
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\bin\Debug\net7.0\PC.Utility.deps.json
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\bin\Debug\net7.0\PC.Utility.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\bin\Debug\net7.0\PC.Utility.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.csproj.AssemblyReference.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.AssemblyInfoInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.AssemblyInfo.cs
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.csproj.CoreCompileInputs.cache
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.sourcelink.json
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\refint\PC.Utility.dll
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\PC.Utility.pdb
+C:\Users\Dear User\Desktop\wibsit\Project\Psychology\Utility\obj\Debug\net7.0\ref\PC.Utility.dll

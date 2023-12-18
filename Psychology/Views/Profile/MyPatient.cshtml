@@ -1,0 +1,115 @@
+﻿@model IEnumerable<PC.Dto.Patient.PatientTurn.PatientTurnViewModel>
+@{
+    ViewData["Title"] = "بیماران من";
+    ViewData["btn-custom_btn-login-header"] = "btn-custom btn-login-header";
+    ViewData["Patient"] = "active";
+    int counter = 1;
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        @if (Model.Any())
+        {
+            <table class="table not-backdrop-filter">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"> نام بیمار </th>
+                        <th scope="col"> وضعیت ویزیت </th>
+                        <th scope="col"> تارخ ثبت ویزیت </th>
+                        <th scope="col"> لغو شده ها </th>
+                        <th scope="col"> قیمت </th>
+                        <th scope="col"> حالت این فرد </th>
+                        <th scope="col">  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderByDescending(x => x.Id))
+                    {
+                        <tr @(item.PatientViewModel.IsDeleted ? "class=table-danger" : "")>
+                            <th> @counter </th>
+                            <td> @($"{item.PatientViewModel.UserViewModel.GenderViewModel.Name.Replace("آقا", "آقای")} {item.PatientViewModel.UserViewModel.FName} {item.PatientViewModel.UserViewModel.LName}") </td>
+                            <td>
+                                @if (item.IsVisited)
+                                {
+                                    <span class="badge bg-success"> بیمار ویزیت شده </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning"> بیمار ویزیت نشده </span>
+                                }
+                            </td>
+                            <td> @item.ConsultationDay </td>
+                            <td>
+                                @if (item.IsCanseled)
+                                {
+                                    <span class="badge bg-danger"> لغو شده </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary"> لغو نشده </span>
+                                }
+                            </td>
+                            <td>
+                                @item.Price.ToString("#,0")
+                            </td>
+                            <td>
+                                @if (item.PatientViewModel.IsPatient)
+                                {
+                                    <span class="badge bg-success"> این فرد بیمار است </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger"> این فرد بیمار نیست </span>
+                                }
+                            </td>
+                            <td>
+                                <div class="dropdown dropstart">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        امکانات
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @if (!item.IsVisited)
+                                        {
+                                            <li><a data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" data-bs-title="<small><small class='text-dark'> اگر قبل از اینکه بیمار تایید شود که بیمار است و شما روی این دکمه کلیک کنید بیمار <span class='text-danger'> حذف </span> می شود </small></small>" class="dropdown-item" asp-controller="Profile" asp-action="Visited" asp-route-patientId="@item.PatientViewModel.Id"> ویزیت انجام شد </a></li>
+                                        }
+                                        @if (!item.PatientViewModel.IsPatient)
+                                        {
+                                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="ChangeToPatient" asp-route-patientId="@item.PatientViewModel.Id"> این فرد بیمار شود </a></li>
+                                        }
+                                        @if (item.PatientViewModel.IsDeleted)
+                                        {
+                                            <li><a class="dropdown-item text-info" asp-controller="Profile" asp-action="RestorPatient" asp-route-patientId="@item.PatientViewModel.Id"> بازیابی </a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> ویرایش بیمار </a></li>
+                                        }
+                                        <li><a class="dropdown-item text-warning" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> چت با بیمار </a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <section class="alert alert-info">
+                <h6> شما هنوز بیماری ندارید! </h6>
+            </section>
+        }
+    </section>
+</section>
+
+@section Scripts
+{
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
+}

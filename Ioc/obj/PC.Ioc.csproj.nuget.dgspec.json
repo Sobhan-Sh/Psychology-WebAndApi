@@ -1,0 +1,695 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\PC.Ioc.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
+        "projectName": "PC.Context",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj",
+        "projectName": "PC.Dto",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj",
+        "projectName": "Entity",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj",
+        "projectName": "PD.Entity",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\PC.Ioc.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\PC.Ioc.csproj",
+        "projectName": "PC.Ioc",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\PC.Ioc.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Ioc\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj",
+        "projectName": "PF.ModelFactory",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\PF.ModelFactory.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\ModelFactory\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\Entity.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj",
+        "projectName": "PD.Repositories",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\PD.Repositories.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\PC.Service.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\PC.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\PC.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\PC.Service.csproj",
+        "projectName": "PC.Service",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\PC.Service.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Context\\PC.Context.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Dto\\PC.Dto.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Entity\\PD.Entity.csproj"
+              },
+              "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+                "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj",
+        "projectName": "PC.Utility",
+        "projectPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\PC.Utility.csproj",
+        "packagesPath": "C:\\Users\\Dear User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Utility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\PackagesVisualStudio\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dear User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "IronSoftware.System.Drawing": {
+              "target": "Package",
+              "version": "[2023.11.1, )"
+            },
+            "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
