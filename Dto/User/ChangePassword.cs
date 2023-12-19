@@ -7,7 +7,7 @@ public class ChangePassword
 {
     public int Id { get; set; }
 
-    [Display(Name = "رمز سابق")]
+    [Display(Name = "رمز فعلی")]
     [Required(ErrorMessage = ErrorHandling.Required)]
     [DataType(DataType.Password)]
     [StringLength(maximumLength: 15, MinimumLength = 5, ErrorMessage = ErrorHandling.StringLength)]
@@ -22,7 +22,7 @@ public class ChangePassword
     [Display(Name = "تکرار رمز جدید")]
     [Required(ErrorMessage = ErrorHandling.Required)]
     [DataType(DataType.Password)]
-    [Compare("Password", ErrorMessage = ErrorHandling.PasswordConfirm)]
+    [Compare("NewPassword", ErrorMessage = ErrorHandling.PasswordConfirm)]
     [StringLength(maximumLength: 15, MinimumLength = 5, ErrorMessage = ErrorHandling.StringLength)]
     public string ConfirmNewPassword { get; set; }
 }

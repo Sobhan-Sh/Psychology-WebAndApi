@@ -446,9 +446,7 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound,
                 };
 
-
-            //Todo مشکل داره این کد اینه که نمیره تمام بیمار های این دکتر رو بیاره
-            IEnumerable<PD.Entity.Patient.PatientTurn> patientTurns = await _turnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
+            IEnumerable<PD.Entity.Patient.PatientTurn> patientTurns = await _turnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.Psychologist.UserId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
             return new()
             {
                 Message = ValidationMessage.SuccessGet,

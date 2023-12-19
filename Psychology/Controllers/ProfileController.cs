@@ -62,6 +62,23 @@ namespace Psychology.Controllers
 
         public IActionResult ChangePassword()
         {
+            ViewData["UserId"] = _authHelper.CurrentAccountId();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePassword password)
+        {
+            if (ModelState.IsValid)
+            {
+                BaseResult response = await _userService.ChangePasswordAsync(password);
+                if (response.IsSuccess)
+
+                    ViewData["ErrorMessage"] = response.Message;
+            }
+
+            ViewData["ErrorMessage"] = "مقادیر خواسته شده خالی هستند";
             return View();
         }
 
