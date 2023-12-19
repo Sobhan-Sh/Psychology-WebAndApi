@@ -38,6 +38,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Gender> Genders { get; set; }
     public DbSet<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Article> Articles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

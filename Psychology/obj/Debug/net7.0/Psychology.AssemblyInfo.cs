@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Psychology")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f947287d3009079ac8334dd2a8f1d72a54bff26e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff5aae2a21b040072a0415b4eeb5961176377f7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Psychology")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Psychology")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

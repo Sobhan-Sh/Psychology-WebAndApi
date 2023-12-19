@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using PC.Utility.Domain;
+﻿using PC.Utility.Domain;
 using PD.Entity.DiscountAndOrder;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PD.Entity.Psychologist;
 
@@ -29,6 +29,8 @@ public class Psychologist : BaseEntity
     public List<Order> Order { get; set; }
 
     public List<PsychologistTypeOfConsultation> PsychologistTypeOfConsultations { get; set; }
+
+    public List<Article> Articles { get; set; }
 
     public void Edit(int age, string nationalCode, string? evidencePath, DateTime? dateOfBirth, string? medicalLicennseCode)
     {
