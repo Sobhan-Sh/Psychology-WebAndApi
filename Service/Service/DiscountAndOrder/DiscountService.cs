@@ -132,7 +132,7 @@ public class DiscountService : IDiscountService
         }
     }
 
-    public async Task<BaseResult<DiscountViewModel>> GetByPatientId(int Id)
+    public async Task<BaseResult<CreateDiscount>> GetByPatientId(int Id)
     {
         try
         {
@@ -143,7 +143,7 @@ public class DiscountService : IDiscountService
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.NoFoundGet,
-                    StatusCode = ValidationCode.NotFound
+                    StatusCode = ValidationCode.NotFound,
                 };
             }
 
@@ -151,7 +151,7 @@ public class DiscountService : IDiscountService
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGet,
-                Data = _mapper.Map<DiscountViewModel>(query),
+                Data = _mapper.Map<CreateDiscount>(query),
                 StatusCode = ValidationCode.Success
             };
         }
@@ -244,6 +244,39 @@ public class DiscountService : IDiscountService
         try
         {
             Discount query = await _discountRepository.GetAsync(x => x.Id == Id);
+            if (query == null)
+                return new BaseResult()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            await _discountRepository.DeleteAsync(query);
+            await _discountRepository.SaveAsync();
+            return new BaseResult()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessDelete,
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorDelete(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult> DeleteByPatientIdAsync(int Id)
+    {
+        try
+        {
+            Discount query = await _discountRepository.GetAsync(x => x.PatientId == Id);
             if (query == null)
                 return new BaseResult()
                 {

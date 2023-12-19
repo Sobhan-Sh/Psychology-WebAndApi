@@ -15,6 +15,10 @@ public class PatientTurnViewModel : BaseDto
 
     public bool IsCanseled { get; set; }
 
+    public int? DiscountWithMoney { get; set; }
+
+    public int? DiscountWithPercentage { get; set; }
+
     public List<OrderViewModel> OrderViewModels { get; set; }
 
     public PsychologistWorkingDateAndTimeViewModel PsychologistWorkingDateAndTimeViewModel { get; set; }

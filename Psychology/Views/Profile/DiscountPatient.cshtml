@@ -1,5 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PC.Dto.Discount.CreateDiscount
 @{
+    ViewData["Title"] = "تخفیف بیمار";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <section class="row">
+            @if (Model == null)
+            {
+                <section class="col-12">
+                    <form class="row align-items-end" asp-controller="Profile" asp-action="SetDiscountInPatient" method="post">
+                        <input type="hidden" asp-for="PatientId" value="@ViewData["PatientId"]" />
+                        <input type="hidden" asp-for="PsychologistId" value="@ViewData["PsychologistId"]" />
+                        <section class="col-5 d-flex flex-column">
+                            <label class="ms-1" asp-for="DiscountWithMoney"></label>
+                            <input class="cusotm-form-controle" asp-for="DiscountWithMoney" />
+                        </section>
+                        <section class="col-5 d-flex flex-column">
+                            <label class="ms-1" asp-for="DiscountWithPercentage"></label>
+                            <input class="cusotm-form-controle" asp-for="DiscountWithPercentage" />
+                        </section>
+                        <button class="btn btn-custom h-100 mb-2 col-2"> ثبت تخفیف </button>
+                    </form>
+                </section>
+            }
+            else
+            {
+                <section class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col"> تخفیف </th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @if (Model.DiscountWithMoney != null)
+                                {
+                                    <td>
+                                        @Model.DiscountWithMoney?.ToString("n0") تومان
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Model.DiscountWithPercentage درصد
+                                    </td>
+                                }
+                                <td>
+                                    <a asp-controller="Profile" asp-action="DeleteDiscount" asp-route-patientId="@Model.PatientId" class="btn btn-danger btn-sm"> حذف </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            }
+        </section>
+    </section>
+</section>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
 }

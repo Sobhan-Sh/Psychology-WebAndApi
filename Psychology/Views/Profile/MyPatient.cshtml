@@ -19,8 +19,6 @@
                 <p class="mb-0"> @ViewData["RenderMessage"] </p>
             </div>
         }
-        <div class="box">
-        </div>
         @if (Model.Any())
         {
             <table class="table not-backdrop-filter">
@@ -32,6 +30,7 @@
                         <th scope="col"> تارخ ثبت ویزیت </th>
                         <th scope="col"> لغو شده ها </th>
                         <th scope="col"> قیمت </th>
+                        <th scope="col"> تخفیف </th>
                         <th scope="col"> حالت این فرد </th>
                         <th scope="col"> </th>
                     </tr>
@@ -67,13 +66,43 @@
                                 @item.Price.ToString("#,0")
                             </td>
                             <td>
-                                @if (item.PatientViewModel.IsPatient)
+                                @if (item.DiscountWithMoney > 0)
                                 {
-                                    <span class="badge bg-success"> این فرد بیمار است </span>
+                                    <small>
+                                        @item.DiscountWithMoney?.ToString("n0") تومان
+                                    </small>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-danger"> این فرد بیمار نیست </span>
+                                    if (item.DiscountWithPercentage > 0)
+                                    {
+                                        <small>
+                                            @item.DiscountWithPercentage درصد
+                                        </small>
+                                    }
+                                    else
+                                    {
+                                        <small>
+                                            هیچ تخفیفی نیست
+                                        </small>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @if (!item.PatientViewModel.IsDeleted)
+                                {
+                                    if (item.PatientViewModel.IsPatient)
+                                    {
+                                        <span class="badge bg-success"> این فرد بیمار است </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning"> این فرد بیمار نیست </span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger"> این بیمار حذف شده </span>
                                 }
                             </td>
                             <td>
@@ -86,7 +115,7 @@
                                         {
                                             <li><a data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" data-bs-title="<small><small class='text-dark'> اگر قبل از اینکه بیمار تایید شود که بیمار است و شما روی این دکمه کلیک کنید بیمار <span class='text-danger'> حذف </span> می شود </small></small>" class="dropdown-item" asp-controller="Profile" asp-action="Visited" asp-route-patientId="@item.PatientViewModel.Id"> ویزیت انجام شد </a></li>
                                         }
-                                        @if (!item.PatientViewModel.IsDeleted&&!item.PatientViewModel.IsPatient)
+                                        @if (!item.PatientViewModel.IsDeleted && !item.PatientViewModel.IsPatient)
                                         {
                                             <li><a class="dropdown-item" asp-controller="Profile" asp-action="ChangeToPatient" asp-route-patientId="@item.PatientViewModel.Id"> این فرد بیمار شود </a></li>
                                         }
@@ -98,7 +127,7 @@
                                         {
                                             <li><a class="dropdown-item" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> ویرایش بیمار </a></li>
                                         }
-                                        <li><a class="dropdown-item text-warning" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> چت با بیمار </a></li>
+                                        <li><a class="dropdown-item active" asp-controller="Profile" asp-action="EditPatientMy" asp-route-patientId="@item.PatientViewModel.Id"> چت با بیمار </a></li>
                                         <li><a class="dropdown-item" asp-controller="Profile" asp-action="DiscountPatient" asp-route-patientId="@item.PatientViewModel.Id"> تخفیف </a></li>
                                     </ul>
                                 </div>

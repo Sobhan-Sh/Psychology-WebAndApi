@@ -27,7 +27,6 @@ namespace Psychology.Controllers
         private readonly IDiscountService _discountService;
 
         private static string RenderMessageStatic;
-
         public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService)
         {
             _userService = userService;
@@ -59,6 +58,11 @@ namespace Psychology.Controllers
             }
 
             return RedirectToAction("Profile");
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
         }
 
         #region PsychologistProfile
@@ -134,8 +138,22 @@ namespace Psychology.Controllers
 
         public async Task<IActionResult> DiscountPatient(int patientId)
         {
-            BaseResult<DiscountViewModel> result = await _discountService.GetByPatientId(patientId);
+            BaseResult<CreateDiscount> result = await _discountService.GetByPatientId(patientId);
+            ViewData["PatientId"] = patientId;
+            ViewData["PsychologistId"] = _authHelper.CurrentAccountId();
             return View(result.Data);
+        }
+
+        public async Task<IActionResult> SetDiscountInPatient(CreateDiscount discount)
+        {
+            BaseResult result = await _discountService.CreateAsync(discount);
+            return RedirectToAction("DiscountPatient", new { patientId = discount.PatientId });
+        }
+
+        public async Task<IActionResult> DeleteDiscount(int patientId)
+        {
+            BaseResult result = await _discountService.DeleteByPatientIdAsync(patientId);
+            return RedirectToAction("DiscountPatient", new { patientId = patientId });
         }
 
         #endregion

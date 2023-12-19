@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
+using PC.Service.IRepository.DiscountAndOrder;
 using PC.Service.IRepository.Patient;
 using PC.Service.IRepository.Psychologist;
 using PC.Service.IRepository.User;
@@ -8,6 +9,7 @@ using PC.Service.IService.Psychologist;
 using PC.Utility.ReturnFuncResult;
 using PC.Utility.UploadFileTools;
 using PC.Utility.Validation;
+using PD.Entity.DiscountAndOrder;
 
 namespace PC.Service.Service.Psychologist;
 
@@ -17,14 +19,16 @@ public class PsychologistService : IPsychologistService
     private readonly IPatientRepository _patientRepository;
     private readonly IUserRepository _userRepository;
     private readonly IPatientTurnRepository _turnRepository;
+    private readonly IDiscountRepository _discountRepository;
     private IMapper _mapper;
 
-    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IPatientTurnRepository turnRepository, IMapper mapper)
+    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IPatientTurnRepository turnRepository, IDiscountRepository discountRepository, IMapper mapper)
     {
         _psychologistRepository = psychologistRepository;
         _patientRepository = patientRepository;
         _userRepository = userRepository;
         _turnRepository = turnRepository;
+        _discountRepository = discountRepository;
         _mapper = mapper;
     }
 
@@ -307,12 +311,23 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound
                 };
 
+            List<PatientTurnViewModel> turnViewModels = _mapper.Map<List<PatientTurnViewModel>>(query.ToList());
+            foreach (var item in turnViewModels)
+            {
+                Discount discount = await _discountRepository.GetAsync(x => x.PatientId == item.PatientViewModel.Id);
+                if (discount != null)
+                {
+                    if (discount.DiscountWithMoney > 0)
+                        item.DiscountWithMoney = discount.DiscountWithMoney;
+                    else if (discount.DiscountWithPercentage > 0) item.DiscountWithPercentage = discount.DiscountWithPercentage;
+                }
+            }
             return new()
             {
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessDelete,
                 StatusCode = ValidationCode.Success,
-                Data = _mapper.Map<List<PatientTurnViewModel>>(query.ToList())
+                Data = turnViewModels
             };
         }
         catch (Exception e)
@@ -431,6 +446,8 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.NotFound,
                 };
 
+
+            //Todo مشکل داره این کد اینه که نمیره تمام بیمار های این دکتر رو بیاره
             IEnumerable<PD.Entity.Patient.PatientTurn> patientTurns = await _turnRepository.GetAllAsync(x => x.PsychologistWorkingDateAndTime.PsychologistId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
             return new()
             {

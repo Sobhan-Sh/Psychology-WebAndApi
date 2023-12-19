@@ -306,6 +306,7 @@ header nav div div div ul.navbar-nav li.nav-item a.nav-link {
     stroke: var(--darkMode-onSecondary);
 }
 
+.cusotm-form-controle,
 .select2-search--dropdown .select2-search__field,
 .card-profile-form .cusotm-form-controle,
 .card-register-form .card .cusotm-form-controle,
@@ -324,6 +325,7 @@ header nav div div div ul.navbar-nav li.nav-item a.nav-link {
     border-color: var(--darkMode-notValid) !important;
 }
 
+.cusotm-form-controle::placeholder,
 .card-profile-form .cusotm-form-controle::placeholder,
 .card-register-form .card .cusotm-form-controle::placeholder,
 .card-login-form .card .cusotm-form-controle::placeholder,
@@ -332,6 +334,7 @@ header nav div div div ul.navbar-nav li.nav-item a.nav-link {
     text-align: center;
 }
 
+.cusotm-form-controle:focus,
 .card-profile-form .cusotm-form-controle:focus,
 .card-register-form .card .cusotm-form-controle:focus,
 .card-login-form .card .cusotm-form-controle:focus,
