@@ -10,11 +10,9 @@
   <ItemGroup>
     <Folder Include="IService\Account\" />
     <Folder Include="IService\DiscountAndOrder\" />
-    <Folder Include="IService\Message\" />
     <Folder Include="IService\Test\" />
     <Folder Include="Service\Account\" />
     <Folder Include="Service\DiscountAndOrder\" />
-    <Folder Include="Service\Message\" />
     <Folder Include="Service\Test\" />
     <Folder Include="Service\Role\" />
   </ItemGroup>

@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Discount\" />
     <Folder Include="Patient\PatientFile\" />
+    <Folder Include="Psychologist\Article\" />
     <Folder Include="Psychologist\PsychologistWorkingDays\" />
     <Folder Include="Test\Answer\" />
   </ItemGroup>

@@ -1,16 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PC.Service.IService.IMessageService;
 
 namespace Psychology.Areas.Admin.ViewComponents;
 
 public class MessagesViewComponent : ViewComponent
 {
-    private readonly IMessageService _messageService;
-
-    public MessagesViewComponent(IMessageService messageService)
-    {
-        _messageService = messageService;
-    }
 
     public async Task<IViewComponentResult> InvokeAsync(int Id)
     {
