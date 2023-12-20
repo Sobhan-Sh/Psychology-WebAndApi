@@ -1,5 +1,4 @@
 ﻿@model RenderMessage
-
 @if (!string.IsNullOrWhiteSpace(Model.TextMessage))
 {
     <div class="custom_alert mt-2 border-2 animation_rotate_custome border-info position-fixed top-0 start-50 custom_alert_primary w-50">
@@ -8,4 +7,13 @@
         </div>
         <p class="mb-0"> @Model.TextMessage </p>
     </div>
+
+}
+@section Scripts
+{
+    <script>
+        document.addEventListener("click", () => {
+            setTimeout(() => { document.querySelector(".custom_alert").remove(); }, 1500);
+        });
+    </script>
 }

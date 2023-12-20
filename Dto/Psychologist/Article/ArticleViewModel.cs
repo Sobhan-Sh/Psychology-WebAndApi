@@ -4,7 +4,7 @@ public class ArticleViewModel
 {
     public int PsychologistId { get; set; }
 
-    public PsychologistViewModel Psychologist { get; set; }
+    public PsychologistViewModel PsychologistViewModel { get; set; }
 
     public string Title { get; set; }
 

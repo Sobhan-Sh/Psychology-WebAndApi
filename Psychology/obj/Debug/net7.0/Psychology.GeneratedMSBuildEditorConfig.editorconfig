@@ -198,12 +198,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/CreateArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDcmVhdGVBcnRpY2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/DiscountPatient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxEaXNjb3VudFBhdGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/EditArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0QXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/EditPatientMy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0UGF0aWVudE15LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/MyArticles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxNeUFydGljbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/MyIncome.cshtml]
