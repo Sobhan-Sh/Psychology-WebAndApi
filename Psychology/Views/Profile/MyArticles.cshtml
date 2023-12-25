@@ -2,3 +2,96 @@
 @{
     ViewData["Title"] = "مقان";
 }
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <partial name="_RenderMessage" model='new RenderMessage(){TextMessage=ViewData["RenderMessage"] as string}' />
+        <section>
+            <a class="btn btn-success mb-3 py-2 w-25" asp-controller="Profile" asp-action="CreateArticle"> افزودن مقاله </a>
+        </section>
+        @if (Model.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> عنوان </th>
+                        <th scope="col"> قسمتی از متن </th>
+                        <th scope="col"> تاریخ ثبت </th>
+                        <th scope="col"> اخرین تغییر </th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderByDescending(x => x.CreatedAt))
+                    {
+                        if (item.IsActive)
+                        {
+                            <tr>
+                                <td> @item.Title </td>
+                                <td>
+                                    <section class="text_description">
+                                        @Html.Raw(item.Text)
+                                    </section>
+                                </td>
+                                @if (item.IsDeleted)
+                                {
+                                    <td colspan="2">
+                                        <span class="badge text-bg-danger"> این مقاله حذف شده </span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td> @Convert.ToDateTime(item.CreatedAt).ToString("yyyy/MM/dd") </td>
+                                    <td> @item.UpdatedAt?.ToString("yyyy/MM/dd") </td>
+                                }
+
+                                <td>
+                                    @if (item.IsDeleted)
+                                    {
+                                        <a class="btn btn-info btn-sm" asp-action="RestorArticle" asp-route-articleId="@item.Id"> بازیابی </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-warning btn-sm" asp-action="EditArticle" asp-route-articleId="@item.Id"> ویرایش </a>
+                                        <a class="btn btn-primary btn-sm" asp-action="DetailsArticle" asp-route-articleId="@item.Id"> جزئیات </a>
+                                        <a class="btn btn-danger btn-sm" asp-action="DeleteArticle" asp-route-articleId="@item.Id"> حذف </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            if (!item.IsDeleted)
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="badge text-bg-warning d-block w-50 py-2 mx-auto"> منتظر تایید ادمین </span>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="badge text-bg-danger d-block w-50 py-2 mx-auto"> ادمین این مقاله را رد کرده </span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="custom_alert custom_alert_primary">
+                <div class="icon__wrapper">
+                    <span class="mdi mdi-alert-outline"></span>
+                </div>
+                <p class="mb-0"> شما هیچ مقاله ای ثبت نکردید! </p>
+            </div>
+        }
+    </section>
+</section>

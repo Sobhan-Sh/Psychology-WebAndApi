@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NTHBbQJYOreo49MrzXD+VsfGHHTNm+LBaTVcvurJsj8=",
+  "Hash": "7Qxyw7ELtIInnA2ogpRcHVw64SHCujiu8g2hcnR5J2o=",
   "Source": "Psychology",
   "BasePath": "_content/Psychology",
   "Mode": "Default",
@@ -2162,6 +2162,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\ckeditor.js",
+      "SourceId": "Psychology",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\",
+      "BasePath": "_content/Psychology",
+      "RelativePath": "assets/js/ckeditor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\ckeditor.js"
     },
     {
       "Identity": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-2.2.4.min.js",

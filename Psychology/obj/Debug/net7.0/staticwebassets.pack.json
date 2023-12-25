@@ -233,6 +233,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\cdn.jsdelivr.net_npm_bootstrap@5.3.2_dist_js_bootstrap.bundle.min.js"
     },
     {
+      "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\ckeditor.js",
+      "PackagePath": "staticwebassets\\assets\\js\\ckeditor.js"
+    },
+    {
       "Id": "C:\\Users\\Dear User\\Desktop\\wibsit\\Project\\Psychology\\Psychology\\wwwroot\\assets\\js\\jquery-2.2.4.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\jquery-2.2.4.min.js"
     },

@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PC.Dto.Psychologist.Article.CreateArticle
 @{
+    ViewData["Title"] = "افزودن مقاله";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <form asp-controller="Profile" asp-action="CreateArticle" class="container-fluid">
+            <input type="hidden" asp-for="PsychologistId" value="@ViewData["PsychologistId"]" />
+            <input type="hidden" asp-for="CreatedAt" value="@ViewBag.DateTiem" />
+            <section class="row">
+                <section class="col-7">
+                    <label asp-for="Title"></label>
+                    <input class="cusotm-form-controle" placeholder="عنوان" asp-for="Title" type="text">
+                    <span class="text-info" asp-validation-for="Title"></span>
+                </section>
+                <section class="col-12">
+                    <label asp-for="Text"></label>
+                    <textarea asp-for="Text" class="cusotm-form-controle" rows="7"></textarea>
+                    <span class="text-info" asp-validation-for="Text"></span>
+                </section>
+            </section>
+            <button class="btn btn-custom w-100 mt-3" type="submit"> ثبت اطلاعات </button>
+        </form>
+    </section>
+</section>
+@section Scripts
+{
+    <partial name="_NICEditor" />
+    <partial name="_ValidationScriptsPartial" />
 }

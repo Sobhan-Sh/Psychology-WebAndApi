@@ -28,4 +28,6 @@ public interface IArticlesService
     Task<BaseResult> ActiveAsync(int Id);
 
     Task<BaseResult> DeActiveAsync(int Id);
+
+    Task<BaseResult> RestorAsync(int Id);
 }

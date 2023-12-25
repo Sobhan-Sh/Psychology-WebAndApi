@@ -1,0 +1,36 @@
+﻿@model PC.Dto.Psychologist.PsychologistAboutUs.EditPsychologistAboutUs
+@{
+    ViewData["Title"] = "جزئیات درباره من";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    @* @User.FindFirst("Token") *@
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <!--* card -->
+        <section class="card mx-auto pt-5 pb-3 card-profile-form">
+            <!--* title card -->
+            <section class="card-title">
+                <h3>
+                    درباره من
+                </h3>
+            </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body px-0">
+                <section class="row px-5">
+                    <section class="col-7">
+                        <label asp-for="Title" class="mb-2"></label>
+                        @Model.Title
+                    </section>
+                    <section class="col-12 py-3">
+                        <label asp-for="TextAbout" class="mb-2"></label>
+                        @Html.Raw(Model.TextAbout)
+                    </section>
+                </section>
+                <a asp-action="EditAbout" asp-route-AboutId="@Model.Id" class="btn btn-custom ms-5 mt-3"> ویرایش </a>
+            </section>
+        </section>
+    </section>
+</section>

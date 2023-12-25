@@ -90,6 +90,28 @@ a {
     text-decoration: none;
 }
 
+.nicEdit-pane > div > div > *,
+.nicEdit-selectTxt {
+    color: black !important;
+}
+
+.nicEdit-main {
+    background: #5353534d;
+    padding: 7px;
+}
+
+    .nicEdit-main:before {
+        content: '';
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: #00ffffa3;
+        filter: blur(12px);
+        border-radius: 50%;
+        z-index: -1;
+        border-bottom: 8px solid #ffffff;
+    }
+
 .custom_alert {
     min-height: 67px;
     width: 560px;
@@ -321,26 +343,26 @@ header nav div div div ul.navbar-nav li.nav-item a.nav-link {
     outline: 0;
 }
 
-.cusotm-form-controle.inValid {
-    border-color: var(--darkMode-notValid) !important;
-}
+    .cusotm-form-controle.inValid {
+        border-color: var(--darkMode-notValid) !important;
+    }
 
-.cusotm-form-controle::placeholder,
-.card-profile-form .cusotm-form-controle::placeholder,
-.card-register-form .card .cusotm-form-controle::placeholder,
-.card-login-form .card .cusotm-form-controle::placeholder,
-.card-visit-form .card .cusotm-form-controle::placeholder {
-    color: var(--darkMode-light-background);
-    text-align: center;
-}
+    .cusotm-form-controle::placeholder,
+    .card-profile-form .cusotm-form-controle::placeholder,
+    .card-register-form .card .cusotm-form-controle::placeholder,
+    .card-login-form .card .cusotm-form-controle::placeholder,
+    .card-visit-form .card .cusotm-form-controle::placeholder {
+        color: var(--darkMode-light-background);
+        text-align: center;
+    }
 
-.cusotm-form-controle:focus,
-.card-profile-form .cusotm-form-controle:focus,
-.card-register-form .card .cusotm-form-controle:focus,
-.card-login-form .card .cusotm-form-controle:focus,
-.card-visit-form .card .cusotm-form-controle:focus {
-    border-color: var(--darkMode-primary);
-}
+    .cusotm-form-controle:focus,
+    .card-profile-form .cusotm-form-controle:focus,
+    .card-register-form .card .cusotm-form-controle:focus,
+    .card-login-form .card .cusotm-form-controle:focus,
+    .card-visit-form .card .cusotm-form-controle:focus {
+        border-color: var(--darkMode-primary);
+    }
 
 .card-profile-form hr,
 .card-question-form .card hr,
@@ -826,3 +848,12 @@ div:where(.swal2-icon).swal2-warning {
     div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content {
         color: #ff9f4b !important;
     }
+
+.text_description {
+    line-height: 21px;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+}

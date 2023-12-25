@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PC.Dto.Psychologist.PsychologistAboutUs.PsychologistAboutUsViewModel>
+@{
+    ViewData["Title"] = "درباره من";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <partial name="_RenderMessage" model='new RenderMessage(){TextMessage=ViewData["RenderMessage"] as string}' />
+        @if (Model.Any())
+        {
+            <table class="table not-backdrop-filter">
+                <thead>
+                    <tr>
+                        <th scope="col"> عنوان </th>
+                        <th scope="col"> متن در باره من </th>
+                        <th scope="col"> تارخ ثبت </th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> @Model.FirstOrDefault().Title </td>
+                        <td><section class="text_description"> @Html.Raw(Model.FirstOrDefault().TextAbout) </section></td>
+                        <td> @Model.FirstOrDefault().CreatedAt </td>
+                        <td> <a asp-action="DeleteAbout" asp-route-AboutId="@Model.FirstOrDefault().Id" class="btn btn-danger btn-sm"> حذف </a> <a asp-action="EditAbout" asp-route-AboutId="@Model.FirstOrDefault().Id" class="btn btn-sm btn-warning"> ویرایش </a> <a asp-action="DetailsAboutMy" asp-route-AboutId="@Model.FirstOrDefault().Id" class="btn btn-sm btn-info"> جزئیات </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <a class="btn btn-success mb-2" asp-action="CreateAboutUs"> افزودن درباره من </a>
+            <section class="alert alert-info">
+                <h6> شما هنوز در باره خود چیزی نگفتید </h6>
+            </section>
+        }
+    </section>
+</section>

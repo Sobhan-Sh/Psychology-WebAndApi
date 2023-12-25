@@ -18,6 +18,7 @@ public class Article : BaseEntity
         Title = title;
         Text = text;
         UpdatedAt = DateTime.Now;
+        IsActive = false;
     }
 
     public void Delete()
@@ -33,5 +34,10 @@ public class Article : BaseEntity
     public void DeActive()
     {
         IsActive = false;
+    }
+
+    public void Resotr()
+    {
+        IsDeleted = false;
     }
 }

@@ -32,6 +32,8 @@ public class Psychologist : BaseEntity
 
     public List<Article> Articles { get; set; }
 
+    public List<PsychologistAboutUs> AboutUsList { get; set; }
+
     public void Edit(int age, string nationalCode, string? evidencePath, DateTime? dateOfBirth, string? medicalLicennseCode)
     {
         Age = age;

@@ -6,6 +6,7 @@ using PC.Dto.Patient;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
 using PC.Dto.Psychologist.Article;
+using PC.Dto.Psychologist.PsychologistAboutUs;
 using PC.Dto.User;
 using PC.Dto.User.Gender;
 using PC.Service.IService.DiscountAndOrder;
@@ -27,10 +28,11 @@ namespace Psychology.Controllers
         private readonly IPatientService _petientService;
         private readonly IDiscountService _discountService;
         private readonly IArticlesService _articlesService;
+        private readonly IPsychologistAboutUsService _psychologistAboutUs;
 
         private static string RenderMessageStatic;
 
-        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService)
+        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService, IPsychologistAboutUsService psychologistAboutUs)
         {
             _userService = userService;
             _genderService = genderService;
@@ -39,6 +41,7 @@ namespace Psychology.Controllers
             _petientService = petientService;
             _discountService = discountService;
             _articlesService = articlesService;
+            _psychologistAboutUs = psychologistAboutUs;
         }
 
         [Route("/Profile")]
@@ -94,7 +97,15 @@ namespace Psychology.Controllers
             return View();
         }
 
-        #region PsychologistProfile
+        #region PsychologistProfile 
+
+        public async Task<IActionResult> MyIncome()
+        {
+            BaseResult<List<MyIncome>> result = await _ipsychologistService.MyIncome(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
+        #region Patient
 
         public async Task<IActionResult> MyPatient()
         {
@@ -159,11 +170,9 @@ namespace Psychology.Controllers
             return RedirectToAction("MyPatient");
         }
 
-        public async Task<IActionResult> MyIncome()
-        {
-            BaseResult<List<MyIncome>> result = await _ipsychologistService.MyIncome(_authHelper.CurrentAccountId());
-            return View(result.Data);
-        }
+        #endregion
+
+        #region Discount
 
         public async Task<IActionResult> DiscountPatient(int patientId)
         {
@@ -185,13 +194,19 @@ namespace Psychology.Controllers
             return RedirectToAction("DiscountPatient", new { patientId = patientId });
         }
 
+        #endregion
+
+        #region Article
+
         public async Task<IActionResult> MyArticles()
         {
             BaseResult<List<ArticleViewModel>> result = await _articlesService.GetAllAsync(new SearchArticle()
             {
                 PsychologistId = _authHelper.CurrentAccountId()
             });
-            if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
+            if (RenderMessageStatic == null)
+                RenderMessageStatic = "";
+            else if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
             {
                 ViewData["RenderMessage"] = RenderMessageStatic;
                 RenderMessageStatic = "";
@@ -203,6 +218,7 @@ namespace Psychology.Controllers
         public IActionResult CreateArticle()
         {
             ViewData["PsychologistId"] = _authHelper.CurrentAccountId();
+            ViewBag.DateTiem = DateTime.Now.ToString();
             return View();
         }
 
@@ -221,16 +237,18 @@ namespace Psychology.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EditArticle()
+        public async Task<IActionResult> EditArticle(int articleId)
         {
-            BaseResult<EditArticle> response = await _articlesService.GetAsync(_authHelper.CurrentAccountId());
-            if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
+            BaseResult<EditArticle> response = await _articlesService.GetAsync(articleId);
+            if (RenderMessageStatic == null)
+                RenderMessageStatic = "";
+            else if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
             {
                 ViewData["RenderMessage"] = RenderMessageStatic;
                 RenderMessageStatic = "";
             }
 
-            return View();
+            return View(response.Data);
         }
 
         [HttpPost]
@@ -245,8 +263,110 @@ namespace Psychology.Controllers
             }
 
             ViewData["PsychologistId"] = _authHelper.CurrentAccountId();
-            return RedirectToAction("EditArticle");
+            return RedirectToAction("EditArticle", new { articleId = article.Id });
         }
+
+        public async Task<IActionResult> DetailsArticle(int articleId)
+        {
+            BaseResult<EditArticle> response = await _articlesService.GetAsync(articleId);
+            return View(response.Data);
+        }
+
+        public async Task<IActionResult> DeleteArticle(int articleId)
+        {
+            BaseResult response = await _articlesService.DeleteAsync(articleId);
+            RenderMessageStatic = response.Message;
+            return RedirectToAction("MyArticles");
+        }
+
+        public async Task<IActionResult> RestorArticle(int articleId)
+        {
+            BaseResult response = await _articlesService.RestorAsync(articleId);
+            RenderMessageStatic = response.Message;
+            return RedirectToAction("MyArticles");
+        }
+
+        #endregion
+
+        #region AboutUs
+
+        public async Task<IActionResult> AboutMy()
+        {
+            BaseResult<List<PsychologistAboutUsViewModel>> result = await _psychologistAboutUs.GetAllAsync(
+                new SearchPsychologistAboutUs()
+                {
+                    PsychologistId = _authHelper.CurrentAccountId()
+                });
+            if (!string.IsNullOrWhiteSpace(RenderMessageStatic))
+            {
+                ViewData["RenderMessage"] = RenderMessageStatic;
+                RenderMessageStatic = "";
+            }
+
+            return View(result.Data);
+        }
+
+        public IActionResult CreateAboutUs()
+        {
+            ViewBag.DateTime = DateTime.Now.ToString();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAboutUs(CreatePsychologistAboutUs aboutUs)
+        {
+            RenderMessageStatic = "فیلد های مورده خالی هستند";
+            if (ModelState.IsValid)
+            {
+                aboutUs.PsychologistId = _authHelper.CurrentAccountId();
+                BaseResult response = await _psychologistAboutUs.CreateAsync(aboutUs);
+                RenderMessageStatic = response.Message;
+                if (response.IsSuccess) return RedirectToAction("AboutMy");
+            }
+
+            ViewBag.DateTime = DateTime.Now.ToString();
+            ViewData["RenderMessage"] = RenderMessageStatic;
+            RenderMessageStatic = "";
+            return View();
+        }
+
+        public async Task<IActionResult> EditAbout(int AboutId)
+        {
+            BaseResult<EditPsychologistAboutUs> response = await _psychologistAboutUs.GetAsync(AboutId);
+            return View(response.Data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditAbout(EditPsychologistAboutUs aboutUs)
+        {
+            RenderMessageStatic = "فیلد های مورده خالی هستند";
+            if (ModelState.IsValid)
+            {
+                BaseResult response = await _psychologistAboutUs.UpdateAsync(aboutUs);
+                RenderMessageStatic = response.Message;
+                if (response.IsSuccess)
+                    return RedirectToAction("AboutMy");
+            }
+
+            ViewData["RenderMessage"] = RenderMessageStatic;
+            RenderMessageStatic = "";
+            return View();
+        }
+
+        public async Task<IActionResult> DetailsAboutMy(int AboutId)
+        {
+            BaseResult<EditPsychologistAboutUs> response = await _psychologistAboutUs.GetAsync(AboutId);
+            return View(response.Data);
+        }
+
+        public async Task<IActionResult> DeleteAbout(int AboutId)
+        {
+            BaseResult response = await _psychologistAboutUs.DeleteAsync(AboutId);
+            RenderMessageStatic = response.Message;
+            return RedirectToAction("AboutMy");
+        }
+
+        #endregion
 
         #endregion
     }

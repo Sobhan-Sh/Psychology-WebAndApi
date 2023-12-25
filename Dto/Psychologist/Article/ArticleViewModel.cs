@@ -1,6 +1,8 @@
-﻿namespace PC.Dto.Psychologist.Article;
+﻿using PC.Utility.Dto;
 
-public class ArticleViewModel
+namespace PC.Dto.Psychologist.Article;
+
+public class ArticleViewModel : BaseDto
 {
     public int PsychologistId { get; set; }
 

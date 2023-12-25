@@ -2,7 +2,7 @@
 @if (!string.IsNullOrWhiteSpace(Model.TextMessage))
 {
     <div class="custom_alert mt-2 border-2 animation_rotate_custome border-info position-fixed top-0 start-50 custom_alert_primary w-50">
-        <div class="icon__wrapper" onclick="this.remove()">
+        <div class="icon__wrapper" onclick="document.querySelector('.custom_alert').remove()">
             <span class="mdi mdi-alert-outline"></span>
         </div>
         <p class="mb-0"> @Model.TextMessage </p>

@@ -41,6 +41,9 @@ public class ValidationMessage
     public const string RecordDelete = "این فیلد حذف شده";
     public const string SuccessPayment = "عملیات پرداخت موفقیت آمیز بود";
     public const string SuccessChangeToPatient = "کاربر با موفقیت به بیمار تبدیل شد";
+    public const string SuccessCreateArticle = "مقاله شما باموفقیت اضافه و پس از تایید ادمین نمایش داده خواهد شد";
+    public const string SuccessUpdateArticle = "مقاله شما با موفقیت بروزرسانی شد و پس از تایید ادمین نمایش داده خواهد شد";
+    public const string SuccessRestor = "فیلد درخواست شده بازیابی شد";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

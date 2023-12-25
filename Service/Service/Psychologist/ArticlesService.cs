@@ -49,7 +49,8 @@ public class ArticlesService : IArticlesService
                 {
                     IsSuccess = false,
                     Message = ValidationMessage.Vacant,
-                    StatusCode = ValidationCode.Success
+                    StatusCode = ValidationCode.Success,
+                    Data = new List<ArticleViewModel>()
                 };
 
             return new()
@@ -135,7 +136,6 @@ public class ArticlesService : IArticlesService
                 StatusCode = ValidationCode.BadRequest
             };
         }
-
     }
 
     public async Task<BaseResult> CreateAsync(CreateArticle command)
@@ -165,7 +165,7 @@ public class ArticlesService : IArticlesService
             return new()
             {
                 IsSuccess = true,
-                Message = ValidationMessage.SuccessCreate,
+                Message = ValidationMessage.SuccessCreateArticle,
                 StatusCode = ValidationCode.Success
             };
         }
@@ -197,7 +197,7 @@ public class ArticlesService : IArticlesService
             await _articlesRepository.SaveAsync();
             return new()
             {
-                Message = ValidationMessage.SuccessUpdate,
+                Message = ValidationMessage.SuccessUpdateArticle,
                 StatusCode = ValidationCode.Success,
                 IsSuccess = true
             };
@@ -284,6 +284,27 @@ public class ArticlesService : IArticlesService
         {
             IsSuccess = true,
             Message = ValidationMessage.SuccessDeActive,
+            StatusCode = ValidationCode.Success
+        };
+    }
+
+    public async Task<BaseResult> RestorAsync(int Id)
+    {
+        Article psychologist = await _articlesRepository.GetAsync(x => x.Id == Id);
+        if (psychologist == null)
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.RecordNotFound,
+                StatusCode = ValidationCode.NotFound
+            };
+
+        psychologist.Resotr();
+        await _articlesRepository.SaveAsync();
+        return new()
+        {
+            IsSuccess = true,
+            Message = ValidationMessage.SuccessRestor,
             StatusCode = ValidationCode.Success
         };
     }
