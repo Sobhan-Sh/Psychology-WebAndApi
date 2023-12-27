@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using PC.Utility.Domain;
-using PD.Entity.Patient;
+using PD.Entity.Psychologist;
 
 namespace PD.Entity.User
 {

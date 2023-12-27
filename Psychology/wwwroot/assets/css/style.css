@@ -857,3 +857,246 @@ div:where(.swal2-icon).swal2-warning {
     overflow: hidden;
     -webkit-line-clamp: 5;
 }
+
+.chat_cart {
+    padding: 10px 25px;
+    background: #00000087;
+    backdrop-filter: blur(15px);
+    height: 50vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+    .chat_cart + .selectListImage_upload {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--darkMode-back-card);
+        height: 68%;
+        width: 68%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-44%);
+        border-radius: 13px;
+        align-items: center;
+    }
+
+        .chat_cart + .selectListImage_upload section {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            backdrop-filter: blur(13px);
+            border-radius: 13px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+            .chat_cart + .selectListImage_upload section + button {
+                width: 130px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .chat_cart + .selectListImage_upload section + button svg {
+                    margin-left: 7px;
+                }
+
+            .chat_cart + .selectListImage_upload section span {
+                background-color: var(--darkMode-background-input);
+                margin: 7px;
+                padding: 5px;
+                border-radius: 13px;
+                position: relative;
+            }
+
+                .chat_cart + .selectListImage_upload section span img {
+                    max-width: 250px;
+                    display: block;
+                    max-width: 170px;
+                    max-height: 170px;
+                    border-radius: 13px;
+                }
+
+                .chat_cart + .selectListImage_upload section span svg {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 40px;
+                    background-color: var(--darkMode-background-input);
+                    padding: 6px;
+                    border-radius: 10px;
+                    stroke: rgb(222 5 5 / 67%);
+                    transition: .3s;
+                    cursor: pointer;
+                }
+
+                    .chat_cart + .selectListImage_upload section span svg:hover {
+                        stroke: var(--darkMode-notValid);
+                    }
+
+    .chat_cart:before {
+        position: absolute;
+        background: #7000ff;
+        filter: blur(11px);
+        top: 58%;
+        left: 55px;
+        border-radius: 50%;
+        width: 153px;
+        height: 153px;
+        content: '';
+        z-index: -16;
+        opacity: 0.5;
+    }
+
+    .chat_cart:after {
+        position: absolute;
+        background: #00b6ff;
+        filter: blur(11px);
+        top: 10%;
+        right: 55px;
+        border-radius: 50%;
+        width: 153px;
+        height: 153px;
+        content: '';
+        z-index: -16;
+        opacity: 0.5;
+    }
+
+    .chat_cart section {
+        padding: 15px 25px;
+        display: flex;
+        justify-content: end;
+    }
+
+        .chat_cart section.description_image span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end
+        }
+
+        .chat_cart section.description_image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 13px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .chat_cart section:not(.chat_me) span {
+            transition: translateX .3s;
+            animation: translate .5s linear;
+        }
+
+@keyframes translate {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.chat_cart section.chat_me {
+    justify-content: start
+}
+
+    .chat_cart section.chat_me span {
+        animation: translate_chat_me .5s linear;
+    }
+
+@keyframes translate_chat_me {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+.chat_cart section span {
+    background: var(--darkMode-background-input);
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 0px 17px 17px 17px;
+    max-width: 380px;
+    font-size: 16px;
+}
+
+.chat_cart section.chat_me span {
+    background: var(--primary);
+    border-radius: 17px 0px 17px 17px;
+}
+
+.chat_cart section.gallery_image span {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+    .chat_cart section.gallery_image span img {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        border-radius: 13px;
+        margin: 5px 0;
+    }
+
+.btn_send_dataChat {
+    flex-direction: row-reverse;
+    padding: 0px 20px
+}
+
+    .btn_send_dataChat button {
+        width: 42px;
+        height: 57px;
+        margin: 0 5px;
+        background: none;
+        border: none;
+        display: block;
+        position: relative;
+    }
+
+        .btn_send_dataChat button svg {
+            width: 30px;
+        }
+
+        .btn_send_dataChat button:first-of-type {
+            margin-left: 10px;
+            display: none;
+        }
+
+            .btn_send_dataChat button:first-of-type svg {
+                fill: var(--primary);
+            }
+
+        .btn_send_dataChat button:last-of-type svg {
+            fill: #35aa52;
+        }
+
+        .btn_send_dataChat button:last-of-type input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            opacity: 0;
+        }
+
+    .btn_send_dataChat.keyDown_active button:first-of-type {
+        display: inline-block;
+    }
+
+    .btn_send_dataChat.keyDown_active button:last-of-type {
+        display: none;
+    }

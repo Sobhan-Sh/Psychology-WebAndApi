@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using PC.Dto.account;
 using PC.Ioc;
 using PC.Utility.Bootstrapper;
+using Psychology.Controllers.Chat;
 using Psychology.Middleware;
 using ZarinPal.Class;
 
@@ -40,7 +41,7 @@ builder.Services.TestConfig(builder.Configuration.GetConnectionString("Psycholog
 builder.Services.UtitlityConfig();
 
 #endregion
-builder.Services.AddTransient<Payment>();
+// builder.Services.AddTransient<Payment>();
 
 builder.Services.AddMemoryCache();
 
@@ -55,6 +56,8 @@ builder.Services.AddAuthentication(option =>
         option.LoginPath = new PathString("/Accounts/Login");
         option.ExpireTimeSpan = TimeSpan.FromDays(1);
     });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -75,7 +78,7 @@ else
     });
 }
 
-app.UseRequestRateLimit(50, TimeSpan.FromMinutes(1));
+app.UseRequestRateLimit(60, TimeSpan.FromMinutes(1));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -92,5 +95,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<PsychologistConversation>("/chatHub");
+
 app.UseCors("Psychology");
 app.Run();

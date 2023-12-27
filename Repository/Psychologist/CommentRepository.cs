@@ -1,9 +1,9 @@
 ﻿using PC.Context;
-using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
 using PC.Utility.Data;
-using PD.Entity.Patient;
+using PD.Entity.Psychologist;
 
-namespace PD.Repositories.Patient;
+namespace PD.Repositories.Psychologist;
 
 public class CommentRepository : GenericRepository<Comment>, ICommentRepository
 {

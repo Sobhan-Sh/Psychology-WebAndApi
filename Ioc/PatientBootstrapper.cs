@@ -2,9 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using PC.Context;
 using PC.Service.IRepository.Patient;
+using PC.Service.IRepository.Psychologist;
 using PC.Service.IService.Patient;
 using PC.Service.Service.Patient;
 using PD.Repositories.Patient;
+using PD.Repositories.Psychologist;
 
 namespace PC.Ioc;
 

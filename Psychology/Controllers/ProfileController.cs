@@ -18,7 +18,7 @@ using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -364,6 +364,21 @@ namespace Psychology.Controllers
             BaseResult response = await _psychologistAboutUs.DeleteAsync(AboutId);
             RenderMessageStatic = response.Message;
             return RedirectToAction("AboutMy");
+        }
+
+        #endregion
+
+        #region Comment
+
+        public IActionResult Chat(int patientId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FileUpload(IFormFile file)
+        {
+            return Json(new { success = true, message = file });
         }
 
         #endregion

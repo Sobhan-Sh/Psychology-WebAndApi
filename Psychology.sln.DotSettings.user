@@ -3,6 +3,7 @@
   &lt;Assembly Path="C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\7.0.11\ref\net7.0\Microsoft.AspNetCore.Mvc.TagHelpers.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=200741E2_002DF84C_002D421C_002DA21A_002D52E3CFACC982_002Fd_003Awwwroot_002Fd_003Aassets_002Fd_003Ajs_002Ff_003AAnswerHandel_002Ejs/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=200741E2_002DF84C_002D421C_002DA21A_002D52E3CFACC982_002Fd_003Awwwroot_002Fd_003Aassets_002Fd_003Ajs_002Ff_003Ackeditor_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=200741E2_002DF84C_002D421C_002DA21A_002D52E3CFACC982_002Fd_003Awwwroot_002Fd_003Aassets_002Fd_003Ajs_002Ff_003Apersian_002Ddate_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=200741E2_002DF84C_002D421C_002DA21A_002D52E3CFACC982_002Fd_003Awwwroot_002Fd_003Aassets_002Fd_003Ajs_002Ff_003Apersian_002Ddatepicker_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=200741E2_002DF84C_002D421C_002DA21A_002D52E3CFACC982_002Fd_003Awwwroot_002Fd_003Aassets_002Fd_003Ajs_002Ff_003APreviewImage_002Ejs/@EntryIndexedValue">True</s:Boolean>
