@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Discount\" />
-    <Folder Include="Psychologist\Comment\" />
     <Folder Include="Patient\PatientFile\" />
     <Folder Include="Psychologist\Article\" />
     <Folder Include="Psychologist\PsychologistWorkingDays\" />

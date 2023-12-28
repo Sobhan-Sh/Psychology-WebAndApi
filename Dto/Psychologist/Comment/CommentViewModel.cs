@@ -1,5 +1,4 @@
 ﻿using PC.Dto.Patient;
-using PC.Dto.Psychologist;
 using PC.Dto.User;
 using PC.Utility.Domain;
 
@@ -11,9 +10,11 @@ public class CommentViewModel : BaseEntity
 
     public string? ObjPath { get; set; }
 
-    public PatientViewModel? Patient { get; set; }
+    public PatientViewModel? PatientViewModel { get; set; }
 
-    public PsychologistViewModel Psychologist { get; set; }
+    public PsychologistViewModel PsychologistViewModel { get; set; }
 
-    public UserViewModel? AdUser { get; set; }
+    public UserViewModel? UserViewModel { get; set; }
+
+    public int Sender { get; set; }
 }

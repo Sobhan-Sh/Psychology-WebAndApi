@@ -20,4 +20,6 @@ public class Comment : BaseEntity
     public int? UserId { get; set; }
     [ForeignKey("UserId")]
     public User.User? AdUser { get; set; }
+
+    public int Sender { get; set; }
 }

@@ -13,4 +13,6 @@ public class CreateComment : BaseDto
     public int PsychologistId { get; set; }
 
     public int? UserId { get; set; }
+
+    public int Sender { get; set; }
 }

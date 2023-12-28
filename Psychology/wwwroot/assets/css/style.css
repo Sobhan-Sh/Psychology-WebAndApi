@@ -1100,3 +1100,41 @@ div:where(.swal2-icon).swal2-warning {
     .btn_send_dataChat.keyDown_active button:last-of-type {
         display: none;
     }
+
+.dragAndDropImage_upload {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--darkMode-back-card);
+    height: 68%;
+    width: 68%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-44%);
+    border-radius: 13px;
+    align-items: center;
+    padding: 6px;
+}
+
+    .dragAndDropImage_upload span {
+        background: transparent;
+        height: 83%;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        background-color: var(--darkMode-back-card);
+        backdrop-filter: blur(8px);
+        left: 50%;
+        transform: translate(-50%,-60%);
+        border-radius: 18px;
+        z-index: -1;
+        border: 3px dashed #ff9966;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .dragAndDropImage_upload span svg {
+            width: 80px;
+        }

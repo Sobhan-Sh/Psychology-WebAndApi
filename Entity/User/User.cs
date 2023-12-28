@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using PC.Utility.Domain;
+﻿using PC.Utility.Domain;
 using PD.Entity.Psychologist;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PD.Entity.User
 {
@@ -71,12 +71,17 @@ namespace PD.Entity.User
 
         public string FullName()
         {
-            return FName + LName;
+            return FName + "_" + LName;
         }
 
         public void ChangeAuth(int roleId)
         {
             RoleID = roleId;
+        }
+
+        public string FullNameInCreateFolder()
+        {
+            return FName.Replace(" ", "_") + "_" + LName.Replace(" ", "_");
         }
     }
 }

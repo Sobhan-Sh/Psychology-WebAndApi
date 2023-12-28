@@ -22,6 +22,7 @@ public static class PsychologistBootstrapper
         services.AddTransient<IPsychologistTypeOfConsultationRepository, PsychologistTypeOfConsultationRepository>();
         services.AddTransient<IArticlesRepository, ArticlesRepository>();
         services.AddTransient<IPsychologistAboutUsRepository, PsychologistAboutUsRepository>();
+        services.AddTransient(typeof(ICommentRepository), typeof(CommentRepository));
         // Services
         services.AddTransient(typeof(IPsychologistService), typeof(PsychologistService));
         services.AddTransient(typeof(IPsychologistWorkingDateAndTimeService), typeof(PsychologistWorkingDateAndTimeService));
@@ -31,6 +32,7 @@ public static class PsychologistBootstrapper
         services.AddTransient(typeof(IPsychologistTypeOfConsultationService), typeof(PsychologistTypeOfConsultationService));
         services.AddTransient(typeof(IArticlesService), typeof(ArticlesService));
         services.AddTransient(typeof(IPsychologistAboutUsService), typeof(PsychologistAboutUsService));
+        services.AddTransient(typeof(ICommentService), typeof(CommentService));
         // Return Service IOC
         return services;
     }

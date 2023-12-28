@@ -1,10 +1,9 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using PC.Dto.Psychologist;
 using PC.Dto.Role;
 using PC.Dto.User.Gender;
 using PC.Utility.Dto;
+using System.ComponentModel.DataAnnotations;
 
 namespace PC.Dto.User;
 
@@ -45,5 +44,10 @@ public class UserViewModel : BaseDto
     public string FullName()
     {
         return this.FName + " " + this.LName;
+    }
+
+    public string FullNameInCreateFolder()
+    {
+        return FName.Replace(" ", "_") + "_" + LName.Replace(" ", "_");
     }
 }

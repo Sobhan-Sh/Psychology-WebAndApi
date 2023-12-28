@@ -6,6 +6,7 @@ using PC.Dto.Patient;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
 using PC.Dto.Psychologist.Article;
+using PC.Dto.Psychologist.Comment;
 using PC.Dto.Psychologist.PsychologistAboutUs;
 using PC.Dto.User;
 using PC.Dto.User.Gender;
@@ -18,7 +19,7 @@ using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -29,10 +30,11 @@ namespace Psychology.Controllers
         private readonly IDiscountService _discountService;
         private readonly IArticlesService _articlesService;
         private readonly IPsychologistAboutUsService _psychologistAboutUs;
+        private readonly ICommentService _commentService;
 
         private static string RenderMessageStatic;
 
-        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService, IPsychologistAboutUsService psychologistAboutUs)
+        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService, IPsychologistAboutUsService psychologistAboutUs, ICommentService commentService)
         {
             _userService = userService;
             _genderService = genderService;
@@ -42,6 +44,7 @@ namespace Psychology.Controllers
             _discountService = discountService;
             _articlesService = articlesService;
             _psychologistAboutUs = psychologistAboutUs;
+            _commentService = commentService;
         }
 
         [Route("/Profile")]
@@ -370,15 +373,27 @@ namespace Psychology.Controllers
 
         #region Comment
 
-        public IActionResult Chat(int patientId)
+        public async Task<IActionResult> Chat(int patientId)
         {
-            return View();
+            BaseResult<List<CommentViewModel>> result = await _commentService.GetAllAsync(new SearchComment()
+            {
+                PaitentId = patientId,
+                PsychologistId = _authHelper.CurrentAccountId()
+            });
+            ViewBag.ArrayId = new int[] { patientId, _authHelper.CurrentAccountId() };
+            return View(result.Data);
         }
 
         [HttpPost]
-        public IActionResult FileUpload(IFormFile file)
+        public async Task<IActionResult> FileUpload(int patientId, List<IFormFile> files)
         {
-            return Json(new { success = true, message = file });
+            if (patientId > 0 && files.Any())
+            {
+                BaseResult<ResultUploadFileChat> result = await _commentService.CreateFileAsync(patientId, _authHelper.CurrentAccountId(), _authHelper.CurrentAccountId(), files);
+                return Json(new { success = true, message = result.Message, files = result.Data });
+            }
+
+            return Json(new { success = false, message = "بیلاخ" });
         }
 
         #endregion
