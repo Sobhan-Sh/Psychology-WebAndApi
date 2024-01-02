@@ -90,6 +90,52 @@ public class CommentService : ICommentService
         }
     }
 
+    public async Task<BaseResult<List<CommentViewModel>>> GetAllFileInPaitent(int Id)
+    {
+        try
+        {
+            if (!await _petientRepository.IsExistAsync(x => x.UserId == Id))
+                return new()
+                {
+                    IsSuccess = false,
+                    Data = new(),
+                    StatusCode = ValidationCode.NotFound,
+                    Message = ValidationMessage.RecordNotFound
+                };
+
+            IEnumerable<Comment> query = await _commentRepository.GetAllAsync(x => x.Patient.UserId == Id && x.Text == null, "Patient.User,Psychologist.User.Gender");
+            if (!query.Any())
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success,
+                    Data = new List<CommentViewModel>()
+                };
+
+            foreach (var comment in query)
+            {
+                comment.ObjPath = $"/PatientsFile/{comment.Patient.User.FullNameInCreateFolder()}/{comment.ObjPath}";
+            }
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAll,
+                Data = _mapper.Map<List<CommentViewModel>>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult> CreateAsync(CreateComment command)
     {
         try

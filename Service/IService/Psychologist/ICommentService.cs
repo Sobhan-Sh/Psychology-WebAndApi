@@ -8,6 +8,8 @@ public interface ICommentService
 {
     Task<BaseResult<List<CommentViewModel>>> GetAllAsync(SearchComment search);
 
+    Task<BaseResult<List<CommentViewModel>>> GetAllFileInPaitent(int Id);
+
     Task<BaseResult> CreateAsync(CreateComment command);
 
     Task<BaseResult<ResultUploadFileChat>> CreateFileAsync(int patientId, int psychologistId, int sender, List<IFormFile> files);

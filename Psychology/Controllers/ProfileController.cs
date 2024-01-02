@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PC.Dto.Discount;
 using PC.Dto.Order;
 using PC.Dto.Patient;
+using PC.Dto.Patient.PatientFile;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
 using PC.Dto.Psychologist.Article;
@@ -20,7 +21,7 @@ using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers
 {
-    // [Authorize]
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -398,7 +399,7 @@ namespace Psychology.Controllers
                 return Json(new { success = true, message = result.Message, files = result.Data, id = result.Data.ListFilesId });
             }
 
-            return Json(new { success = false, message = "بیلاخ" });
+            return Json(new { success = false, message = "مقدار خالی است" });
         }
 
         [HttpPost]
@@ -410,7 +411,7 @@ namespace Psychology.Controllers
                 return Json(new { success = true, message = result.Message, id = result.Data });
             }
 
-            return Json(new { success = false, message = "بیلاخ" });
+            return Json(new { success = false, message = "مقدار خالی است" });
         }
 
         [HttpPost]
@@ -422,7 +423,7 @@ namespace Psychology.Controllers
                 return Json(new { success = true, message = result.Message });
             }
 
-            return Json(new { success = false, message = "بیلاخ👍👍" });
+            return Json(new { success = false, message = "مقدار خالی است" });
         }
 
         public async Task<IActionResult> PsychologistMyChatAll()
@@ -452,6 +453,12 @@ namespace Psychology.Controllers
         public async Task<IActionResult> ChatPatient(int psychologistId)
         {
             BaseResult<List<OrderViewModel>> result = await _orderService.GetAllAsync(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
+        public async Task<IActionResult> MyPatientFile()
+        {
+            BaseResult<List<CommentViewModel>> result = await _commentService.GetAllFileInPaitent(_authHelper.CurrentAccountId());
             return View(result.Data);
         }
 

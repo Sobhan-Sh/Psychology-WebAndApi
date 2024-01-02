@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PC.Dto.Psychologist.Comment.CommentViewModel>
+@{
+    ViewData["Title"] = "فایل های من";
+}
+
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <!--* card -->
+        <section class="card mx-auto pt-5 pb-3 card-profile-form">
+            <!--* title card -->
+            <section class="card-title">
+                <h3>
+                    پرونده های من
+                </h3>
+            </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body px-0 row">
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="card col-3 m-2">
+                            <img src="@item.ObjPath" class="card-img-top" alt="فایل">
+                            <div class="card-body">
+                                <a href="@item.ObjPath" class="card-text"> download </a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <span>
+                        هیچ پرونده ای تشکیل نشده
+                    </span>
+                }
+            </section>
+        </section>
+    </section>
+</section>
