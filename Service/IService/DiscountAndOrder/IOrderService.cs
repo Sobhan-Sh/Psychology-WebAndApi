@@ -7,6 +7,7 @@ public interface IOrderService
 {
     public Task<BaseResult<List<OrderViewModel>>> GetAllAsync();
     public Task<BaseResult<List<OrderViewModel>>> GetAllAsync(SearchOrder f);
+    public Task<BaseResult<List<OrderViewModel>>> GetAllAsync(int Id) ;
 
     #region CRUD
 

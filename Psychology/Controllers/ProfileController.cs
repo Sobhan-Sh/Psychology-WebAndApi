@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PC.Dto.Discount;
+using PC.Dto.Order;
 using PC.Dto.Patient;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
@@ -19,7 +20,7 @@ using PC.Utility.ReturnFuncResult;
 
 namespace Psychology.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
@@ -31,10 +32,12 @@ namespace Psychology.Controllers
         private readonly IArticlesService _articlesService;
         private readonly IPsychologistAboutUsService _psychologistAboutUs;
         private readonly ICommentService _commentService;
+        private readonly IOrderService _orderService;
+        private readonly IPatientTurnService _petientTurnService;
 
         private static string RenderMessageStatic;
 
-        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService, IPsychologistAboutUsService psychologistAboutUs, ICommentService commentService)
+        public ProfileController(IUserService userService, IGenderService genderService, IPsychologistService ipsychologistService, IAuthHelper authHelper, IPatientService petientService, IDiscountService discountService, IArticlesService articlesService, IPsychologistAboutUsService psychologistAboutUs, ICommentService commentService, IOrderService orderService, IPatientTurnService petientTurnService)
         {
             _userService = userService;
             _genderService = genderService;
@@ -45,6 +48,8 @@ namespace Psychology.Controllers
             _articlesService = articlesService;
             _psychologistAboutUs = psychologistAboutUs;
             _commentService = commentService;
+            _orderService = orderService;
+            _petientTurnService = petientTurnService;
         }
 
         [Route("/Profile")]
@@ -390,13 +395,65 @@ namespace Psychology.Controllers
             if (patientId > 0 && files.Any())
             {
                 BaseResult<ResultUploadFileChat> result = await _commentService.CreateFileAsync(patientId, _authHelper.CurrentAccountId(), _authHelper.CurrentAccountId(), files);
-                return Json(new { success = true, message = result.Message, files = result.Data });
+                return Json(new { success = true, message = result.Message, files = result.Data, id = result.Data.ListFilesId });
             }
 
             return Json(new { success = false, message = "بیلاخ" });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SendMessage(int patientId, string message)
+        {
+            if (!string.IsNullOrWhiteSpace(message) && patientId > 0)
+            {
+                BaseResult<string> result = await _commentService.CreateMessageAsync(patientId, _authHelper.CurrentAccountId(), _authHelper.CurrentAccountId(), message);
+                return Json(new { success = true, message = result.Message, id = result.Data });
+            }
+
+            return Json(new { success = false, message = "بیلاخ" });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IsVisitedComment(string commentId)
+        {
+            if (commentId.Length > 0)
+            {
+                BaseResult result = await _commentService.IsVisitedAsync(commentId);
+                return Json(new { success = true, message = result.Message });
+            }
+
+            return Json(new { success = false, message = "بیلاخ👍👍" });
+        }
+
+        public async Task<IActionResult> PsychologistMyChatAll()
+        {
+            BaseResult<List<CommentViewModel>> result = await _ipsychologistService.GetAllCommentAsync(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
         #endregion
+
+        #endregion
+
+        #region Patient
+
+        public async Task<IActionResult> PatientOrder()
+        {
+            BaseResult<List<OrderViewModel>> result = await _orderService.GetAllAsync(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
+        public async Task<IActionResult> MyPsychologist()
+        {
+            BaseResult<List<PsychologistViewModel>> result = await _petientTurnService.FindPsychologistByPatientIdAsync(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
+
+        public async Task<IActionResult> ChatPatient(int psychologistId)
+        {
+            BaseResult<List<OrderViewModel>> result = await _orderService.GetAllAsync(_authHelper.CurrentAccountId());
+            return View(result.Data);
+        }
 
         #endregion
     }

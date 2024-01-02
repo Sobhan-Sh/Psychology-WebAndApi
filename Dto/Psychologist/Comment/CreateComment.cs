@@ -15,4 +15,6 @@ public class CreateComment : BaseDto
     public int? UserId { get; set; }
 
     public int Sender { get; set; }
+
+    public bool IsVisit { get; set; }
 }

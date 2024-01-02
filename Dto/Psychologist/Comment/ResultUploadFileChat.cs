@@ -3,4 +3,6 @@
 public class ResultUploadFileChat
 {
     public List<string> ListFilesPath { get; set; }
+
+    public string ListFilesId { get; set; }
 }

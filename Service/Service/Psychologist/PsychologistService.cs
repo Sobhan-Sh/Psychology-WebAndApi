@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.Comment;
 using PC.Service.IRepository.DiscountAndOrder;
 using PC.Service.IRepository.Patient;
 using PC.Service.IRepository.Psychologist;
@@ -10,6 +11,7 @@ using PC.Utility.ReturnFuncResult;
 using PC.Utility.UploadFileTools;
 using PC.Utility.Validation;
 using PD.Entity.DiscountAndOrder;
+using PD.Entity.Psychologist;
 
 namespace PC.Service.Service.Psychologist;
 
@@ -20,15 +22,17 @@ public class PsychologistService : IPsychologistService
     private readonly IUserRepository _userRepository;
     private readonly IPatientTurnRepository _turnRepository;
     private readonly IDiscountRepository _discountRepository;
+    private readonly ICommentRepository _commentRepository;
     private IMapper _mapper;
 
-    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IPatientTurnRepository turnRepository, IDiscountRepository discountRepository, IMapper mapper)
+    public PsychologistService(IPsychologistRepository psychologistRepository, IPatientRepository patientRepository, IUserRepository userRepository, IPatientTurnRepository turnRepository, IDiscountRepository discountRepository, ICommentRepository commentRepository, IMapper mapper)
     {
         _psychologistRepository = psychologistRepository;
         _patientRepository = patientRepository;
         _userRepository = userRepository;
         _turnRepository = turnRepository;
         _discountRepository = discountRepository;
+        _commentRepository = commentRepository;
         _mapper = mapper;
     }
 
@@ -453,6 +457,46 @@ public class PsychologistService : IPsychologistService
                 StatusCode = ValidationCode.Success,
                 IsSuccess = true,
                 Data = Mapping.Mapping.ConvertPatientTurnToMyIncomesMapping(patientTurns.ToList())
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorUpdate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<CommentViewModel>>> GetAllCommentAsync(int Id)
+    {
+        try
+        {
+            IEnumerable<Comment> query = await _commentRepository.GetAllAsync(x => x.PsychologistId == Id, "Psychologist,Patient.User.Gender");
+            List<Comment> comments = new();
+            foreach (var comment in query)
+            {
+                if (!comments.Any(x => x.PaitentId == comment.PaitentId))
+                    comments.Add(comment);
+            }
+
+            if (!comments.Any())
+                return new()
+                {
+                    Data = new(),
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            return new()
+            {
+                Message = ValidationMessage.SuccessGet,
+                StatusCode = ValidationCode.Success,
+                IsSuccess = true,
+                Data = _mapper.Map<List<CommentViewModel>>(comments.Distinct().ToList())
             };
         }
         catch (Exception e)

@@ -15,17 +15,16 @@ public class PsychologistConversation : Hub
     public async Task CreateRoom(List<int> Room)
     {
         string NameRoom = await _chatRoomService.CreateRoomInChat(Room[0], Room[1]);
-        // TODO : چک شود اگر 2 تا کلاینت ها رفتند اتاق درست شده پاک شود
         await Groups.AddToGroupAsync(Context.ConnectionId, NameRoom);
     }
 
-    public async Task SendMessage(List<int> Room, string user, string message)
+    public async Task SendMessage(List<int> Room, string message, string commentId)
     {
-        await Clients.Group(await _chatRoomService.Get(Room[0], Room[1])).SendAsync("ReceiveMessage", user, message);
+        await Clients.Group(await _chatRoomService.Get(Room[0], Room[1])).SendAsync("ReceiveMessage", message, commentId);
     }
 
-    public async Task PrintListFile(List<int> Room, List<string> ListFile)
+    public async Task PrintListFile(List<int> Room, List<string> ListFile, string commentId)
     {
-        await Clients.Group(await _chatRoomService.Get(Room[0], Room[1])).SendAsync("ResultPrintListFile", ListFile);
+        await Clients.Group(await _chatRoomService.Get(Room[0], Room[1])).SendAsync("ResultPrintListFile", commentId, ListFile);
     }
 }

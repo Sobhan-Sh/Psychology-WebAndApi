@@ -17,4 +17,6 @@ public class CommentViewModel : BaseEntity
     public UserViewModel? UserViewModel { get; set; }
 
     public int Sender { get; set; }
+
+    public bool IsVisit { get; set; }
 }

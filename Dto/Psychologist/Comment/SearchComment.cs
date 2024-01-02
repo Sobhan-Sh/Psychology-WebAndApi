@@ -7,4 +7,6 @@ public class SearchComment
     public int? PsychologistId { get; set; }
 
     public int? UserId { get; set; }
+
+    public bool IsVisit { get; set; }
 }

@@ -22,4 +22,11 @@ public class Comment : BaseEntity
     public User.User? AdUser { get; set; }
 
     public int Sender { get; set; }
+
+    public bool IsVisit { get; set; }
+
+    public void IsVisited()
+    {
+        IsVisit = true;
+    }
 }

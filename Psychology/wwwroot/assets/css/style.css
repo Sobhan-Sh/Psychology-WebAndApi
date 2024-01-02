@@ -1072,7 +1072,6 @@ div:where(.swal2-icon).swal2-warning {
 
         .btn_send_dataChat button:first-of-type {
             margin-left: 10px;
-            display: none;
         }
 
             .btn_send_dataChat button:first-of-type svg {
@@ -1138,3 +1137,88 @@ div:where(.swal2-icon).swal2-warning {
         .dragAndDropImage_upload span svg {
             width: 80px;
         }
+
+.discounected {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgb(0 12 59 / 46%);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .discounected h2 {
+        margin-top: -23%;
+        margin-bottom: 23%;
+        display: block;
+        padding: 20px;
+        text-align: center;
+        line-height: 80px;
+    }
+
+    .discounected button {
+        padding: 13px 17px;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid var(--primary);
+        background-color: var(--primary);
+        transition: .3s;
+    }
+
+        .discounected button svg {
+            width: 30px;
+            margin-left: 8px;
+            animation: tikeRotate 1.2s infinite linear;
+        }
+
+@keyframes tikeRotate {
+    0% {
+        transform: rotateZ(10deg);
+    }
+
+    25% {
+        transform: rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateZ(-10deg);
+    }
+
+    75% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(10deg);
+    }
+}
+
+.discounected button:focus,
+.discounected button:hover {
+    background-color: #007cffbf;
+}
+
+    .discounected button:focus svg,
+    .discounected button:hover svg {
+        animation: rotRotate 2s infinite linear;
+    }
+
+@keyframes rotRotate {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}

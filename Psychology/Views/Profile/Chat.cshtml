@@ -32,7 +32,7 @@
                     "<section class='col-12'><span>",
                     "<section class='col-12 chat_me'><span>",
                         };
-                        string gallery = startTagArray[0];
+                        string gallery = "";
                         string html = "";
                         string endTag = "</span></section>";
                         if (Model != null && Model.Any())
@@ -41,6 +41,9 @@
                             {
                                 if (!string.IsNullOrWhiteSpace(models[i].ObjPath))
                                 {
+                                    if (gallery == "")
+                                        gallery = startTagArray[0];
+
                                     if (models[i].Sender == ArrayId[1] && !gallery.Contains("gallery_image chat_me"))
                                         gallery = gallery.Replace("gallery_image", "gallery_image chat_me");
 
@@ -51,10 +54,13 @@
                                 else
                                 if (!string.IsNullOrWhiteSpace(models[i].Text))
                                 {
-                                    if (gallery.Any(x => x.ToString() != "<section class='col-12 gallery_image'><span>"))
+                                    if (gallery.Contains("<section class='col-12 gallery_image"))
                                     {
+                                        // if (html == "" || !html.Contains("<section class='col-12 gallery_image"))
+                                            html += gallery;
+
                                         html += endTag;
-                                        gallery = startTagArray[0] + "";
+                                        gallery = "";
                                     }
 
                                     html += $"{startTagArray[models[i].Sender == ArrayId[1] ? 2 : 1]}{models[i].Text}{endTag}";
@@ -63,7 +69,7 @@
                         }
                     }
                     @Html.Raw(html)
-                    @*  <section class="col-12">
+                    @* <section class="col-12">
                     <span>
                     سلام اقای دکتر من حیدری هستم.
                     <br />
@@ -101,9 +107,8 @@
                     </span>
                     </section>*@
                 </section>
-
+                
             </section>
-
             <section class="selectListImage_upload d-none">
                 <section></section>
                 <button type="button" onclick="UploadFiles()" class="btn btn-custom d-flex my-2">
@@ -113,7 +118,6 @@
                     ارسال
                 </button>
             </section>
-
             <section class="dragAndDropImage_upload d-none">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -121,61 +125,74 @@
                     </svg>
                 </span>
             </section>
-
+            <section class="discounected d-none">
+                <h2>
+                    اوپسس !.
+                    <br />
+                    <p>
+                        به نظر میرسد که ارتباط شما قطع شده!
+                    </p>
+                </h2>
+                <button onclick="ResetConnection()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                    بر قراری ارتباط
+                </button>
+            </section>
             <!-- keyDown_active  -->
             <section class="btn_send_dataChat d-flex align-items-center">
-                <input placeholder="سخن بگو" class="cusotm-form-controle" id="message" />
-                <button>
+                <textarea class="cusotm-form-controle" rows="1" id="message"></textarea>
+                <button class="btn_send d-none" onclick="SendMessage()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
                     </svg>
                 </button>
-                <button>
+                <button class="btn_file">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd" d="M18.97 3.659a2.25 2.25 0 0 0-3.182 0l-10.94 10.94a3.75 3.75 0 1 0 5.304 5.303l7.693-7.693a.75.75 0 0 1 1.06 1.06l-7.693 7.693a5.25 5.25 0 1 1-7.424-7.424l10.939-10.94a3.75 3.75 0 1 1 5.303 5.304L9.097 18.835l-.008.008-.007.007-.002.002-.003.002A2.25 2.25 0 0 1 5.91 15.66l7.81-7.81a.75.75 0 0 1 1.061 1.06l-7.81 7.81a.75.75 0 0 0 1.054 1.068L18.97 6.84a2.25 2.25 0 0 0 0-3.182Z" clip-rule="evenodd" />
                     </svg>
                     <input id="InputFileList" multiple type="file" accept=".jpg,.jpeg,.png" />
                 </button>
             </section>
+
         </section>
     </section>
 </section>
-
-<section class="mx-auto container">
-
-
-
-
-
-    <div>
-        <ul id="messagesList"></ul>
-    </div>
-    <div class="mx-auto d-flex flex-column">
-        @*         <input class="form-control my-1" type="text" id="userInput" placeholder="Enter your name" />
-        <input class="form-control my-1" type="text" id="messageInput" placeholder="Enter your message" />
-        <button class="btn btn-primary btn-sm my-1" id="sendButton">Send</button>
-        *@
-        <input type="file" id="fileInput" />
-        <button id="uploadBtn">Upload</button>
-    </div>
-</section>
-
 @section Scripts
 {
-    <script src="/js/signalr/dist/browser/signalr.min.js"></script>
-
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
     <script>
         "use strict";
         var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
         let arrayRoomID = [Number($("#PatientId").val()), Number($("#PsychologistId").val())];
-        connection.start().then(() => {
-            connection.invoke("CreateRoom", arrayRoomID).catch(function (err) {
+        let discounected = $(".discounected");
+        var timer = null;
+        const StartConnection = () => {
+            connection.start().then(() => {
+                discounected.addClass("d-none");
+                if (timer != null)
+                    clearInterval(timer);
+
+                connection.invoke("CreateRoom", arrayRoomID).catch(function (err) {
+                    return console.error(err.toString());
+                });
+            }).catch(function (err) {
                 return console.error(err.toString());
             });
-        }).catch(function (err) {
-            return console.error(err.toString());
+        }
+        connection.onclose((error) => {
+            discounected.removeClass("d-none");
+            console.log(error);
         });
 
+        const ResetConnection = () => {
+            timer = setInterval(() => {
+                StartConnection();
+            }, 2000);
+        }
+
+        StartConnection();
         let chat_cart_child = $(".chat_cart>section");
         let imageSection = $(".selectListImage_upload section");
         let dragAndDropImage_upload = $(".dragAndDropImage_upload");
@@ -197,14 +214,19 @@
                 e.preventDefault();
                 dragAndDropImage_upload.addClass('d-none');
                 $(this).removeClass('highlight');
-
-                // Get dropped files
                 var files = e.originalEvent.dataTransfer.files;
-
-                // Process dropped images
                 processImages(files);
             });
 
+        const CheckButtonSend = () => {
+            if ($("#message").val().length > 0) {
+                btn_file.addClass("d-none");
+                btn_send.removeClass("d-none");
+            } else {
+                btn_send.addClass("d-none");
+                btn_file.removeClass("d-none");
+            }
+        }
 
         $(InputFileList).on("change",
             (event) => {
@@ -254,7 +276,7 @@
             if (files && files.length > 0) {
                 let form = new FormData();
 
-                form.append("patientId", $("#PatientId").val());
+                form.append("patientId", arrayRoomID[0]);
                 for (var i = 0; i < files.length; i++) {
                     var filePath = files[i].webkitRelativePath || files[i].name;
                     form.append("files", files[i], filePath);
@@ -274,57 +296,14 @@
                         imageSection.empty();
                         InputFileList.val(null);
                         statusMessage = "Me";
-                        connection.invoke("PrintListFile", arrayRoomID, response.files.listFilesPath).catch(function (err) {
+                        connection.invoke("PrintListFile", arrayRoomID, response.files.listFilesPath, response.id).catch((err) => {
                             return console.error(err.toString());
                         });
-                    } else {
+                    } else
                         console.log(response.message);
-                    }
                 });
             }
         }
-
-
-        $(document).ready(function () {
-            // زمانی که دکمه‌ای با id="uploadBtn" کلیک شود
-            $("#uploadBtn").on("click",
-                function () {
-                    // المان ورودی فایل را بگیرید
-                    var fileInput = $("#fileInput")[0];
-
-                    // چک کنید که المان ورودی فایل فعال است و حاوی حداقل یک فایل است
-                    if (fileInput && fileInput.files.length > 0 && fileInput.files[0]) {
-                        // اگر فایل انتخاب شده است، اطلاعات فرم را جمع‌آوری کنید
-                        var form = new FormData();
-                        var filePath = fileInput.files[0].webkitRelativePath || fileInput.files[0].name;
-
-                        form.append("file", fileInput.files[0], filePath);
-
-                        // تنظیمات برای ارسال به سمت سرور
-                        var settings = {
-                            "url": "https://localhost:44321/Profile/FileUpload",
-                            "method": "POST",
-                            "timeout": 0,
-                            "headers": {
-                                "Cookie": ".AspNetCore.Antiforgery.XK-DWU278lE=CfDJ8D-aNHRHrCBPgY2sZ0d73IuI_jY1fFMJf1yrIsjolWUG8aZBZZwloA_uhTpmnMazSloMealxYdOHeYuntBrXaL2zS9aVgl6hbMMztKxZ2iRpxbSE_d_zTT2Gj9eM7GKbwqnXqA9uErl79RMyTKbDLQY"
-                            },
-                            "processData": false,
-                            "mimeType": "multipart/form-data",
-                            "contentType": false,
-                            "data": form
-                        };
-
-                        // ارسال درخواست به سمت سرور
-                        $.ajax(settings).done(function (response) {
-                            // نتیجه را در کنسول چاپ کنید
-                            console.log(response);
-                        });
-                    } else {
-                        // اگر المان ورودی فایل غیرفعال است یا حاوی فایل نیست، یک پیام خطا یا اعلان را نمایش دهید
-                        alert("Please select a file before clicking the upload button.");
-                    }
-                });
-        });
 
         const RenderHTML_CreateImgList = (item) => {
             let html = "";
@@ -335,22 +314,100 @@
         }
 
         connection.on("ResultPrintListFile",
-            (listFile) => {
+            (listId, listFile) => {
+                if (statusMessage !== "Me")
+                    VisitedComment(listId);
+
                 chat_cart_child.append(`<section class="col-12 gallery_image${statusMessage === "Me" ? " chat_me" : ""}"><span>` + RenderHTML_CreateImgList(listFile) + "</span></section>");
                 statusMessage = "";
             });
 
         connection.on("ReceiveMessage",
-            function (user, message) {
-                var li = document.createElement("li");
-                document.getElementById("messagesList").appendChild(li);
-                li.textContent = `${user} says ${message}`;
+            (message, id) => {
+                if (statusMessage !== "Me")
+                    VisitedComment(id);
+
+                textarea.val("");
+                updateTextareaHeight();
+                CheckButtonSend();
+                chat_cart_child.append(`<section class="col-12${statusMessage === "Me" ? " chat_me" : ""}"><span>${message}</span></section>`);
+                statusMessage = "";
             });
 
 
-        // connection.invoke("SendMessage", user, message).catch(function (err) {
-        //     return console.error(err.toString());
-        // });
+        const VisitedComment = (commentId) => {
+            let form = new FormData();
+            form.append("commentId", commentId);
+            let settings = {
+                "url": "/Profile/IsVisitedComment",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "contentType": false,
+                "data": form
+            };
+            $.ajax(settings).done((response) => {
+                console.log(response.message);
+            });
+        }
 
+        var textarea = $('#message');
+        var btn_send = $('.btn_send');
+        var btn_file = $('.btn_file');
+
+        textarea.on('keydown',
+            (e) => {
+                if (e.shiftKey && e.keyCode === 13) {
+                    e.preventDefault();
+                    textarea.val(textarea.val() + '\n');
+                }
+                if (e.keyCode === 13)
+                    e.preventDefault();
+
+                updateTextareaHeight();
+            });
+
+        textarea.on('keyup',
+            function (e) {
+                if (!e.shiftKey && e.keyCode === 13) {
+                    e.preventDefault();
+                    SendMessage();
+                } else
+                    updateTextareaHeight();
+
+                CheckButtonSend();
+            });
+
+        const updateTextareaHeight = () => {
+            let lines = textarea.val().split('\n').length;
+            let minHeight = 28;
+            textarea.height(Math.max(lines * minHeight, minHeight));
+        }
+
+        const SendMessage = () => {
+            let form = new FormData();
+            let mes = textarea.val().replace(/\n+$/, "");
+            mes = mes.replace(/\n(?=\n|$)/g, "<br />");
+            form.append("message", mes);
+            form.append("patientId", arrayRoomID[0]);
+            let settings = {
+                "url": "/Profile/SendMessage",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "contentType": false,
+                "data": form
+            };
+
+            $.ajax(settings).done((response) => {
+                if (response.success) {
+                    statusMessage = "Me";
+                    connection.invoke("SendMessage", arrayRoomID, mes, response.id).catch((err) => {
+                        return console.error(err.toString());
+                    });
+                } else
+                    console.log(response.message);
+            });
+        }
     </script>
 }

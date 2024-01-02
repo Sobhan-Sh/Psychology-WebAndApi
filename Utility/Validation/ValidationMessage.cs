@@ -45,6 +45,9 @@ public class ValidationMessage
     public const string SuccessUpdateArticle = "مقاله شما با موفقیت بروزرسانی شد و پس از تایید ادمین نمایش داده خواهد شد";
     public const string SuccessRestor = "فیلد درخواست شده بازیابی شد";
     public const string SuccessCreateFileComment = "فایل با موفقیت اپلود شد";
+    public const string SuccessCreateComment = "پیام شما ذخیره شد";
+    public const string SuccessVisitedComment = "این پیام دیده شد";
+    public const string Empty = "هیچ مقداری ارسال نشده";
 
     public const string Blocked = "کاربر بلاک شد";
     public const string OnBlocked = "حساب فعال شد";

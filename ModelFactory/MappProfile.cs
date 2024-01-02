@@ -168,6 +168,7 @@ public class MappProfile : Profile
                 .ForMember(x => x.Order, x => x.MapFrom(sub => sub.OrderViewModels))
                 .ForMember(x => x.Discount, x => x.MapFrom(sub => sub.DiscountViewModels))
                 .ForMember(x => x.User, x => x.MapFrom(sub => sub.UserViewModel))
+                .ForPath(x => x.User.Gender, x => x.MapFrom(sub => sub.UserViewModel.GenderViewModel))
                 .ForMember(x => x.PsychologistWorkingDateAndTime, x => x.MapFrom(sub => sub.PsychologistWorkingDateAndTimeViewModels))
                 .ReverseMap();
 

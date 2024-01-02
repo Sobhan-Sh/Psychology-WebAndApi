@@ -17,14 +17,16 @@ public class OrderService : IOrderService
     private readonly IDiscountRepository _discountRepository;
     private readonly ITestRepository _testRepository;
     private readonly IPatientTurnRepository _patientTurnRepository;
+    private readonly IPatientRepository _patientRepository;
     private IMapper _mapper;
 
-    public OrderService(IOrderRepository orderRepository, IDiscountRepository discountRepository, ITestRepository testRepository, IPatientTurnRepository patientTurnRepository, IMapper mapper)
+    public OrderService(IOrderRepository orderRepository, IDiscountRepository discountRepository, ITestRepository testRepository, IPatientTurnRepository patientTurnRepository, IPatientRepository patientRepository, IMapper mapper)
     {
         _orderRepository = orderRepository;
         _discountRepository = discountRepository;
         _testRepository = testRepository;
         _patientTurnRepository = patientTurnRepository;
+        _patientRepository = patientRepository;
         _mapper = mapper;
     }
 
@@ -81,13 +83,13 @@ public class OrderService : IOrderService
             {
                 if (f.TotalAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
-                
+
                 if (f.IsPaid == null)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.IsPaid == f.IsPaid, include: "Patient,Psychologist,Test,PatientTurn"));
-              
+
                 if (f.PayAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.PayAmount >= f.PayAmount, include: "Patient,Psychologist,Test,PatientTurn"));
-               
+
                 if (f.TotalAmount > 0)
                     query.AddRange(await _orderRepository.GetAllAsync(x => x.TotalAmount >= f.TotalAmount, include: "Patient,Psychologist,Test,PatientTurn"));
 
@@ -114,6 +116,46 @@ public class OrderService : IOrderService
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGetAllSearch(query.Distinct().Count()),
                 Data = _mapper.Map<List<OrderViewModel>>(query.Distinct()),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<List<OrderViewModel>>()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<List<OrderViewModel>>> GetAllAsync(int Id)
+    {
+        try
+        {
+            if (!await _patientRepository.IsExistAsync(x => x.Id == Id))
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+
+            IEnumerable<Order> query = await _orderRepository.GetAllAsync(x => x.Patient.UserId == Id, "PatientTurn,Psychologist.PsychologistWorkingDateAndTime.PsychologistWorkingHours,Psychologist.User.Gender");
+            if (!query.Any())
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAllSearch(query.Count()),
+                Data = Mapping.Mapping.ConvertOrderToOrderViewModels(query.ToList()),
                 StatusCode = ValidationCode.Success
             };
         }

@@ -1,0 +1,124 @@
+﻿@model IEnumerable<PC.Dto.Order.OrderViewModel>
+@{
+    ViewData["Title"] = "فاکتورها";
+    int counter = 1;
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <aside class="col-11 col-md-3 mx-auto mx-md-0">
+        <partial name="_NavbarProfile" />
+    </aside>
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        @if (ViewData["RenderMessage"] != null)
+        {
+            <div class="custom_alert mt-2 border-2 animation_rotate_custome border-info position-fixed top-0 start-50 custom_alert_primary w-50">
+                <div class="icon__wrapper" onclick="this.remove()">
+                    <span class="mdi mdi-alert-outline"></span>
+                </div>
+                <p class="mb-0"> @ViewData["RenderMessage"] </p>
+            </div>
+        }
+        @if (Model.Any())
+        {
+            <table class="table not-backdrop-filter">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"> تاریخ ویزیت </th>
+                        <th scope="col"> وضعیت ویزیت </th>
+                        <th scope="col"> مبلغ </th>
+                        <th scope="col"> مبلغ کل تخفیف </th>
+                        <th scope="col"> مبلغ کل بدون تخفیف </th>
+                        <th scope="col"> کدام روانشناس </th>
+                        <th scope="col"> حالت پرداخت </th>
+                        @* <th scope="col"> </th> *@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderByDescending(x => x.Id))
+                    {
+                        <tr>
+                            <th> @counter </th>
+                            <th> @item.ConsultationDay?.ToString("yyyy/MM/dd") </th>
+                            <th>
+                                @if (item.PatientTurnViewModel.IsCanseled)
+                                {
+                                    <span class="badge text-bg-warning">
+                                        لغو شده
+                                    </span>
+                                }
+                                else
+                                {
+                                    if (item.ConsultationDay >= DateTime.Now)
+                                    {
+                                        <span class="badge text-bg-info"> در جریان است </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-warning"> از تاریخ ان گذشته </span>
+                                    }
+                                }
+                            </th>
+                            <td>
+                                @if (item.PayAmount > 0)
+                                {
+                                    <span>
+                                        @item.PayAmount?.ToString("n0")
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>
+                                        @item.TotalAmount.ToString("n0")
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.DiscountAmount > 0)
+                                {
+                                    <span class="badge text-bg-success"> @item.DiscountAmount </span>
+                                }
+                                else
+                                {
+                                    <span class="badge text-bg-primary"> بدون تخفیف </span>
+                                }
+                            </td>
+                            <td>
+                                @item.TotalAmount.ToString("#,0")
+                            </td>
+                            <td> @($"{item.PsychologistViewModel.UserViewModel.GenderViewModel.Name.Replace("آقا", "آقای")} {item.PsychologistViewModel.UserViewModel.FullName()}") </td>
+                            <td>
+                                @if (item.IsPaid)
+                                {
+                                    <span class="badge text-bg-success"> پرداخت شده </span>
+                                }
+                                else
+                                {
+                                    <span class="badge text-bg-danger"> پرداخت نشده </span>
+                                }
+                            </td>
+                            @*   <td>
+                    <div class="dropdown dropstart">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    امکانات
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item active" asp-controller="Profile" asp-action="Chat" asp-route-patientId="@item.PatientViewModel.Id"> چت با بیمار </a></li>
+                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="DiscountPatient" asp-route-patientId="@item.PatientViewModel.Id"> تخفیف </a></li>
+                    </ul>
+                    </div>
+                    </td>
+                    *@
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <section class="alert alert-info">
+                <h6> شما هنوز فاکتوری ندارید! </h6>
+            </section>
+        }
+    </section>
+</section>

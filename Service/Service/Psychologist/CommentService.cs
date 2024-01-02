@@ -146,7 +146,8 @@ public class CommentService : ICommentService
                     Data = new()
                 };
 
-            List<string> path = new List<string>();
+            List<string> path = new();
+            List<Comment> listComment = new();
             foreach (IFormFile file in files)
             {
                 if (file.IsCheckFile())
@@ -156,7 +157,7 @@ public class CommentService : ICommentService
                     // check && upload file
                     file.AddFileToServer(file.FileName, pathFilePatient, null, null);
                     path.Add(SD.BaseUrlProject + "PatientsFile/" + patient.User.FullNameInCreateFolder() + "/" + file.FileName);
-                    await _commentRepository.CreateAsync(new()
+                    listComment.Add(await _commentRepository.ReturnCreateAsync(new()
                     {
                         PaitentId = patientId,
                         PsychologistId = psychologistId,
@@ -164,7 +165,8 @@ public class CommentService : ICommentService
                         IsActive = true,
                         Sender = sender,
                         ObjPath = file.FileName,
-                    });
+                        IsVisit = false
+                    }));
                 }
                 else
                     return new()
@@ -177,6 +179,14 @@ public class CommentService : ICommentService
             }
 
             await _commentRepository.SaveAsync();
+            string commmentId = "";
+            for (int i = 0; i < listComment.Count; i++)
+            {
+                if (i == 0)
+                    commmentId = listComment[i].Id.ToString();
+                else
+                    commmentId += "," + listComment[i].Id.ToString();
+            }
             return new()
             {
                 IsSuccess = true,
@@ -184,8 +194,98 @@ public class CommentService : ICommentService
                 StatusCode = ValidationCode.Success,
                 Data = new()
                 {
-                    ListFilesPath = path
+                    ListFilesPath = path,
+                    ListFilesId = commmentId
                 }
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<string>> CreateMessageAsync(int patientId, int psychologistId, int sender, string Message)
+    {
+        try
+        {
+            PD.Entity.Patient.Patient patient = await _petientRepository.GetAsync(x => x.Id == patientId, include: "User");
+            if (patient == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    StatusCode = ValidationCode.NotFound,
+                    Message = ValidationMessage.RecordNotFound,
+                };
+
+            Comment query = await _commentRepository.ReturnCreateAsync(new()
+            {
+                PaitentId = patientId,
+                CreatedAt = DateTime.Now,
+                IsActive = true,
+                Text = Message,
+                PsychologistId = psychologistId,
+                Sender = sender,
+                IsDeleted = false,
+                IsVisit = false
+            });
+            await _commentRepository.SaveAsync();
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCreateComment,
+                StatusCode = ValidationCode.Success,
+                Data = query.Id.ToString()
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult> IsVisitedAsync(string Id)
+    {
+        try
+        {
+            if (Id.Length < 1)
+                return new()
+                {
+                    IsSuccess = false,
+                    StatusCode = ValidationCode.BadRequest,
+                    Message = ValidationMessage.Empty,
+                };
+
+            foreach (string num in Id.Split(','))
+            {
+                Comment query = await _commentRepository.GetAsync(x => x.Id == Convert.ToInt32(num));
+                if (query == null)
+                    return new()
+                    {
+                        IsSuccess = false,
+                        Message = ValidationMessage.RecordNotFound,
+                        StatusCode = ValidationCode.NotFound,
+                    };
+
+                query.IsVisited();
+            }
+
+            await _commentRepository.SaveAsync();
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessVisitedComment,
+                StatusCode = ValidationCode.Success,
             };
         }
         catch (Exception e)

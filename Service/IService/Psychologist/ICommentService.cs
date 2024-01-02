@@ -11,4 +11,8 @@ public interface ICommentService
     Task<BaseResult> CreateAsync(CreateComment command);
 
     Task<BaseResult<ResultUploadFileChat>> CreateFileAsync(int patientId, int psychologistId, int sender, List<IFormFile> files);
+
+    Task<BaseResult<string>> CreateMessageAsync(int patientId, int psychologistId, int sender, string Message);
+
+    Task<BaseResult> IsVisitedAsync(string Id);
 }

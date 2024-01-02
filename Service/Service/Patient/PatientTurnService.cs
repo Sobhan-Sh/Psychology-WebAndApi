@@ -125,7 +125,7 @@ public class PatientTurnService : IPatientTurnService
     {
         try
         {
-            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.PatientId == Id, include: "PsychologistWorkingDateAndTime.Psychologist");
+            IEnumerable<PatientTurn> query = await _patientTurnRepository.GetAllAsync(x => x.Patient.UserId == Id, include: "PsychologistWorkingDateAndTime.Psychologist.User.Gender");
             if (query == null)
             {
                 return new BaseResult<List<PsychologistViewModel>>
@@ -139,7 +139,8 @@ public class PatientTurnService : IPatientTurnService
             List<PsychologistViewModel> listPsychologist = new List<PsychologistViewModel>();
             foreach (var item in query)
             {
-                listPsychologist.Add(_mapper.Map<PsychologistViewModel>(item.PsychologistWorkingDateAndTime.Psychologist));
+                if (!listPsychologist.Any(x => x.UserViewModel.Id == item.PsychologistWorkingDateAndTime.Psychologist.UserId))
+                    listPsychologist.Add(Mapping.Mapping.ConvertPsychologistToPsychologistViewModel(item.PsychologistWorkingDateAndTime.Psychologist));
             }
             return new BaseResult<List<PsychologistViewModel>>
             {
@@ -336,7 +337,7 @@ public class PatientTurnService : IPatientTurnService
 
             int patienId = 0, discountWithMoney = 0, discountWithPercentage = 0, price = 0, BasePrice = 120000 + psychologistTypeOfConsultation.TypeOfConsultation.Price;
             //TODO : ما اینجا باید محاسبه کنیم قیمت مشاوره رو بر اساس ساعت
-            PD.Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.User.Phone == command.Phone && x.User.RoleID == RoleHelper.Patient_Id);
+            PD.Entity.Patient.Patient user = await _patientRepository.GetAsync(x => x.User.Phone == command.Phone && x.User.RoleID == RoleHelper.Patient_Id, "User");
             if (user != null)
             {
                 patienId = user.Id;

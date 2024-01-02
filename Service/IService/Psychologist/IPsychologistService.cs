@@ -1,5 +1,6 @@
 ﻿using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
+using PC.Dto.Psychologist.Comment;
 using PC.Utility.ReturnFuncResult;
 
 namespace PC.Service.IService.Psychologist;
@@ -27,4 +28,5 @@ public interface IPsychologistService
     public Task<BaseResult> DeActiveAsync(int Id);
     public Task<BaseResult<IsCheckedUser>> IsChecked(int Id);
     public Task<BaseResult<List<MyIncome>>> MyIncome(int Id);
+    public Task<BaseResult<List<CommentViewModel>>> GetAllCommentAsync(int Id);
 }
