@@ -244,6 +244,68 @@ public class UserService : IUserService
         }
     }
 
+    public async Task<BaseResult<int>> ReturnCreateAsync(CreateUser command)
+    {
+        try
+        {
+            if (command == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.IsRequired,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            if (await _userRepository.IsExistAsync(x => x.Phone == command.Phone))
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.DuplicatedRecord,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            if (command.ImageUser != null)
+            {
+                if (command.ImageUser.IsCheckFile())
+                {
+                    string imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(command.ImageUser.FileName);
+                    command.ImageUser.AddFileToServer(imageName, PathExtention.UserAvatarOriginServer, 100, 100, true, null);
+                    command.Avatar = imageName;
+                }
+                else
+                {
+                    return new() { IsSuccess = false, Message = ValidationMessage.InvalidFileFormat, StatusCode = ValidationCode.BadRequest };
+                }
+            }
+
+            var passwordHasher = new PasswordHasher();
+            command.Password = passwordHasher.HashPassword(command.Password);
+            command.RoleID = 2;
+            command.IsActive = false;
+            command.MobailActiveStatus = false;
+            command.ActivationCode = Guid.NewGuid().ToString();
+            PD.Entity.User.User user = await _userRepository.ReturnCreateAsync(_mapper.Map<PD.Entity.User.User>(command));
+            await _userRepository.SaveAsync();
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCreate,
+                StatusCode = ValidationCode.Success,
+                Data = user.Id
+            };
+        }
+        catch (Exception e)
+        {
+            UploadImageExtension.DeleteImage(command.Avatar, PathExtention.UserAvatarOriginServer, null);
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult> UpdateAsync(EditUser command)
     {
         try
@@ -442,7 +504,7 @@ public class UserService : IUserService
         }
 
         var passwordHasher = new PasswordHasher();
-        if (query.Password != passwordHasher.HashPassword(command.Password))
+        if (passwordHasher.VerifyPassword(query.Password, command.Password))
             return new BaseResult
             {
                 IsSuccess = false,

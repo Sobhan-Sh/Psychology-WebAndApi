@@ -134,7 +134,7 @@ public class OrderService : IOrderService
     {
         try
         {
-            if (!await _patientRepository.IsExistAsync(x => x.Id == Id))
+            if (!await _patientRepository.IsExistAsync(x => x.UserId == Id))
                 return new()
                 {
                     IsSuccess = false,

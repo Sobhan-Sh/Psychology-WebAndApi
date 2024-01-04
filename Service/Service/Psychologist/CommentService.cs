@@ -45,7 +45,7 @@ public class CommentService : ICommentService
             {
                 if (search.PsychologistId > 0 && search.PaitentId > 0)
                 {
-                    query.AddRange(await _commentRepository.GetAllAsync(x => x.PaitentId == search.PaitentId && x.PsychologistId == search.PsychologistId, include: "Psychologist,Patient.User"));
+                    query.AddRange(await _commentRepository.GetAllAsync(x => x.PaitentId == search.PaitentId && x.Psychologist.UserId == search.PsychologistId, include: "Psychologist,Patient.User"));
                 }
                 else
                 {
@@ -76,6 +76,62 @@ public class CommentService : ICommentService
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGetAllSearch(query.Distinct().Count()),
                 Data = _mapper.Map<List<CommentViewModel>>(query.Distinct()),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGetAll(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<PatientCommentViewModel>> GetAllByPatientIdAsync(SearchComment search)
+    {
+        try
+        {
+            List<Comment> query = new List<Comment>();
+            if (search.PsychologistId < 1 && search.UserId < 1 && search.PaitentId < 1)
+            {
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success
+                };
+            }
+            else
+            {
+                if (search.PsychologistId > 0 && search.PaitentId > 0)
+                    query.AddRange(await _commentRepository.GetAllAsync(x => x.Patient.UserId == search.PaitentId && x.PsychologistId == search.PsychologistId, include: "Psychologist.User,Patient.User"));
+            }
+
+            PD.Entity.Patient.Patient patient = await _petientRepository.GetAsync(x => x.UserId == search.PaitentId);
+            PatientCommentViewModel patientCommentViewModel = new()
+            {
+                CommentViewModels = new(),
+                PsychologistId = (int)search.PsychologistId,
+                PatientId = patient.Id
+            };
+            if (!query.Any())
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.Vacant,
+                    StatusCode = ValidationCode.Success,
+                    Data = patientCommentViewModel
+                };
+
+            patientCommentViewModel.CommentViewModels = _mapper.Map<List<CommentViewModel>>(query);
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGetAllSearch(query.Count()),
+                Data = patientCommentViewModel,
                 StatusCode = ValidationCode.Success
             };
         }
@@ -170,7 +226,7 @@ public class CommentService : ICommentService
         }
     }
 
-    public async Task<BaseResult<ResultUploadFileChat>> CreateFileAsync(int patientId, int psychologistId, int sender, List<IFormFile> files)
+    public async Task<BaseResult<ResultUploadFileChat>> CreateFileAsync(int patientId, int psychologistId, List<IFormFile> files)
     {
         try
         {
@@ -192,6 +248,8 @@ public class CommentService : ICommentService
                     Data = new()
                 };
 
+            PD.Entity.Psychologist.Psychologist psychologist =
+                await _psychologistRepository.GetAsync(x => x.UserId == psychologistId);
             List<string> path = new();
             List<Comment> listComment = new();
             foreach (IFormFile file in files)
@@ -206,10 +264,10 @@ public class CommentService : ICommentService
                     listComment.Add(await _commentRepository.ReturnCreateAsync(new()
                     {
                         PaitentId = patientId,
-                        PsychologistId = psychologistId,
+                        PsychologistId = psychologist.Id,
                         CreatedAt = DateTime.Now,
                         IsActive = true,
-                        Sender = sender,
+                        Sender = psychologist.Id,
                         ObjPath = file.FileName,
                         IsVisit = false
                     }));
@@ -256,7 +314,7 @@ public class CommentService : ICommentService
         }
     }
 
-    public async Task<BaseResult<string>> CreateMessageAsync(int patientId, int psychologistId, int sender, string Message)
+    public async Task<BaseResult<string>> CreateMessageAsync(int patientId, int psychologistId, string Message)
     {
         try
         {
@@ -269,14 +327,16 @@ public class CommentService : ICommentService
                     Message = ValidationMessage.RecordNotFound,
                 };
 
+            PD.Entity.Psychologist.Psychologist psychologist =
+                await _psychologistRepository.GetAsync(x => x.UserId == psychologistId);
             Comment query = await _commentRepository.ReturnCreateAsync(new()
             {
                 PaitentId = patientId,
                 CreatedAt = DateTime.Now,
                 IsActive = true,
                 Text = Message,
-                PsychologistId = psychologistId,
-                Sender = sender,
+                PsychologistId = psychologist.Id,
+                Sender = psychologist.Id,
                 IsDeleted = false,
                 IsVisit = false
             });

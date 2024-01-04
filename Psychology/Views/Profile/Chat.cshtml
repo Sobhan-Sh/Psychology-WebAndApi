@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<PC.Dto.Psychologist.Comment.CommentViewModel>
 @{
     int[] ArrayId = ViewBag.ArrayId;
+    ViewData["Title"] = "چت با بیمار";
 }
 <section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
     <input type="hidden" value="@ArrayId[0]" id="PatientId" class="d-none" />

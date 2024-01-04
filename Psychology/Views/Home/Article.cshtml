@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PC.Dto.Psychologist.Article.ArticleViewModel>
+@{
+    ViewData["Title"] = "مقالات";
+}
+<section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
+    <section class="col-11 col-md-9 mx-auto mx-md-0 mt-3 mt-md-0 px-0 px-md-2">
+        <!--* card -->
+        <section class="card mx-auto pt-5 pb-3 card-profile-form">
+            <!--* title card -->
+            <section class="card-title">
+                <h3>
+                    پرونده های من
+                </h3>
+            </section>
+            <hr>
+            <!--* body card -->
+            <section class="card-body px-0 row">
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="card col-3 m-2 px-0">
+                            <h5 class="p-3 text-center">
+                                @item.Title
+                            </h5>
+                            <div class="card-body">
+                                @item.PsychologistViewModel.UserViewModel.FullName()
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn w-100" asp-action="DetailsArticle" asp-route-articleId="@item.Id"> جزئیات </a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <span>
+                        هیچ مقاله ای اضافه نشده
+                    </span>
+                }
+            </section>
+        </section>
+    </section>
+</section>

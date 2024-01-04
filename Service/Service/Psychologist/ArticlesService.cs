@@ -35,7 +35,7 @@ public class ArticlesService : IArticlesService
             }
             else
             {
-                IEnumerable<Article> articles = await _articlesRepository.GetAllAsync(include: "Psychologist");
+                IEnumerable<Article> articles = await _articlesRepository.GetAllAsync(include: "Psychologist.User");
                 query.AddRange(articles.Where(x =>
                 {
                     bool psId = search.PsychologistId < 0 || x.PsychologistId == search.PsychologistId;
@@ -76,7 +76,7 @@ public class ArticlesService : IArticlesService
     {
         try
         {
-            IEnumerable<Article> query = await _articlesRepository.GetAllAsync(include: "Psychologist");
+            IEnumerable<Article> query = await _articlesRepository.GetAllAsync(include: "Psychologist.User");
             if (!query.Any())
             {
                 return new()
@@ -124,6 +124,38 @@ public class ArticlesService : IArticlesService
                 IsSuccess = true,
                 Message = ValidationMessage.SuccessGet,
                 Data = _mapper.Map<EditArticle>(query),
+                StatusCode = ValidationCode.Success
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorGet(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<ArticleViewModel>> GetArticleViewModelAsync(int Id)
+    {
+        try
+        {
+            Article query = await _articlesRepository.GetAsync(x => x.Id == Id, include: "Psychologist.User");
+            if (query == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.NoFoundGet,
+                    StatusCode = ValidationCode.NotFound
+                };
+
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessGet,
+                Data = _mapper.Map<ArticleViewModel>(query),
                 StatusCode = ValidationCode.Success
             };
         }

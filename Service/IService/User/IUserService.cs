@@ -17,6 +17,7 @@ public interface IUserService
     Task<BaseResult<EditUser>> GetAsync(int Id);
     Task<BaseResult<UserViewModel>> ReturnViewGetAsync(int Id);
     Task<BaseResult> CreateAsync(CreateUser command);
+    Task<BaseResult<int>> ReturnCreateAsync(CreateUser command);
     Task<BaseResult> UpdateAsync(EditUser command);
     Task<BaseResult> DeleteAsync(int Id);
 

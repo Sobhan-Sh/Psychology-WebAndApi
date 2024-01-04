@@ -186,12 +186,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/Article.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpY2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/DetailsArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzQXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/JoinTheTeam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKb2luVGhlVGVhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/JoinTheTeamFinish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKb2luVGhlVGVhbUZpbmlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Home/JoinTheTeamPartTwo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKb2luVGhlVGVhbVBhcnRUd28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/AboutMy.cshtml]
@@ -204,6 +220,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/Chat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDaGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/ChatPatient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDaGF0UGF0aWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dear User/Desktop/wibsit/Project/Psychology/Psychology/Views/Profile/CreateAboutUs.cshtml]

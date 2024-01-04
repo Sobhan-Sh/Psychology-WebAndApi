@@ -7,6 +7,7 @@ using PC.Service.IRepository.Patient;
 using PC.Service.IRepository.Psychologist;
 using PC.Service.IRepository.User;
 using PC.Service.IService.Psychologist;
+using PC.Utility.Auth;
 using PC.Utility.ReturnFuncResult;
 using PC.Utility.UploadFileTools;
 using PC.Utility.Validation;
@@ -170,6 +171,15 @@ public class PsychologistService : IPsychologistService
                     StatusCode = ValidationCode.BadRequest
                 };
 
+            PD.Entity.User.User user = await _userRepository.GetAsync(x => x.Id == command.UserId);
+            if (user == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.RecordNotFound,
+                    StatusCode = ValidationCode.NotFound
+                };
+
             if (await _psychologistRepository.IsExistAsync(x => x.NationalCode == command.NationalCode))
                 return new BaseResult
                 {
@@ -197,6 +207,7 @@ public class PsychologistService : IPsychologistService
                 else
                     return new BaseResult() { IsSuccess = false, Message = ValidationMessage.InvalidFileFormat, StatusCode = ValidationCode.BadRequest };
 
+            user.RoleID = RoleHelper.Psychologist_Id;
             command.CreatedAt = DateTime.Now.ToString();
             command.IsActive = true;
             await _psychologistRepository.CreateAsync(_mapper.Map<PD.Entity.Psychologist.Psychologist>(command));

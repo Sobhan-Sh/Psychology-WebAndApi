@@ -17,6 +17,8 @@ public interface IArticlesService
 
     Task<BaseResult<EditArticle>> GetAsync(int Id);
 
+    Task<BaseResult<ArticleViewModel>> GetArticleViewModelAsync(int Id);
+
     Task<BaseResult> CreateAsync(CreateArticle command);
 
     Task<BaseResult> UpdateAsync(EditArticle command);

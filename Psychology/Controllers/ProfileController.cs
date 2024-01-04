@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PC.Dto.Discount;
 using PC.Dto.Order;
 using PC.Dto.Patient;
-using PC.Dto.Patient.PatientFile;
 using PC.Dto.Patient.PatientTurn;
 using PC.Dto.Psychologist;
 using PC.Dto.Psychologist.Article;
@@ -111,6 +110,9 @@ namespace Psychology.Controllers
         public async Task<IActionResult> MyIncome()
         {
             BaseResult<List<MyIncome>> result = await _ipsychologistService.MyIncome(_authHelper.CurrentAccountId());
+            if (result.Data == null)
+                result.Data = new();
+
             return View(result.Data);
         }
 
@@ -126,6 +128,9 @@ namespace Psychology.Controllers
                 ViewData["RenderMessage"] = RenderMessageStatic;
                 RenderMessageStatic = "";
             }
+
+            if (result.Data == null)
+                result.Data = new();
 
             return View(result.Data);
         }
@@ -395,7 +400,7 @@ namespace Psychology.Controllers
         {
             if (patientId > 0 && files.Any())
             {
-                BaseResult<ResultUploadFileChat> result = await _commentService.CreateFileAsync(patientId, _authHelper.CurrentAccountId(), _authHelper.CurrentAccountId(), files);
+                BaseResult<ResultUploadFileChat> result = await _commentService.CreateFileAsync(patientId, _authHelper.CurrentAccountId(), files);
                 return Json(new { success = true, message = result.Message, files = result.Data, id = result.Data.ListFilesId });
             }
 
@@ -407,7 +412,7 @@ namespace Psychology.Controllers
         {
             if (!string.IsNullOrWhiteSpace(message) && patientId > 0)
             {
-                BaseResult<string> result = await _commentService.CreateMessageAsync(patientId, _authHelper.CurrentAccountId(), _authHelper.CurrentAccountId(), message);
+                BaseResult<string> result = await _commentService.CreateMessageAsync(patientId, _authHelper.CurrentAccountId(), message);
                 return Json(new { success = true, message = result.Message, id = result.Data });
             }
 
@@ -452,8 +457,13 @@ namespace Psychology.Controllers
 
         public async Task<IActionResult> ChatPatient(int psychologistId)
         {
-            BaseResult<List<OrderViewModel>> result = await _orderService.GetAllAsync(_authHelper.CurrentAccountId());
-            return View(result.Data);
+            BaseResult<PatientCommentViewModel> result = await _commentService.GetAllByPatientIdAsync(new()
+            {
+                PaitentId = _authHelper.CurrentAccountId(),
+                PsychologistId = psychologistId
+            });
+            ViewBag.ArrayId = new int[] { result.Data.PatientId, result.Data.PsychologistId };
+            return View(result.Data.CommentViewModels);
         }
 
         public async Task<IActionResult> MyPatientFile()
