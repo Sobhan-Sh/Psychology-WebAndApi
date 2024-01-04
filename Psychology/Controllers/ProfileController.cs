@@ -419,18 +419,6 @@ namespace Psychology.Controllers
             return Json(new { success = false, message = "مقدار خالی است" });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> IsVisitedComment(string commentId)
-        {
-            if (commentId.Length > 0)
-            {
-                BaseResult result = await _commentService.IsVisitedAsync(commentId);
-                return Json(new { success = true, message = result.Message });
-            }
-
-            return Json(new { success = false, message = "مقدار خالی است" });
-        }
-
         public async Task<IActionResult> PsychologistMyChatAll()
         {
             BaseResult<List<CommentViewModel>> result = await _ipsychologistService.GetAllCommentAsync(_authHelper.CurrentAccountId());
@@ -472,6 +460,42 @@ namespace Psychology.Controllers
             return View(result.Data);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> FileUploadPatient(int psychologistId, List<IFormFile> files)
+        {
+            if (psychologistId > 0 && files.Any())
+            {
+                BaseResult<ResultUploadFileChat> result = await _commentService.CreatePatientFileAsync(psychologistId, _authHelper.CurrentAccountId(), files);
+                return Json(new { success = true, message = result.Message, files = result.Data, id = result.Data.ListFilesId });
+            }
+
+            return Json(new { success = false, message = "مقدار خالی است" });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendPatientMessage(int psychologistId, string message)
+        {
+            if (!string.IsNullOrWhiteSpace(message) && psychologistId > 0)
+            {
+                BaseResult<string> result = await _commentService.CreatePatientMessageAsync(psychologistId, _authHelper.CurrentAccountId(), message);
+                return Json(new { success = true, message = result.Message, id = result.Data });
+            }
+
+            return Json(new { success = false, message = "مقدار خالی است" });
+        }
+
         #endregion
+
+        [HttpPost]
+        public async Task<IActionResult> IsVisitedComment(string commentId)
+        {
+            if (commentId.Length > 0)
+            {
+                BaseResult result = await _commentService.IsVisitedAsync(commentId);
+                return Json(new { success = true, message = result.Message });
+            }
+
+            return Json(new { success = false, message = "مقدار خالی است" });
+        }
     }
 }

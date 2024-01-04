@@ -4,8 +4,6 @@
     ViewData["Title"] = "چت با روانشناس";
 }
 <section class="container row pt-4 mt-5 pt-md-2 mt-md-3 mx-auto px-0 px-md-2">
-    <input type="hidden" value="@ArrayId[0]" id="PatientId" class="d-none" />
-    <input type="hidden" value="@ArrayId[1]" id="PsychologistId" class="d-none" />
     <aside class="col-11 col-md-3 mx-auto mx-md-0">
         <partial name="_NavbarProfile" />
     </aside>
@@ -21,9 +19,6 @@
             <hr>
             <!--* body card -->
             <section class="card-body px-0 chat_cart">
-                @{
-                    //TODO: اینجا با چک کردن تاریخ اضافه کردن اون پیام چک می کنی اگر شب به روز تبدیل شد بود یعنی 24 ساعت گزشت باید نشون بده
-                }
                 <section class="row">
                     @{
                         var models = Model.ToArray();
@@ -45,7 +40,7 @@
                                     if (gallery == "")
                                         gallery = startTagArray[0];
 
-                                    if (models[i].Sender == ArrayId[1] && !gallery.Contains("gallery_image chat_me"))
+                                    if (models[i].Sender == ArrayId[0] && !gallery.Contains("gallery_image chat_me"))
                                         gallery = gallery.Replace("gallery_image", "gallery_image chat_me");
 
                                     gallery += $"<img src='/PatientsFile/{models[i].PatientViewModel.UserViewModel.FullNameInCreateFolder()}/{models[i].ObjPath}' />";
@@ -57,56 +52,17 @@
                                 {
                                     if (gallery.Contains("<section class='col-12 gallery_image"))
                                     {
-                                        // if (html == "" || !html.Contains("<section class='col-12 gallery_image"))
                                         html += gallery;
-
                                         html += endTag;
                                         gallery = "";
                                     }
 
-                                    html += $"{startTagArray[models[i].Sender == ArrayId[1] ? 2 : 1]}{models[i].Text}{endTag}";
+                                    html += $"{startTagArray[models[i].Sender == ArrayId[0] ? 2 : 1]}{models[i].Text}{endTag}";
                                 }
                             }
                         }
                     }
                     @Html.Raw(html)
-                    @* <section class="col-12">
-                    <span>
-                    سلام اقای دکتر من حیدری هستم.
-                    <br />
-                    اقای دکتر مریضی پسرم راه درمانی هم داره
-                    </span>
-                    </section>
-
-                    <section class="chat_me col-12">
-                    <span>
-                    سلام خانم حیدری
-                    <br />
-                    بله خانوم حیدری نگران نباشید بنده با تمام توانم سعی به بهتر کردن حال فرزند شما کنم
-                    </span>
-                    </section>
-
-                    <section class="col-12">
-                    <span>
-                    مرسی اقای دکتر
-                    </span>
-                    </section>
-
-                    <section class="col-12 chat_me description_image">
-                    <span>
-                    <img src="/assets/imageTemplate/background_chat.jpg" />
-                    بفرما خانوم حیدری اینم چارت مداوای بیماری
-                    </span>
-                    </section>
-
-                    <section class="col-12 gallery_image">
-                    <span>
-                    <img src="/assets/imageTemplate/background_chat.jpg" />
-                    <img src="/assets/imageTemplate/background_chat.jpg" />
-                    <img src="/assets/imageTemplate/background_chat.jpg" />
-                    <img src="/assets/imageTemplate/background_chat.jpg" />
-                    </span>
-                    </section>*@
                 </section>
 
             </section>
@@ -166,7 +122,7 @@
     <script>
         "use strict";
         var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-        let arrayRoomID = [Number($("#PatientId").val()), Number($("#PsychologistId").val())];
+        let arrayRoomID = [Number(@ArrayId[0]), Number(@ArrayId[1])];
         let discounected = $(".discounected");
         var timer = null;
         const StartConnection = () => {
@@ -277,13 +233,13 @@
             if (files && files.length > 0) {
                 let form = new FormData();
 
-                form.append("patientId", arrayRoomID[0]);
+                form.append("psychologistId", arrayRoomID[1]);
                 for (var i = 0; i < files.length; i++) {
                     var filePath = files[i].webkitRelativePath || files[i].name;
                     form.append("files", files[i], filePath);
                 }
                 var settings = {
-                    "url": "/Profile/FileUpload",
+                    "url": "/Profile/FileUploadPatient",
                     "method": "POST",
                     "timeout": 0,
                     "processData": false,
@@ -390,9 +346,9 @@
             let mes = textarea.val().replace(/\n+$/, "");
             mes = mes.replace(/\n(?=\n|$)/g, "<br />");
             form.append("message", mes);
-            form.append("patientId", arrayRoomID[0]);
+            form.append("psychologistId", arrayRoomID[1]);
             let settings = {
-                "url": "/Profile/SendMessage",
+                "url": "/Profile/SendPatientMessage",
                 "method": "POST",
                 "timeout": 0,
                 "processData": false,

@@ -111,10 +111,11 @@ public class CommentService : ICommentService
             }
 
             PD.Entity.Patient.Patient patient = await _petientRepository.GetAsync(x => x.UserId == search.PaitentId);
+            PD.Entity.Psychologist.Psychologist psychologist = await _psychologistRepository.GetAsync(x => x.Id == search.PsychologistId);
             PatientCommentViewModel patientCommentViewModel = new()
             {
                 CommentViewModels = new(),
-                PsychologistId = (int)search.PsychologistId,
+                PsychologistId = psychologist.UserId,
                 PatientId = patient.Id
             };
             if (!query.Any())
@@ -314,6 +315,94 @@ public class CommentService : ICommentService
         }
     }
 
+    public async Task<BaseResult<ResultUploadFileChat>> CreatePatientFileAsync(int psychologistId, int patientId, List<IFormFile> files)
+    {
+        try
+        {
+            PD.Entity.Psychologist.Psychologist psychologist =
+                await _psychologistRepository.GetAsync(x => x.UserId == psychologistId);
+            if (!files.Any())
+                return new()
+                {
+                    IsSuccess = false,
+                    Message = ValidationMessage.IsRequired,
+                    StatusCode = ValidationCode.BadRequest
+                };
+
+            if (psychologist == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    StatusCode = ValidationCode.NotFound,
+                    Message = ValidationMessage.RecordNotFound,
+                    Data = new()
+                };
+
+            PD.Entity.Patient.Patient patient = await _petientRepository.GetAsync(x => x.UserId == patientId, include: "User");
+            List<string> path = new();
+            List<Comment> listComment = new();
+            foreach (IFormFile file in files)
+            {
+                if (file.IsCheckFile())
+                {
+                    // create path
+                    string pathFilePatient = PathExtention.PatientFile + "/" + patient.User.FullNameInCreateFolder() + "/";
+                    // check && upload file
+                    file.AddFileToServer(file.FileName, pathFilePatient, null, null);
+                    path.Add(SD.BaseUrlProject + "PatientsFile/" + patient.User.FullNameInCreateFolder() + "/" + file.FileName);
+                    listComment.Add(await _commentRepository.ReturnCreateAsync(new()
+                    {
+                        PaitentId = patient.Id,
+                        PsychologistId = psychologist.Id,
+                        CreatedAt = DateTime.Now,
+                        IsActive = true,
+                        Sender = patient.Id,
+                        ObjPath = file.FileName,
+                        IsVisit = false
+                    }));
+                }
+                else
+                    return new()
+                    {
+                        Data = new(),
+                        IsSuccess = false,
+                        Message = ValidationMessage.InvalidFileFormat,
+                        StatusCode = ValidationCode.BadRequest
+                    };
+            }
+
+            await _commentRepository.SaveAsync();
+            string commmentId = "";
+            for (int i = 0; i < listComment.Count; i++)
+            {
+                if (i == 0)
+                    commmentId = listComment[i].Id.ToString();
+                else
+                    commmentId += "," + listComment[i].Id.ToString();
+            }
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCreateFileComment,
+                StatusCode = ValidationCode.Success,
+                Data = new()
+                {
+                    ListFilesPath = path,
+                    ListFilesId = commmentId
+                }
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
     public async Task<BaseResult<string>> CreateMessageAsync(int patientId, int psychologistId, string Message)
     {
         try
@@ -337,6 +426,52 @@ public class CommentService : ICommentService
                 Text = Message,
                 PsychologistId = psychologist.Id,
                 Sender = psychologist.Id,
+                IsDeleted = false,
+                IsVisit = false
+            });
+            await _commentRepository.SaveAsync();
+            return new()
+            {
+                IsSuccess = true,
+                Message = ValidationMessage.SuccessCreateComment,
+                StatusCode = ValidationCode.Success,
+                Data = query.Id.ToString()
+            };
+        }
+        catch (Exception e)
+        {
+            return new()
+            {
+                IsSuccess = false,
+                Message = ValidationMessage.ErrorCreate(e.Message),
+                StatusCode = ValidationCode.BadRequest
+            };
+        }
+    }
+
+    public async Task<BaseResult<string>> CreatePatientMessageAsync(int psychologistId, int patientId, string Message)
+    {
+        try
+        {
+            PD.Entity.Psychologist.Psychologist psychologist =
+                await _psychologistRepository.GetAsync(x => x.UserId == psychologistId);
+            if (psychologist == null)
+                return new()
+                {
+                    IsSuccess = false,
+                    StatusCode = ValidationCode.NotFound,
+                    Message = ValidationMessage.RecordNotFound,
+                };
+
+            PD.Entity.Patient.Patient patient = await _petientRepository.GetAsync(x => x.UserId == patientId, include: "User");
+            Comment query = await _commentRepository.ReturnCreateAsync(new()
+            {
+                PaitentId = patient.Id,
+                CreatedAt = DateTime.Now,
+                IsActive = true,
+                Text = Message,
+                PsychologistId = psychologist.Id,
+                Sender = patient.Id,
                 IsDeleted = false,
                 IsVisit = false
             });

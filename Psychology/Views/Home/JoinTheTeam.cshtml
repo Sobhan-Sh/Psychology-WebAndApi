@@ -8,59 +8,67 @@
         <section class="card mx-auto pt-5 pb-3 card-profile-form">
             <!--* body card -->
             <section class="card-body px-0">
-                <form asp-action="JoinTheTeam" enctype="multipart/form-data" class="container-fluid">
-                    <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
-                    <section class="row">
-                        <section class="col-12 col-md-6">
-                            <label asp-for="FName"></label>
-                            <input class="cusotm-form-controle" placeholder="نام" asp-for="FName" type="text">
-                            <span asp-validation-for="FName"></span>
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="LName"></label>
-                            <input class="cusotm-form-controle" placeholder="نام خانوادگی" asp-for="LName" type="text">
-                            <span asp-validation-for="LName"></span>
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="Password"></label>
-                            <input class="cusotm-form-controle" placeholder="رمز عبور" asp-for="Password">
-                            <span asp-validation-for="Password"></span>
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="ConfirmPassword"></label>
-                            <input class="cusotm-form-controle" placeholder="تکرار رمز عبور" asp-for="ConfirmPassword">
-                            <span asp-validation-for="ConfirmPassword"></span>
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="Phone"></label>
-                            <input class="cusotm-form-controle" placeholder="تلفن همراه" asp-for="Phone" type="number">
-                            <span asp-validation-for="Phone"></span>
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="GenderId"></label>
-                            <select class="cusotm-form-controle" asp-for="GenderId" asp-items="@((SelectList)ViewData["Gender"])"></select>
-                            <span asp-validation-for="GenderId"></span>
-                        </section>
-                        <section class="col-12 col-md-6 input-div">
-                            <label asp-for="ImageUser"></label>
-                            <span class="cusotm-form-controle"> انتخاب اواتار </span>
-                            <input asp-for="ImageUser" class="cusotm-form-controle" type="file">
-                        </section>
-                        <section class="col-12 col-md-6">
-                            <label asp-for="Address"></label>
-                            <input class="cusotm-form-controle" asp-for="Address" placeholder="ادرس" type="text">
-                        </section>
-                        <section class="col-12 col-md-6 mx-auto">
-                            <button class="btn btn-custom w-100 mt-3" type="submit"> ثبت اطلاعات </button>
-                        </section>
-                    </section>
-                </form>
+                <h6>
+                    برای پیوستن به کادر پزشکی با این شماره تماس بگیرید
+                    <br />
+                    <br />
+                    09010920458
+                </h6>
+
+                @*  <form asp-action="JoinTheTeam" enctype="multipart/form-data" class="container-fluid">
+                <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
+                <section class="row">
+                <section class="col-12 col-md-6">
+                <label asp-for="FName"></label>
+                <input class="cusotm-form-controle" placeholder="نام" asp-for="FName" type="text">
+                <span asp-validation-for="FName"></span>
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="LName"></label>
+                <input class="cusotm-form-controle" placeholder="نام خانوادگی" asp-for="LName" type="text">
+                <span asp-validation-for="LName"></span>
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="Password"></label>
+                <input class="cusotm-form-controle" placeholder="رمز عبور" asp-for="Password">
+                <span asp-validation-for="Password"></span>
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="ConfirmPassword"></label>
+                <input class="cusotm-form-controle" placeholder="تکرار رمز عبور" asp-for="ConfirmPassword">
+                <span asp-validation-for="ConfirmPassword"></span>
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="Phone"></label>
+                <input class="cusotm-form-controle" placeholder="تلفن همراه" asp-for="Phone" type="number">
+                <span asp-validation-for="Phone"></span>
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="GenderId"></label>
+                <select class="cusotm-form-controle" asp-for="GenderId" asp-items="@((SelectList)ViewData["Gender"])"></select>
+                <span asp-validation-for="GenderId"></span>
+                </section>
+                <section class="col-12 col-md-6 input-div">
+                <label asp-for="ImageUser"></label>
+                <span class="cusotm-form-controle"> انتخاب اواتار </span>
+                <input asp-for="ImageUser" class="cusotm-form-controle" type="file">
+                </section>
+                <section class="col-12 col-md-6">
+                <label asp-for="Address"></label>
+                <input class="cusotm-form-controle" asp-for="Address" placeholder="ادرس" type="text">
+                </section>
+                <section class="col-12 col-md-6 mx-auto">
+                <button class="btn btn-custom w-100 mt-3" type="submit"> ثبت اطلاعات </button>
+                </section>
+                </section>
+                </form> *@
             </section>
         </section>
     </section>
 </section>
 
-@section Scripts
+@* @section Scripts
 {
     <partial name="_ValidationScriptsPartial" />
 }
+ *@

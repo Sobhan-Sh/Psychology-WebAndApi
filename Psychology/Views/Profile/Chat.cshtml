@@ -45,7 +45,7 @@
                                     if (gallery == "")
                                         gallery = startTagArray[0];
 
-                                    if (models[i].Sender == ArrayId[1] && !gallery.Contains("gallery_image chat_me"))
+                                    if (models[i].Sender == models[0].PsychologistViewModel.Id && !gallery.Contains("gallery_image chat_me"))
                                         gallery = gallery.Replace("gallery_image", "gallery_image chat_me");
 
                                     gallery += $"<img src='/PatientsFile/{models[i].PatientViewModel.UserViewModel.FullNameInCreateFolder()}/{models[i].ObjPath}' />";
@@ -58,13 +58,13 @@
                                     if (gallery.Contains("<section class='col-12 gallery_image"))
                                     {
                                         // if (html == "" || !html.Contains("<section class='col-12 gallery_image"))
-                                            html += gallery;
+                                        html += gallery;
 
                                         html += endTag;
                                         gallery = "";
                                     }
 
-                                    html += $"{startTagArray[models[i].Sender == ArrayId[1] ? 2 : 1]}{models[i].Text}{endTag}";
+                                    html += $"{startTagArray[models[i].Sender == models[0].PsychologistViewModel.Id ? 2 : 1]}{models[i].Text}{endTag}";
                                 }
                             }
                         }
@@ -108,7 +108,7 @@
                     </span>
                     </section>*@
                 </section>
-                
+
             </section>
             <section class="selectListImage_upload d-none">
                 <section></section>

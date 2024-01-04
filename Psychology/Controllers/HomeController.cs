@@ -130,53 +130,53 @@ namespace Psychology.Controllers
 
         public async Task<IActionResult> JoinTheTeam()
         {
-            BaseResult<List<GenderViewModel>> result = await _genderService.GetAllAsync();
-            ViewData["Gender"] = new SelectList(result.Data, "Id", "Name");
+            //BaseResult<List<GenderViewModel>> result = await _genderService.GetAllAsync();
+            //ViewData["Gender"] = new SelectList(result.Data, "Id", "Name");
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> JoinTheTeam(CreateUser user)
-        {
-            if (ModelState.IsValid)
-            {
-                BaseResult<int> result = await _userService.ReturnCreateAsync(user);
-                if (UserId == null)
-                    UserId = new();
+        //[HttpPost]
+        //public async Task<IActionResult> JoinTheTeam(CreateUser user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        BaseResult<int> result = await _userService.ReturnCreateAsync(user);
+        //        if (UserId == null)
+        //            UserId = new();
 
-                UserId = result.Data;
-                if (result.IsSuccess)
-                    return RedirectToAction("JoinTheTeamPartTwo");
-            }
+        //        UserId = result.Data;
+        //        if (result.IsSuccess)
+        //            return RedirectToAction("JoinTheTeamPartTwo");
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public IActionResult JoinTheTeamPartTwo()
-        {
-            if (UserId < 1)
-                return RedirectToAction("JoinTheTeam");
+        //public IActionResult JoinTheTeamPartTwo()
+        //{
+        //    if (UserId < 1)
+        //        return RedirectToAction("JoinTheTeam");
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> JoinTheTeamPartTwo(CreatePsychologist psychologist)
-        {
-            if (ModelState.IsValid)
-            {
-                psychologist.UserId = UserId;
-                BaseResult result = await _psychologistService.CreateAsync(psychologist);
-                if (result.IsSuccess)
-                    return RedirectToAction("JoinTheTeamFinish");
-            }
+        //[HttpPost]
+        //public async Task<IActionResult> JoinTheTeamPartTwo(CreatePsychologist psychologist)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        psychologist.UserId = UserId;
+        //        BaseResult result = await _psychologistService.CreateAsync(psychologist);
+        //        if (result.IsSuccess)
+        //            return RedirectToAction("JoinTheTeamFinish");
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public IActionResult JoinTheTeamFinish()
-        {
-            return View();
-        }
+        //public IActionResult JoinTheTeamFinish()
+        //{
+        //    return View();
+        //}
     }
 }
